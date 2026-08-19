@@ -36,6 +36,18 @@ svg {
   display: block;
 }
 
+a,
+button,
+input,
+select,
+textarea,
+.btn,
+.card,
+.accordion__header {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -49,6 +61,7 @@ button {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
+  -webkit-appearance: none;
 }
 
 ul, ol {

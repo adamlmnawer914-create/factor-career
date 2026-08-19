@@ -8,8 +8,55 @@ window.CareerAI.db = {
   KEYS: {
     CATEGORIES: 'careerai_categories',
     ARTICLES: 'careerai_articles',
+    JOBS: 'careerai_jobs',
     ADMIN_SESSION: 'careerai_admin_session'
   },
+
+  // Default Jobs / Opportunities
+  defaultJobs: [
+    {
+      id: 'job-1',
+      title: 'مطور واجهات أمامية (Frontend Developer)',
+      company: 'تيك فلو للحلول الرقمية',
+      location: 'عن بُعد (Remote)',
+      type: 'دوام كامل',
+      salary: '2,500$ - 3,500$',
+      description: 'نبحث عن مطور واجهات محترف يتقن HTML/CSS/JavaScript وReact لبناء تطبيقات ويب حديثة وسريعة الاستجابة.',
+      requirements: 'خبرة 3+ سنوات في تطوير الويب، إتقان UI/UX، مهارات حل المشكلات والتواصل الفعال.',
+      applyUrl: 'mailto:careerfactor@gmail.com?subject=تقديم على وظيفة Frontend Developer',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+      status: 'active',
+      createdAt: '2026-08-18'
+    },
+    {
+      id: 'job-2',
+      title: 'أخصائي موارد بشرية واستقطاب مواهب (HR Recruiter)',
+      company: 'مجموعة الأفق للاستشارات',
+      location: 'الدار البيضاء / عن بُعد',
+      type: 'دوام كامل',
+      salary: '1,800$ - 2,400$',
+      description: 'إدارة عمليات التوظيف وفرز السير الذاتية وتجهيز وإجراء المقابلات الوظيفية بالتعاون مع مدراء الأقسام.',
+      requirements: 'شهادة في الموارد البشرية أو إدارة الأعمال، معرفة بأنظمة ATS، مهارات تواصل وإقناع عالية.',
+      applyUrl: 'mailto:careerfactor@gmail.com?subject=تقديم على وظيفة HR Recruiter',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+      status: 'active',
+      createdAt: '2026-08-17'
+    },
+    {
+      id: 'job-3',
+      title: 'كاتب محتوى ومسوق رقمي (Content & SEO Specialist)',
+      company: 'منصة واعد للتعليم',
+      location: 'عن بُعد (Remote)',
+      type: 'دوام جزئي / مرن',
+      salary: '1,200$ - 1,800$',
+      description: 'كتابة مقالات متوافقة مع محركات البحث SEO، وإعداد منشورات ترويجية للمنصات الرقمية لتعزيز الظهور.',
+      requirements: 'إتقان اللغة العربية والإنجليزية، خبرة في أدوات SEO والكلمات المفتاحية، شغف بالتقنية والذكاء الاصطناعي.',
+      applyUrl: 'mailto:careerfactor@gmail.com?subject=تقديم على وظيفة Content Specialist',
+      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
+      status: 'active',
+      createdAt: '2026-08-16'
+    }
+  ],
 
   // Initial Default Categories as requested
   defaultCategories: [
@@ -104,6 +151,9 @@ window.CareerAI.db = {
     }
     if (!localStorage.getItem(this.KEYS.ARTICLES)) {
       localStorage.setItem(this.KEYS.ARTICLES, JSON.stringify(this.defaultArticles));
+    }
+    if (!localStorage.getItem(this.KEYS.JOBS)) {
+      localStorage.setItem(this.KEYS.JOBS, JSON.stringify(this.defaultJobs));
     }
   },
 
@@ -221,14 +271,78 @@ window.CareerAI.db = {
     localStorage.setItem(this.KEYS.ARTICLES, JSON.stringify(articles));
   },
 
-  /* --- Admin Auth Guard --- */
+  /* --- Jobs / Opportunities API --- */
+  getJobs: function(includeInactive = false) {
+    this.init();
+    const jobs = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
+    if (includeInactive) {
+      return jobs;
+    }
+    return jobs.filter(j => j.status === 'active');
+  },
+
+  getJobById: function(id) {
+    const jobs = this.getJobs(true);
+    return jobs.find(j => j.id === id);
+  },
+
+  saveJob: function(jobData) {
+    const jobs = this.getJobs(true);
+
+    if (jobData.id) {
+      const index = jobs.findIndex(j => j.id === jobData.id);
+      if (index !== -1) {
+        jobs[index] = {
+          ...jobs[index],
+          ...jobData
+        };
+        localStorage.setItem(this.KEYS.JOBS, JSON.stringify(jobs));
+        return jobs[index];
+      }
+    }
+
+    const newJob = {
+      id: 'job-' + Date.now(),
+      title: jobData.title,
+      company: jobData.company || 'شركة موثوقة',
+      location: jobData.location || 'عن بُعد',
+      type: jobData.type || 'دوام كامل',
+      salary: jobData.salary || 'قابل للتفاوض',
+      description: jobData.description || '',
+      requirements: jobData.requirements || '',
+      applyUrl: jobData.applyUrl || 'mailto:careerfactor@gmail.com',
+      image: jobData.image || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+      status: jobData.status || 'active',
+      createdAt: jobData.createdAt || new Date().toISOString().split('T')[0]
+    };
+
+    jobs.unshift(newJob);
+    localStorage.setItem(this.KEYS.JOBS, JSON.stringify(jobs));
+    return newJob;
+  },
+
+  deleteJob: function(id) {
+    let jobs = this.getJobs(true);
+    jobs = jobs.filter(j => j.id !== id);
+    localStorage.setItem(this.KEYS.JOBS, JSON.stringify(jobs));
+  },
+
+  /* --- Admin Auth Guard & Multi-Credential Support --- */
   isAdminLoggedIn: function() {
     return localStorage.getItem(this.KEYS.ADMIN_SESSION) === 'true';
   },
 
-  loginAdmin: function(username, password) {
-    if (username === 'admin' && password === 'admin123') {
+  loginAdmin: function(usernameOrEmail, password) {
+    const u = (usernameOrEmail || '').trim().toLowerCase();
+    const p = (password || '').trim();
+
+    // Support user requested email & credentials
+    const validUser = (u === 'adamlmnawe914@gmail.com' || u === 'admin' || u === 'adam');
+    const validPass = (p === 'Career1000Factor' || p === 'admin123');
+
+    if (validUser && validPass) {
       localStorage.setItem(this.KEYS.ADMIN_SESSION, 'true');
+      localStorage.setItem('careerai_admin_user', u);
       return true;
     }
     return false;
@@ -236,6 +350,7 @@ window.CareerAI.db = {
 
   logoutAdmin: function() {
     localStorage.removeItem(this.KEYS.ADMIN_SESSION);
+    localStorage.removeItem('careerai_admin_user');
   }
 };
 

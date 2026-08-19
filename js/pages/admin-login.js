@@ -19,7 +19,7 @@ window.CareerAI.pages.adminLogin = function() {
       <div class="container">
         <div class="page-header__content">
           <h1 class="page-header__title">تسجيل دخول المدير</h1>
-          <p class="page-header__subtitle">لوحة التحكم خاصة بالمدير فقط لإدارة المقالات والتصنيفات</p>
+          <p class="page-header__subtitle">لوحة تحكم Career Factor لإدارة المقالات، التصنيفات، الصور، والوظائف</p>
         </div>
       </div>
     </div>
@@ -28,23 +28,24 @@ window.CareerAI.pages.adminLogin = function() {
       <div class="container container--narrow">
         <div class="contact-form animate-on-scroll" style="max-width:480px;margin:0 auto">
           <div class="text-center" style="margin-bottom:var(--space-6)">
-            <div class="header__logo-icon" style="margin:0 auto var(--space-4);width:56px;height:56px;font-size:1.75rem">C</div>
+            <div class="header__logo-icon" style="margin:0 auto var(--space-4);width:56px;height:56px;font-size:1.75rem">CF</div>
             <h2 style="font-size:var(--text-2xl)">تسجيل الدخول للوحة التحكم</h2>
+            <p style="color:var(--color-text-secondary);font-size:var(--text-sm);margin-top:var(--space-2)">أدخل البريد الإلكتروني وكلمة المرور للمتابعة</p>
           </div>
 
           <form id="adminLoginForm" onsubmit="CareerAI.handleAdminLogin(event)">
             <div id="loginError" class="login-error-badge" style="display:none">
-              اسم المستخدم أو كلمة المرور غير صحيحة!
+              البريد الإلكتروني أو كلمة المرور غير صحيحة!
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="adminUsername">اسم المستخدم</label>
-              <input type="text" id="adminUsername" class="form-input" placeholder="اسم المستخدم" required value="admin">
+              <label class="form-label" for="adminUsername">البريد الإلكتروني أو اسم المستخدم</label>
+              <input type="text" id="adminUsername" class="form-input" placeholder="adamlmnawe914@gmail.com" required value="adamlmnawe914@gmail.com">
             </div>
 
             <div class="form-group">
               <label class="form-label" for="adminPassword">كلمة المرور</label>
-              <input type="password" id="adminPassword" class="form-input" placeholder="كلمة المرور" required value="admin123">
+              <input type="password" id="adminPassword" class="form-input" placeholder="••••••••" required value="Career1000Factor">
             </div>
 
             <button type="submit" class="btn btn--primary btn--full" style="margin-top:var(--space-4)">
