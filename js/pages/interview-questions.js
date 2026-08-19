@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - AI Interview Questions Generator Tool
    ============================================ */
 
@@ -646,7 +646,7 @@ CareerAI.resetIQForm = function() {
 };
 
 window.CareerAI.pages.interviewQuestionsSEO = {
-  title: 'مولد أسئلة مقابلات العمل بالذكاء الاصطناعي | Career Factor Interview Questions',
+  title: 'مولد أسئلة مقابلات العمل بالذكاء الاصطناعي | Factor Career Interview Questions',
   description: 'تدرب على أسئلة مقابلات العمل المخصصة لوظيفتك مع إجابات نموذجية وسبب طرح السؤال وطريقة STAR وتصدير PDF مجاناً.',
   keywords: 'أسئلة مقابلة عمل, تحضير المقابلات, طريقة STAR, أسئلة HR, أسئلة تقنية, AI Interview Questions'
 };

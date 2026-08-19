@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - ATS Keyword Generator Tool Page
    ============================================ */
 
@@ -584,7 +584,7 @@ CareerAI.resetAKForm = function() {
 };
 
 window.CareerAI.pages.atsKeywordsSEO = {
-  title: 'أداة استخراج الكلمات المفتاحية ATS للوظائف مجاناً | Career Factor Keywords Generator',
+  title: 'أداة استخراج الكلمات المفتاحية ATS للوظائف مجاناً | Factor Career Keywords Generator',
   description: 'استخرج أهم الكلمات المفتاحية والمهارات والأدوات المطلوبة في إعلانات الوظائف مجاناً بالذكاء الاصطناعي لتحسين سيرتك الذاتية واجتياز أنظمة ATS.',
   keywords: 'استخراج كلمات مفتاحية ATS, مهارات الوظيفية, ATS Keywords Generator, تحسين السيرة الذاتية, Resume Match'
 };

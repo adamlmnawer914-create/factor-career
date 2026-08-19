@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Main App & SPA Router
    ============================================ */
 
@@ -19,8 +19,8 @@ window.CareerAI.router = {
     '/contact': { render: window.CareerAI.pages.contact, seo: window.CareerAI.pages.contactSEO },
     '/privacy': { render: window.CareerAI.pages.privacy, seo: window.CareerAI.pages.privacySEO },
     '/terms': { render: window.CareerAI.pages.terms, seo: window.CareerAI.pages.termsSEO },
-    '/admin/login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'تسجيل دخول المدير | Career Factor', description: 'صفحة تسجيل دخول المدير' } },
-    '/admin': { render: window.CareerAI.pages.adminDashboard, seo: { title: 'لوحة تحكم المدير | Career Factor', description: 'لوحة تحكم إدارة المحتوى' } }
+    '/admin/login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'تسجيل دخول المدير | Factor Career', description: 'صفحة تسجيل دخول المدير' } },
+    '/admin': { render: window.CareerAI.pages.adminDashboard, seo: { title: 'لوحة تحكم المدير | Factor Career', description: 'لوحة تحكم إدارة المحتوى' } }
   },
 
   init: function() {
@@ -48,12 +48,12 @@ window.CareerAI.router = {
           const art = window.CareerAI.db.getArticleBySlug(articleSlug);
           if (art) {
             return {
-              title: art.metaTitle || art.title + ' | Career Factor',
+              title: art.metaTitle || art.title + ' | Factor Career',
               description: art.metaDescription || art.excerpt,
-              keywords: art.keywords || 'مقالات, career factor'
+              keywords: art.keywords || 'مقالات, Factor Career'
             };
           }
-          return { title: 'المقال غير موجود | Career Factor', description: '' };
+          return { title: 'المقال غير موجود | Factor Career', description: '' };
         }
       };
     } else {

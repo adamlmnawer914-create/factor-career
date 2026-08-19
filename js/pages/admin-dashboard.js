@@ -1,5 +1,5 @@
-/* ============================================
-   Career Factor - Admin Dashboard & CMS Manager
+﻿/* ============================================
+   Factor Career - Admin Dashboard & CMS Manager
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
@@ -33,9 +33,9 @@ window.CareerAI.pages.adminDashboard = function() {
         <div class="container">
           <div class="admin-header__inner">
             <div class="admin-header__brand">
-              <div class="header__logo-icon" style="width:36px;height:36px;font-size:1.1rem">CF</div>
+              <div class="header__logo-icon" style="width:36px;height:36px;font-size:1.1rem">FC</div>
               <div>
-                <span class="admin-header__title">لوحة تحكم Career Factor</span>
+                <span class="admin-header__title">لوحة تحكم Factor Career</span>
                 <span style="display:block;font-size:0.75rem;color:rgba(255,255,255,0.7)">حساب المدير: adamlmnawe914@gmail.com</span>
               </div>
             </div>
@@ -231,7 +231,7 @@ window.CareerAI.pages.adminDashboard = function() {
             
             <div class="form-group">
               <label class="form-label">اسم المنصة الرسمي</label>
-              <input type="text" class="form-input" value="Career Factor" readonly>
+              <input type="text" class="form-input" value="Factor Career" readonly>
             </div>
 
             <div class="form-group">

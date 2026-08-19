@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Contact Page
    ============================================ */
 
@@ -18,7 +18,7 @@ window.CareerAI.pages.contact = function() {
             <span>تواصل معنا</span>
           </div>
           <h1 class="page-header__title">تواصل معنا</h1>
-          <p class="page-header__subtitle">نسعد بتواصلك مع فريق Career Factor. أرسل لنا رسالتك وسنرد عليك في أقرب وقت ممكن</p>
+          <p class="page-header__subtitle">نسعد بتواصلك مع فريق Factor Career. أرسل لنا رسالتك وسنرد عليك في أقرب وقت ممكن</p>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@ window.CareerAI.pages.contact = function() {
             <div class="success-message" id="successMessage">
               <div class="success-message__icon">✓</div>
               <h3 class="success-message__title">تم إرسال رسالتك بنجاح!</h3>
-              <p class="success-message__text">شكراً لتواصلك مع Career Factor. سنرد عليك في أقرب وقت ممكن.</p>
+              <p class="success-message__text">شكراً لتواصلك مع Factor Career. سنرد عليك في أقرب وقت ممكن.</p>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ window.CareerAI.handleContactForm = function(e) {
 };
 
 window.CareerAI.pages.contactSEO = {
-  title: 'تواصل معنا - Career Factor',
-  description: 'تواصل مع فريق Career Factor للاستفسارات والدعم الفني والاقتراحات. المغرب، سوق السبت أولاد النمة.',
-  keywords: 'تواصل, دعم فني, Career Factor, اتصل بنا, المغرب'
+  title: 'تواصل معنا - Factor Career',
+  description: 'تواصل مع فريق Factor Career للاستفسارات والدعم الفني والاقتراحات. المغرب، سوق السبت أولاد النمة.',
+  keywords: 'تواصل, دعم فني, Factor Career, اتصل بنا, المغرب'
 };

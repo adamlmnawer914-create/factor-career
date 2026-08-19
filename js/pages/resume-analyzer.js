@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - AI Resume Analyzer & ATS Checker Tool Page
    ============================================ */
 
@@ -632,7 +632,7 @@ CareerAI.resetAnalyzer = function() {
 };
 
 window.CareerAI.pages.resumeAnalyzerSEO = {
-  title: 'تحليل السيرة الذاتية وفحص ATS مجاناً بالذكاء الاصطناعي | Career Factor',
+  title: 'تحليل السيرة الذاتية وفحص ATS مجاناً بالذكاء الاصطناعي | Factor Career',
   description: 'قم بفحص وتدقيق سيرتك الذاتية ومعرفة نقاط القوة والضعف ومدى توافقها مع فلاتر وأنظمة ATS ومقارنتها بالوصف الوظيفي مجاناً.',
   keywords: 'تحليل سيرة ذاتية, فحص ATS, مطابقة الكلمات المفتاحية, مراجع CV, ATS Checker, Resume Analyzer'
 };

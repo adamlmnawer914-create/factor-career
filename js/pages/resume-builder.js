@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - AI Resume Builder Tool Page
    ============================================ */
 
@@ -1130,7 +1130,7 @@ CareerAI.downloadResumePDF = function() {
 
 // SEO Metadata for Resume Builder
 window.CareerAI.pages.resumeBuilderSEO = {
-  title: 'صانع السيرة الذاتية بالذكاء الاصطناعي مجاناً | Career Factor Resume Builder',
+  title: 'صانع السيرة الذاتية بالذكاء الاصطناعي مجاناً | Factor Career Resume Builder',
   description: 'أنشئ سيرة ذاتية احترافية متوافقة مع أنظمة ATS مجاناً وبدون تسجيل. احصل على معاينة مباشرة وحمّل سيرتك الذاتية بصيغة PDF عالية الجودة.',
   keywords: 'صانع سيرة ذاتية, سيرة ذاتية بالذكاء الاصطناعي, إنشاء CV احترافي, قالب سيرة ذاتية ATS, تحميل سيرة ذاتية PDF, Resume Builder AI'
 };

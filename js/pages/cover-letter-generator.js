@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - AI Cover Letter Generator Tool Page
    ============================================ */
 
@@ -578,7 +578,7 @@ CareerAI.resetCoverLetterForm = function() {
 };
 
 window.CareerAI.pages.coverLetterGeneratorSEO = {
-  title: 'مولد رسائل التقديم بالذكاء الاصطناعي Cover Letter Generator | Career Factor',
-  description: 'أنشئ رسالة تقديم على الوظائف (Cover Letter) مخصصة واحترافية بالذكاء الاصطناعي مجاناً من Career Factor وبعدة لغات مع التعديل المباشر وتحميل PDF و Word.',
-  keywords: 'مولد Cover Letter, كاتب رسالة التغطية, رسالة تقديم على وظيفة, Cover Letter AI Generator, كتابة خطاب التوصية, Career Factor'
+  title: 'مولد رسائل التقديم بالذكاء الاصطناعي Cover Letter Generator | Factor Career',
+  description: 'أنشئ رسالة تقديم على الوظائف (Cover Letter) مخصصة واحترافية بالذكاء الاصطناعي مجاناً من Factor Career وبعدة لغات مع التعديل المباشر وتحميل PDF و Word.',
+  keywords: 'مولد Cover Letter, كاتب رسالة التغطية, رسالة تقديم على وظيفة, Cover Letter AI Generator, كتابة خطاب التوصية, Factor Career'
 };

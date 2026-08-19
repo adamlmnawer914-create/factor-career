@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Admin Login Page
    ============================================ */
 
@@ -19,7 +19,7 @@ window.CareerAI.pages.adminLogin = function() {
       <div class="container">
         <div class="page-header__content">
           <h1 class="page-header__title">تسجيل دخول المدير</h1>
-          <p class="page-header__subtitle">لوحة تحكم Career Factor لإدارة المقالات، التصنيفات، الصور، والوظائف</p>
+          <p class="page-header__subtitle">لوحة تحكم Factor Career لإدارة المقالات، التصنيفات، الصور، والوظائف</p>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@ window.CareerAI.pages.adminLogin = function() {
       <div class="container container--narrow">
         <div class="contact-form animate-on-scroll" style="max-width:480px;margin:0 auto">
           <div class="text-center" style="margin-bottom:var(--space-6)">
-            <div class="header__logo-icon" style="margin:0 auto var(--space-4);width:56px;height:56px;font-size:1.75rem">CF</div>
+            <div class="header__logo-icon" style="margin:0 auto var(--space-4);width:56px;height:56px;font-size:1.75rem">FC</div>
             <h2 style="font-size:var(--text-2xl)">تسجيل الدخول للوحة التحكم</h2>
             <p style="color:var(--color-text-secondary);font-size:var(--text-sm);margin-top:var(--space-2)">أدخل البريد الإلكتروني وكلمة المرور للمتابعة</p>
           </div>

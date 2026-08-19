@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Shared Components (Header & Footer)
    ============================================ */
 
@@ -41,8 +41,8 @@ window.CareerAI.components.renderHeader = function() {
     <header class="header" id="header">
       <div class="header__inner">
         <a href="#/" class="header__logo" onclick="CareerAI.router.navigate('/')">
-          <div class="header__logo-icon">CF</div>
-          <div class="header__logo-text">Career<span>Factor</span></div>
+          <div class="header__logo-icon">FC</div>
+          <div class="header__logo-text">Factor<span>Career</span></div>
         </a>
 
         <nav class="nav" aria-label="التنقل الرئيسي">
@@ -86,10 +86,10 @@ window.CareerAI.components.renderFooter = function() {
         <div class="footer__grid">
           <div class="footer__brand">
             <a href="#/" class="header__logo" onclick="CareerAI.router.navigate('/')">
-              <div class="header__logo-icon">CF</div>
-              <div class="header__logo-text" style="color:white">Career<span>Factor</span></div>
+              <div class="header__logo-icon">FC</div>
+              <div class="header__logo-text" style="color:white">Factor<span>Career</span></div>
             </a>
-            <p>نساعد الباحثين عن عمل في بناء مسيرة مهنية ناجحة باستخدام منصة Career Factor وأحدث أدوات الذكاء الاصطناعي المجانية.</p>
+            <p>نساعد الباحثين عن عمل في بناء مسيرة مهنية ناجحة باستخدام منصة Factor Career وأحدث أدوات الذكاء الاصطناعي المجانية.</p>
             <div class="footer__social">
               <a href="#" class="footer__social-link" aria-label="تويتر">${icons.twitter}</a>
               <a href="#" class="footer__social-link" aria-label="لينكد إن">${icons.linkedin}</a>
@@ -138,7 +138,7 @@ window.CareerAI.components.renderFooter = function() {
         </div>
 
         <div class="footer__bottom">
-          <p class="footer__copyright">© ${new Date().getFullYear()} Career Factor. جميع الحقوق محفوظة.</p>
+          <p class="footer__copyright">© ${new Date().getFullYear()} Factor Career. جميع الحقوق محفوظة.</p>
           <div class="footer__bottom-links">
             <a href="#/privacy" class="footer__bottom-link" onclick="CareerAI.router.navigate('/privacy')">سياسة الخصوصية</a>
             <a href="#/terms" class="footer__bottom-link" onclick="CareerAI.router.navigate('/terms')">شروط الاستخدام</a>

@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Home Page
    ============================================ */
 
@@ -32,7 +32,7 @@ window.CareerAI.pages.home = function() {
               <span class="hero__title-accent">بقوة الذكاء الاصطناعي</span>
             </h1>
             <p class="hero__subtitle">
-              أدوات ذكية مجانية من Career Factor تساعدك في كتابة سيرتك الذاتية، التحضير للمقابلات، والعثور على الوظيفة المثالية التي تناسب مهاراتك وطموحاتك.
+              أدوات ذكية مجانية من Factor Career تساعدك في كتابة سيرتك الذاتية، التحضير للمقابلات، والعثور على الوظيفة المثالية التي تناسب مهاراتك وطموحاتك.
             </p>
             <div class="hero__actions">
               <a href="#/tools" class="btn btn--primary btn--lg" onclick="CareerAI.router.navigate('/tools')">
@@ -47,7 +47,7 @@ window.CareerAI.pages.home = function() {
 
           <div class="hero__visual">
             <div class="hero-image-wrapper">
-              <img src="img/hero-career-ai.jpg" alt="شاب محترف يحتفل بنجاحه المهني باستخدام أدوات Career Factor" class="hero-image" loading="eager" />
+              <img src="img/hero-career-ai.jpg" alt="شاب محترف يحتفل بنجاحه المهني باستخدام أدوات Factor Career" class="hero-image" loading="eager" />
               <div class="hero-image-glow"></div>
             </div>
           </div>
@@ -72,7 +72,7 @@ window.CareerAI.pages.home = function() {
         <div class="section__header animate-on-scroll">
           <span class="section__badge">
             <span style="width:16px;height:16px;display:inline-flex">${icons.speed}</span>
-            لماذا Career Factor؟
+            لماذا Factor Career؟
           </span>
           <h2 class="section__title">مميزات تجعلنا <span class="text-gradient">الخيار الأفضل</span></h2>
           <p class="section__subtitle">نقدم لك مجموعة من المميزات التي تجعل تجربة البحث عن عمل أسهل وأكثر فعالية</p>
@@ -286,14 +286,14 @@ window.CareerAI.pages.home = function() {
         <div class="accordion animate-on-scroll">
           <div class="accordion__item active">
             <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>ما هي منصة Career Factor؟</span>
+              <span>ما هي منصة Factor Career؟</span>
               <span class="accordion__icon">
                 <span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span>
               </span>
             </button>
             <div class="accordion__body" style="max-height:200px">
               <div class="accordion__content">
-                Career Factor هي منصة ذكية ومجانية متخصصة في مساعدة الباحثين عن عمل والمهنيين في تحسين وبناء سيرهم الذاتية، اجتياز أنظمة الفرز ATS، والتحضير لمقابلات العمل وصياغة رسائل التقديم بأحدث تقنيات الذكاء الاصطناعي.
+                Factor Career هي منصة ذكية ومجانية متخصصة في مساعدة الباحثين عن عمل والمهنيين في تحسين وبناء سيرهم الذاتية، اجتياز أنظمة الفرز ATS، والتحضير لمقابلات العمل وصياغة رسائل التقديم بأحدث تقنيات الذكاء الاصطناعي.
               </div>
             </div>
           </div>
@@ -307,7 +307,7 @@ window.CareerAI.pages.home = function() {
             </button>
             <div class="accordion__body">
               <div class="accordion__content">
-                نعم، جميع أدوات Career Factor متاحة مجاناً بالكامل وبدون أي اشتراكات أو رسوم خفية. نؤمن بأن كل شخص يستحق أدوات احترافية لتطوير مساره المهني.
+                نعم، جميع أدوات Factor Career متاحة مجاناً بالكامل وبدون أي اشتراكات أو رسوم خفية. نؤمن بأن كل شخص يستحق أدوات احترافية لتطوير مساره المهني.
               </div>
             </div>
           </div>
@@ -397,7 +397,7 @@ window.CareerAI.pages.home = function() {
 
 /* --- Home Page SEO --- */
 window.CareerAI.pages.homeSEO = {
-  title: 'Career Factor - بناء وتطوير مسيرتك المهنية بالذكاء الاصطناعي',
-  description: 'أدوات ذكاء اصطناعي مجانية من Career Factor لتحليل السيرة الذاتية، كتابة رسائل التغطية، التحضير للمقابلات، والبحث عن الوظائف المناسبة.',
-  keywords: 'سيرة ذاتية, ذكاء اصطناعي, بحث عن عمل, مقابلات, وظائف, Career Factor'
+  title: 'Factor Career - بناء وتطوير مسيرتك المهنية بالذكاء الاصطناعي',
+  description: 'أدوات ذكاء اصطناعي مجانية من Factor Career لتحليل السيرة الذاتية، كتابة رسائل التغطية، التحضير للمقابلات، والبحث عن الوظائف المناسبة.',
+  keywords: 'سيرة ذاتية, ذكاء اصطناعي, بحث عن عمل, مقابلات, وظائف, Factor Career'
 };

@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - About Page
    ============================================ */
 
@@ -17,7 +17,7 @@ window.CareerAI.pages.about = function() {
             <span>/</span>
             <span>من نحن</span>
           </div>
-          <h1 class="page-header__title">من نحن - Career Factor</h1>
+          <h1 class="page-header__title">من نحن - Factor Career</h1>
           <p class="page-header__subtitle">تعرف على قصتنا ورؤيتنا لتطوير مسيرتك المهنية بالذكاء الاصطناعي</p>
         </div>
       </div>
@@ -47,7 +47,7 @@ window.CareerAI.pages.about = function() {
             </span>
             <h2 class="about-story__title">نؤمن بأن كل شخص يستحق <span class="text-gradient">فرصة عمل مناسبة</span></h2>
             <p class="about-story__text">
-              بدأت منصة <strong>Career Factor</strong> من فكرة واضحة: جعل عملية بناء السيرة الذاتية والاستعداد للمقابلات وسوق العمل أسهل وأكثر فاعلية واحترافية للجميع.
+              بدأت منصة <strong>Factor Career</strong> من فكرة واضحة: جعل عملية بناء السيرة الذاتية والاستعداد للمقابلات وسوق العمل أسهل وأكثر فاعلية واحترافية للجميع.
             </p>
             <p class="about-story__text">
               نعمل على توفير أحدث تقنيات وأدوات الذكاء الاصطناعي مجاناً وبدون أي تعقيدات، لمساعدة الباحثين عن عمل والمهنيين في صياغة ملفاتهم الوظيفية واجتياز أنظمة الفرز الآلي ATS بثقة.
@@ -59,7 +59,7 @@ window.CareerAI.pages.about = function() {
           <div class="about-story__visual animate-on-scroll delay-2">
             <div class="about-story__visual-card">
               <div class="about-story__visual-icon">🚀</div>
-              <div class="about-story__visual-text">Career Factor • نبني مستقبلك المهني</div>
+              <div class="about-story__visual-text">Factor Career • نبني مستقبلك المهني</div>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@ window.CareerAI.pages.about = function() {
     <section class="cta-section">
       <div class="container">
         <div class="cta-section__content animate-on-scroll">
-          <h2 class="cta-section__title">انضم إلى مجتمع Career Factor</h2>
+          <h2 class="cta-section__title">انضم إلى مجتمع Factor Career</h2>
           <p class="cta-section__text">ابدأ رحلتك المهنية اليوم مع أدواتنا الذكية المجانية</p>
           <a href="#/tools" class="btn btn--white btn--lg" onclick="CareerAI.router.navigate('/tools')">
             ابدأ الآن
@@ -144,7 +144,7 @@ window.CareerAI.pages.about = function() {
 };
 
 window.CareerAI.pages.aboutSEO = {
-  title: 'من نحن - Career Factor',
-  description: 'تعرف على قصة Career Factor ورؤيتنا لمساعدة الباحثين عن عمل باستخدام الذكاء الاصطناعي.',
-  keywords: 'من نحن, Career Factor, رؤيتنا, قيمنا'
+  title: 'من نحن - Factor Career',
+  description: 'تعرف على قصة Factor Career ورؤيتنا لمساعدة الباحثين عن عمل باستخدام الذكاء الاصطناعي.',
+  keywords: 'من نحن, Factor Career, رؤيتنا, قيمنا'
 };
