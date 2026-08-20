@@ -522,13 +522,16 @@
 
 .contact-form__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 100%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .contact-form__row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
   }
 }
 
@@ -2441,12 +2444,22 @@
 
 @media (max-width: 768px) {
   .contact-form__row {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-4) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: var(--space-3) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .contact-form__row > .form-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .page-header {
     padding: var(--space-8) 0 !important;
+    overflow: hidden !important;
   }
 
   .page-header__title {
@@ -2466,10 +2479,15 @@
   .jobs-grid {
     grid-template-columns: 1fr !important;
     gap: var(--space-4) !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .tool-card {
     padding: var(--space-5) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .tools-page__filter {
@@ -2478,12 +2496,15 @@
     overflow-x: auto;
     padding-bottom: var(--space-2);
     -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .filter-btn {
     padding: 6px 12px !important;
     font-size: var(--text-xs) !important;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .builder-steps-nav {
@@ -2491,30 +2512,70 @@
     overflow-x: auto;
     padding-bottom: var(--space-2);
     -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .builder-step-btn {
     padding: 6px 12px !important;
     font-size: var(--text-xs) !important;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .builder-actions-bar {
+    padding: 12px 14px !important;
+    gap: var(--space-2) !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .builder-actions-bar__group {
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: var(--space-2) !important;
   }
 
   .builder-form-card {
-    padding: var(--space-4) !important;
+    padding: 16px 14px !important;
+    border-radius: var(--radius-xl) !important;
+    margin-bottom: var(--space-4) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .repeater-card {
+    padding: 14px 12px !important;
+    border-radius: var(--radius-lg) !important;
+    margin-bottom: var(--space-3) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .contact-page__grid {
     grid-template-columns: 1fr !important;
     gap: var(--space-6) !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .about-story {
     grid-template-columns: 1fr !important;
     gap: var(--space-6) !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .cta-section {
     padding: var(--space-8) var(--space-4) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .cta-section__title {
@@ -2557,9 +2618,57 @@
     font-size: 13px !important;
   }
 
-  .cl-paper {
-    padding: var(--space-4) !important;
-    font-size: 13px !important;
+  .cv-paper {
+    padding: 16px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cl-paper,
+  .cl-output-paper {
+    padding: 16px 12px !important;
+    font-size: var(--text-sm) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cl-refine-toolbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cl-refine-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .upload-zone {
+    padding: 24px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .privacy-alert-banner {
+    padding: 12px 14px !important;
+    font-size: var(--text-xs) !important;
+    line-height: 1.5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .results-block {
+    padding: 16px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .adsense-box {
@@ -2572,9 +2681,11 @@
    ========================================== */
 .jobs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
   margin-top: var(--space-4);
+  width: 100%;
+  max-width: 100%;
 }
 
 .job-card {
