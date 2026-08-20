@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    CareerAI - AI Resume Builder Tool Page
    ============================================ */
 
@@ -392,26 +392,14 @@ window.CareerAI.pages.resumeBuilder = function() {
       </div>
     </section>
 
-    <!-- Google AdSense Square Unit & Compact Banner Row (Bottom) -->
-    <div class="container" style="padding-bottom:var(--space-10)">
-      <div class="adsense-row">
-        <div class="adsense-container adsense-square">
-          <span class="adsense-label">إعلان ممول / Ad</span>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="9182736450"></ins>
-        </div>
-        <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
-          <span class="adsense-label">إعلان ممول / Ad</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="9182736451"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      </div>
+    <!-- Google AdSense Responsive Banner Container (Bottom) -->
+    <div style="text-align: center; margin: 15px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7520213352755959"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
   `;
 };

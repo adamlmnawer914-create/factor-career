@@ -76,6 +76,16 @@ window.CareerAI.components.renderHeader = function() {
       </div>
     </header>
 
+    <!-- Top Header Responsive Ad Container -->
+    <div style="text-align: center; margin: 15px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7520213352755959"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <nav class="mobile-nav" id="mobileNav" aria-label="القائمة الجانبية">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-border-light)">
