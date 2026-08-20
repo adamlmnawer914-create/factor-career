@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Admin pages disallow
+Disallow: /admin
+Disallow: /admin/
+Disallow: /#/admin
+Disallow: /#/admin/
+
+# Sitemap location
+Sitemap: https://factor-career.vercel.app/sitemap.xml
