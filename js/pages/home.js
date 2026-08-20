@@ -58,7 +58,7 @@ window.CareerAI.pages.home = function() {
               <span class="adsense-label">إعلان ممول / Ad</span>
               <ins class="adsbygoogle"
                    style="display:inline-block;width:300px;height:250px"
-                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                   data-ad-client="ca-pub-7520213352755959"
                    data-ad-slot="1122334455"></ins>
             </div>
           </div>
@@ -220,7 +220,7 @@ window.CareerAI.pages.home = function() {
         <span class="adsense-label">إعلان ممول / Sponsored</span>
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-client="ca-pub-7520213352755959"
              data-ad-slot="1122334455"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -364,14 +364,14 @@ window.CareerAI.pages.home = function() {
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="2002002002"></ins>
         </div>
         <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="3003003003"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>

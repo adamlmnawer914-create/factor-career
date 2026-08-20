@@ -33,7 +33,7 @@ window.CareerAI.pages.blog = function() {
         <span class="adsense-label">إعلان ممول / Ad</span>
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-client="ca-pub-7520213352755959"
              data-ad-slot="2233445566"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -95,7 +95,7 @@ window.CareerAI.pages.blog = function() {
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-format="autorelaxed"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="6677889900"></ins>
         </div>
 

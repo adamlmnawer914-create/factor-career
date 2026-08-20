@@ -118,7 +118,7 @@ window.CareerAI.pages.tools = function() {
         <span class="adsense-label">إعلان ممول / Sponsored</span>
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-client="ca-pub-7520213352755959"
              data-ad-slot="3344556677"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -166,7 +166,7 @@ window.CareerAI.pages.tools = function() {
                      style="display:block"
                      data-ad-format="fluid"
                      data-ad-layout-key="-fb+5w+4e-db+86"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="4455667788"></ins>
               </div>
             ` : ''}
@@ -182,14 +182,14 @@ window.CareerAI.pages.tools = function() {
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="5566778899"></ins>
         </div>
         <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="7788990011"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>

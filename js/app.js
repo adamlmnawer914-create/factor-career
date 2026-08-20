@@ -190,21 +190,21 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
   }
 };
 
-/* --- SPA Google AdSense Dynamic Initializer --- */
+/* --- SPA Google AdSense Dynamic Initializer & Route Transition Handler --- */
 window.CareerAI.initAdSense = function() {
-  // Give DOM a brief moment to render after transition
   setTimeout(() => {
     try {
+      // Find all AdSense units in the current page
       const adUnits = document.querySelectorAll('ins.adsbygoogle');
       if (!adUnits || adUnits.length === 0) return;
 
       adUnits.forEach(ad => {
-        const isInitialized = ad.getAttribute('data-adsbygoogle-status');
-        if (!isInitialized) {
+        const status = ad.getAttribute('data-adsbygoogle-status');
+        const isLoaded = ad.getAttribute('data-ad-status');
+        if (!status && !isLoaded) {
           try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
           } catch (e) {
-            // Silently handled in development/testing
             console.debug('AdSense unit push status:', e);
           }
         }
@@ -212,7 +212,7 @@ window.CareerAI.initAdSense = function() {
     } catch (err) {
       console.debug('AdSense dynamic loader status:', err);
     }
-  }, 80);
+  }, 100);
 };
 
 /* --- Mobile Menu Handlers --- */

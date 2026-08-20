@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    CareerAI - Single Article Page
    ============================================ */
 
@@ -79,7 +79,7 @@ window.CareerAI.pages.article = function(slug) {
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="1234567890"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
@@ -96,7 +96,7 @@ window.CareerAI.pages.article = function(slug) {
                  style="display:block; text-align:center;"
                  data-ad-layout="in-article"
                  data-ad-format="fluid"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="9876543210"></ins>
           </div>
         </div>
@@ -114,7 +114,7 @@ window.CareerAI.pages.article = function(slug) {
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="8877665544"></ins>
         </div>
 
@@ -126,7 +126,7 @@ window.CareerAI.pages.article = function(slug) {
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-format="autorelaxed"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="5544332211"></ins>
         </div>
 

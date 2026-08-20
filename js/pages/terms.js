@@ -27,7 +27,7 @@ window.CareerAI.pages.terms = function() {
         <span class="adsense-label">إعلان ممول / Ad</span>
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-client="ca-pub-7520213352755959"
              data-ad-slot="9900112244"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -77,14 +77,14 @@ window.CareerAI.pages.terms = function() {
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="9900112266"></ins>
         </div>
         <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
           <span class="adsense-label">إعلان ممول / Ad</span>
           <ins class="adsbygoogle"
                style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="9900112255"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
