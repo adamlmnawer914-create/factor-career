@@ -321,14 +321,17 @@ window.CareerAI.pages.resumeAnalyzer = function() {
       </div>
     </section>
 
-    <!-- Google AdSense Responsive Banner Container (Bottom) -->
-    <div style="text-align: center; margin: 15px 0;">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7520213352755959"
-           data-ad-slot="auto"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+    <!-- Google AdSense Compact Banner Container (Bottom) -->
+    <div class="container" style="padding: var(--space-4) 0 var(--space-8); max-width: 728px; margin: 0 auto;">
+      <div style="background: var(--color-bg-alt); border-radius: var(--radius-xl); padding: 10px; border: 1px solid var(--color-border-light); text-align: center;">
+        <span style="display: block; font-size: 11px; color: var(--color-text-muted); margin-bottom: 6px;">إعلان ممول / Sponsored</span>
+        <ins class="adsbygoogle"
+             style="display:block; min-height: 90px; max-height: 100px;"
+             data-ad-client="ca-pub-7520213352755959"
+             data-ad-slot="auto"
+             data-ad-format="horizontal"
+             data-full-width-responsive="false"></ins>
+      </div>
     </div>
   `;
 };
