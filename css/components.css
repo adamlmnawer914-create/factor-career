@@ -772,5 +772,68 @@ ins.adsbygoogle {
     padding: 8px 14px;
     font-size: var(--text-xs);
   }
+
+  .card {
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+  }
+
+  .card__icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: var(--space-3);
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    padding: 10px 14px;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-4);
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: var(--text-sm);
+  }
+
+  .btn--lg {
+    padding: 12px 24px;
+    font-size: var(--text-base);
+  }
+
+  .accordion__header {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--text-base);
+  }
+
+  .accordion__content {
+    padding: 0 var(--space-5) var(--space-5);
+    font-size: var(--text-sm);
+  }
+
+  .stat {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-4);
+  }
+
+  .btn {
+    padding: 9px 16px;
+    font-size: var(--text-xs);
+  }
+
+  .btn--lg {
+    padding: 11px 20px;
+    font-size: var(--text-sm);
+  }
 }
 
