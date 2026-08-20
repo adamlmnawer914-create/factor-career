@@ -37,7 +37,20 @@ window.CareerAI.pages.jobs = function() {
       </div>
     </div>
 
-    <section class="section" style="padding-top:var(--space-12);padding-bottom:var(--space-20)">
+    <!-- Top Google AdSense Banner Container -->
+    <div class="container" style="padding-top:var(--space-6)">
+      <div class="adsense-container adsense-banner">
+        <span class="adsense-label">إعلان ممول / Sponsored Ad</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
       <div class="container">
 
         ${jobs.length === 0 ? `
@@ -89,12 +102,47 @@ window.CareerAI.pages.jobs = function() {
                   </a>
                 </div>
               </div>
+
+              ${i === 1 ? `
+                <!-- In-Feed Google AdSense Card (Seamless inside Jobs Grid) -->
+                <div class="adsense-infeed" style="border-radius:var(--radius-2xl)">
+                  <span class="adsense-label">إعلان ممول / Sponsored</span>
+                  <ins class="adsbygoogle"
+                       style="display:block"
+                       data-ad-format="fluid"
+                       data-ad-layout-key="-fb+5w+4e-db+86"
+                       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                       data-ad-slot="4455667788"></ins>
+                </div>
+              ` : ''}
             `).join('')}
           </div>
         `}
 
+        <!-- Google AdSense Square & Compact Row -->
+        <div style="margin-top:var(--space-12)">
+          <div class="adsense-row">
+            <div class="adsense-container adsense-square">
+              <span class="adsense-label">إعلان ممول / Ad</span>
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:250px"
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                   data-ad-slot="5566778899"></ins>
+            </div>
+            <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
+              <span class="adsense-label">إعلان ممول / Ad</span>
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                   data-ad-slot="7788990011"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+            </div>
+          </div>
+        </div>
+
         <!-- CTA Section -->
-        <div class="cta-section animate-on-scroll" style="margin-top:var(--space-16)">
+        <div class="cta-section animate-on-scroll" style="margin-top:var(--space-12)">
           <div class="cta-section__bg"></div>
           <h2 class="cta-section__title">لم تجد الوظيفة المناسبة؟</h2>
           <p class="cta-section__text" style="max-width:550px;margin:0 auto var(--space-6)">
