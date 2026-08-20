@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    CareerAI - Main App & SPA Router
    ============================================ */
 
@@ -14,6 +14,7 @@ window.CareerAI.router = {
     '/tools/cover-letter-generator': { render: window.CareerAI.pages.coverLetterGenerator, seo: window.CareerAI.pages.coverLetterGeneratorSEO },
     '/tools/interview-questions': { render: window.CareerAI.pages.interviewQuestions, seo: window.CareerAI.pages.interviewQuestionsSEO },
     '/tools/ats-keywords': { render: window.CareerAI.pages.atsKeywords, seo: window.CareerAI.pages.atsKeywordsSEO },
+    '/jobs': { render: window.CareerAI.pages.jobs, seo: window.CareerAI.pages.jobsSEO },
     '/blog': { render: window.CareerAI.pages.blog, seo: window.CareerAI.pages.blogSEO },
     '/about': { render: window.CareerAI.pages.about, seo: window.CareerAI.pages.aboutSEO },
     '/contact': { render: window.CareerAI.pages.contact, seo: window.CareerAI.pages.contactSEO },

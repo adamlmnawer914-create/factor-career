@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    CareerAI - Shared Components (Header & Footer)
    ============================================ */
 
@@ -48,6 +48,7 @@ window.CareerAI.components.renderHeader = function() {
         <nav class="nav" aria-label="التنقل الرئيسي">
           <a href="#/" class="nav__link" data-page="/">الرئيسية</a>
           <a href="#/tools" class="nav__link" data-page="/tools">الأدوات</a>
+          <a href="#/jobs" class="nav__link" data-page="/jobs">الوظائف والفرص</a>
           <a href="#/blog" class="nav__link" data-page="/blog">المدونة</a>
           <a href="#/about" class="nav__link" data-page="/about">من نحن</a>
           <a href="#/contact" class="nav__link" data-page="/contact">تواصل معنا</a>
@@ -67,6 +68,7 @@ window.CareerAI.components.renderHeader = function() {
     <nav class="mobile-nav" id="mobileNav" aria-label="القائمة الجانبية">
       <a href="#/" class="mobile-nav__link" data-page="/" onclick="CareerAI.closeMobileMenu()">الرئيسية</a>
       <a href="#/tools" class="mobile-nav__link" data-page="/tools" onclick="CareerAI.closeMobileMenu()">الأدوات</a>
+      <a href="#/jobs" class="mobile-nav__link" data-page="/jobs" onclick="CareerAI.closeMobileMenu()">💼 الوظائف والفرص</a>
       <a href="#/blog" class="mobile-nav__link" data-page="/blog" onclick="CareerAI.closeMobileMenu()">المدونة</a>
       <a href="#/about" class="mobile-nav__link" data-page="/about" onclick="CareerAI.closeMobileMenu()">من نحن</a>
       <a href="#/contact" class="mobile-nav__link" data-page="/contact" onclick="CareerAI.closeMobileMenu()">تواصل معنا</a>
@@ -102,6 +104,7 @@ window.CareerAI.components.renderFooter = function() {
             <div class="footer__links">
               <a href="#/" class="footer__link" onclick="CareerAI.router.navigate('/')">الرئيسية</a>
               <a href="#/tools" class="footer__link" onclick="CareerAI.router.navigate('/tools')">الأدوات</a>
+              <a href="#/jobs" class="footer__link" onclick="CareerAI.router.navigate('/jobs')">الوظائف والفرص</a>
               <a href="#/blog" class="footer__link" onclick="CareerAI.router.navigate('/blog')">المدونة</a>
               <a href="#/about" class="footer__link" onclick="CareerAI.router.navigate('/about')">من نحن</a>
             </div>
