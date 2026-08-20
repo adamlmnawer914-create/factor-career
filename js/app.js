@@ -87,22 +87,25 @@ window.CareerAI.router = {
   updateBackButton: function(hash) {
     let backBtn = document.getElementById('floatingBackBtn');
     const isSubPage = hash && hash !== '/' && hash !== '';
+    const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
     
     if (isSubPage) {
       if (!backBtn) {
         backBtn = document.createElement('button');
         backBtn.id = 'floatingBackBtn';
         backBtn.className = 'floating-back-btn';
-        backBtn.setAttribute('aria-label', 'الرجوع للخلف');
-        backBtn.setAttribute('title', 'الرجوع للصفحة السابقة');
+        backBtn.setAttribute('aria-label', t('common.back', 'الرجوع للخلف'));
+        backBtn.setAttribute('title', t('common.back', 'الرجوع للصفحة السابقة'));
         backBtn.onclick = () => window.CareerAI.goBack();
         backBtn.innerHTML = `
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-flex;transform:rotate(180deg)"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span>رجوع</span>
+          <span>${t('common.back', 'رجوع')}</span>
         `;
         document.body.appendChild(backBtn);
       } else {
         backBtn.style.display = 'inline-flex';
+        const span = backBtn.querySelector('span');
+        if (span) span.innerText = t('common.back', 'رجوع');
       }
     } else if (backBtn) {
       backBtn.style.display = 'none';
@@ -112,6 +115,11 @@ window.CareerAI.router = {
   updateSEO: function(seo, hash) {
     if (!seo) return;
     const currentUrl = window.location.origin + window.location.pathname + '#' + (hash || '/');
+    const lang = window.CareerAI.i18n ? window.CareerAI.i18n.getLang() : 'ar';
+
+    // HTML Lang & Dir
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
 
     // Title
     document.title = seo.title;
@@ -126,7 +134,7 @@ window.CareerAI.router = {
 
     // Meta keywords
     let metaKw = document.querySelector('meta[name="keywords"]');
-    if (metaKw) metaKw.setAttribute('content', seo.keywords || 'سيرة ذاتية, ذكاء اصطناعي, CareerAI, مقابلات عمل, وظائف');
+    if (metaKw) metaKw.setAttribute('content', seo.keywords || 'Factor Career, resume, ATS, jobs');
 
     // Open Graph
     let ogTitle = document.querySelector('meta[property="og:title"]');
@@ -221,15 +229,15 @@ window.CareerAI.toggleMobileMenu = function() {
   const nav = document.getElementById('mobileNav');
   const overlay = document.getElementById('mobileOverlay');
 
-  const isActive = toggle.classList.contains('active');
+  const isActive = toggle?.classList.contains('active');
 
   if (isActive) {
     window.CareerAI.closeMobileMenu();
   } else {
-    toggle.classList.add('active');
-    toggle.setAttribute('aria-expanded', 'true');
-    nav.classList.add('active');
-    overlay.classList.add('active');
+    toggle?.classList.add('active');
+    toggle?.setAttribute('aria-expanded', 'true');
+    nav?.classList.add('active');
+    overlay?.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 };
@@ -281,13 +289,12 @@ window.CareerAI.initAnimations = function() {
 
 /* --- Global Event Listeners & Boot --- */
 document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app');
+  // Initialize i18n system first (detects language & renders initial header/footer)
+  if (window.CareerAI.i18n) {
+    window.CareerAI.i18n.init();
+  }
 
-  // Render Skeleton Header & Footer
-  app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader());
-  app.insertAdjacentHTML('beforeend', window.CareerAI.components.renderFooter());
-
-  // Setup Mobile Menu Events
+  // Setup Mobile Menu Events (delegated)
   document.body.addEventListener('click', (e) => {
     if (e.target.closest('#menuToggle')) {
       window.CareerAI.toggleMobileMenu();
@@ -296,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Setup Header Scroll Effect & Back To Top Button with requestAnimationFrame
+  // Setup Header Scroll Effect & Back To Top Button
   const header = document.getElementById('header');
   const backToTop = document.getElementById('backToTop');
   let ticking = false;
@@ -340,4 +347,5 @@ window.CareerAI.goBack = function() {
     window.CareerAI.router.navigate('/');
   }
 };
+
 

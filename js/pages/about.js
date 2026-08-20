@@ -1,5 +1,5 @@
-﻿/* ============================================
-   CareerAI - About Page
+/* ============================================
+   Factor Career - About Page (Multilingual)
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
@@ -7,18 +7,20 @@ window.CareerAI.pages = window.CareerAI.pages || {};
 
 window.CareerAI.pages.about = function() {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
 
   return `
     <div class="page-header">
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="#/" onclick="CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="#/" onclick="CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <span>من نحن</span>
+            <span>${t('nav.about', 'من نحن')}</span>
           </div>
-          <h1 class="page-header__title">من نحن - Factor Career</h1>
-          <p class="page-header__subtitle">تعرف على قصتنا ورؤيتنا لتطوير مسيرتك المهنية بالذكاء الاصطناعي</p>
+          <h1 class="page-header__title">${t('about.title', 'من نحن - Factor Career')}</h1>
+          <p class="page-header__subtitle">${t('about.subtitle', 'تعرف على قصتنا ورؤيتنا لتطوير مسيرتك المهنية بالذكاء الاصطناعي')}</p>
         </div>
       </div>
     </div>
@@ -26,7 +28,7 @@ window.CareerAI.pages.about = function() {
     <!-- Google AdSense Compact Banner (Top) -->
     <div class="container" style="padding-top:var(--space-4)">
       <div class="adsense-container adsense-banner-sm">
-        <span class="adsense-label">إعلان ممول / Ad</span>
+        <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-7520213352755959"
@@ -43,99 +45,68 @@ window.CareerAI.pages.about = function() {
           <div class="about-story__content animate-on-scroll">
             <span class="section__badge">
               <span style="width:16px;height:16px;display:inline-flex">${icons.rocket}</span>
-              قصتنا
+              ${t('about.storyTitle', 'قصتنا')}
             </span>
-            <h2 class="about-story__title">نؤمن بأن كل شخص يستحق <span class="text-gradient">فرصة عمل مناسبة</span></h2>
+            <h2 class="about-story__title">${isEn ? 'Every Professional Deserves a <span class="text-gradient">Great Career Opportunity</span>' : 'نؤمن بأن كل شخص يستحق <span class="text-gradient">فرصة عمل مناسبة</span>'}</h2>
             <p class="about-story__text">
-              بدأت منصة <strong>Factor Career</strong> من فكرة واضحة: جعل عملية بناء السيرة الذاتية والاستعداد للمقابلات وسوق العمل أسهل وأكثر فاعلية واحترافية للجميع.
+              ${isEn ? '<strong>Factor Career</strong> was born with a clear purpose: making professional resume building, ATS screening optimization, and interview prep easy, accessible, and completely free for everyone.' : 'بدأت منصة <strong>Factor Career</strong> من فكرة واضحة: جعل عملية بناء السيرة الذاتية والاستعداد للمقابلات وسوق العمل أسهل وأكثر فاعلية واحترافية للجميع.'}
             </p>
             <p class="about-story__text">
-              نعمل على توفير أحدث تقنيات وأدوات الذكاء الاصطناعي مجاناً وبدون أي تعقيدات، لمساعدة الباحثين عن عمل والمهنيين في صياغة ملفاتهم الوظيفية واجتياز أنظمة الفرز الآلي ATS بثقة.
-            </p>
-            <p class="about-story__text">
-              نحن ملتزمون بالتطوير المستمر وتقديم حلول حقيقية تواكب متطلبات سوق العمل العالمي والمحلي.
+              ${isEn ? 'We harness the power of artificial intelligence to level the playing field, empowering ambitious job seekers with world-class tools without prohibitive costs or paywalls.' : 'نعمل على توفير أحدث تقنيات وأدوات الذكاء الاصطناعي مجاناً وبدون أي تعقيدات، لمساعدة الباحثين عن عمل والمهنيين في صياغة ملفاتهم الوظيفية واجتياز أنظمة الفرز الآلي ATS بثقة.'}
             </p>
           </div>
           <div class="about-story__visual animate-on-scroll delay-2">
             <div class="about-story__visual-card">
-              <div class="about-story__visual-icon">🚀</div>
-              <div class="about-story__visual-text">Factor Career • نبني مستقبلك المهني</div>
+              <div class="about-story__visual-icon">
+                <span style="width:48px;height:48px;display:inline-flex;color:var(--color-primary)">${icons.brain}</span>
+              </div>
+              <div class="about-story__visual-text">Factor Career • ${isEn ? 'Powering Your Future' : 'نبني مستقبلك المهني'}</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Values Section -->
+    <!-- Mission & Vision -->
     <section class="section section--alt">
       <div class="container">
-        <div class="section__header animate-on-scroll">
-          <span class="section__badge">
-            <span style="width:16px;height:16px;display:inline-flex">${icons.skills}</span>
-            قيمنا ومبادئنا
-          </span>
-          <h2 class="section__title">القيم التي <span class="text-gradient">نؤمن بها</span></h2>
-        </div>
-
-        <div class="about-values">
+        <div class="about-values__grid">
           <div class="card animate-on-scroll delay-1">
             <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.free}</span>
+              <span style="width:28px;height:28px;display:inline-flex">${icons.target}</span>
             </div>
-            <h3 class="card__title">الشمولية والمجانية</h3>
-            <p class="card__text">نؤمن بأن الأدوات المهنية الاحترافية يجب أن تكون متاحة للجميع مجاناً دون أي اشتراكات أو عوائق.</p>
+            <h3 class="card__title">${t('about.missionTitle', 'رسالتنا')}</h3>
+            <p class="card__text">${t('about.missionText', 'تمكين كل باحث عن عمل من امتلاك أدوات احترافية ومجانية بالكامل تنافس أفضل المعايير العالمية.')}</p>
           </div>
 
           <div class="card animate-on-scroll delay-2">
             <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.shield}</span>
+              <span style="width:28px;height:28px;display:inline-flex">${icons.speed}</span>
             </div>
-            <h3 class="card__title">الخصوصية والأمان</h3>
-            <p class="card__text">نحترم خصوصية مستخدمينا، وتتم معالجة البيانات مؤقتاً في متصفحك دون تخزين بيانات السير الذاتية الشخصية.</p>
+            <h3 class="card__title">${t('about.visionTitle', 'رؤيتنا')}</h3>
+            <p class="card__text">${t('about.visionText', 'أن نكون المنصة العربية الرائدة في تسخير تقنيات الذكاء الاصطناعي لتطوير رأس المال البشري وتسهيل التوظيف.')}</p>
           </div>
 
           <div class="card animate-on-scroll delay-3">
             <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.rocket}</span>
+              <span style="width:28px;height:28px;display:inline-flex">${icons.shield}</span>
             </div>
-            <h3 class="card__title">الابتكار المستمر</h3>
-            <p class="card__text">نطور باستمرار نماذج الذكاء الاصطناعي لتحسين جودة الصياغة ومطابقة الكلمات المفتاحية مع أنظمة ATS.</p>
+            <h3 class="card__title">${isEn ? 'Our Values' : 'قيمنا'}</h3>
+            <p class="card__text">${isEn ? 'Transparency, continuous innovation, and equal access to career opportunities for all job seekers.' : 'الشفافية، الابتكار المستمر، والوصول العادل لفرص التطور المهني لجميع الباحثين عن عمل.'}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Google AdSense Square Unit & Compact Banner Row -->
-    <div class="container" style="padding:var(--space-6) var(--container-padding)">
-      <div class="adsense-row">
-        <div class="adsense-container adsense-square">
-          <span class="adsense-label">إعلان ممول / Ad</span>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="8899001100"></ins>
-        </div>
-        <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
-          <span class="adsense-label">إعلان ممول / Ad</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="8899001122"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <section class="cta-section">
+    <!-- CTA Section -->
+    <section class="section" style="padding-top:var(--space-12);padding-bottom:var(--space-16)">
       <div class="container">
-        <div class="cta-section__content animate-on-scroll">
-          <h2 class="cta-section__title">انضم إلى مجتمع Factor Career</h2>
-          <p class="cta-section__text">ابدأ رحلتك المهنية اليوم مع أدواتنا الذكية المجانية</p>
-          <a href="#/tools" class="btn btn--white btn--lg" onclick="CareerAI.router.navigate('/tools')">
-            ابدأ الآن
-            <span style="width:20px;height:20px;display:inline-flex;transform:rotate(180deg)">${icons.arrowLeft}</span>
+        <div class="cta-section animate-on-scroll">
+          <div class="cta-section__bg"></div>
+          <h2 class="cta-section__title">${isEn ? 'Join the Factor Career Community' : 'انضم إلى مجتمع Factor Career'}</h2>
+          <p class="cta-section__text">${isEn ? 'Start building your professional resume now and be ready for your dream career.' : 'ابدأ الآن في بناء سيرتك الذاتية واستعد للانطلاق نحو وظيفة أحلامك.'}</p>
+          <a href="#/tools/resume-builder" class="btn btn--primary" onclick="CareerAI.router.navigate('/tools/resume-builder')">
+            ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
           </a>
         </div>
       </div>
@@ -144,7 +115,7 @@ window.CareerAI.pages.about = function() {
 };
 
 window.CareerAI.pages.aboutSEO = {
-  title: 'من نحن - Factor Career',
+  title: 'من نحن | Factor Career About Us',
   description: 'تعرف على قصة Factor Career ورؤيتنا لمساعدة الباحثين عن عمل باستخدام الذكاء الاصطناعي.',
-  keywords: 'من نحن, Factor Career, رؤيتنا, قيمنا'
+  keywords: 'من نحن, Factor Career, about us, رؤيتنا, قيمنا'
 };
