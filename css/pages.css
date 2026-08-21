@@ -2818,18 +2818,21 @@
 }
 
 /* ==========================================
-   TOGGLEABLE BOTTOM AD BANNER (▲ / ▼)
+   TOGGLEABLE BOTTOM AD BANNER
    ========================================== */
+.ad-banner-container,
 .toggle-ad-bar {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -2910,13 +2913,18 @@
   max-width: 100%;
 }
 
-/* Collapsed State */
+/* Collapsed State - hide ENTIRE wrapper */
 .toggle-ad-bar.collapsed .toggle-ad-bar__content {
   max-height: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding: 0 !important;
   opacity: 0;
-  border-top: none;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.toggle-ad-bar.collapsed .toggle-ad-bar__tab-text {
+  display: none;
 }
 
 .toggle-ad-bar.collapsed .toggle-ad-bar__toggle-btn {
@@ -2924,6 +2932,8 @@
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid var(--color-border);
   background: #ffffff;
+  padding: 3px 10px;
+  font-size: 10px;
 }
 
 .toggle-ad-bar.collapsed .toggle-ad-bar__arrow {
@@ -2942,6 +2952,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100% !important;
+  box-sizing: border-box;
 }
 
 .adsense-square-card {
@@ -2969,16 +2981,41 @@
   display: block;
 }
 
+/* Mobile: responsive banner and ad containers */
 @media (max-width: 768px) {
   .toggle-ad-bar__content {
-    padding: 4px 8px;
-    max-height: 80px;
+    max-width: 100%;
+    padding: 3px 6px;
+    max-height: 75px;
+    border-radius: 0;
   }
+
+  .toggle-ad-bar__frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .toggle-ad-bar__frame ins.adsbygoogle {
-    height: 60px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: 50px !important;
   }
+
+  .adsense-square-container {
+    padding: 0 12px;
+  }
+
+  .adsense-square-card {
+    max-width: 100%;
+    padding: 12px 14px;
+  }
+
+  .adsense-square-card ins.adsbygoogle {
+    max-width: 100% !important;
+  }
+
   .footer {
-    padding-bottom: 90px !important;
+    padding-bottom: 85px !important;
   }
 }
 

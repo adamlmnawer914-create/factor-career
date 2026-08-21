@@ -16,10 +16,10 @@ html {
   -webkit-text-size-adjust: 100%;
   font-size: 16px;
   overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0;
-  padding: 0;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 body {
@@ -31,39 +31,53 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
   min-height: 100vh;
   position: relative;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* Custom Scrollbar - Desktop Only */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2563eb, #1d4ed8);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1e40af;
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb #f1f1f1;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2563eb, #1d4ed8);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #1e40af;
-}
-
-/* Firefox Scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #2563eb #f1f1f1;
+/* Mobile: Hide custom scrollbar completely */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  * {
+    scrollbar-width: none !important;
+  }
 }
 
 #app,
@@ -71,7 +85,13 @@ body {
   overflow-x: hidden !important;
   overflow-y: visible;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
+}
+
+.main-container,
+.layout {
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
 }
 
 img,
@@ -537,11 +557,20 @@ p {
   }
 
   .tools-page-container,
-  .tools-page {
+  .tools-page,
+  .tool-layout,
+  .tool-content,
+  .tool-form-card {
     overflow-x: hidden !important;
-    padding: 0 12px !important;
+    padding: 0 15px !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .ad-banner-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden;
   }
 
   table {

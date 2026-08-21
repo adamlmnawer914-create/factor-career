@@ -224,15 +224,15 @@ window.CareerAI.initAdSense = function() {
 };
 
 /* --- Toggleable Bottom Banner Handler --- */
-window.CareerAI.toggleBottomAd = function() {
+window.CareerAI.hideBottomAd = function() {
   const adBar = document.getElementById('toggleAdBar');
-  const arrow = document.getElementById('toggleAdArrow');
   if (adBar) {
-    const isCollapsed = adBar.classList.toggle('collapsed');
-    if (arrow) {
-      arrow.textContent = isCollapsed ? '▲' : '▼';
-    }
+    adBar.style.setProperty('display', 'none', 'important');
   }
+};
+
+window.CareerAI.toggleBottomAd = function() {
+  window.CareerAI.hideBottomAd();
 };
 
 /* --- Mobile Menu Handlers --- */
