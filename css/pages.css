@@ -2818,44 +2818,51 @@
 }
 
 /* ==========================================
-   COMPACT FRAMED STICKY BOTTOM AD BAR
+   COMPACT FLOATING STICKY BOTTOM AD
    ========================================== */
 .sticky-ad-bar {
   position: fixed;
-  bottom: 0;
+  bottom: 12px;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: #ffffff;
-  border-top: 1px solid var(--color-border);
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.07);
-  padding: 4px 12px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
   box-sizing: border-box;
 }
 
 .sticky-ad-bar__inner {
   position: relative;
-  width: 100%;
-  max-width: 728px;
+  width: auto;
+  max-width: 740px;
   margin: 0 auto;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  pointer-events: auto;
+  background: #ffffff;
+  padding: 4px 6px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.18), 0 4px 10px -2px rgba(0, 0, 0, 0.08);
 }
 
 .sticky-ad-bar__badge {
   position: absolute;
-  top: -16px;
-  left: 8px;
+  top: -15px;
+  left: 10px;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--color-text-muted);
   background: #ffffff;
-  padding: 1px 8px;
+  padding: 0px 6px;
   border-radius: 4px 4px 0 0;
   border: 1px solid var(--color-border);
   border-bottom: none;
@@ -2864,25 +2871,26 @@
 
 .sticky-ad-bar__close {
   position: absolute;
-  top: -16px;
-  right: 8px;
-  width: 18px;
-  height: 18px;
+  top: -10px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
-  line-height: 16px;
+  line-height: 18px;
   text-align: center;
   cursor: pointer;
-  color: var(--color-text-muted);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--color-text-secondary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   transition: all var(--transition-fast);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  z-index: 10;
 }
 
 .sticky-ad-bar__close:hover {
@@ -2892,8 +2900,8 @@
 }
 
 .sticky-ad-bar__frame {
-  width: 100%;
-  max-width: 728px;
+  width: 728px;
+  max-width: 100%;
   min-height: 90px;
   max-height: 90px;
   display: flex;
@@ -2915,17 +2923,25 @@
 
 /* Footer bottom padding so content never gets covered */
 .footer {
-  padding-bottom: 110px !important;
+  padding-bottom: 120px !important;
 }
 
 /* Mobile: Slim 50px height standard mobile leaderboard */
 @media (max-width: 768px) {
   .sticky-ad-bar {
-    padding: 3px 8px;
+    bottom: 8px;
+    padding: 0 8px;
+  }
+
+  .sticky-ad-bar__inner {
+    max-width: 336px;
+    padding: 3px 4px;
+    border-radius: var(--radius-md);
   }
 
   .sticky-ad-bar__frame {
-    max-width: 320px;
+    width: 320px;
+    max-width: 100%;
     min-height: 50px;
     max-height: 50px;
   }
@@ -2936,7 +2952,7 @@
   }
 
   .footer {
-    padding-bottom: 70px !important;
+    padding-bottom: 75px !important;
   }
 }
 
