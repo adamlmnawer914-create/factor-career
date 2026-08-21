@@ -106,6 +106,7 @@ window.CareerAI.components.renderFooter = function() {
   const icons = window.CareerAI.icons;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
+  return `
     <!-- Medium Rectangle Ad (300x250) Layout Container -->
     <div class="adsense-square-container">
       <div class="adsense-square-card">
