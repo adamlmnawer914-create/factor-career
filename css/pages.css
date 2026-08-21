@@ -2818,147 +2818,164 @@
 }
 
 /* ==========================================
-   COMPACT FLOATING STICKY BOTTOM AD
+   TOGGLEABLE BOTTOM AD BANNER (▲ / ▼)
    ========================================== */
-.sticky-ad-bar {
+.toggle-ad-bar {
   position: fixed;
-  bottom: 12px;
+  bottom: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 12px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   pointer-events: none;
-  box-sizing: border-box;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sticky-ad-bar__inner {
-  position: relative;
-  width: auto;
-  max-width: 740px;
-  margin: 0 auto;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+.toggle-ad-bar__tab {
   pointer-events: auto;
-  background: #ffffff;
-  padding: 4px 6px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.18), 0 4px 10px -2px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px;
 }
 
-.sticky-ad-bar__badge {
-  position: absolute;
-  top: -15px;
-  left: 10px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--color-text-muted);
+.toggle-ad-bar__toggle-btn {
   background: #ffffff;
-  padding: 0px 6px;
-  border-radius: 4px 4px 0 0;
   border: 1px solid var(--color-border);
   border-bottom: none;
-  line-height: 14px;
-}
-
-.sticky-ad-bar__close {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 22px;
-  height: 22px;
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 18px;
-  text-align: center;
-  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  padding: 4px 16px;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--color-text-secondary);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 6px;
   transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  z-index: 10;
+  line-height: 1.2;
 }
 
-.sticky-ad-bar__close:hover {
-  background: var(--color-error);
-  color: #ffffff;
-  border-color: var(--color-error);
+.toggle-ad-bar__toggle-btn:hover {
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+  border-color: var(--color-primary-200);
 }
 
-.sticky-ad-bar__frame {
-  width: 728px;
-  max-width: 100%;
-  min-height: 90px;
-  max-height: 90px;
+.toggle-ad-bar__arrow {
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.toggle-ad-bar__content {
+  pointer-events: auto;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  padding: 6px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-md);
-  border: 1px dashed rgba(37, 99, 235, 0.25);
   box-sizing: border-box;
+  max-height: 120px;
+  transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
 }
 
-.sticky-ad-bar__frame ins.adsbygoogle {
-  display: block !important;
-  width: 728px;
+.toggle-ad-bar__frame {
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.toggle-ad-bar__frame ins.adsbygoogle {
+  width: 100%;
+  max-width: 728px;
   height: 90px;
-  max-width: 100%;
 }
 
-/* Footer bottom padding so content never gets covered */
+/* Collapsed State */
+.toggle-ad-bar.collapsed .toggle-ad-bar__content {
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  opacity: 0;
+  border-top: none;
+}
+
+.toggle-ad-bar.collapsed .toggle-ad-bar__toggle-btn {
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid var(--color-border);
+  background: #ffffff;
+}
+
+.toggle-ad-bar.collapsed .toggle-ad-bar__arrow {
+  transform: rotate(180deg);
+}
+
+/* Footer bottom padding adjustment */
 .footer {
   padding-bottom: 120px !important;
 }
 
-/* Mobile: Slim 50px height standard mobile leaderboard */
+/* Medium Rectangle (300x250) Layout Ad Card */
+.adsense-square-container {
+  margin: 32px auto 16px auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adsense-square-card {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 340px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.adsense-square-card .adsense-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
 @media (max-width: 768px) {
-  .sticky-ad-bar {
-    bottom: 8px;
-    padding: 0 8px;
+  .toggle-ad-bar__content {
+    padding: 4px 8px;
+    max-height: 80px;
   }
-
-  .sticky-ad-bar__inner {
-    max-width: 336px;
-    padding: 3px 4px;
-    border-radius: var(--radius-md);
+  .toggle-ad-bar__frame ins.adsbygoogle {
+    height: 60px !important;
   }
-
-  .sticky-ad-bar__frame {
-    width: 320px;
-    max-width: 100%;
-    min-height: 50px;
-    max-height: 50px;
-  }
-
-  .sticky-ad-bar__frame ins.adsbygoogle {
-    width: 320px;
-    height: 50px;
-  }
-
   .footer {
-    padding-bottom: 75px !important;
+    padding-bottom: 90px !important;
   }
 }
 
-/* Print: hide sticky ad */
 @media print {
-  .sticky-ad-bar {
+  .toggle-ad-bar,
+  .adsense-square-container {
     display: none !important;
   }
 }

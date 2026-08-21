@@ -97,18 +97,22 @@
     </main>
   </div>
 
-  <!-- Compact Framed Sticky Bottom Ad Bar -->
-  <div class="sticky-ad-bar" id="stickyAdBar">
-    <div class="sticky-ad-bar__inner">
-      <span class="sticky-ad-bar__badge">إعلان / Sponsored</span>
-      <button type="button" class="sticky-ad-bar__close" onclick="CareerAI.closeStickyAd()" title="إغلاق الإعلان" aria-label="Close Ad">&times;</button>
-      <div class="sticky-ad-bar__frame">
+  <!-- Toggleable Bottom Banner (AdSense Responsive Horizontal) -->
+  <div class="toggle-ad-bar" id="toggleAdBar">
+    <div class="toggle-ad-bar__tab">
+      <button type="button" class="toggle-ad-bar__toggle-btn" id="toggleAdBtn" onclick="CareerAI.toggleBottomAd()" aria-label="Toggle Ad" title="طي / إظهار الإعلان">
+        <span class="toggle-ad-bar__arrow" id="toggleAdArrow">▼</span>
+        <span class="toggle-ad-bar__tab-text">إعلان / Sponsored</span>
+      </button>
+    </div>
+    <div class="toggle-ad-bar__content" id="toggleAdContent">
+      <div class="toggle-ad-bar__frame">
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; height: 90px;"
              data-ad-client="ca-pub-7520213352755959"
              data-ad-slot="auto"
              data-ad-format="horizontal"
-             data-full-width-responsive="false"></ins>
+             data-full-width-responsive="true"></ins>
       </div>
     </div>
   </div>

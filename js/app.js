@@ -223,14 +223,14 @@ window.CareerAI.initAdSense = function() {
   }, 100);
 };
 
-/* --- Sticky Bottom Ad Close Handler --- */
-window.CareerAI.closeStickyAd = function() {
-  const adBar = document.getElementById('stickyAdBar');
+/* --- Toggleable Bottom Banner Handler --- */
+window.CareerAI.toggleBottomAd = function() {
+  const adBar = document.getElementById('toggleAdBar');
+  const arrow = document.getElementById('toggleAdArrow');
   if (adBar) {
-    adBar.style.display = 'none';
-    const footer = document.querySelector('.footer');
-    if (footer) {
-      footer.style.paddingBottom = '';
+    const isCollapsed = adBar.classList.toggle('collapsed');
+    if (arrow) {
+      arrow.textContent = isCollapsed ? '▲' : '▼';
     }
   }
 };
