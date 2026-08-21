@@ -2818,94 +2818,131 @@
 }
 
 /* ==========================================
-   STICKY BOTTOM AD BAR
+   COMPACT FRAMED STICKY BOTTOM AD BAR
    ========================================== */
-.sticky-bottom-ad {
+.sticky-ad-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   background: #ffffff;
-  text-align: center;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
   border-top: 1px solid var(--color-border);
-  padding: 6px 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.07);
+  padding: 4px 12px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-.sticky-bottom-ad .adsense-label {
+.sticky-ad-bar__inner {
+  position: relative;
+  width: 100%;
+  max-width: 728px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticky-ad-bar__badge {
   position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -16px;
+  left: 8px;
   font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   color: var(--color-text-muted);
-  background: #fff;
-  padding: 0 6px;
+  background: #ffffff;
+  padding: 1px 8px;
   border-radius: 4px 4px 0 0;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-border);
   border-bottom: none;
   line-height: 14px;
 }
 
-.sticky-bottom-ad ins.adsbygoogle {
-  display: block;
-  max-width: 728px;
-  width: 100%;
-  height: 90px;
-  margin: 0 auto;
-}
-
-.sticky-bottom-ad__close {
+.sticky-ad-bar__close {
   position: absolute;
-  top: -20px;
+  top: -16px;
   right: 8px;
-  width: 20px;
-  height: 20px;
-  background: #fff;
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 50%;
   font-size: 11px;
-  line-height: 18px;
+  font-weight: bold;
+  line-height: 16px;
   text-align: center;
   cursor: pointer;
   color: var(--color-text-muted);
-  z-index: 2;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
-.sticky-bottom-ad__close:hover {
+.sticky-ad-bar__close:hover {
   background: var(--color-error);
-  color: white;
+  color: #ffffff;
   border-color: var(--color-error);
 }
 
-/* Ensure content doesn't get hidden behind sticky ad */
-.footer {
-  padding-bottom: 100px !important;
+.sticky-ad-bar__frame {
+  width: 100%;
+  max-width: 728px;
+  min-height: 90px;
+  max-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(37, 99, 235, 0.25);
+  box-sizing: border-box;
 }
 
-/* Mobile: smaller ad height */
+.sticky-ad-bar__frame ins.adsbygoogle {
+  display: block !important;
+  width: 728px;
+  height: 90px;
+  max-width: 100%;
+}
+
+/* Footer bottom padding so content never gets covered */
+.footer {
+  padding-bottom: 110px !important;
+}
+
+/* Mobile: Slim 50px height standard mobile leaderboard */
 @media (max-width: 768px) {
-  .sticky-bottom-ad ins.adsbygoogle {
-    height: 60px;
+  .sticky-ad-bar {
+    padding: 3px 8px;
+  }
+
+  .sticky-ad-bar__frame {
+    max-width: 320px;
+    min-height: 50px;
+    max-height: 50px;
+  }
+
+  .sticky-ad-bar__frame ins.adsbygoogle {
+    width: 320px;
+    height: 50px;
   }
 
   .footer {
-    padding-bottom: 80px !important;
+    padding-bottom: 70px !important;
   }
 }
 
 /* Print: hide sticky ad */
 @media print {
-  .sticky-bottom-ad {
+  .sticky-ad-bar {
     display: none !important;
   }
 }
-
-
-

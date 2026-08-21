@@ -20,6 +20,8 @@ html {
   max-width: 100% !important;
   margin: 0;
   padding: 0;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 body {
@@ -39,6 +41,27 @@ body {
   word-wrap: break-word;
   margin: 0;
   padding: 0;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Hide all scrollbars completely */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#app::-webkit-scrollbar,
+#main-content::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+*,
+*::before,
+*::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 #app,
@@ -468,7 +491,6 @@ p {
     margin-bottom: var(--space-8);
   }
 
-  .card,
   .container {
     padding: 0 16px;
     width: 100%;
@@ -476,6 +498,27 @@ p {
     min-width: 0 !important;
     box-sizing: border-box !important;
     overflow-x: hidden;
+  }
+
+  .card,
+  .tool-card,
+  .job-card,
+  .repeater-card,
+  .builder-form-card,
+  .feature-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .card:hover,
+  .tool-card:hover,
+  .job-card:hover,
+  .feature-card:hover {
+    transform: none !important;
   }
 
   input,

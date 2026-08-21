@@ -95,15 +95,20 @@
     </main>
   </div>
 
-  <!-- Sticky Bottom Ad Bar (Leaderboard 728x90 / Responsive) -->
-  <div class="sticky-bottom-ad" id="stickyBottomAd">
-    <button class="sticky-bottom-ad__close" id="closeBottomAd" onclick="CareerAI.closeBottomAd()" title="إغلاق الإعلان">&times;</button>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-7520213352755959"
-         data-ad-slot="auto"
-         data-ad-format="horizontal"
-         data-full-width-responsive="true"></ins>
+  <!-- Compact Framed Sticky Bottom Ad Bar -->
+  <div class="sticky-ad-bar" id="stickyAdBar">
+    <div class="sticky-ad-bar__inner">
+      <span class="sticky-ad-bar__badge">إعلان / Sponsored</span>
+      <button type="button" class="sticky-ad-bar__close" onclick="CareerAI.closeStickyAd()" title="إغلاق الإعلان" aria-label="Close Ad">&times;</button>
+      <div class="sticky-ad-bar__frame">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7520213352755959"
+             data-ad-slot="auto"
+             data-ad-format="horizontal"
+             data-full-width-responsive="false"></ins>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript Engine & Scripts -->

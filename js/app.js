@@ -224,8 +224,8 @@ window.CareerAI.initAdSense = function() {
 };
 
 /* --- Sticky Bottom Ad Close Handler --- */
-window.CareerAI.closeBottomAd = function() {
-  const adBar = document.getElementById('stickyBottomAd');
+window.CareerAI.closeStickyAd = function() {
+  const adBar = document.getElementById('stickyAdBar');
   if (adBar) {
     adBar.style.display = 'none';
     const footer = document.querySelector('.footer');
