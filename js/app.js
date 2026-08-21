@@ -223,13 +223,13 @@ window.CareerAI.initAdSense = function() {
   }, 100);
 };
 
-/* --- Foldable Bottom Banner Handler --- */
-window.CareerAI.toggleBottomAd = function() {
-  const adBar = document.getElementById('toggleAdBar');
-  const arrow = document.getElementById('toggleAdArrow');
-  const text = document.getElementById('toggleAdText');
-  if (adBar) {
-    const isCollapsed = adBar.classList.toggle('collapsed');
+/* --- Foldable Sticky Bottom Banner Handler --- */
+window.CareerAI.toggleStickyAd = function() {
+  const wrapper = document.getElementById('stickyBottomAd') || document.getElementById('toggleAdBar');
+  const arrow = document.getElementById('stickyAdArrow') || document.getElementById('toggleAdArrow');
+  const text = document.getElementById('stickyAdText') || document.getElementById('toggleAdText');
+  if (wrapper) {
+    const isCollapsed = wrapper.classList.toggle('collapsed');
     if (arrow) {
       arrow.textContent = isCollapsed ? '▲' : '▼';
     }
@@ -237,6 +237,10 @@ window.CareerAI.toggleBottomAd = function() {
       text.textContent = isCollapsed ? 'إظهار الإعلان' : 'طي الإعلان';
     }
   }
+};
+
+window.CareerAI.toggleBottomAd = function() {
+  window.CareerAI.toggleStickyAd();
 };
 
 /* --- Mobile Menu Handlers --- */

@@ -97,22 +97,20 @@
     </main>
   </div>
 
-  <!-- Foldable Horizontal Rectangle Bottom Banner (728x90 Desktop / 320x50 Mobile) -->
-  <div class="toggle-ad-bar" id="toggleAdBar">
-    <div class="toggle-ad-bar__tab">
-      <button type="button" class="toggle-ad-bar__toggle-btn" id="toggleAdBtn" onclick="CareerAI.toggleBottomAd()" aria-label="Toggle Ad Banner" title="طي / إظهار الإعلان">
-        <span class="toggle-ad-bar__arrow" id="toggleAdArrow">▼</span>
-        <span class="toggle-ad-bar__tab-text" id="toggleAdText">طي الإعلان</span>
+  <!-- Sticky Bottom Banner (320x50 Mobile / 728x90 Desktop) -->
+  <div class="sticky-bottom-ad-wrapper" id="stickyBottomAd">
+    <div class="sticky-bottom-ad__tab">
+      <button type="button" class="sticky-bottom-ad__btn" id="stickyAdBtn" onclick="CareerAI.toggleStickyAd()" aria-label="Toggle Ad" title="طي / إظهار الإعلان">
+        <span class="sticky-bottom-ad__arrow" id="stickyAdArrow">▼</span>
+        <span class="sticky-bottom-ad__text" id="stickyAdText">طي الإعلان</span>
       </button>
     </div>
-    <div class="toggle-ad-bar__content" id="toggleAdContent">
-      <div class="toggle-ad-bar__frame">
+    <div class="sticky-bottom-ad__content" id="stickyAdContent">
+      <div class="ad-box">
         <ins class="adsbygoogle"
-             style="display:block; height: 90px;"
+             style="display:inline-block;width:320px;height:50px"
              data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="auto"
-             data-ad-format="horizontal"
-             data-full-width-responsive="true"></ins>
+             data-ad-slot="auto"></ins>
       </div>
     </div>
   </div>
