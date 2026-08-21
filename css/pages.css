@@ -2882,40 +2882,41 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.12);
-  padding: 4px 6px;
+  padding: 6px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  max-height: 120px;
+  min-height: 90px;
   transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
-  overflow: hidden;
 }
 
 .toggle-ad-bar__frame {
   width: 728px;
   max-width: 100%;
+  min-height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   background: var(--color-bg-alt);
   border-radius: var(--radius-md);
-  border: 1px dashed rgba(37, 99, 235, 0.25);
+  border: 1px solid var(--color-border);
   box-sizing: border-box;
   overflow: hidden;
 }
 
 .toggle-ad-bar__frame ins.adsbygoogle {
   display: block !important;
-  width: 728px;
-  height: 90px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 728px;
+  min-height: 90px;
 }
 
 /* Collapsed State - hide ENTIRE wrapper */
 .toggle-ad-bar.collapsed .toggle-ad-bar__content {
   max-height: 0 !important;
+  min-height: 0 !important;
   padding: 0 !important;
   opacity: 0;
   border: none;
@@ -2945,73 +2946,120 @@
   padding-bottom: 120px !important;
 }
 
-/* Medium Rectangle (300x250) Layout Ad Card */
-.adsense-square-container {
-  margin: 32px auto 16px auto;
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100% !important;
-  box-sizing: border-box;
-}
-
-.adsense-square-card {
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-2xl);
-  padding: 16px 20px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
+/* ==========================================
+   ENHANCED MEDIUM RECTANGLE AD SECTION (300x250)
+   Seamless Dark Wrapper with Aesthetic Glow
+   ========================================== */
+.ad-section-wrapper {
+  background: #0f172a; /* لون داكن مكمل للـ Footer */
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 340px;
-  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  /* Aesthetic Glowing Effect & Subtle Grid Pattern */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.22) 0%, transparent 65%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+.ad-card-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 0 20px rgba(37, 99, 235, 0.15);
+  display: inline-block;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
-.adsense-square-card .adsense-label {
-  font-size: 10px;
+.ad-card-box .adsense-label {
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--color-text-muted);
+  color: #64748b;
   margin-bottom: 10px;
   display: block;
+}
+
+.ad-card-box ins.adsbygoogle {
+  display: inline-block !important;
+  width: 300px;
+  height: 250px;
+  max-width: 100%;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Universal Framing for all Ads on the site */
+.adsense-container,
+.adsense-box,
+.adsense-square,
+.adsense-banner,
+.adsense-banner-sm,
+.adsense-display,
+.adsense-inarticle,
+.hero__ad-col .adsense-container {
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-xl) !important;
+  background: var(--color-bg-alt) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  transition: all var(--transition-base);
+}
+
+.adsense-container:hover,
+.adsense-box:hover,
+.adsense-square:hover,
+.adsense-banner:hover {
+  border-color: var(--color-primary-300) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1) !important;
 }
 
 /* Mobile: responsive banner and ad containers */
 @media (max-width: 768px) {
   .toggle-ad-bar__content {
-    max-width: 100%;
-    padding: 3px 6px;
-    max-height: 75px;
-    border-radius: 0;
+    width: 100% !important;
+    max-width: 360px !important;
+    padding: 6px 8px !important;
+    min-height: 65px !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
   }
 
   .toggle-ad-bar__frame {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 320px !important;
+    min-height: 55px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
   }
 
   .toggle-ad-bar__frame ins.adsbygoogle {
     width: 100% !important;
     max-width: 320px !important;
-    height: 50px !important;
+    min-height: 50px !important;
+    height: auto !important;
   }
 
-  .adsense-square-container {
-    padding: 0 12px;
+  .ad-section-wrapper {
+    padding: 28px 12px;
   }
 
-  .adsense-square-card {
+  .ad-card-box {
     max-width: 100%;
-    padding: 12px 14px;
-  }
-
-  .adsense-square-card ins.adsbygoogle {
-    max-width: 100% !important;
+    padding: 10px;
   }
 
   .footer {
@@ -3021,7 +3069,7 @@
 
 @media print {
   .toggle-ad-bar,
-  .adsense-square-container {
+  .ad-section-wrapper {
     display: none !important;
   }
 }
