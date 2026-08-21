@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    CareerAI - Single Article Page
    ============================================ */
 
@@ -108,15 +108,6 @@ window.CareerAI.pages.article = function(slug) {
             ${article.keywords.split(',').map(k => `<span class="tag tag--accent">${k.trim()}</span>`).join(' ')}
           </div>
         ` : ''}
-
-        <!-- Google AdSense Square Unit (Middle) -->
-        <div class="adsense-container adsense-square">
-          <span class="adsense-label">إعلان ممول / Ad</span>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="8877665544"></ins>
-        </div>
 
         <!-- Google AdSense Multiplex Unit (Matched Content / Recommendations) -->
         <div class="adsense-multiplex">

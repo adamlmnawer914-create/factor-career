@@ -58,28 +58,6 @@ window.CareerAI.pages.terms = function() {
         </div>
       </div>
     </section>
-
-    <!-- Google AdSense Square & Banner (Bottom) -->
-    <div class="container" style="padding-bottom:var(--space-12)">
-      <div class="adsense-row">
-        <div class="adsense-container adsense-square">
-          <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="5577991133"></ins>
-        </div>
-        <div class="adsense-container adsense-banner-sm" style="flex:1;min-width:280px">
-          <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="6688002244"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      </div>
-    </div>
   `;
 };
 
