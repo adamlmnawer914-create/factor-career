@@ -223,16 +223,20 @@ window.CareerAI.initAdSense = function() {
   }, 100);
 };
 
-/* --- Toggleable Bottom Banner Handler --- */
-window.CareerAI.hideBottomAd = function() {
-  const adBar = document.getElementById('toggleAdBar');
-  if (adBar) {
-    adBar.style.setProperty('display', 'none', 'important');
-  }
-};
-
+/* --- Foldable Bottom Banner Handler --- */
 window.CareerAI.toggleBottomAd = function() {
-  window.CareerAI.hideBottomAd();
+  const adBar = document.getElementById('toggleAdBar');
+  const arrow = document.getElementById('toggleAdArrow');
+  const text = document.getElementById('toggleAdText');
+  if (adBar) {
+    const isCollapsed = adBar.classList.toggle('collapsed');
+    if (arrow) {
+      arrow.textContent = isCollapsed ? '▲' : '▼';
+    }
+    if (text) {
+      text.textContent = isCollapsed ? 'إظهار الإعلان' : 'طي الإعلان';
+    }
+  }
 };
 
 /* --- Mobile Menu Handlers --- */

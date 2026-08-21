@@ -142,14 +142,16 @@ window.CareerAI.pages.home = function() {
             </div>
           </div>
 
-          <!-- Square Ad -->
+          <!-- Square Ad (300x250 Medium Rectangle) -->
           <div class="hero__ad-col animate-on-scroll">
-            <div class="adsense-container adsense-square hero-square-ad__inner">
-              <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
-              <ins class="adsbygoogle"
-                   style="display:inline-block;width:300px;height:250px"
-                   data-ad-client="ca-pub-7520213352755959"
-                   data-ad-slot="1122334455"></ins>
+            <div class="hero-square-ad__card">
+              <span class="hero-square-ad__label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
+              <div class="hero-square-ad__box">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="1122334455"></ins>
+              </div>
             </div>
           </div>
         </div>

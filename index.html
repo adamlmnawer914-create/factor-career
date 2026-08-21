@@ -97,12 +97,12 @@
     </main>
   </div>
 
-  <!-- Toggleable Bottom Banner (AdSense Responsive Horizontal) -->
-  <div class="toggle-ad-bar ad-banner-container" id="toggleAdBar">
+  <!-- Foldable Horizontal Rectangle Bottom Banner (728x90 Desktop / 320x50 Mobile) -->
+  <div class="toggle-ad-bar" id="toggleAdBar">
     <div class="toggle-ad-bar__tab">
-      <button type="button" class="toggle-ad-bar__toggle-btn" id="toggleAdBtn" onclick="CareerAI.hideBottomAd()" aria-label="Close Ad" title="إغلاق الإعلان نهائياً">
-        <span class="toggle-ad-bar__arrow">✕</span>
-        <span class="toggle-ad-bar__tab-text">إغلاق الإعلان</span>
+      <button type="button" class="toggle-ad-bar__toggle-btn" id="toggleAdBtn" onclick="CareerAI.toggleBottomAd()" aria-label="Toggle Ad Banner" title="طي / إظهار الإعلان">
+        <span class="toggle-ad-bar__arrow" id="toggleAdArrow">▼</span>
+        <span class="toggle-ad-bar__tab-text" id="toggleAdText">طي الإعلان</span>
       </button>
     </div>
     <div class="toggle-ad-bar__content" id="toggleAdContent">
