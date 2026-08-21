@@ -223,6 +223,18 @@ window.CareerAI.initAdSense = function() {
   }, 100);
 };
 
+/* --- Sticky Bottom Ad Close Handler --- */
+window.CareerAI.closeBottomAd = function() {
+  const adBar = document.getElementById('stickyBottomAd');
+  if (adBar) {
+    adBar.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if (footer) {
+      footer.style.paddingBottom = '';
+    }
+  }
+};
+
 /* --- Mobile Menu Handlers --- */
 window.CareerAI.toggleMobileMenu = function() {
   const toggle = document.getElementById('menuToggle');

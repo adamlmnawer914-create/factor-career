@@ -144,13 +144,17 @@ p {
 }
 
 /* --- Container --- */
-.card,
 .container {
   width: 100%;
-  max-width: 100% !important;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
-  box-sizing: border-box !important;
+  box-sizing: border-box;
+}
+
+.card {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .container--narrow {
@@ -464,11 +468,13 @@ p {
     margin-bottom: var(--space-8);
   }
 
+  .card,
   .container {
     padding: 0 16px;
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
     overflow-x: hidden;
   }
 
