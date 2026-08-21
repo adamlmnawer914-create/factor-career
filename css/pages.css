@@ -2855,7 +2855,7 @@
 
 /* ==========================================
    STICKY BOTTOM RECTANGLE BANNER AD
-   (320x50 Mobile / 728x90 Desktop)
+   (340x60 Mobile / 748x95 Desktop)
    ========================================== */
 .sticky-bottom-ad-wrapper {
   position: fixed !important;
@@ -2876,24 +2876,26 @@
   pointer-events: auto !important;
   display: flex !important;
   justify-content: center !important;
-  margin-bottom: -1px !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .sticky-bottom-ad__btn {
   background: #ffffff !important;
   border: 1px solid var(--color-border) !important;
   border-bottom: none !important;
-  border-radius: 8px 8px 0 0 !important;
-  padding: 3px 14px !important;
-  font-size: 11px !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 5px 18px !important;
+  font-size: 11.5px !important;
   font-weight: 700 !important;
   color: var(--color-text-secondary) !important;
   cursor: pointer !important;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.12) !important;
   display: flex !important;
   align-items: center !important;
-  gap: 5px !important;
-  line-height: 1.2 !important;
+  gap: 6px !important;
+  line-height: 1.3 !important;
   transition: all var(--transition-fast) !important;
 }
 
@@ -2914,12 +2916,12 @@
 
 .sticky-bottom-ad-wrapper .ad-box {
   width: 100% !important;
-  max-width: 728px !important;
-  height: 90px !important;
+  max-width: 748px !important;
+  height: 95px !important;
   background: #ffffff !important;
   border: 1px solid var(--color-border) !important;
-  border-radius: 8px 8px 0 0 !important;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 10px 10px 0 0 !important;
+  box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.16) !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -2943,8 +2945,8 @@
 
 .sticky-bottom-ad-wrapper.collapsed .sticky-bottom-ad__btn {
   border-bottom: 1px solid var(--color-border) !important;
-  border-radius: 8px 8px 0 0 !important;
-  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 10px 10px 0 0 !important;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.16) !important;
 }
 
 .sticky-bottom-ad-wrapper.collapsed .sticky-bottom-ad__arrow {
@@ -2953,7 +2955,7 @@
 
 /* Footer bottom padding adjustment */
 .footer {
-  padding-bottom: 120px !important;
+  padding-bottom: 125px !important;
 }
 
 /* ==========================================
@@ -3041,23 +3043,24 @@
 @media (max-width: 768px) {
   .sticky-bottom-ad-wrapper .ad-box {
     width: 100% !important;
-    max-width: 320px !important;
-    height: 50px !important; /* ارتفاع البانر الأفقي المستطيل */
+    max-width: 345px !important;
+    height: 60px !important; /* ارتفاع وحجم أكبر قليلاً وأوضح */
     background: #ffffff !important;
-    border-radius: 6px 6px 0 0 !important;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 8px 8px 0 0 !important;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.16) !important;
   }
 
   .sticky-bottom-ad-wrapper .ad-box ins.adsbygoogle {
-    width: 320px !important;
-    height: 50px !important;
+    width: 336px !important;
+    height: 60px !important;
     display: inline-block !important;
     max-width: 100% !important;
   }
 
   .sticky-bottom-ad__btn {
-    padding: 2px 12px !important;
-    font-size: 10px !important;
+    padding: 4px 15px !important;
+    font-size: 11px !important;
+    border-radius: 8px 8px 0 0 !important;
   }
 
   .ad-section-wrapper {
@@ -3070,7 +3073,7 @@
   }
 
   .footer {
-    padding-bottom: 85px !important;
+    padding-bottom: 95px !important;
   }
 }
 

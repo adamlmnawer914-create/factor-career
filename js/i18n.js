@@ -119,7 +119,9 @@ window.CareerAI.i18n = {
       'privacy.title': 'سياسة الخصوصية',
       'privacy.subtitle': 'نحن نلتزم بحماية خصوصية بياناتك ومعلوماتك الشخصية في منصة Factor Career',
       'terms.title': 'شروط الاستخدام',
-      'terms.subtitle': 'الشروط والأحكام الخاصة باستخدام منصة Factor Career وأدواتها الذكية'
+      'terms.subtitle': 'الشروط والأحكام الخاصة باستخدام منصة Factor Career وأدواتها الذكية',
+      'ad.hide': 'طي الإعلان',
+      'ad.show': 'إظهار الإعلان'
     },
 
     en: {
@@ -230,7 +232,9 @@ window.CareerAI.i18n = {
       'privacy.title': 'Privacy Policy',
       'privacy.subtitle': 'We are committed to protecting your privacy and personal data on Factor Career.',
       'terms.title': 'Terms of Service',
-      'terms.subtitle': 'Terms and conditions governing the use of Factor Career and its intelligent tools.'
+      'terms.subtitle': 'Terms and conditions governing the use of Factor Career and its intelligent tools.',
+      'ad.hide': 'Hide Ad',
+      'ad.show': 'Show Ad'
     }
   },
 
@@ -293,17 +297,29 @@ window.CareerAI.i18n = {
       document.body.style.fontFamily = "'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif";
     }
 
+    // Update Sticky Ad button text if exists
+    const stickyText = document.getElementById('stickyAdText');
+    const stickyWrapper = document.getElementById('stickyBottomAd');
+    if (stickyText) {
+      const isCollapsed = stickyWrapper && stickyWrapper.classList.contains('collapsed');
+      stickyText.textContent = isCollapsed 
+        ? (isAr ? 'إظهار الإعلان' : 'Show Ad')
+        : (isAr ? 'طي الإعلان' : 'Hide Ad');
+    }
+
     // Re-render Header & Footer with new language texts
     const app = document.getElementById('app');
     const existingHeader = document.getElementById('header');
     const existingMobileNav = document.getElementById('mobileNav');
     const existingOverlay = document.getElementById('mobileOverlay');
+    const existingAdSection = document.querySelector('.ad-section-wrapper');
     const existingFooter = document.querySelector('footer.footer');
     const existingBackToTop = document.getElementById('backToTop');
 
     if (existingHeader) existingHeader.remove();
     if (existingMobileNav) existingMobileNav.remove();
     if (existingOverlay) existingOverlay.remove();
+    if (existingAdSection) existingAdSection.remove();
     if (existingFooter) existingFooter.remove();
     if (existingBackToTop) existingBackToTop.remove();
 

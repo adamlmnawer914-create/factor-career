@@ -228,13 +228,18 @@ window.CareerAI.toggleStickyAd = function() {
   const wrapper = document.getElementById('stickyBottomAd') || document.getElementById('toggleAdBar');
   const arrow = document.getElementById('stickyAdArrow') || document.getElementById('toggleAdArrow');
   const text = document.getElementById('stickyAdText') || document.getElementById('toggleAdText');
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   if (wrapper) {
     const isCollapsed = wrapper.classList.toggle('collapsed');
     if (arrow) {
       arrow.textContent = isCollapsed ? '▲' : '▼';
     }
     if (text) {
-      text.textContent = isCollapsed ? 'إظهار الإعلان' : 'طي الإعلان';
+      if (isCollapsed) {
+        text.textContent = isEn ? 'Show Ad' : 'إظهار الإعلان';
+      } else {
+        text.textContent = isEn ? 'Hide Ad' : 'طي الإعلان';
+      }
     }
   }
 };
