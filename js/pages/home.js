@@ -100,14 +100,14 @@ window.CareerAI.pages.home = function() {
               ${t('hero.badge', 'منصة التوظيف والمسار المهني بالذكاء الاصطناعي')}
             </div>
             <h1 class="hero__title">
-              ${t('hero.title1', 'طوّر مسيرتك المهنية واصنع')}
+              ${t('hero.title1', 'صانع السيرة الذاتية الاحترافية')}
               <br>
-              <span class="hero__title-accent">${t('hero.title2', 'سيرة ذاتية ذكية')}</span>
+              <span class="hero__title-accent">${t('hero.title2', 'والبحث عن أفضل الوظائف')}</span>
               <br>
-              ${t('hero.title3', 'تفتح لك أبواب المقابلات')}
+              ${t('hero.title3', 'بتقنيات الذكاء الاصطناعي المجانية')}
             </h1>
             <p class="hero__subtitle">
-              ${t('hero.subtitle', 'أدوات ذكية مجانية من Factor Career تساعدك في كتابة سيرتك الذاتية، التحضير للمقابلات، والعثور على الوظيفة المثالية.')}
+              ${t('hero.subtitle', 'صمم سيرة ذاتية احترافية مجاناً بالذكاء الاصطناعي واستكشف أحدث الوظائف وفرص العمل بسهولة مع Factor Career.')}
             </p>
             <div class="hero__actions">
               <a href="#/tools/resume-builder" class="btn btn--primary btn--lg" onclick="CareerAI.router.navigate('/tools/resume-builder')">
@@ -298,7 +298,7 @@ window.CareerAI.pages.home = function() {
 };
 
 window.CareerAI.pages.homeSEO = {
-  title: 'Factor Career - بناء وتطوير مسيرتك المهنية بالذكاء الاصطناعي',
-  description: 'أدوات ذكاء اصطناعي مجانية من Factor Career لتحليل وبناء السيرة الذاتية، كتابة رسائل التغطية، والتحضير للمقابلات.',
-  keywords: 'سيرة ذاتية, ذكاء اصطناعي, بحث عن عمل, مقابلات, وظائف, Factor Career'
+  title: 'Factor Career | إنشاء سيرة ذاتية احترافية ووظائف بالذكاء الاصطناعي',
+  description: 'صمم سيرة ذاتية احترافية مجاناً بالذكاء الاصطناعي واستكشف أحدث الوظائف وفرص العمل بسهولة مع Factor Career.',
+  keywords: 'سيرة ذاتية, سيرة, وظيفة, وظائف, إنشاء سيرة ذاتية, الذكاء الاصطناعي, Factor Career, تصميم سيرة ذاتية, نماذج سيرة ذاتية, فرص عمل, عمل, وظائف شاغرة, CV, Resume Builder, ATS Resume, Jobs'
 };

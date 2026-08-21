@@ -4,119 +4,163 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- الصفحة الرئيسية -->
+  <!-- الصفحة الرئيسية / Homepage -->
   <url>
     <loc>https://factor-career.vercel.app/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- صفحة الأدوات الرئيسية -->
+  <!-- أدوات الذكاء الاصطناعي / AI Career Tools -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/tools</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
 
-  <!-- أدوات الذكاء الاصطناعي الفردية -->
+  <!-- منشئ السيرة الذاتية / AI Resume Builder -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools/resume-builder</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/tools/resume-builder</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- فاحص ومحلل السيرة الذاتية / ATS Resume Checker -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools/resume-analyzer</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://factor-career.vercel.app/#/tools/resume-analyzer</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- مولد رسائل التغطية / AI Cover Letter Generator -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools/cover-letter-generator</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/tools/cover-letter-generator</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- مولد أسئلة المقابلات / Interview Questions Coach -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools/interview-questions</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/tools/interview-questions</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- مستخرج كلمات ATS / ATS Keywords Matcher -->
+  <url>
+    <loc>https://factor-career.vercel.app/tools/ats-keywords</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/tools/ats-keywords</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- صفحة الوظائف والفرص -->
+  <!-- الوظائف والفرص المهنية / Jobs & Careers -->
+  <url>
+    <loc>https://factor-career.vercel.app/jobs</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/jobs</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
-  <!-- صفحة المدونة -->
+  <!-- المدونة والمقالات / Blog & Articles -->
+  <url>
+    <loc>https://factor-career.vercel.app/blog</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
   <url>
     <loc>https://factor-career.vercel.app/#/blog</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
 
-  <!-- مقالات المدونة -->
   <url>
     <loc>https://factor-career.vercel.app/#/blog/how-to-write-professional-cv-ats</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://factor-career.vercel.app/#/blog/top-10-interview-questions-answers</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- من نحن -->
+  <!-- الصفحات التعريفية والقانونية -->
   <url>
     <loc>https://factor-career.vercel.app/#/about</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- اتصل بنا -->
   <url>
     <loc>https://factor-career.vercel.app/#/contact</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- سياسة الخصوصية -->
   <url>
     <loc>https://factor-career.vercel.app/#/privacy</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
-
-  <!-- شروط الاستخدام -->
   <url>
     <loc>https://factor-career.vercel.app/#/terms</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
