@@ -114,9 +114,9 @@ window.CareerAI.pages.atsKeywords = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="#/" onclick="CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
             <span>/</span>
-            <a href="#/tools" onclick="CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
             <span>/</span>
             <span>استخراج الكلمات المفتاحية ATS</span>
           </div>
@@ -464,13 +464,13 @@ CareerAI.renderAKResults = function() {
         <p style="font-size:var(--text-sm); color:var(--color-text-secondary); margin-bottom:var(--space-6)">استخدم الكلمات المفتاحية المستخرجة مباشرة في باقي أدوات الذكاء الاصطناعي على المنصة:</p>
         
         <div style="display:flex; justify-content:center; gap:var(--space-4); flex-wrap:wrap">
-          <a href="#/tools/resume-builder" class="btn btn--primary btn--sm" onclick="CareerAI.router.navigate('/tools/resume-builder')">
+          <a href="/tools/resume-builder" class="btn btn--primary btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
             📄 إنشاء CV جديد بهذه الكلمات
           </a>
-          <a href="#/tools/resume-analyzer" class="btn btn--secondary btn--sm" onclick="CareerAI.router.navigate('/tools/resume-analyzer')">
+          <a href="/tools/resume-analyzer" class="btn btn--secondary btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-analyzer')">
             🔍 تحليل سيرتك الذاتية بالكامل
           </a>
-          <a href="#/tools/cover-letter-generator" class="btn btn--accent btn--sm" onclick="CareerAI.router.navigate('/tools/cover-letter-generator')">
+          <a href="/tools/cover-letter-generator" class="btn btn--accent btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/tools/cover-letter-generator')">
             ✉️ إنشاء Cover Letter لهذه الوظيفة
           </a>
         </div>

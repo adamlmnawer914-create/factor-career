@@ -25,16 +25,23 @@ window.CareerAI.router = {
   },
 
   init: function() {
-    window.addEventListener('hashchange', () => this.handleRoute());
+    // Backward compatibility: redirect old hash URLs to clean URLs
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      const cleanPath = window.location.hash.slice(1);
+      window.history.replaceState(null, '', cleanPath);
+    }
+
+    window.addEventListener('popstate', () => this.handleRoute());
     this.handleRoute();
   },
 
   navigate: function(path) {
-    window.location.hash = '#' + path;
+    window.history.pushState(null, '', path);
+    this.handleRoute();
   },
 
   handleRoute: function() {
-    let hash = window.location.hash.slice(1) || '/';
+    let hash = window.location.pathname || '/';
     hash = hash.split('?')[0];
 
     // Check if path is dynamic article detail: /blog/slug-name
@@ -67,7 +74,8 @@ window.CareerAI.router = {
       window.scrollTo({ top: 0, behavior: 'instant' });
       
       // Update SEO
-      const seoData = route.getSEO ? route.getSEO() : route.seo;
+      let seoData = route.getSEO ? route.getSEO() : route.seo;
+      if (typeof seoData === 'function') seoData = seoData();
       this.updateSEO(seoData, hash);
 
       // Highlight active navigation link
@@ -114,7 +122,7 @@ window.CareerAI.router = {
 
   updateSEO: function(seo, hash) {
     if (!seo) return;
-    const currentUrl = window.location.origin + window.location.pathname + '#' + (hash || '/');
+    const currentUrl = window.location.origin + (hash || '/');
     const lang = window.CareerAI.i18n ? window.CareerAI.i18n.getLang() : 'ar';
 
     // HTML Lang & Dir

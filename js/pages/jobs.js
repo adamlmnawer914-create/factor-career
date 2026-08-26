@@ -16,7 +16,7 @@ window.CareerAI.pages.jobs = function() {
     <div class="page-header page-header--dark" style="background:var(--gradient-hero)">
       <div class="container">
         <nav class="breadcrumb" style="color:rgba(255,255,255,0.7)">
-          <a href="#/" onclick="CareerAI.router.navigate('/')" style="color:rgba(255,255,255,0.7)">${t('nav.home', 'الرئيسية')}</a>
+          <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')" style="color:rgba(255,255,255,0.7)">${t('nav.home', 'الرئيسية')}</a>
           <span style="margin:0 8px">›</span>
           <span style="color:white">${t('nav.jobs', 'الوظائف والفرص')}</span>
         </nav>
@@ -60,7 +60,7 @@ window.CareerAI.pages.jobs = function() {
             <div style="font-size:4rem;margin-bottom:var(--space-4)">📭</div>
             <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">${t('jobs.emptyTitle', 'لا توجد فرص متاحة حالياً')}</h2>
             <p style="color:var(--color-text-secondary);max-width:500px;margin:0 auto">${t('jobs.emptyDesc', 'نعمل على إضافة فرص عمل جديدة باستمرار. تابعنا للحصول على آخر التحديثات!')}</p>
-            <a href="#/tools" class="btn btn--primary" style="margin-top:var(--space-6)" onclick="CareerAI.router.navigate('/tools')">
+            <a href="/tools" class="btn btn--primary" style="margin-top:var(--space-6)" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
               ${isEn ? 'Explore AI Career Tools' : 'استعد مع أدوات الذكاء الاصطناعي'}
             </a>
           </div>
@@ -129,10 +129,10 @@ window.CareerAI.pages.jobs = function() {
             ${t('jobs.ctaText', 'جهّز سيرتك الذاتية باستخدام أدواتنا الذكية المجانية وكن مستعداً لأي فرصة قادمة!')}
           </p>
           <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
-            <a href="#/tools/resume-builder" class="btn btn--primary" onclick="CareerAI.router.navigate('/tools/resume-builder')">
+            <a href="/tools/resume-builder" class="btn btn--primary" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
               ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
             </a>
-            <a href="#/tools" class="btn btn--secondary" style="border-color:white;color:white" onclick="CareerAI.router.navigate('/tools')">
+            <a href="/tools" class="btn btn--secondary" style="border-color:white;color:white" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
               ${t('hero.btnExplore', 'تصفح جميع الأدوات')}
             </a>
           </div>
@@ -143,8 +143,18 @@ window.CareerAI.pages.jobs = function() {
   `;
 };
 
-window.CareerAI.pages.jobsSEO = {
-  title: 'الوظائف والفرص المهنية المتاحة | Factor Career Jobs & Careers',
-  description: 'استكشف أحدث فرص العمل والوظائف المُختارة بعناية من Factor Career. Explore curated jobs & career opportunities.',
-  keywords: 'jobs, careers, وظائف, فرص عمل, توظيف, عمل عن بعد, Factor Career'
+window.CareerAI.pages.jobsSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Curated Jobs & Career Opportunities | Factor Career',
+      description: 'Explore handpicked active job openings across tech, marketing, HR, and design with Factor Career.',
+      keywords: 'Jobs, Remote Work, Tech Jobs, Career Opportunities, Hiring, Factor Career'
+    };
+  }
+  return {
+    title: 'الوظائف والفرص المهنية المتاحة | Factor Career Jobs & Careers',
+    description: 'استكشف أحدث فرص العمل والوظائف المُختارة بعناية من Factor Career.',
+    keywords: 'jobs, careers, وظائف, فرص عمل, توظيف, عمل عن بعد, Factor Career'
+  };
 };

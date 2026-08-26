@@ -14,7 +14,7 @@ window.CareerAI.pages.terms = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="#/" onclick="CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
             <span>${t('terms.title', 'شروط الاستخدام')}</span>
           </div>
@@ -61,8 +61,18 @@ window.CareerAI.pages.terms = function() {
   `;
 };
 
-window.CareerAI.pages.termsSEO = {
-  title: 'شروط الاستخدام | Factor Career Terms of Service',
-  description: 'شروط وأحكام استخدام منصة وأدوات Factor Career لمساعدة الباحثين عن عمل.',
-  keywords: 'شروط الاستخدام, terms of service, Factor Career'
+window.CareerAI.pages.termsSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Terms of Service | Factor Career Platform',
+      description: 'Terms and conditions governing the use of Factor Career and its intelligent career suite.',
+      keywords: 'Terms of Service, Terms and Conditions, Factor Career, User Agreement'
+    };
+  }
+  return {
+    title: 'شروط الاستخدام | Factor Career Terms of Service',
+    description: 'شروط وأحكام استخدام منصة وأدوات Factor Career لمساعدة الباحثين عن عمل.',
+    keywords: 'شروط الاستخدام, terms of service, Factor Career'
+  };
 };

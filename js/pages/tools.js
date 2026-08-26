@@ -94,7 +94,7 @@ window.CareerAI.pages.tools = function() {
     <div class="page-header page-header--dark" style="background:var(--gradient-hero)">
       <div class="container">
         <nav class="breadcrumb" style="color:rgba(255,255,255,0.7)">
-          <a href="#/" onclick="CareerAI.router.navigate('/')" style="color:rgba(255,255,255,0.7)">${t('nav.home', 'الرئيسية')}</a>
+          <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')" style="color:rgba(255,255,255,0.7)">${t('nav.home', 'الرئيسية')}</a>
           <span style="margin:0 8px">›</span>
           <span style="color:white">${t('nav.tools', 'الأدوات')}</span>
         </nav>
@@ -147,7 +147,7 @@ window.CareerAI.pages.tools = function() {
               <h3 class="card__title">${tool.title}</h3>
               <p class="card__text">${tool.desc}</p>
               ${tool.link ? `
-                <a href="#${tool.link}" class="btn btn--${tool.color === 'primary' ? 'primary' : 'secondary'} btn--sm" style="margin-top:var(--space-5)" onclick="CareerAI.router.navigate('${tool.link}')">
+                <a href="/${tool.link}" class="btn btn--${tool.color === 'primary' ? 'primary' : 'secondary'} btn--sm" style="margin-top:var(--space-5)" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
                   ${t('tools.useTool', 'استخدم الأداة مجاناً')}
                   <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
                 </a>
@@ -198,8 +198,18 @@ window.CareerAI.filterTools = function(category) {
   });
 };
 
-window.CareerAI.pages.toolsSEO = {
-  title: 'أدوات الذكاء الاصطناعي للبحث عن عمل | Factor Career AI Tools',
-  description: 'مجموعة متكاملة من أدوات الذكاء الاصطناعي المجانية من Factor Career لبناء وتحليل السيرة الذاتية ورسائل التقديم.',
-  keywords: 'أدوات ذكاء اصطناعي, سيرة ذاتية, فحص ATS, Cover Letter, مقابلات عمل, Factor Career'
+window.CareerAI.pages.toolsSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Free AI Career & Resume Tools | Factor Career',
+      description: 'Comprehensive suite of free AI tools for resume building, ATS auditing, cover letter generation, and interview practice.',
+      keywords: 'AI Career Tools, Free Resume Builder, ATS Checker, Cover Letter Generator, Interview Coach, Factor Career'
+    };
+  }
+  return {
+    title: 'أدوات الذكاء الاصطناعي للبحث عن عمل | Factor Career AI Tools',
+    description: 'مجموعة متكاملة من أدوات الذكاء الاصطناعي المجانية من Factor Career لبناء وتحليل السيرة الذاتية ورسائل التقديم.',
+    keywords: 'أدوات ذكاء اصطناعي, سيرة ذاتية, فحص ATS, Cover Letter, مقابلات عمل, Factor Career'
+  };
 };

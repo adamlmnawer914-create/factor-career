@@ -7,7 +7,7 @@ window.CareerAI = window.CareerAI || {};
 
 window.CareerAI.i18n = {
   STORAGE_KEY: 'factor_career_lang',
-  currentLang: 'ar',
+  currentLang: 'en',
 
   // Language dictionaries
   translations: {
@@ -238,15 +238,14 @@ window.CareerAI.i18n = {
     }
   },
 
-  // Initialize Language (Check localStorage, fallback to browser detection)
+  // Initialize Language (Check localStorage, default to English for global & AdSense crawlers)
   init: function() {
     const saved = localStorage.getItem(this.STORAGE_KEY);
     if (saved && (saved === 'ar' || saved === 'en')) {
       this.currentLang = saved;
     } else {
-      // Auto-detect browser/system language
-      const navLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
-      this.currentLang = navLang.startsWith('ar') ? 'ar' : 'en';
+      // Default to English for first-time visitors, search engines, and AdSense crawlers
+      this.currentLang = 'en';
       localStorage.setItem(this.STORAGE_KEY, this.currentLang);
     }
 

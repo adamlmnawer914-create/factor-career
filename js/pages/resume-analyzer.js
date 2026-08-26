@@ -90,9 +90,9 @@ window.CareerAI.pages.resumeAnalyzer = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="#/" onclick="CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
             <span>/</span>
-            <a href="#/tools" onclick="CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
             <span>/</span>
             <span>محلل وفاحص السيرة الذاتية ATS</span>
           </div>

@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    Factor Career - Admin Dashboard & CMS Manager
    ============================================ */
 
@@ -11,7 +11,7 @@ window.CareerAI.pages.adminDashboard = function() {
   // Guard check
   if (!db.isAdminLoggedIn()) {
     setTimeout(() => window.CareerAI.router.navigate('/admin/login'), 10);
-    return `<div class="container text-center" style="padding:var(--space-20)">جاري التوجيه لتسجيل الدخول...</div>`;
+    return `<div class="container text-center" style="padding:var(--space-20)">???? ??????? ?????? ??????...</div>`;
   }
 
   const icons = window.CareerAI.icons;
@@ -35,16 +35,16 @@ window.CareerAI.pages.adminDashboard = function() {
             <div class="admin-header__brand">
               <div class="header__logo-icon" style="width:36px;height:36px;font-size:1.1rem">FC</div>
               <div>
-                <span class="admin-header__title">لوحة تحكم Factor Career</span>
-                <span style="display:block;font-size:0.75rem;color:rgba(255,255,255,0.7)">حساب المدير: adamlmnawe914@gmail.com</span>
+                <span class="admin-header__title">???? ???? Factor Career</span>
+                <span style="display:block;font-size:0.75rem;color:rgba(255,255,255,0.7)">???? ??????: adamlmnawe914@gmail.com</span>
               </div>
             </div>
             <div class="admin-header__actions">
-              <button class="btn btn--secondary btn--sm" onclick="CareerAI.router.navigate('/')">
-                معاينة الموقع
+              <button class="btn btn--secondary btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/')">
+                ?????? ??????
               </button>
               <button class="btn btn--ghost btn--sm" onclick="CareerAI.handleAdminLogout()" style="background:#EF4444;color:white;border:none">
-                تسجيل الخروج
+                ????? ??????
               </button>
             </div>
           </div>
@@ -58,36 +58,36 @@ window.CareerAI.pages.adminDashboard = function() {
         <div class="grid grid--4" style="margin-bottom:var(--space-8)">
           <div class="admin-stat-card">
             <div class="admin-stat-card__number">${totalArticles}</div>
-            <div class="admin-stat-card__label">إجمالي المقالات</div>
+            <div class="admin-stat-card__label">?????? ????????</div>
           </div>
           <div class="admin-stat-card admin-stat-card--success">
             <div class="admin-stat-card__number">${publishedCount}</div>
-            <div class="admin-stat-card__label">المقالات المنشورة</div>
+            <div class="admin-stat-card__label">???????? ????????</div>
           </div>
           <div class="admin-stat-card admin-stat-card--info">
             <div class="admin-stat-card__number">${categoriesCount}</div>
-            <div class="admin-stat-card__label">التصنيفات</div>
+            <div class="admin-stat-card__label">?????????</div>
           </div>
           <div class="admin-stat-card admin-stat-card--warning">
             <div class="admin-stat-card__number">${totalJobs}</div>
-            <div class="admin-stat-card__label">الوظائف والفرص (${activeJobs} نشطة)</div>
+            <div class="admin-stat-card__label">??????? ?????? (${activeJobs} ????)</div>
           </div>
         </div>
 
         <!-- Dashboard Navigation Tabs -->
         <div class="admin-tabs">
-          <button class="admin-tab active" id="tabArticlesBtn" onclick="CareerAI.switchAdminTab('articles')">📰 إدارة المقالات</button>
-          <button class="admin-tab" id="tabCategoriesBtn" onclick="CareerAI.switchAdminTab('categories')">🏷️ إدارة التصنيفات</button>
-          <button class="admin-tab" id="tabJobsBtn" onclick="CareerAI.switchAdminTab('jobs')">💼 إدارة الوظائف والفرص</button>
-          <button class="admin-tab" id="tabSettingsBtn" onclick="CareerAI.switchAdminTab('settings')">⚙️ الإعدادات والصور</button>
+          <button class="admin-tab active" id="tabArticlesBtn" onclick="CareerAI.switchAdminTab('articles')">?? ????? ????????</button>
+          <button class="admin-tab" id="tabCategoriesBtn" onclick="CareerAI.switchAdminTab('categories')">??? ????? ?????????</button>
+          <button class="admin-tab" id="tabJobsBtn" onclick="CareerAI.switchAdminTab('jobs')">?? ????? ??????? ??????</button>
+          <button class="admin-tab" id="tabSettingsBtn" onclick="CareerAI.switchAdminTab('settings')">?? ????????? ??????</button>
         </div>
 
         <!-- TAB 1: ARTICLES MANAGEMENT -->
         <div id="adminArticlesSection" class="admin-section">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-4)">
-            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">قائمة المقالات (${totalArticles})</h2>
+            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">????? ???????? (${totalArticles})</h2>
             <button class="btn btn--primary" onclick="CareerAI.openArticleEditor()">
-              + إضافة مقال جديد
+              + ????? ???? ????
             </button>
           </div>
 
@@ -95,16 +95,16 @@ window.CareerAI.pages.adminDashboard = function() {
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>الصورة</th>
-                  <th>العنوان</th>
-                  <th>التصنيف</th>
-                  <th>الحالة</th>
-                  <th>تاريخ النشر</th>
-                  <th>الإجراءات</th>
+                  <th>??????</th>
+                  <th>???????</th>
+                  <th>???????</th>
+                  <th>??????</th>
+                  <th>????? ?????</th>
+                  <th>?????????</th>
                 </tr>
               </thead>
               <tbody>
-                ${articles.length === 0 ? `<tr><td colspan="6" style="text-align:center;padding:var(--space-8)">لا توجد مقالات حتى الآن</td></tr>` : ''}
+                ${articles.length === 0 ? `<tr><td colspan="6" style="text-align:center;padding:var(--space-8)">?? ???? ?????? ??? ????</td></tr>` : ''}
                 ${articles.map(art => `
                   <tr>
                     <td style="width:70px">
@@ -117,14 +117,14 @@ window.CareerAI.pages.adminDashboard = function() {
                     <td><span class="tag tag--primary">${art.categoryName}</span></td>
                     <td>
                       <span class="admin-status-badge ${art.status === 'published' ? 'admin-status-badge--pub' : 'admin-status-badge--draft'}">
-                        ${art.status === 'published' ? 'منشور' : 'مسودة'}
+                        ${art.status === 'published' ? '?????' : '?????'}
                       </span>
                     </td>
                     <td>${art.publishedAt}</td>
                     <td>
                       <div class="admin-table-actions">
-                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openArticleEditor('${art.id}')">تعديل</button>
-                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteArticleConfirm('${art.id}')">حذف</button>
+                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openArticleEditor('${art.id}')">?????</button>
+                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteArticleConfirm('${art.id}')">???</button>
                       </div>
                     </td>
                   </tr>
@@ -137,9 +137,9 @@ window.CareerAI.pages.adminDashboard = function() {
         <!-- TAB 2: CATEGORIES MANAGEMENT -->
         <div id="adminCategoriesSection" class="admin-section" style="display:none">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-4)">
-            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">إدارة تصنيفات المقالات</h2>
+            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">????? ??????? ????????</h2>
             <button class="btn btn--accent" onclick="CareerAI.openCategoryModal()">
-              + إضافة تصنيف جديد
+              + ????? ????? ????
             </button>
           </div>
 
@@ -147,10 +147,10 @@ window.CareerAI.pages.adminDashboard = function() {
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>اسم التصنيف</th>
-                  <th>الرابط (Slug)</th>
-                  <th>الوصف</th>
-                  <th>الإجراءات</th>
+                  <th>??? ???????</th>
+                  <th>?????? (Slug)</th>
+                  <th>?????</th>
+                  <th>?????????</th>
                 </tr>
               </thead>
               <tbody>
@@ -161,8 +161,8 @@ window.CareerAI.pages.adminDashboard = function() {
                     <td>${cat.description || '-'}</td>
                     <td>
                       <div class="admin-table-actions">
-                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openCategoryModal('${cat.id}')">تعديل</button>
-                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteCategoryConfirm('${cat.id}')">حذف</button>
+                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openCategoryModal('${cat.id}')">?????</button>
+                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteCategoryConfirm('${cat.id}')">???</button>
                       </div>
                     </td>
                   </tr>
@@ -175,9 +175,9 @@ window.CareerAI.pages.adminDashboard = function() {
         <!-- TAB 3: JOBS MANAGEMENT -->
         <div id="adminJobsSection" class="admin-section" style="display:none">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-4)">
-            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">إدارة الوظائف والفرص المهنية (${totalJobs})</h2>
+            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold)">????? ??????? ?????? ??????? (${totalJobs})</h2>
             <button class="btn btn--primary" onclick="CareerAI.openJobModal()">
-              + إضافة فرصة عمل جديدة
+              + ????? ???? ??? ?????
             </button>
           </div>
 
@@ -185,17 +185,17 @@ window.CareerAI.pages.adminDashboard = function() {
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>المسمى الوظيفي</th>
-                  <th>الشركة / الجهة</th>
-                  <th>الموقع</th>
-                  <th>النوع</th>
-                  <th>الراتب</th>
-                  <th>الحالة</th>
-                  <th>الإجراءات</th>
+                  <th>?????? ???????</th>
+                  <th>?????? / ?????</th>
+                  <th>??????</th>
+                  <th>?????</th>
+                  <th>??????</th>
+                  <th>??????</th>
+                  <th>?????????</th>
                 </tr>
               </thead>
               <tbody>
-                ${jobs.length === 0 ? `<tr><td colspan="7" style="text-align:center;padding:var(--space-8)">لا توجد وظائف حتى الآن</td></tr>` : ''}
+                ${jobs.length === 0 ? `<tr><td colspan="7" style="text-align:center;padding:var(--space-8)">?? ???? ????? ??? ????</td></tr>` : ''}
                 ${jobs.map(job => `
                   <tr>
                     <td>
@@ -208,13 +208,13 @@ window.CareerAI.pages.adminDashboard = function() {
                     <td><span style="color:var(--color-accent);font-weight:bold">${job.salary}</span></td>
                     <td>
                       <span class="admin-status-badge ${job.status === 'active' ? 'admin-status-badge--pub' : 'admin-status-badge--draft'}">
-                        ${job.status === 'active' ? 'نشطة' : 'متوقفة'}
+                        ${job.status === 'active' ? '????' : '??????'}
                       </span>
                     </td>
                     <td>
                       <div class="admin-table-actions">
-                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openJobModal('${job.id}')">تعديل</button>
-                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteJobConfirm('${job.id}')">حذف</button>
+                        <button class="btn btn--secondary btn--sm" onclick="CareerAI.openJobModal('${job.id}')">?????</button>
+                        <button class="btn btn--sm" style="background:#EF4444;color:white" onclick="CareerAI.deleteJobConfirm('${job.id}')">???</button>
                       </div>
                     </td>
                   </tr>
@@ -227,35 +227,35 @@ window.CareerAI.pages.adminDashboard = function() {
         <!-- TAB 4: SETTINGS & MEDIA -->
         <div id="adminSettingsSection" class="admin-section" style="display:none">
           <div class="contact-form" style="max-width:700px;margin:0 auto">
-            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold);margin-bottom:var(--space-6)">بيانات وإعدادات الموقع الرسمية</h2>
+            <h2 style="font-size:var(--text-2xl);font-weight:var(--font-bold);margin-bottom:var(--space-6)">?????? ???????? ?????? ???????</h2>
             
             <div class="form-group">
-              <label class="form-label">اسم المنصة الرسمي</label>
+              <label class="form-label">??? ?????? ??????</label>
               <input type="text" class="form-input" value="Factor Career" readonly>
             </div>
 
             <div class="form-group">
-              <label class="form-label">البريد الإلكتروني الرسمي للموقع</label>
+              <label class="form-label">?????? ?????????? ?????? ??????</label>
               <input type="email" class="form-input" value="careerfactor@gmail.com" readonly>
             </div>
 
             <div class="form-group">
-              <label class="form-label">رقم الهاتف الرسمي</label>
+              <label class="form-label">??? ?????? ??????</label>
               <input type="text" class="form-input" value="+212 642 394 756" readonly>
             </div>
 
             <div class="form-group">
-              <label class="form-label">الموقع الجغرافي</label>
-              <input type="text" class="form-input" value="المملكة المغربية، مدينة سوق السبت أولاد النمة" readonly>
+              <label class="form-label">?????? ????????</label>
+              <input type="text" class="form-input" value="??????? ????????? ????? ??? ????? ????? ?????" readonly>
             </div>
 
             <div class="admin-seo-box" style="margin-top:var(--space-6)">
-              <h4>🖼️ مكتبة الصور السريعة</h4>
-              <p style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-4)">يمكنك رفع أي صورة من جهازك لتحويلها إلى رابط للاستخدام في المقالات والوظائف:</p>
+              <h4>??? ????? ????? ???????</h4>
+              <p style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-4)">????? ??? ?? ???? ?? ????? ???????? ??? ???? ????????? ?? ???????? ????????:</p>
               <input type="file" id="mediaUploaderInput" class="form-input" accept="image/*" onchange="CareerAI.handleMediaUpload(this)">
               <div id="mediaUploadPreview" style="margin-top:var(--space-4);display:none">
                 <img id="mediaPreviewImg" src="" style="max-height:160px;border-radius:var(--radius-lg);margin-bottom:var(--space-2)">
-                <input type="text" id="mediaUrlOutput" class="form-input" readonly onclick="this.select();document.execCommand('copy');alert('تم نسخ الرابط!')" placeholder="انقر هنا لنسخ رابط الصورة">
+                <input type="text" id="mediaUrlOutput" class="form-input" readonly onclick="this.select();document.execCommand('copy');alert('?? ??? ??????!')" placeholder="???? ??? ???? ???? ??????">
               </div>
             </div>
           </div>
@@ -268,7 +268,7 @@ window.CareerAI.pages.adminDashboard = function() {
     <div class="admin-modal-overlay" id="articleModalOverlay">
       <div class="admin-modal admin-modal--lg">
         <div class="admin-modal__header">
-          <h3 id="articleModalTitle">إضافة مقال جديد</h3>
+          <h3 id="articleModalTitle">????? ???? ????</h3>
           <button class="admin-modal__close" onclick="CareerAI.closeArticleEditor()">&times;</button>
         </div>
 
@@ -277,34 +277,34 @@ window.CareerAI.pages.adminDashboard = function() {
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">عنوان المقال *</label>
-              <input type="text" id="editorTitle" class="form-input" required placeholder="أدخل عنوان المقال" oninput="CareerAI.autoGenerateSlug(this.value)">
+              <label class="form-label">????? ?????? *</label>
+              <input type="text" id="editorTitle" class="form-input" required placeholder="???? ????? ??????" oninput="CareerAI.autoGenerateSlug(this.value)">
             </div>
             <div class="form-group">
-              <label class="form-label">رابط المقال (Slug) *</label>
+              <label class="form-label">???? ?????? (Slug) *</label>
               <input type="text" id="editorSlug" class="form-input" required placeholder="example-article-slug">
             </div>
           </div>
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">التصنيف *</label>
+              <label class="form-label">??????? *</label>
               <select id="editorCategory" class="form-input form-select" required>
                 ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">حالة المقال *</label>
+              <label class="form-label">???? ?????? *</label>
               <select id="editorStatus" class="form-input form-select" required>
-                <option value="published">منشور مباشرة</option>
-                <option value="draft">حفظ كمسودة</option>
+                <option value="published">????? ??????</option>
+                <option value="draft">??? ??????</option>
               </select>
             </div>
           </div>
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">صورة المقال (رابط أو رفع من الجهاز)</label>
+              <label class="form-label">???? ?????? (???? ?? ??? ?? ??????)</label>
               <input type="text" id="editorImage" class="form-input" placeholder="https://images.unsplash.com/photo-..." oninput="CareerAI.previewArticleImg(this.value)">
               <div style="margin-top:6px">
                 <input type="file" accept="image/*" class="form-input" onchange="CareerAI.uploadArticleImageFile(this)">
@@ -314,50 +314,50 @@ window.CareerAI.pages.adminDashboard = function() {
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">تاريخ النشر</label>
+              <label class="form-label">????? ?????</label>
               <input type="date" id="editorPublishedAt" class="form-input">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">الوصف المختصر للمقال *</label>
-            <textarea id="editorExcerpt" class="form-textarea" style="min-height:75px" required placeholder="ملخص بسيط يظهر في قائمة المقالات"></textarea>
+            <label class="form-label">????? ??????? ?????? *</label>
+            <textarea id="editorExcerpt" class="form-textarea" style="min-height:75px" required placeholder="???? ???? ???? ?? ????? ????????"></textarea>
           </div>
 
           <!-- Rich Text Content Editor with Formatting Toolbar -->
           <div class="form-group">
-            <label class="form-label">محتوى المقال (محرر منسق) *</label>
+            <label class="form-label">????? ?????? (???? ????) *</label>
             <div class="editor-toolbar">
-              <button type="button" onclick="CareerAI.execFormat('bold')" title="غامق"><b>B</b></button>
-              <button type="button" onclick="CareerAI.execFormat('italic')" title="مائل"><i>I</i></button>
-              <button type="button" onclick="CareerAI.execFormat('formatBlock', 'h3')" title="عنوان 3">H3</button>
-              <button type="button" onclick="CareerAI.execFormat('formatBlock', 'p')" title="فقرة">P</button>
-              <button type="button" onclick="CareerAI.execFormat('insertUnorderedList')" title="قائمة">• قائمة</button>
-              <button type="button" onclick="CareerAI.promptLink()" title="رابط">🔗 رابط</button>
+              <button type="button" onclick="CareerAI.execFormat('bold')" title="????"><b>B</b></button>
+              <button type="button" onclick="CareerAI.execFormat('italic')" title="????"><i>I</i></button>
+              <button type="button" onclick="CareerAI.execFormat('formatBlock', 'h3')" title="????? 3">H3</button>
+              <button type="button" onclick="CareerAI.execFormat('formatBlock', 'p')" title="????">P</button>
+              <button type="button" onclick="CareerAI.execFormat('insertUnorderedList')" title="?????">� ?????</button>
+              <button type="button" onclick="CareerAI.promptLink()" title="????">?? ????</button>
             </div>
             <div id="editorContent" class="editor-rich-content" contenteditable="true" style="min-height:180px"></div>
           </div>
 
           <!-- SEO Settings Section -->
           <div class="admin-seo-box">
-            <h4 style="margin-bottom:var(--space-4);font-size:var(--text-base);color:var(--color-primary)">⚙️ إعدادات محركات البحث (SEO)</h4>
+            <h4 style="margin-bottom:var(--space-4);font-size:var(--text-base);color:var(--color-primary)">?? ??????? ?????? ????? (SEO)</h4>
             <div class="form-group">
               <label class="form-label">Meta Title</label>
-              <input type="text" id="editorMetaTitle" class="form-input" placeholder="عنوان المقال لمحركات البحث">
+              <input type="text" id="editorMetaTitle" class="form-input" placeholder="????? ?????? ??????? ?????">
             </div>
             <div class="form-group">
               <label class="form-label">Meta Description</label>
-              <textarea id="editorMetaDesc" class="form-textarea" style="min-height:65px" placeholder="وصف محركات البحث SEO"></textarea>
+              <textarea id="editorMetaDesc" class="form-textarea" style="min-height:65px" placeholder="??? ?????? ????? SEO"></textarea>
             </div>
             <div class="form-group">
-              <label class="form-label">الكلمات المفتاحية (تفصل بينها فاصلة)</label>
-              <input type="text" id="editorKeywords" class="form-input" placeholder="سيرة ذاتية, وظائف, مقابلة">
+              <label class="form-label">??????? ????????? (???? ????? ?????)</label>
+              <input type="text" id="editorKeywords" class="form-input" placeholder="???? ?????, ?????, ??????">
             </div>
           </div>
 
           <div style="display:flex;justify-content:flex-end;gap:var(--space-4);margin-top:var(--space-6)">
-            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeArticleEditor()">إلغاء</button>
-            <button type="submit" class="btn btn--primary">حفظ وتأكيد المقال</button>
+            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeArticleEditor()">?????</button>
+            <button type="submit" class="btn btn--primary">??? ?????? ??????</button>
           </div>
         </form>
       </div>
@@ -367,22 +367,22 @@ window.CareerAI.pages.adminDashboard = function() {
     <div class="admin-modal-overlay" id="categoryModalOverlay">
       <div class="admin-modal">
         <div class="admin-modal__header">
-          <h3 id="categoryModalTitle">إضافة تصنيف جديد</h3>
+          <h3 id="categoryModalTitle">????? ????? ????</h3>
           <button class="admin-modal__close" onclick="CareerAI.closeCategoryModal()">&times;</button>
         </div>
         <form id="categoryForm" onsubmit="CareerAI.handleSaveCategory(event)">
           <input type="hidden" id="editorCatId">
           <div class="form-group">
-            <label class="form-label">اسم التصنيف *</label>
-            <input type="text" id="editorCatName" class="form-input" required placeholder="مثال: التدريب الصيفي">
+            <label class="form-label">??? ??????? *</label>
+            <input type="text" id="editorCatName" class="form-input" required placeholder="????: ??????? ??????">
           </div>
           <div class="form-group">
-            <label class="form-label">وصف التصنيف</label>
-            <textarea id="editorCatDesc" class="form-textarea" style="min-height:90px" placeholder="وصف مختصر لمجال التصنيف"></textarea>
+            <label class="form-label">??? ???????</label>
+            <textarea id="editorCatDesc" class="form-textarea" style="min-height:90px" placeholder="??? ????? ????? ???????"></textarea>
           </div>
           <div style="display:flex;justify-content:flex-end;gap:var(--space-4);margin-top:var(--space-6)">
-            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeCategoryModal()">إلغاء</button>
-            <button type="submit" class="btn btn--accent">حفظ التصنيف</button>
+            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeCategoryModal()">?????</button>
+            <button type="submit" class="btn btn--accent">??? ???????</button>
           </div>
         </form>
       </div>
@@ -392,7 +392,7 @@ window.CareerAI.pages.adminDashboard = function() {
     <div class="admin-modal-overlay" id="jobModalOverlay">
       <div class="admin-modal admin-modal--lg">
         <div class="admin-modal__header">
-          <h3 id="jobModalTitle">إضافة فرصة عمل جديدة</h3>
+          <h3 id="jobModalTitle">????? ???? ??? ?????</h3>
           <button class="admin-modal__close" onclick="CareerAI.closeJobModal()">&times;</button>
         </div>
         <form id="jobForm" onsubmit="CareerAI.handleSaveJob(event)">
@@ -400,63 +400,63 @@ window.CareerAI.pages.adminDashboard = function() {
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">المسمى الوظيفي *</label>
-              <input type="text" id="editorJobTitle" class="form-input" required placeholder="مثال: Senior React Developer">
+              <label class="form-label">?????? ??????? *</label>
+              <input type="text" id="editorJobTitle" class="form-input" required placeholder="????: Senior React Developer">
             </div>
             <div class="form-group">
-              <label class="form-label">الشركة أو الجهة *</label>
-              <input type="text" id="editorJobCompany" class="form-input" required placeholder="مثال: شركة الأفق التقنية">
+              <label class="form-label">?????? ?? ????? *</label>
+              <input type="text" id="editorJobCompany" class="form-input" required placeholder="????: ???? ????? ???????">
             </div>
           </div>
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">الموقع / نمط العمل</label>
-              <input type="text" id="editorJobLocation" class="form-input" placeholder="مثال: عن بُعد (Remote) أو الدار البيضاء">
+              <label class="form-label">?????? / ??? ?????</label>
+              <input type="text" id="editorJobLocation" class="form-input" placeholder="????: ?? ???? (Remote) ?? ????? ???????">
             </div>
             <div class="form-group">
-              <label class="form-label">نوع العقد</label>
+              <label class="form-label">??? ?????</label>
               <select id="editorJobType" class="form-input form-select">
-                <option value="دوام كامل">دوام كامل (Full-time)</option>
-                <option value="دوام جزئي">دوام جزئي (Part-time)</option>
-                <option value="عمل حر">عمل حر (Freelance)</option>
-                <option value="تدريب">تدريب (Internship)</option>
+                <option value="???? ????">???? ???? (Full-time)</option>
+                <option value="???? ????">???? ???? (Part-time)</option>
+                <option value="??? ??">??? ?? (Freelance)</option>
+                <option value="?????">????? (Internship)</option>
               </select>
             </div>
           </div>
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">الراتب المتوقع</label>
-              <input type="text" id="editorJobSalary" class="form-input" placeholder="مثال: 2,000$ - 3,000$">
+              <label class="form-label">?????? ???????</label>
+              <input type="text" id="editorJobSalary" class="form-input" placeholder="????: 2,000$ - 3,000$">
             </div>
             <div class="form-group">
-              <label class="form-label">الحالة</label>
+              <label class="form-label">??????</label>
               <select id="editorJobStatus" class="form-input form-select">
-                <option value="active">نشطة ومتاحة</option>
-                <option value="closed">مغلقة / متوقفة</option>
+                <option value="active">???? ??????</option>
+                <option value="closed">????? / ??????</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">رابط التقديم أو البريد الإلكتروني *</label>
-            <input type="text" id="editorJobApplyUrl" class="form-input" required placeholder="mailto:careerfactor@gmail.com أو https://company.com/apply">
+            <label class="form-label">???? ??????? ?? ?????? ?????????? *</label>
+            <input type="text" id="editorJobApplyUrl" class="form-input" required placeholder="mailto:careerfactor@gmail.com ?? https://company.com/apply">
           </div>
 
           <div class="form-group">
-            <label class="form-label">الوصف الوظيفي</label>
-            <textarea id="editorJobDesc" class="form-textarea" style="min-height:85px" placeholder="شرح المهام والمسؤوليات"></textarea>
+            <label class="form-label">????? ???????</label>
+            <textarea id="editorJobDesc" class="form-textarea" style="min-height:85px" placeholder="??? ?????? ???????????"></textarea>
           </div>
 
           <div class="form-group">
-            <label class="form-label">المتطلبات والشروط</label>
-            <textarea id="editorJobReqs" class="form-textarea" style="min-height:85px" placeholder="المهارات والخبرات المطلوبة"></textarea>
+            <label class="form-label">????????? ???????</label>
+            <textarea id="editorJobReqs" class="form-textarea" style="min-height:85px" placeholder="???????? ???????? ????????"></textarea>
           </div>
 
           <div style="display:flex;justify-content:flex-end;gap:var(--space-4);margin-top:var(--space-6)">
-            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeJobModal()">إلغاء</button>
-            <button type="submit" class="btn btn--primary">حفظ وتأكيد الوظيفة</button>
+            <button type="button" class="btn btn--secondary" onclick="CareerAI.closeJobModal()">?????</button>
+            <button type="submit" class="btn btn--primary">??? ?????? ???????</button>
           </div>
         </form>
       </div>
@@ -536,7 +536,7 @@ window.CareerAI.openArticleEditor = function(articleId = null) {
   if (articleId) {
     const art = window.CareerAI.db.getArticleById(articleId);
     if (art) {
-      title.innerText = 'تعديل المقال';
+      title.innerText = '????? ??????';
       document.getElementById('editorArticleId').value = art.id;
       document.getElementById('editorTitle').value = art.title;
       document.getElementById('editorSlug').value = art.slug;
@@ -552,7 +552,7 @@ window.CareerAI.openArticleEditor = function(articleId = null) {
       document.getElementById('editorKeywords').value = art.keywords || '';
     }
   } else {
-    title.innerText = 'إضافة مقال جديد';
+    title.innerText = '????? ???? ????';
     document.getElementById('editorArticleId').value = '';
     document.getElementById('editorPublishedAt').value = new Date().toISOString().split('T')[0];
   }
@@ -576,7 +576,7 @@ window.CareerAI.execFormat = function(cmd, arg = null) {
 };
 
 window.CareerAI.promptLink = function() {
-  const url = prompt('أدخل رابط URL:');
+  const url = prompt('???? ???? URL:');
   if (url) {
     document.execCommand('createLink', false, url);
   }
@@ -617,7 +617,7 @@ window.CareerAI.handleSaveArticle = function(e) {
 };
 
 window.CareerAI.deleteArticleConfirm = function(id) {
-  if (confirm('هل أنت متأكد من حذف هذا المقال نهائياً؟')) {
+  if (confirm('?? ??? ????? ?? ??? ??? ?????? ????????')) {
     window.CareerAI.db.deleteArticle(id);
     window.CareerAI.router.handleRoute();
   }
@@ -635,13 +635,13 @@ window.CareerAI.openCategoryModal = function(catId = null) {
     const categories = window.CareerAI.db.getCategories();
     const cat = categories.find(c => c.id === catId);
     if (cat) {
-      title.innerText = 'تعديل التصنيف';
+      title.innerText = '????? ???????';
       document.getElementById('editorCatId').value = cat.id;
       document.getElementById('editorCatName').value = cat.name;
       document.getElementById('editorCatDesc').value = cat.description || '';
     }
   } else {
-    title.innerText = 'إضافة تصنيف جديد';
+    title.innerText = '????? ????? ????';
     document.getElementById('editorCatId').value = '';
   }
 
@@ -669,7 +669,7 @@ window.CareerAI.handleSaveCategory = function(e) {
 };
 
 window.CareerAI.deleteCategoryConfirm = function(id) {
-  if (confirm('هل أنت متأكد من حذف هذا التصنيف؟')) {
+  if (confirm('?? ??? ????? ?? ??? ??? ????????')) {
     window.CareerAI.db.deleteCategory(id);
     window.CareerAI.router.handleRoute();
   }
@@ -686,7 +686,7 @@ window.CareerAI.openJobModal = function(jobId = null) {
   if (jobId) {
     const job = window.CareerAI.db.getJobById(jobId);
     if (job) {
-      title.innerText = 'تعديل الوظيفة';
+      title.innerText = '????? ???????';
       document.getElementById('editorJobId').value = job.id;
       document.getElementById('editorJobTitle').value = job.title;
       document.getElementById('editorJobCompany').value = job.company;
@@ -699,7 +699,7 @@ window.CareerAI.openJobModal = function(jobId = null) {
       document.getElementById('editorJobReqs').value = job.requirements || '';
     }
   } else {
-    title.innerText = 'إضافة فرصة عمل جديدة';
+    title.innerText = '????? ???? ??? ?????';
     document.getElementById('editorJobId').value = '';
     document.getElementById('editorJobApplyUrl').value = 'mailto:careerfactor@gmail.com';
   }
@@ -742,7 +742,7 @@ window.CareerAI.handleSaveJob = function(e) {
 };
 
 window.CareerAI.deleteJobConfirm = function(id) {
-  if (confirm('هل أنت متأكد من حذف هذه الفرصة الوظيفية؟')) {
+  if (confirm('?? ??? ????? ?? ??? ??? ?????? ?????????')) {
     window.CareerAI.db.deleteJob(id);
     window.CareerAI.router.handleRoute();
   }

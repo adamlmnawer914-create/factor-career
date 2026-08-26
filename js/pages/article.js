@@ -1,5 +1,5 @@
 /* ============================================
-   CareerAI - Single Article Page
+   Factor Career - Single Article Page (Multilingual & Verification Code)
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
@@ -7,6 +7,8 @@ window.CareerAI.pages = window.CareerAI.pages || {};
 
 window.CareerAI.pages.article = function(slug) {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const article = window.CareerAI.db.getArticleBySlug(slug);
 
   if (!article) {
@@ -14,10 +16,10 @@ window.CareerAI.pages.article = function(slug) {
       <div class="page-header">
         <div class="container">
           <div class="page-header__content">
-            <h1 class="page-header__title">المقال غير موجود</h1>
-            <p class="page-header__subtitle">عذراً، المقال الذي تحاول الوصول إليه غير موجود أو تم حذفه.</p>
-            <a href="#/blog" class="btn btn--white" style="margin-top:var(--space-6)" onclick="CareerAI.router.navigate('/blog')">
-              العودة إلى المدونة
+            <h1 class="page-header__title">${isEn ? 'Article Not Found' : 'المقال غير موجود'}</h1>
+            <p class="page-header__subtitle">${isEn ? 'Sorry, the article you are looking for does not exist or has been removed.' : 'عذراً، المقال الذي تحاول الوصول إليه غير موجود أو تم حذفه.'}</p>
+            <a href="/blog" class="btn btn--white" style="margin-top:var(--space-6)" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">
+              ${isEn ? 'Back to Blog' : 'العودة إلى المدونة'}
             </a>
           </div>
         </div>
@@ -25,7 +27,7 @@ window.CareerAI.pages.article = function(slug) {
     `;
   }
 
-  // Related articles (from same category or latest, excluding current article)
+  // Related articles
   const allArticles = window.CareerAI.db.getArticles(false).filter(a => a.id !== article.id);
   const relatedArticles = allArticles.filter(a => a.categoryId === article.categoryId).slice(0, 3);
   if (relatedArticles.length < 3) {
@@ -33,14 +35,16 @@ window.CareerAI.pages.article = function(slug) {
     relatedArticles.push(...extra);
   }
 
+  const proofCode = article.verificationCode || ('FC-PROOF-' + Math.floor(1000 + Math.random() * 9000));
+
   return `
     <!-- Article Header -->
     <div class="article-header">
       <div class="container container--narrow">
         <div class="page-header__breadcrumb" style="justify-content:flex-start;margin-bottom:var(--space-4)">
-          <a href="#/" onclick="CareerAI.router.navigate('/')">الرئيسية</a>
+          <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
           <span>/</span>
-          <a href="#/blog" onclick="CareerAI.router.navigate('/blog')">المدونة</a>
+          <a href="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
           <span>/</span>
           <span>${article.categoryName}</span>
         </div>
@@ -53,8 +57,8 @@ window.CareerAI.pages.article = function(slug) {
 
         <div class="article-header__meta">
           <div class="article-header__author">
-            <div class="article-header__avatar">${(article.author || 'C')[0]}</div>
-            <span>${article.author || 'فريق CareerAI'}</span>
+            <div class="article-header__avatar">${(article.author || 'F')[0]}</div>
+            <span>${article.author || 'Factor Career Team'}</span>
           </div>
           <span>•</span>
           <div class="article-header__date">
@@ -76,7 +80,7 @@ window.CareerAI.pages.article = function(slug) {
 
         <!-- Google AdSense Compact Banner (Top) -->
         <div class="adsense-container adsense-banner-sm">
-          <span class="adsense-label">إعلان ممول / Ad</span>
+          <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-7520213352755959"
@@ -91,7 +95,7 @@ window.CareerAI.pages.article = function(slug) {
           
           <!-- In-Article Google AdSense Unit -->
           <div class="adsense-inarticle">
-            <span class="adsense-label">إعلان مقترح / In-Article Ad</span>
+            <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
             <ins class="adsbygoogle"
                  style="display:block; text-align:center;"
                  data-ad-layout="in-article"
@@ -101,18 +105,37 @@ window.CareerAI.pages.article = function(slug) {
           </div>
         </div>
 
+        <!-- Verification Proof Code Box for Promotions & Readers -->
+        <div class="verification-code-box" style="margin:var(--space-8) 0;padding:var(--space-6);border:2px dashed var(--color-primary);border-radius:var(--radius-lg);background:rgba(37,99,235,0.04);text-align:center;">
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:var(--space-2)">
+            <span style="width:20px;height:20px;color:var(--color-primary);display:inline-flex">${icons.shield || icons.check}</span>
+            <strong style="font-size:var(--text-lg);color:var(--color-text-dark)">
+              ${isEn ? 'Article Verification Proof Code' : 'رمز إثبات قراءة المقال'}
+            </strong>
+          </div>
+          <p style="font-size:var(--text-sm);color:var(--color-text-light);margin-bottom:var(--space-4)">
+            ${isEn ? 'Use this unique code as proof of completion for reading tasks and campaigns.' : 'استخدم هذا الكود كإثبات لقراءة وتصفح المقال للمهام الترويجية.'}
+          </p>
+          <div style="display:inline-flex;align-items:center;gap:var(--space-3);background:white;padding:var(--space-3) var(--space-6);border-radius:var(--radius-md);border:1px solid var(--color-border-light);box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+            <code id="proofCodeValue" style="font-family:monospace;font-size:var(--text-lg);font-weight:700;letter-spacing:1.5px;color:var(--color-primary)">${proofCode}</code>
+            <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyProofCode('${proofCode}')" style="padding:6px 14px;font-size:var(--text-sm)">
+              <span id="copyProofText">${isEn ? 'Copy Code' : 'نسخ الكود'}</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Keywords / Tags -->
         ${article.keywords ? `
           <div class="article-tags">
-            <span class="article-tags__label">الكلمات المفتاحية:</span>
+            <span class="article-tags__label">${isEn ? 'Keywords:' : 'الكلمات المفتاحية:'}</span>
             ${article.keywords.split(',').map(k => `<span class="tag tag--accent">${k.trim()}</span>`).join(' ')}
           </div>
         ` : ''}
 
-        <!-- Google AdSense Multiplex Unit (Matched Content / Recommendations) -->
+        <!-- Google AdSense Multiplex Unit -->
         <div class="adsense-multiplex">
           <div class="adsense-multiplex__header">
-            <span>✨ إعلانات ومحتوى مقترح لك (Multiplex Ads)</span>
+            <span>✨ ${isEn ? 'Recommended Content & Sponsored Ads' : 'إعلانات ومحتوى مقترح لك'}</span>
           </div>
           <ins class="adsbygoogle"
                style="display:block"
@@ -124,10 +147,10 @@ window.CareerAI.pages.article = function(slug) {
         <!-- Related Articles Section -->
         ${relatedArticles.length > 0 ? `
           <div class="related-articles">
-            <h3 class="related-articles__title">مقالات ذات صلة</h3>
+            <h3 class="related-articles__title">${isEn ? 'Related Articles' : 'مقالات ذات صلة'}</h3>
             <div class="grid grid--3">
               ${relatedArticles.map(rel => `
-                <article class="blog-card" style="cursor:pointer" onclick="CareerAI.router.navigate('/blog/${rel.slug}')">
+                <article class="blog-card" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('/blog/${rel.slug}')">
                   <div class="blog-card__image" style="height:140px">
                     <img src="${rel.image}" alt="${rel.title}" style="width:100%;height:100%;object-fit:cover">
                   </div>
@@ -144,4 +167,19 @@ window.CareerAI.pages.article = function(slug) {
       </div>
     </section>
   `;
+};
+
+window.CareerAI.copyProofCode = function(code) {
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copyProofText');
+    const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+    if (btn) {
+      btn.textContent = isEn ? 'Copied! ✓' : 'تم النسخ! ✓';
+      setTimeout(() => {
+        btn.textContent = isEn ? 'Copy Code' : 'نسخ الكود';
+      }, 2500);
+    }
+  }).catch(() => {
+    prompt('Copy Proof Code:', code);
+  });
 };

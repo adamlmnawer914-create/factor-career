@@ -110,11 +110,11 @@ window.CareerAI.pages.home = function() {
               ${t('hero.subtitle', 'صمم سيرة ذاتية احترافية مجاناً بالذكاء الاصطناعي واستكشف أحدث الوظائف وفرص العمل بسهولة مع Factor Career.')}
             </p>
             <div class="hero__actions">
-              <a href="#/tools/resume-builder" class="btn btn--primary btn--lg" onclick="CareerAI.router.navigate('/tools/resume-builder')">
+              <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
                 ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
                 <span style="width:20px;height:20px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
               </a>
-              <a href="#/tools" class="btn btn--ghost btn--lg" onclick="CareerAI.router.navigate('/tools')">
+              <a href="/tools" class="btn btn--ghost btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
                 ${t('hero.btnExplore', 'استكشف الأدوات')}
               </a>
             </div>
@@ -220,14 +220,14 @@ window.CareerAI.pages.home = function() {
 
         <div class="tools-section__grid">
           ${toolsList.map((tool, index) => `
-            <div class="card tool-card animate-on-scroll delay-${(index % 3) + 1}" style="cursor:pointer" onclick="CareerAI.router.navigate('${tool.link}')">
+            <div class="card tool-card animate-on-scroll delay-${(index % 3) + 1}" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
               <span class="tag tag--accent" style="position:absolute;top:var(--space-4);${isEn ? 'right' : 'left'}:var(--space-4)">${tool.tag}</span>
               <div class="card__icon card__icon--${tool.color}">
                 <span style="width:32px;height:32px;display:inline-flex">${tool.icon}</span>
               </div>
               <h3 class="card__title">${tool.title}</h3>
               <p class="card__text">${tool.desc}</p>
-              <a href="#${tool.link}" class="card__link" onclick="CareerAI.router.navigate('${tool.link}')">
+              <a href="/${tool.link}" class="card__link" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
                 ${isEn ? 'Use Tool Free' : 'جرّب الأداة الآن'}
                 <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
               </a>
@@ -286,10 +286,10 @@ window.CareerAI.pages.home = function() {
             ${isEn ? 'Join thousands of ambitious professionals crafting high-impact resumes and landing great jobs.' : 'انضم لآلاف المهنيين والباحثين عن عمل الذين طوروا سيرهم الذاتية وحصلوا على مقابلاتهم الوظيفية.'}
           </p>
           <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
-            <a href="#/tools/resume-builder" class="btn btn--primary btn--lg" onclick="CareerAI.router.navigate('/tools/resume-builder')">
+            <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
               ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
             </a>
-            <a href="#/jobs" class="btn btn--secondary btn--lg" style="border-color:white;color:white" onclick="CareerAI.router.navigate('/jobs')">
+            <a href="/jobs" class="btn btn--secondary btn--lg" style="border-color:white;color:white" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">
               ${t('nav.jobs', 'تصفح الوظائف والفرص')}
             </a>
           </div>
@@ -299,8 +299,18 @@ window.CareerAI.pages.home = function() {
   `;
 };
 
-window.CareerAI.pages.homeSEO = {
-  title: 'Factor Career | إنشاء سيرة ذاتية احترافية ووظائف بالذكاء الاصطناعي',
-  description: 'صمم سيرة ذاتية احترافية مجاناً بالذكاء الاصطناعي واستكشف أحدث الوظائف وفرص العمل بسهولة مع Factor Career.',
-  keywords: 'سيرة ذاتية, سيرة, وظيفة, وظائف, إنشاء سيرة ذاتية, الذكاء الاصطناعي, Factor Career, تصميم سيرة ذاتية, نماذج سيرة ذاتية, فرص عمل, عمل, وظائف شاغرة, CV, Resume Builder, ATS Resume, Jobs'
+window.CareerAI.pages.homeSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Factor Career | Free AI Resume Builder & Job Search Platform',
+      description: 'Build an ATS-optimized professional resume for free with AI, practice job interviews, generate smart cover letters, and discover career opportunities with Factor Career.',
+      keywords: 'Resume Builder, Free CV Maker, ATS Resume, AI Career Tools, Cover Letter Generator, Job Search, Interview Prep, Career Advice, Factor Career'
+    };
+  }
+  return {
+    title: 'Factor Career | إنشاء سيرة ذاتية احترافية ووظائف بالذكاء الاصطناعي',
+    description: 'صمم سيرة ذاتية احترافية مجاناً بالذكاء الاصطناعي واستكشف أحدث الوظائف وفرص العمل بسهولة مع Factor Career.',
+    keywords: 'سيرة ذاتية, سيرة, وظيفة, وظائف, إنشاء سيرة ذاتية, الذكاء الاصطناعي, Factor Career, تصميم سيرة ذاتية, نماذج سيرة ذاتية, فرص عمل, عمل, وظائف شاغرة, CV, Resume Builder, ATS Resume, Jobs'
+  };
 };
