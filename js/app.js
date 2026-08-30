@@ -41,54 +41,72 @@ window.CareerAI.router = {
   },
 
   handleRoute: function() {
-    let hash = window.location.pathname || '/';
-    hash = hash.split('?')[0];
-
-    // Check if path is dynamic article detail: /blog/slug-name
-    let route = null;
-    let articleSlug = null;
-
-    if (hash.startsWith('/blog/') && hash !== '/blog') {
-      articleSlug = hash.replace('/blog/', '');
-      route = {
-        render: () => window.CareerAI.pages.article(articleSlug),
-        getSEO: () => {
-          const art = window.CareerAI.db.getArticleBySlug(articleSlug);
-          if (art) {
-            return {
-              title: art.metaTitle || art.title + ' | Factor Career',
-              description: art.metaDescription || art.excerpt,
-              keywords: art.keywords || 'مقالات, Factor Career'
-            };
-          }
-          return { title: 'المقال غير موجود | Factor Career', description: '' };
-        }
-      };
-    } else {
-      route = this.routes[hash] || this.routes['/'];
-    }
-
-    const mainElement = document.getElementById('main-content');
-    if (mainElement) {
-      mainElement.innerHTML = `<div class="page-transition">${route.render()}</div>`;
-      window.scrollTo({ top: 0, behavior: 'instant' });
+    try {
+      let hash = window.location.pathname || '/';
+      hash = hash.split('?')[0];
       
-      // Update SEO
-      let seoData = route.getSEO ? route.getSEO() : route.seo;
-      if (typeof seoData === 'function') seoData = seoData();
-      this.updateSEO(seoData, hash);
+      // Decode URI components in case of encoded characters
+      try {
+        hash = decodeURIComponent(hash);
+      } catch (e) {}
 
-      // Highlight active navigation link
-      this.updateActiveNav(hash);
+      // Normalize trailing slash (e.g. /tools/interview-questions/ -> /tools/interview-questions)
+      if (hash.length > 1 && hash.endsWith('/')) {
+        hash = hash.slice(0, -1);
+      }
 
-      // Manage Floating Back Button for all non-home pages
-      this.updateBackButton(hash);
+      // Check if path is dynamic article detail: /blog/slug-name
+      let route = null;
+      let articleSlug = null;
 
-      // Re-initialize animations
-      window.CareerAI.initAnimations();
+      if (hash.startsWith('/blog/') && hash !== '/blog') {
+        articleSlug = hash.replace('/blog/', '').replace(/\/$/, '');
+        route = {
+          render: () => window.CareerAI.pages.article(articleSlug),
+          getSEO: () => {
+            const art = window.CareerAI.db.getArticleBySlug(articleSlug);
+            if (art) {
+              return {
+                title: (art.metaTitle || art.title) + ' | Factor Career',
+                description: art.metaDescription || art.excerpt,
+                keywords: art.keywords || 'Career Tips, Factor Career'
+              };
+            }
+            return { title: 'Article Not Found | Factor Career', description: '' };
+          }
+        };
+      } else {
+        route = this.routes[hash] || this.routes['/'];
+      }
 
-      // Dynamically initialize AdSense units for current SPA page
-      window.CareerAI.initAdSense();
+      const mainElement = document.getElementById('main-content');
+      if (mainElement && route && typeof route.render === 'function') {
+        mainElement.innerHTML = `<div class="page-transition">${route.render()}</div>`;
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Update SEO
+        let seoData = route.getSEO ? route.getSEO() : route.seo;
+        if (typeof seoData === 'function') seoData = seoData();
+        this.updateSEO(seoData, hash);
+
+        // Highlight active navigation link
+        this.updateActiveNav(hash);
+
+        // Manage Floating Back Button for all non-home pages
+        this.updateBackButton(hash);
+
+        // Re-initialize animations
+        if (window.CareerAI.initAnimations) {
+          window.CareerAI.initAnimations();
+        }
+
+        // Dynamically initialize AdSense units for current SPA page
+        if (window.CareerAI.initAdSense) {
+          window.CareerAI.initAdSense();
+        }
+      }
+    } catch (err) {
+      console.error('Router navigation error:', err);
     }
   },
 
