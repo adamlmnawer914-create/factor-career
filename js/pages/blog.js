@@ -30,11 +30,10 @@ window.CareerAI.pages.blog = function() {
     </div>
 
     
-    <!-- Adsterra Native Banner -->
+    <!-- Adsterra Native Banner (Safe SPA Iframe) -->
     <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;">
       <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
-      <script async="async" data-cfasync="false" src="https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js"></script>
-      <div id="container-88b8ff02af33c15d529cd7a1ab450129"></div>
+      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;font-family:sans-serif;background:transparent;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script async='async' data-cfasync='false' src='https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js'&gt;&lt;/script&gt;&lt;div id='container-88b8ff02af33c15d529cd7a1ab450129'&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="280" style="border:none;overflow:hidden;max-width:900px;display:block;margin:0 auto;" scrolling="no"></iframe>
     </div>
 
     <section class="section">

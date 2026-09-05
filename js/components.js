@@ -109,21 +109,10 @@ window.CareerAI.components.renderFooter = function() {
   return `
 
     
-    <!-- Adsterra 300x250 Display Banner -->
+    <!-- Adsterra 300x250 Display Banner (Safe SPA Iframe) -->
     <div class="adsterra-banner-wrapper" style="text-align:center;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
       <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'إعلان مُموَّل'}</span>
-      <div style="display:inline-block;min-height:250px;min-width:300px;">
-        <script>
-          atOptions = {
-            'key' : '1c9329dd45de120b1d202a69a46e1041',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highrevenueformat.com/1c9329dd45de120b1d202a69a46e1041/invoke.js"></script>
-      </div>
+      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;atOptions={'key':'1c9329dd45de120b1d202a69a46e1041','format':'iframe','height':250,'width':300,'params':{}};&lt;/script&gt;&lt;script src='https://www.highrevenueformat.com/1c9329dd45de120b1d202a69a46e1041/invoke.js'&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="300" height="250" style="border:none;overflow:hidden;display:block;margin:0 auto;" scrolling="no"></iframe>
     </div>
 
     <footer class="footer">
