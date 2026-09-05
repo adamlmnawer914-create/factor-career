@@ -108,6 +108,24 @@ window.CareerAI.components.renderFooter = function() {
 
   return `
 
+    
+    <!-- Adsterra 300x250 Display Banner -->
+    <div class="adsterra-banner-wrapper" style="text-align:center;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'إعلان مُموَّل'}</span>
+      <div style="display:inline-block;min-height:250px;min-width:300px;">
+        <script>
+          atOptions = {
+            'key' : '1c9329dd45de120b1d202a69a46e1041',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/1c9329dd45de120b1d202a69a46e1041/invoke.js"></script>
+      </div>
+    </div>
+
     <footer class="footer">
       <div class="container">
         <div class="footer__grid">

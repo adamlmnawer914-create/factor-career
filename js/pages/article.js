@@ -124,7 +124,15 @@ window.CareerAI.pages.article = function(slug) {
                     <span class="blog-card__tag" style="margin-bottom:var(--space-2);display:inline-block">${rel.categoryName}</span>
                     <h4 class="blog-card__title" style="font-size:var(--text-base);line-height:1.4">${rel.title}</h4>
                   </div>
-                </article>
+                
+    <!-- Adsterra Native Banner -->
+    <div class="adsterra-native-container container" style="margin:2.5rem auto;text-align:center;">
+      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
+      <script async="async" data-cfasync="false" src="https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js"></script>
+      <div id="container-88b8ff02af33c15d529cd7a1ab450129"></div>
+    </div>
+
+      </article>
               `).join('')}
             </div>
           </div>
