@@ -141,19 +141,6 @@ window.CareerAI.pages.home = function() {
               <div class="hero-image-glow"></div>
             </div>
           </div>
-
-          <!-- Square Ad (300x250 Medium Rectangle) -->
-          <div class="hero__ad-col animate-on-scroll">
-            <div class="hero-square-ad__card">
-              <span class="hero-square-ad__label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
-              <div class="hero-square-ad__box">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
-                     data-ad-client="ca-pub-7520213352755959"
-                     data-ad-slot="1122334455"></ins>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -236,19 +223,6 @@ window.CareerAI.pages.home = function() {
         </div>
       </div>
     </section>
-
-    <!-- Google AdSense In-Between Banner Container -->
-    <div class="container" style="padding-top:var(--space-6)">
-      <div class="adsense-container adsense-banner">
-        <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
 
     <!-- FAQ Section -->
     <section class="section" id="faq">

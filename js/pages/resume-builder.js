@@ -261,19 +261,6 @@ window.CareerAI.pages.resumeBuilder = function() {
       </div>
     </section>
 
-    <!-- Google AdSense Display Banner (Middle) -->
-    <div class="container">
-      <div class="adsense-container adsense-display">
-        <span class="adsense-label">إعلان ممول / Sponsored</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="1029384756"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
-
     <!-- SEO & Educational Content Section -->
     <section class="section section--alt" style="padding:var(--space-16) 0">
       <div class="container">

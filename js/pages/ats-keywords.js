@@ -143,17 +143,6 @@ window.CareerAI.pages.atsKeywords = function() {
           🔒 <strong>تنبيه الخصوصية:</strong> يتم تحليل نص الإعلان والسيرة الذاتية مؤقتاً داخل المتصفح ولا يتم حفظ أو تخزين أي بيانات بشكل دائم نهائياً.
         </div>
 
-        <!-- Google AdSense Display Banner (Top) -->
-        <div class="adsense-container adsense-display">
-          <span class="adsense-label">إعلان ممول / Sponsored</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="9988776655"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-
         <!-- INPUT FORM -->
         <div class="contact-form" style="padding:var(--space-8); border:1px solid var(--color-border); border-radius:var(--radius-2xl); background:white; margin-bottom:var(--space-8)">
           
@@ -210,19 +199,6 @@ window.CareerAI.pages.atsKeywords = function() {
 
       </div>
     </section>
-
-    <!-- Google AdSense Display Banner (Middle) -->
-    <div class="container">
-      <div class="adsense-container adsense-display">
-        <span class="adsense-label">إعلان ممول / Sponsored</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="4433221100"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
 
     <!-- SEO & Educational Content Section -->
     <section class="section section--alt" style="padding:var(--space-16) 0">

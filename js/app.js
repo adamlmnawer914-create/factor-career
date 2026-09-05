@@ -99,11 +99,6 @@ window.CareerAI.router = {
         if (window.CareerAI.initAnimations) {
           window.CareerAI.initAnimations();
         }
-
-        // Dynamically initialize AdSense units for current SPA page
-        if (window.CareerAI.initAdSense) {
-          window.CareerAI.initAdSense();
-        }
       }
     } catch (err) {
       console.error('Router navigation error:', err);
@@ -224,55 +219,13 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
   }
 };
 
-/* --- SPA Google AdSense Dynamic Initializer & Route Transition Handler --- */
-window.CareerAI.initAdSense = function() {
-  setTimeout(() => {
-    try {
-      // Find all AdSense units in the current page
-      const adUnits = document.querySelectorAll('ins.adsbygoogle');
-      if (!adUnits || adUnits.length === 0) return;
-
-      adUnits.forEach(ad => {
-        const status = ad.getAttribute('data-adsbygoogle-status');
-        const isLoaded = ad.getAttribute('data-ad-status');
-        if (!status && !isLoaded) {
-          try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-          } catch (e) {
-            console.debug('AdSense unit push status:', e);
-          }
-        }
-      });
-    } catch (err) {
-      console.debug('AdSense dynamic loader status:', err);
-    }
-  }, 100);
-};
+/* SPA Google AdSense Removed */
+window.CareerAI.initAdSense = function() {};
 
 /* --- Foldable Sticky Bottom Banner Handler --- */
-window.CareerAI.toggleStickyAd = function() {
-  const wrapper = document.getElementById('stickyBottomAd') || document.getElementById('toggleAdBar');
-  const arrow = document.getElementById('stickyAdArrow') || document.getElementById('toggleAdArrow');
-  const text = document.getElementById('stickyAdText') || document.getElementById('toggleAdText');
-  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
-  if (wrapper) {
-    const isCollapsed = wrapper.classList.toggle('collapsed');
-    if (arrow) {
-      arrow.textContent = isCollapsed ? '▲' : '▼';
-    }
-    if (text) {
-      if (isCollapsed) {
-        text.textContent = isEn ? 'Show Ad' : 'إظهار الإعلان';
-      } else {
-        text.textContent = isEn ? 'Hide Ad' : 'طي الإعلان';
-      }
-    }
-  }
-};
+window.CareerAI.toggleStickyAd = function() {};
 
-window.CareerAI.toggleBottomAd = function() {
-  window.CareerAI.toggleStickyAd();
-};
+window.CareerAI.toggleBottomAd = function() {};
 
 /* --- Mobile Menu Handlers --- */
 window.CareerAI.toggleMobileMenu = function() {

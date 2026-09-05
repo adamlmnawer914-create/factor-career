@@ -29,19 +29,6 @@ window.CareerAI.pages.blog = function() {
       </div>
     </div>
 
-    <!-- AdSense Compact Banner (Top) -->
-    <div class="container" style="padding-top:var(--space-4)">
-      <div class="adsense-container adsense-banner-sm">
-        <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="2233445566"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
-
     <section class="section">
       <div class="container">
 
@@ -87,18 +74,6 @@ window.CareerAI.pages.blog = function() {
               </div>
             </article>
           `).join('')}
-        </div>
-
-        <!-- Google AdSense Multiplex Unit (Matched Recommendations) -->
-        <div class="adsense-multiplex" style="margin-top:var(--space-12)">
-          <div class="adsense-multiplex__header">
-            <span>✨ ${isEn ? 'Recommended For You & Sponsored' : 'إعلانات ومحتوى مقترح لك'}</span>
-          </div>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-format="autorelaxed"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="6677889900"></ins>
         </div>
 
       </div>

@@ -78,31 +78,9 @@ window.CareerAI.pages.article = function(slug) {
           <img src="${article.image}" alt="${article.title}" loading="lazy">
         </div>
 
-        <!-- Google AdSense Compact Banner (Top) -->
-        <div class="adsense-container adsense-banner-sm">
-          <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-
         <!-- Main Article Content Body -->
         <div class="article-body">
           ${article.content}
-          
-          <!-- In-Article Google AdSense Unit -->
-          <div class="adsense-inarticle">
-            <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
-            <ins class="adsbygoogle"
-                 style="display:block; text-align:center;"
-                 data-ad-layout="in-article"
-                 data-ad-format="fluid"
-                 data-ad-client="ca-pub-7520213352755959"
-                 data-ad-slot="9876543210"></ins>
-          </div>
         </div>
 
         <!-- Verification Proof Code Box for Promotions & Readers -->
@@ -131,18 +109,6 @@ window.CareerAI.pages.article = function(slug) {
             ${article.keywords.split(',').map(k => `<span class="tag tag--accent">${k.trim()}</span>`).join(' ')}
           </div>
         ` : ''}
-
-        <!-- Google AdSense Multiplex Unit -->
-        <div class="adsense-multiplex">
-          <div class="adsense-multiplex__header">
-            <span>✨ ${isEn ? 'Recommended Content & Sponsored Ads' : 'إعلانات ومحتوى مقترح لك'}</span>
-          </div>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-format="autorelaxed"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="5544332211"></ins>
-        </div>
 
         <!-- Related Articles Section -->
         ${relatedArticles.length > 0 ? `

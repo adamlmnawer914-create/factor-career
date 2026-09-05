@@ -24,19 +24,6 @@ window.CareerAI.pages.terms = function() {
       </div>
     </div>
 
-    <!-- Google AdSense Compact Banner (Top) -->
-    <div class="container" style="padding-top:var(--space-4)">
-      <div class="adsense-container adsense-banner-sm">
-        <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Ad')}</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="9900113344"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
-
     <section class="section" style="padding-top:var(--space-6)">
       <div class="container">
         <div class="legal-content animate-on-scroll">

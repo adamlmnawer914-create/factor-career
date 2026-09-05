@@ -107,18 +107,6 @@ window.CareerAI.components.renderFooter = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   return `
-    <!-- Medium Rectangle Ad (300x250) Layout Section Wrapper -->
-    <div class="ad-section-wrapper">
-      <div class="ad-card-box">
-        <span class="adsense-label">إعلان ممول / Sponsored</span>
-        <div style="text-align:center; margin: 0 auto; display:flex; justify-content:center;">
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="auto"></ins>
-        </div>
-      </div>
-    </div>
 
     <footer class="footer">
       <div class="container">

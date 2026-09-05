@@ -235,17 +235,6 @@ window.CareerAI.pages.interviewQuestions = function() {
           🔒 <strong>الخصوصية:</strong> يتم استخدام بيانات الوظيفة والخبرات مؤقتاً في متصفحك لإعداد قائمة الأسئلة والإجابات، ولا يتم حفظ بياناتك على خوادمنا.
         </div>
 
-        <!-- Google AdSense Display Banner (Top) -->
-        <div class="adsense-container adsense-display">
-          <span class="adsense-label">إعلان ممول / Sponsored</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="1010202030"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-
         <!-- FORM CONFIGURATOR -->
         <div class="contact-form" style="padding:var(--space-8); border:1px solid var(--color-border); border-radius:var(--radius-2xl); background:white; margin-bottom:var(--space-8)">
           
@@ -432,19 +421,6 @@ window.CareerAI.pages.interviewQuestions = function() {
 
       </div>
     </section>
-
-    <!-- Google AdSense Display Banner (Middle) -->
-    <div class="container">
-      <div class="adsense-container adsense-display">
-        <span class="adsense-label">إعلان ممول / Sponsored</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="3030404050"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
 
     <!-- SEO & Educational Content Section -->
     <section class="section section--alt" style="padding:var(--space-16) 0">

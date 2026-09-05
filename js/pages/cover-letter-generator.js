@@ -140,17 +140,6 @@ window.CareerAI.pages.coverLetterGenerator = function() {
           🔒 <strong>الخصوصية:</strong> يتم استخدام بياناتك والوصف الوظيفي مؤقتاً لصياغة وتوليد رسالة التقديم داخل متصفحك ولا يتم حفظ بياناتك الشخصية نهائياً.
         </div>
 
-        <!-- Google AdSense Display Banner (Top) -->
-        <div class="adsense-container adsense-display">
-          <span class="adsense-label">إعلان ممول / Sponsored</span>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="5432167890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-
         <div class="cover-letter-workspace">
 
           <!-- FORM INPUT PANEL -->
@@ -343,19 +332,6 @@ window.CareerAI.pages.coverLetterGenerator = function() {
 
       </div>
     </section>
-
-    <!-- Google AdSense Display Banner (Middle) -->
-    <div class="container">
-      <div class="adsense-container adsense-display">
-        <span class="adsense-label">إعلان ممول / Sponsored</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="9876501234"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
 
     <!-- SEO & Educational Content Section -->
     <section class="section section--alt" style="padding:var(--space-16) 0">

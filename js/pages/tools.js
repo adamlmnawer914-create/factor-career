@@ -109,19 +109,6 @@ window.CareerAI.pages.tools = function() {
       </div>
     </div>
 
-    <!-- Top Google AdSense Banner Container -->
-    <div class="container" style="padding-top:var(--space-6)">
-      <div class="adsense-container adsense-banner">
-        <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / Sponsored')}</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7520213352755959"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </div>
-
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
       <div class="container">
         <!-- Categories Filter -->
@@ -159,16 +146,6 @@ window.CareerAI.pages.tools = function() {
             </div>
 
             ${i === 2 ? `
-              <!-- In-Feed Google AdSense Card (Seamlessly positioned inside Grid) -->
-              <div class="adsense-infeed" data-tool-category="all">
-                <span class="adsense-label">${t('common.sponsored', 'إعلان ممول / In-Feed Ad')}</span>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-format="fluid"
-                     data-ad-layout-key="-fb+5w+4e-db+86"
-                     data-ad-client="ca-pub-7520213352755959"
-                     data-ad-slot="4455667788"></ins>
-              </div>
             ` : ''}
           `).join('')}
         </div>
