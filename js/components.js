@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    Factor Career - Shared Components (Header & Footer)
    ============================================ */
 
@@ -41,7 +41,7 @@ window.CareerAI.components.renderHeader = function() {
   const langName = t('langName', 'English');
 
   return `
-    <a href="#main-content" class="skip-link">${t('nav.home', 'انتقل إلى المحتوى')}</a>
+    <a href="#main-content" class="skip-link">${t('nav.home', 'Ø§Ù†ØªÙ‚Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ù…Ø­ØªÙˆÙ‰')}</a>
     <header class="header" id="header">
       <div class="header__inner">
         <a href="/" class="header__logo" onclick="event.preventDefault();CareerAI.router.navigate('/')">
@@ -50,24 +50,24 @@ window.CareerAI.components.renderHeader = function() {
         </a>
 
         <nav class="nav" aria-label="Main Navigation">
-          <a href="/" class="nav__link" data-page="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-          <a href="/tools" class="nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-          <a href="/jobs" class="nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-          <a href="/blog" class="nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-          <a href="/about" class="nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
-          <a href="/contact" class="nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
+          <a href="/" class="nav__link" data-page="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
+          <a href="/tools" class="nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'Ø§Ù„Ø£Ø¯ÙˆØ§Øª')}</a>
+          <a href="/jobs" class="nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'Ø§Ù„ÙˆØ¸Ø§Ø¦Ù ÙˆØ§Ù„ÙØ±Øµ')}</a>
+          <a href="/blog" class="nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</a>
+          <a href="/about" class="nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'Ù…Ù† Ù†Ø­Ù†')}</a>
+          <a href="/contact" class="nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${t('nav.contact', 'ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§')}</a>
         </nav>
 
         <div style="display:flex;align-items:center;gap:var(--space-3)">
           <!-- Language Switcher Button -->
-          <button class="lang-btn" onclick="CareerAI.i18n.toggleLang()" title="تغيير اللغة / Change Language" aria-label="Change Language">
+          <button class="lang-btn" onclick="CareerAI.i18n.toggleLang()" title="ØªØºÙŠÙŠØ± Ø§Ù„Ù„ØºØ© / Change Language" aria-label="Change Language">
             <span style="width:15px;height:15px;display:inline-flex">${icons.globe}</span>
             <span>${langName}</span>
           </button>
 
-          <a href="/tools" class="btn btn--primary btn--sm nav__cta" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'ابدأ الآن')}</a>
+          <a href="/tools" class="btn btn--primary btn--sm nav__cta" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'Ø§Ø¨Ø¯Ø£ Ø§Ù„Ø¢Ù†')}</a>
 
-          <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false">
+          <button class="menu-toggle" id="menuToggle" aria-label="Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©" aria-expanded="false">
             <span class="menu-toggle__line"></span>
             <span class="menu-toggle__line"></span>
             <span class="menu-toggle__line"></span>
@@ -77,7 +77,7 @@ window.CareerAI.components.renderHeader = function() {
     </header>
 
     <div class="mobile-overlay" id="mobileOverlay"></div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="القائمة الجانبية">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠØ©">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-border-light)">
         <div class="header__logo-text">Factor<span>Career</span></div>
         <button class="lang-btn" onclick="CareerAI.i18n.toggleLang();CareerAI.closeMobileMenu()">
@@ -86,16 +86,16 @@ window.CareerAI.components.renderHeader = function() {
         </button>
       </div>
 
-      <a href="/" class="mobile-nav__link" data-page="/" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-      <a href="/tools" class="mobile-nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-      <a href="/jobs" class="mobile-nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-      <a href="/blog" class="mobile-nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-      <a href="/about" class="mobile-nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
-      <a href="/contact" class="mobile-nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
+      <a href="/" class="mobile-nav__link" data-page="/" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
+      <a href="/tools" class="mobile-nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.tools', 'Ø§Ù„Ø£Ø¯ÙˆØ§Øª')}</a>
+      <a href="/jobs" class="mobile-nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'Ø§Ù„ÙˆØ¸Ø§Ø¦Ù ÙˆØ§Ù„ÙØ±Øµ')}</a>
+      <a href="/blog" class="mobile-nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/blog')">${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</a>
+      <a href="/about" class="mobile-nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/about')">${t('nav.about', 'Ù…Ù† Ù†Ø­Ù†')}</a>
+      <a href="/contact" class="mobile-nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/contact')">${t('nav.contact', 'ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§')}</a>
       
       <div class="mobile-nav__cta">
-        <a href="/tools" class="btn btn--primary btn--full" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'ابدأ الآن')}</a>
-        <a href="https://www.profitableratecpmnetwork.com/kkyq5vxu?key=545c1203bb7c2b234427dd5282b9477c" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--full" style="margin-top:0.75rem;border-color:rgba(99,102,241,0.5);background:rgba(99,102,241,0.15);color:#a5b4fc;font-weight:700;">⭐ ${isEn ? 'Partner Career Offers ↗' : 'عروض التوظيف والفرص ↗'}</a>
+        <a href="/tools" class="btn btn--primary btn--full" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'Ø§Ø¨Ø¯Ø£ Ø§Ù„Ø¢Ù†')}</a>
+        <a href="https://www.profitableratecpmnetwork.com/kkyq5vxu?key=545c1203bb7c2b234427dd5282b9477c" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--full" style="margin-top:0.75rem;border-color:rgba(99,102,241,0.5);background:rgba(99,102,241,0.15);color:#a5b4fc;font-weight:700;">â­ ${isEn ? 'Partner Career Offers â†—' : 'Ø¹Ø±ÙˆØ¶ Ø§Ù„ØªÙˆØ¸ÙŠÙ ÙˆØ§Ù„ÙØ±Øµ â†—'}</a>
       </div>
     </nav>
   `;
@@ -112,8 +112,8 @@ window.CareerAI.components.renderFooter = function() {
     
     <!-- Adsterra 300x250 Display Banner (Safe SPA Iframe) -->
     <div class="adsterra-banner-wrapper" style="text-align:center;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-      <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'إعلان مُموَّل'}</span>
-      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;atOptions={'key':'1c9329dd45de120b1d202a69a46e1041','format':'iframe','height':250,'width':300,'params':{}};&lt;/script&gt;&lt;script src='https://www.highrevenueformat.com/1c9329dd45de120b1d202a69a46e1041/invoke.js'&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="300" height="250" style="border:none;overflow:hidden;display:block;margin:0 auto;" scrolling="no"></iframe>
+      <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'Ø¥Ø¹Ù„Ø§Ù† Ù…ÙÙ…ÙˆÙŽÙ‘Ù„'}</span>
+      <iframe src="/ads/display-banner.html" width="300" height="260" style="border:none;overflow:hidden;display:block;margin:0 auto;" scrolling="no" frameborder="0"></iframe>
     </div>
 
     <footer class="footer">
@@ -124,7 +124,7 @@ window.CareerAI.components.renderFooter = function() {
               <div class="header__logo-icon">FC</div>
               <div class="header__logo-text" style="color:white">Factor<span>Career</span></div>
             </a>
-            <p>${t('footer.brandDesc', 'نساعد الباحثين عن عمل في بناء مسيرة مهنية ناجحة باستخدام منصة Factor Career وأحدث أدوات الذكاء الاصطناعي المجانية.')}</p>
+            <p>${t('footer.brandDesc', 'Ù†Ø³Ø§Ø¹Ø¯ Ø§Ù„Ø¨Ø§Ø­Ø«ÙŠÙ† Ø¹Ù† Ø¹Ù…Ù„ ÙÙŠ Ø¨Ù†Ø§Ø¡ Ù…Ø³ÙŠØ±Ø© Ù…Ù‡Ù†ÙŠØ© Ù†Ø§Ø¬Ø­Ø© Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù… Ù…Ù†ØµØ© Factor Career ÙˆØ£Ø­Ø¯Ø« Ø£Ø¯ÙˆØ§Øª Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Ø§Ù„Ù…Ø¬Ø§Ù†ÙŠØ©.')}</p>
             <div class="footer__social">
               <a href="#" class="footer__social-link" aria-label="Twitter">${icons.twitter}</a>
               <a href="#" class="footer__social-link" aria-label="LinkedIn">${icons.linkedin}</a>
@@ -133,29 +133,29 @@ window.CareerAI.components.renderFooter = function() {
           </div>
 
           <div>
-            <h3 class="footer__title">${t('footer.quickLinks', 'روابط سريعة')}</h3>
+            <h3 class="footer__title">${t('footer.quickLinks', 'Ø±ÙˆØ§Ø¨Ø· Ø³Ø±ÙŠØ¹Ø©')}</h3>
             <div class="footer__links">
-              <a href="/" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-              <a href="/tools" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-              <a href="/jobs" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-              <a href="/blog" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-              <a href="/about" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
+              <a href="/" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
+              <a href="/tools" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'Ø§Ù„Ø£Ø¯ÙˆØ§Øª')}</a>
+              <a href="/jobs" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'Ø§Ù„ÙˆØ¸Ø§Ø¦Ù ÙˆØ§Ù„ÙØ±Øµ')}</a>
+              <a href="/blog" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</a>
+              <a href="/about" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'Ù…Ù† Ù†Ø­Ù†')}</a>
             </div>
           </div>
 
           <div>
-            <h3 class="footer__title">${t('footer.toolsTitle', 'الأدوات الذكية')}</h3>
+            <h3 class="footer__title">${t('footer.toolsTitle', 'Ø§Ù„Ø£Ø¯ÙˆØ§Øª Ø§Ù„Ø°ÙƒÙŠØ©')}</h3>
             <div class="footer__links">
-              <a href="/tools/resume-builder" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية'}</a>
-              <a href="/tools/resume-analyzer" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-analyzer')">${isEn ? 'ATS Resume Checker' : 'محلل وفاحص السيرة ATS'}</a>
-              <a href="/tools/cover-letter-generator" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/cover-letter-generator')">${isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم'}</a>
-              <a href="/tools/interview-questions" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/interview-questions')">${isEn ? 'Interview Questions Coach' : 'مولد أسئلة المقابلات'}</a>
-              <a href="/tools/ats-keywords" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/ats-keywords')">${isEn ? 'ATS Keywords Matcher' : 'مستخرج كلمات ATS'}</a>
+              <a href="/tools/resume-builder" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">${isEn ? 'AI Resume Builder' : 'Ù…Ù†Ø´Ø¦ Ø§Ù„Ø³ÙŠØ±Ø© Ø§Ù„Ø°Ø§ØªÙŠØ©'}</a>
+              <a href="/tools/resume-analyzer" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-analyzer')">${isEn ? 'ATS Resume Checker' : 'Ù…Ø­Ù„Ù„ ÙˆÙØ§Ø­Øµ Ø§Ù„Ø³ÙŠØ±Ø© ATS'}</a>
+              <a href="/tools/cover-letter-generator" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/cover-letter-generator')">${isEn ? 'Cover Letter Generator' : 'Ù…ÙˆÙ„Ø¯ Ø±Ø³Ø§Ø¦Ù„ Ø§Ù„ØªÙ‚Ø¯ÙŠÙ…'}</a>
+              <a href="/tools/interview-questions" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/interview-questions')">${isEn ? 'Interview Questions Coach' : 'Ù…ÙˆÙ„Ø¯ Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ù…Ù‚Ø§Ø¨Ù„Ø§Øª'}</a>
+              <a href="/tools/ats-keywords" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/ats-keywords')">${isEn ? 'ATS Keywords Matcher' : 'Ù…Ø³ØªØ®Ø±Ø¬ ÙƒÙ„Ù…Ø§Øª ATS'}</a>
             </div>
           </div>
 
           <div>
-            <h3 class="footer__title">${t('footer.contactTitle', 'تواصل معنا')}</h3>
+            <h3 class="footer__title">${t('footer.contactTitle', 'ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§')}</h3>
             <div class="footer__links">
               <a href="mailto:careerfactor@gmail.com" class="footer__link">
                 <span style="width:16px;height:16px;display:inline-flex">${icons.mail}</span>
@@ -167,17 +167,17 @@ window.CareerAI.components.renderFooter = function() {
               </a>
               <a href="/contact" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">
                 <span style="width:16px;height:16px;display:inline-flex">${icons.mapPin}</span>
-                ${t('footer.location', 'المملكة المغربية، سوق السبت أولاد النمة')}
+                ${t('footer.location', 'Ø§Ù„Ù…Ù…Ù„ÙƒØ© Ø§Ù„Ù…ØºØ±Ø¨ÙŠØ©ØŒ Ø³ÙˆÙ‚ Ø§Ù„Ø³Ø¨Øª Ø£ÙˆÙ„Ø§Ø¯ Ø§Ù„Ù†Ù…Ø©')}
               </a>
             </div>
           </div>
         </div>
 
         <div class="footer__bottom">
-          <p class="footer__copyright">© ${new Date().getFullYear()} Factor Career. ${t('footer.rights', 'جميع الحقوق محفوظة.')}</p>
+          <p class="footer__copyright">Â© ${new Date().getFullYear()} Factor Career. ${t('footer.rights', 'Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.')}</p>
           <div class="footer__bottom-links">
-            <a href="/privacy" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${t('footer.privacy', 'سياسة الخصوصية')}</a>
-            <a href="/terms" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${t('footer.terms', 'شروط الاستخدام')}</a>
+            <a href="/privacy" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${t('footer.privacy', 'Ø³ÙŠØ§Ø³Ø© Ø§Ù„Ø®ØµÙˆØµÙŠØ©')}</a>
+            <a href="/terms" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${t('footer.terms', 'Ø´Ø±ÙˆØ· Ø§Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…')}</a>
           </div>
         </div>
       </div>
@@ -188,3 +188,4 @@ window.CareerAI.components.renderFooter = function() {
     </button>
   `;
 };
+

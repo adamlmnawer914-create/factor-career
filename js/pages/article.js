@@ -129,7 +129,7 @@ window.CareerAI.pages.article = function(slug) {
     <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
     <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
       <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'Ù…Ø­ØªÙˆÙ‰ Ù…ÙÙ…ÙˆÙŽÙ‘Ù„ ÙˆÙ…ÙÙ‚ØªØ±Ø­'}</span>
-      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:flex-start;min-height:100px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;container-88b8ff02af33c15d529cd7a1ab450129&quot;&gt;&lt;/div&gt;&lt;script async=&quot;async&quot; data-cfasync=&quot;false&quot; src=&quot;https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js&quot;&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="250" style="border:none;overflow:hidden;display:block;width:100%;min-height:100px;" scrolling="no" frameborder="0"></iframe>
+      <iframe src="/ads/native-banner.html" width="100%" height="250" style="border:none;overflow:hidden;display:block;width:100%;min-height:120px;" scrolling="no" frameborder="0"></iframe>
     </div>
         ` : ''}
 
@@ -152,4 +152,5 @@ window.CareerAI.copyProofCode = function(code) {
     prompt('Copy Proof Code:', code);
   });
 };
+
 
