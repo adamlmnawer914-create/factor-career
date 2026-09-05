@@ -846,3 +846,57 @@ ins.adsbygoogle {
   }
 }
 
+
+/* --- Adsterra Mobile & Desktop Responsiveness --- */
+.adsterra-banner-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.adsterra-native-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+#container-88b8ff02af33c15d529cd7a1ab450129 {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  overflow: hidden !important;
+}
+
+#container-88b8ff02af33c15d529cd7a1ab450129 iframe,
+#container-88b8ff02af33c15d529cd7a1ab450129 img {
+  max-width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .adsterra-banner-wrapper {
+    padding: 1.25rem 0.5rem !important;
+  }
+  .adsterra-native-container {
+    padding: 0 0.75rem !important;
+    margin: 1.5rem auto !important;
+  }
+  .hero__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  .hero__actions .btn {
+    width: 100% !important;
+    margin: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}

@@ -30,60 +30,12 @@ window.CareerAI.pages.blog = function() {
     </div>
 
     
-    <!-- Adsterra Native Banner (Safe SPA Iframe) -->
-    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;">
+    
+    <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
+    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
       <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
-      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;font-family:sans-serif;background:transparent;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script async='async' data-cfasync='false' src='https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js'&gt;&lt;/script&gt;&lt;div id='container-88b8ff02af33c15d529cd7a1ab450129'&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="280" style="border:none;overflow:hidden;max-width:900px;display:block;margin:0 auto;" scrolling="no"></iframe>
+      <div id="container-88b8ff02af33c15d529cd7a1ab450129" style="width:100%;min-height:100px;display:block;margin:0 auto;box-sizing:border-box;"></div>
     </div>
-
-    <section class="section">
-      <div class="container">
-
-        <!-- Dynamic Category Filters -->
-        <div class="tools-page__filter animate-on-scroll">
-          <button class="tools-page__filter-btn active" data-blog-cat="all" onclick="CareerAI.filterBlogArticles('all')">
-            ${isEn ? 'All Articles' : 'جميع المقالات'} (${articles.length})
-          </button>
-          ${categories.map(cat => {
-            const count = articles.filter(a => a.categoryId === cat.id).length;
-            return `
-              <button class="tools-page__filter-btn" data-blog-cat="${cat.id}" onclick="CareerAI.filterBlogArticles('${cat.id}')">
-                ${cat.name} (${count})
-              </button>
-            `;
-          }).join('')}
-        </div>
-
-        <!-- Articles Grid -->
-        <div class="blog-page__grid" id="blogArticlesGrid">
-          ${articles.length === 0 ? `
-            <div style="grid-column:1/-1;text-align:center;padding:var(--space-16)">
-              <h3>${isEn ? 'No articles available yet' : 'لا توجد مقالات منشورة حالياً'}</h3>
-              <p>${isEn ? 'We are preparing new articles. Check back soon!' : 'نعمل على إضافة مقالات جديدة باستمرار. تابعنا قريباً!'}</p>
-            </div>
-          ` : ''}
-
-          ${articles.map((article, i) => `
-            <article class="blog-card animate-on-scroll delay-${(i % 3) + 1}" data-article-cat="${article.categoryId}" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('/blog/${article.slug}')">
-              <div class="blog-card__image" style="height:200px">
-                <img src="${article.image}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-              </div>
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <span class="blog-card__tag">${article.categoryName}</span>
-                  <span style="display:flex;align-items:center;gap:4px">
-                    <span style="width:14px;height:14px;display:inline-flex">${icons.clock}</span>
-                    ${article.publishedAt}
-                  </span>
-                </div>
-                <h2 class="blog-card__title">${article.title}</h2>
-                <p class="blog-card__excerpt">${article.excerpt}</p>
-              </div>
-            </article>
-          `).join('')}
-        </div>
-
-      </div>
     </section>
   `;
 };

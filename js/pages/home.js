@@ -225,6 +225,13 @@ window.CareerAI.pages.home = function() {
       </div>
     </section>
 
+    
+    <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
+    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
+      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
+      <div id="container-88b8ff02af33c15d529cd7a1ab450129" style="width:100%;min-height:100px;display:block;margin:0 auto;box-sizing:border-box;"></div>
+    </div>
+
     <!-- FAQ Section -->
     <section class="section" id="faq">
       <div class="container container--narrow">

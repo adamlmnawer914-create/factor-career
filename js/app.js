@@ -99,6 +99,11 @@ window.CareerAI.router = {
         if (window.CareerAI.initAnimations) {
           window.CareerAI.initAnimations();
         }
+
+        // Dynamic Adsterra Native Banner loader
+        if (window.CareerAI.initAdsterraNative) {
+          window.CareerAI.initAdsterraNative();
+        }
       }
     } catch (err) {
       console.error('Router navigation error:', err);
@@ -217,6 +222,26 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
     item.classList.add('active');
     body.style.maxHeight = body.scrollHeight + 'px';
   }
+};
+
+
+/* --- Adsterra Native Banner Dynamic Initializer --- */
+window.CareerAI.initAdsterraNative = function() {
+  setTimeout(() => {
+    const container = document.getElementById('container-88b8ff02af33c15d529cd7a1ab450129');
+    if (!container) return;
+
+    // Remove existing script if already injected
+    const existing = document.getElementById('adsterra-native-script');
+    if (existing) existing.remove();
+
+    const script = document.createElement('script');
+    script.id = 'adsterra-native-script';
+    script.async = true;
+    script.setAttribute('data-cfasync', 'false');
+    script.src = 'https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js';
+    document.head.appendChild(script);
+  }, 200);
 };
 
 /* SPA Google AdSense Removed */
@@ -341,6 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Router
   window.CareerAI.router.init();
+
+  // Initial Adsterra Native check
+  if (window.CareerAI.initAdsterraNative) {
+    window.CareerAI.initAdsterraNative();
+  }
 });
 
 /* --- Global Go Back Handler --- */
