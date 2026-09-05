@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    Factor Career - Dynamic Blog Page (Multilingual)
    ============================================ */
 
@@ -19,12 +19,12 @@ window.CareerAI.pages.blog = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
             <span>/</span>
-            <span>${t('nav.blog', 'المدونة')}</span>
+            <span>${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</span>
           </div>
-          <h1 class="page-header__title">${isEn ? 'Career Insights & Knowledge Hub' : 'المدونة والمقالات المهنية'}</h1>
-          <p class="page-header__subtitle">${isEn ? 'Expert career advice, interview strategies, resume optimization, and industry guides.' : 'دليل شامل ومقالات متخصصة لتطوير مسيرتك المهنية واجتياز المقابلات والتوظيف.'}</p>
+          <h1 class="page-header__title">${isEn ? 'Career Insights & Knowledge Hub' : 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø© ÙˆØ§Ù„Ù…Ù‚Ø§Ù„Ø§Øª Ø§Ù„Ù…Ù‡Ù†ÙŠØ©'}</h1>
+          <p class="page-header__subtitle">${isEn ? 'Expert career advice, interview strategies, resume optimization, and industry guides.' : 'Ø¯Ù„ÙŠÙ„ Ø´Ø§Ù…Ù„ ÙˆÙ…Ù‚Ø§Ù„Ø§Øª Ù…ØªØ®ØµØµØ© Ù„ØªØ·ÙˆÙŠØ± Ù…Ø³ÙŠØ±ØªÙƒ Ø§Ù„Ù…Ù‡Ù†ÙŠØ© ÙˆØ§Ø¬ØªÙŠØ§Ø² Ø§Ù„Ù…Ù‚Ø§Ø¨Ù„Ø§Øª ÙˆØ§Ù„ØªÙˆØ¸ÙŠÙ.'}</p>
         </div>
       </div>
     </div>
@@ -33,8 +33,8 @@ window.CareerAI.pages.blog = function() {
     
     <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
     <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
-      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
-      <div id="container-88b8ff02af33c15d529cd7a1ab450129" style="width:100%;min-height:100px;display:block;margin:0 auto;box-sizing:border-box;"></div>
+      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'Ù…Ø­ØªÙˆÙ‰ Ù…ÙÙ…ÙˆÙŽÙ‘Ù„ ÙˆÙ…ÙÙ‚ØªØ±Ø­'}</span>
+      <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:flex-start;min-height:100px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;container-88b8ff02af33c15d529cd7a1ab450129&quot;&gt;&lt;/div&gt;&lt;script async=&quot;async&quot; data-cfasync=&quot;false&quot; src=&quot;https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js&quot;&gt;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="250" style="border:none;overflow:hidden;display:block;width:100%;min-height:100px;" scrolling="no" frameborder="0"></iframe>
     </div>
     </section>
   `;
@@ -62,3 +62,4 @@ window.CareerAI.pages.blogSEO = {
   description: 'Explore comprehensive guides, resume tips, interview strategies, and actionable advice to advance your career.',
   keywords: 'Career Blog, Resume Tips, Interview Prep, Career Advice, Factor Career'
 };
+
