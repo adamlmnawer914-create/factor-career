@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    Factor Career - Shared Components (Header & Footer)
    ============================================ */
 
@@ -113,7 +113,7 @@ window.CareerAI.components.renderFooter = function() {
     <!-- Adsterra 300x250 Display Banner (Safe SPA Iframe) -->
     <div class="adsterra-banner-wrapper" style="text-align:center;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
       <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'Ø¥Ø¹Ù„Ø§Ù† Ù…ÙÙ…ÙˆÙŽÙ‘Ù„'}</span>
-      <iframe src="/ads/display-banner.html" width="300" height="260" style="border:none;overflow:hidden;display:block;margin:0 auto;" scrolling="no" frameborder="0"></iframe>
+      <iframe src="/ads/display-banner.html" width="300" height="280" style="border:none;overflow:hidden;display:block;margin:0 auto;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
     </div>
 
     <footer class="footer">

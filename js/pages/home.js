@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    Factor Career - Home Page (Multilingual Support)
    ============================================ */
 
@@ -229,7 +229,7 @@ window.CareerAI.pages.home = function() {
     <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
     <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
       <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'Ù…Ø­ØªÙˆÙ‰ Ù…ÙÙ…ÙˆÙŽÙ‘Ù„ ÙˆÙ…ÙÙ‚ØªØ±Ø­'}</span>
-      <iframe src="/ads/native-banner.html" width="100%" height="250" style="border:none;overflow:hidden;display:block;width:100%;min-height:120px;" scrolling="no" frameborder="0"></iframe>
+      <iframe src="/ads/native-banner.html" width="100%" height="300" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
     </div>
 
     <!-- FAQ Section -->
