@@ -52,11 +52,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/variables.css?v=20260906_v3">
+  <link rel="stylesheet" href="/css/base.css?v=20260906_v3">
+  <link rel="stylesheet" href="/css/components.css?v=20260906_v3">
+  <link rel="stylesheet" href="/css/layout.css?v=20260906_v3">
+  <link rel="stylesheet" href="/css/pages.css?v=20260906_v3">
 
   <!-- JSON-LD Structured Data for SEO -->
   <script type="application/ld+json">
@@ -109,26 +109,47 @@
   </div>
 
   <!-- JavaScript Engine & Scripts -->
-  <script src="/js/i18n.js"></script>
-  <script src="/js/db.js"></script>
-  <script src="/js/components.js"></script>
-  <script src="/js/pages/home.js"></script>
-  <script src="/js/pages/tools.js"></script>
-  <script src="/js/pages/resume-builder.js"></script>
-  <script src="/js/pages/resume-analyzer.js"></script>
-  <script src="/js/pages/cover-letter-generator.js"></script>
-  <script src="/js/pages/interview-questions.js"></script>
-  <script src="/js/pages/ats-keywords.js"></script>
-  <script src="/js/pages/jobs.js"></script>
-  <script src="/js/pages/blog.js"></script>
-  <script src="/js/pages/article.js"></script>
-  <script src="/js/pages/contact.js"></script>
-  <script src="/js/pages/about.js"></script>
-  <script src="/js/pages/privacy.js"></script>
-  <script src="/js/pages/terms.js"></script>
-  <script src="/js/pages/admin-login.js"></script>
-  <script src="/js/pages/admin-dashboard.js"></script>
-  <script src="/js/app.js"></script>
+  <script src="/js/i18n.js?v=20260906_v3"></script>
+  <script src="/js/db.js?v=20260906_v3"></script>
+  <script src="/js/components.js?v=20260906_v3"></script>
+  <script src="/js/pages/home.js?v=20260906_v3"></script>
+  <script src="/js/pages/tools.js?v=20260906_v3"></script>
+  <script src="/js/pages/resume-builder.js?v=20260906_v3"></script>
+  <script src="/js/pages/resume-analyzer.js?v=20260906_v3"></script>
+  <script src="/js/pages/cover-letter-generator.js?v=20260906_v3"></script>
+  <script src="/js/pages/interview-questions.js?v=20260906_v3"></script>
+  <script src="/js/pages/ats-keywords.js?v=20260906_v3"></script>
+  <script src="/js/pages/jobs.js?v=20260906_v3"></script>
+  <script src="/js/pages/blog.js?v=20260906_v3"></script>
+  <script src="/js/pages/article.js?v=20260906_v3"></script>
+  <script src="/js/pages/contact.js?v=20260906_v3"></script>
+  <script src="/js/pages/about.js?v=20260906_v3"></script>
+  <script src="/js/pages/privacy.js?v=20260906_v3"></script>
+  <script src="/js/pages/terms.js?v=20260906_v3"></script>
+  <script src="/js/pages/admin-login.js?v=20260906_v3"></script>
+  <script src="/js/pages/admin-dashboard.js?v=20260906_v3"></script>
+  <script src="/js/app.js?v=20260906_v3"></script>
 
+
+  <!-- Failsafe Recovery Script against White Screen -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        var main = document.getElementById('main-content');
+        if (main && (!main.children.length || main.innerHTML.indexOf('<!-- Dynamic Page Content') !== -1)) {
+          console.warn('Failsafe triggered: Rendering home page directly');
+          if (window.CareerAI && window.CareerAI.pages && window.CareerAI.pages.home) {
+            main.innerHTML = window.CareerAI.pages.home();
+          }
+          var header = document.getElementById('header');
+          if (!header && window.CareerAI && window.CareerAI.components) {
+            var app = document.getElementById('app');
+            try { app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader()); } catch(e){}
+            try { app.insertAdjacentHTML('beforeend', window.CareerAI.components.renderFooter()); } catch(e){}
+          }
+        }
+      }, 1200);
+    });
+  </script>
 </body>
 </html>

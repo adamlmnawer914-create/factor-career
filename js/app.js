@@ -300,8 +300,12 @@ window.CareerAI.initAnimations = function() {
 /* --- Global Event Listeners & Boot --- */
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n system first (detects language & renders initial header/footer)
-  if (window.CareerAI.i18n) {
-    window.CareerAI.i18n.init();
+  try {
+    if (window.CareerAI.i18n) {
+      window.CareerAI.i18n.init();
+    }
+  } catch(err) {
+    console.error('Error during i18n.init:', err);
   }
 
   // Setup Mobile Menu Events (delegated)
@@ -346,7 +350,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize Router
-  window.CareerAI.router.init();
+  try {
+    if (window.CareerAI.router) {
+      window.CareerAI.router.init();
+    }
+  } catch(err) {
+    console.error('Error during router.init:', err);
+    var main = document.getElementById('main-content');
+    if (main && window.CareerAI.pages && window.CareerAI.pages.home) {
+      main.innerHTML = window.CareerAI.pages.home();
+    }
+  }
 
 
 });

@@ -323,8 +323,8 @@ window.CareerAI.i18n = {
     if (existingBackToTop) existingBackToTop.remove();
 
     if (app && window.CareerAI.components) {
-      app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader());
-      app.insertAdjacentHTML('beforeend', window.CareerAI.components.renderFooter());
+      try { app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader()); } catch(e){ console.error(e); }
+      try { app.insertAdjacentHTML('beforeend', window.CareerAI.components.renderFooter()); } catch(e){ console.error(e); }
     }
 
     // Re-render current page route
