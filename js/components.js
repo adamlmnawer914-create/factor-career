@@ -38,6 +38,7 @@ window.CareerAI.icons = {
 window.CareerAI.components.renderHeader = function() {
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const langName = t('langName', 'English');
 
   return `
