@@ -16,10 +16,10 @@ window.CareerAI.pages.article = function(slug) {
       <div class="page-header">
         <div class="container">
           <div class="page-header__content">
-            <h1 class="page-header__title">${isEn ? 'Article Not Found' : 'Ø§Ù„Ù…Ù‚Ø§Ù„ ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯'}</h1>
-            <p class="page-header__subtitle">${isEn ? 'Sorry, the article you are looking for does not exist or has been removed.' : 'Ø¹Ø°Ø±Ø§Ù‹ØŒ Ø§Ù„Ù…Ù‚Ø§Ù„ Ø§Ù„Ø°ÙŠ ØªØ­Ø§ÙˆÙ„ Ø§Ù„ÙˆØµÙˆÙ„ Ø¥Ù„ÙŠÙ‡ ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯ Ø£Ùˆ ØªÙ… Ø­Ø°ÙÙ‡.'}</p>
+            <h1 class="page-header__title">${isEn ? 'Article Not Found' : 'المقال غير موجود'}</h1>
+            <p class="page-header__subtitle">${isEn ? 'Sorry, the article you are looking for does not exist or has been removed.' : 'عذراً، المقال الذي تحاول الوصول إليه غير موجود أو تم حذفه.'}</p>
             <a href="/blog" class="btn btn--white" style="margin-top:var(--space-6)" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">
-              ${isEn ? 'Back to Blog' : 'Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©'}
+              ${isEn ? 'Back to Blog' : 'العودة إلى المدونة'}
             </a>
           </div>
         </div>
@@ -42,9 +42,9 @@ window.CareerAI.pages.article = function(slug) {
     <div class="article-header">
       <div class="container container--narrow">
         <div class="page-header__breadcrumb" style="justify-content:flex-start;margin-bottom:var(--space-4)">
-          <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
+          <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
           <span>/</span>
-          <a href="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</a>
+          <a href="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
           <span>/</span>
           <span>${article.categoryName}</span>
         </div>
@@ -60,7 +60,7 @@ window.CareerAI.pages.article = function(slug) {
             <div class="article-header__avatar">${(article.author || 'F')[0]}</div>
             <span>${article.author || 'Factor Career Team'}</span>
           </div>
-          <span>â€¢</span>
+          <span>•</span>
           <div class="article-header__date">
             <span style="width:16px;height:16px;display:inline-flex">${icons.clock}</span>
             <span>${article.publishedAt}</span>
@@ -88,16 +88,16 @@ window.CareerAI.pages.article = function(slug) {
           <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:var(--space-2)">
             <span style="width:20px;height:20px;color:var(--color-primary);display:inline-flex">${icons.shield || icons.check}</span>
             <strong style="font-size:var(--text-lg);color:var(--color-text-dark)">
-              ${isEn ? 'Article Verification Proof Code' : 'Ø±Ù…Ø² Ø¥Ø«Ø¨Ø§Øª Ù‚Ø±Ø§Ø¡Ø© Ø§Ù„Ù…Ù‚Ø§Ù„'}
+              ${isEn ? 'Article Verification Proof Code' : 'رمز إثبات قراءة المقال'}
             </strong>
           </div>
           <p style="font-size:var(--text-sm);color:var(--color-text-light);margin-bottom:var(--space-4)">
-            ${isEn ? 'Use this unique code as proof of completion for reading tasks and campaigns.' : 'Ø§Ø³ØªØ®Ø¯Ù… Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ ÙƒØ¥Ø«Ø¨Ø§Øª Ù„Ù‚Ø±Ø§Ø¡Ø© ÙˆØªØµÙØ­ Ø§Ù„Ù…Ù‚Ø§Ù„ Ù„Ù„Ù…Ù‡Ø§Ù… Ø§Ù„ØªØ±ÙˆÙŠØ¬ÙŠØ©.'}
+            ${isEn ? 'Use this unique code as proof of completion for reading tasks and campaigns.' : 'استخدم هذا الكود كإثبات لقراءة وتصفح المقال للمهام الترويجية.'}
           </p>
           <div style="display:inline-flex;align-items:center;gap:var(--space-3);background:white;padding:var(--space-3) var(--space-6);border-radius:var(--radius-md);border:1px solid var(--color-border-light);box-shadow:0 2px 8px rgba(0,0,0,0.06)">
             <code id="proofCodeValue" style="font-family:monospace;font-size:var(--text-lg);font-weight:700;letter-spacing:1.5px;color:var(--color-primary)">${proofCode}</code>
             <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyProofCode('${proofCode}')" style="padding:6px 14px;font-size:var(--text-sm)">
-              <span id="copyProofText">${isEn ? 'Copy Code' : 'Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯'}</span>
+              <span id="copyProofText">${isEn ? 'Copy Code' : 'نسخ الكود'}</span>
             </button>
           </div>
         </div>
@@ -105,15 +105,21 @@ window.CareerAI.pages.article = function(slug) {
         <!-- Keywords / Tags -->
         ${article.keywords ? `
           <div class="article-tags">
-            <span class="article-tags__label">${isEn ? 'Keywords:' : 'Ø§Ù„ÙƒÙ„Ù…Ø§Øª Ø§Ù„Ù…ÙØªØ§Ø­ÙŠØ©:'}</span>
+            <span class="article-tags__label">${isEn ? 'Keywords:' : 'الكلمات المفتاحية:'}</span>
             ${article.keywords.split(',').map(k => `<span class="tag tag--accent">${k.trim()}</span>`).join(' ')}
           </div>
         ` : ''}
 
+        <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
+        <div class="adsterra-native-container container" style="margin:2.5rem auto 1.5rem;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
+          <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
+          <iframe src="/ads/native-banner.html" width="100%" height="280" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        </div>
+
         <!-- Related Articles Section -->
         ${relatedArticles.length > 0 ? `
-          <div class="related-articles">
-            <h3 class="related-articles__title">${isEn ? 'Related Articles' : 'Ù…Ù‚Ø§Ù„Ø§Øª Ø°Ø§Øª ØµÙ„Ø©'}</h3>
+          <div class="related-articles" style="margin-top:2rem;">
+            <h3 class="related-articles__title">${isEn ? 'Related Articles' : 'مقالات ذات صلة'}</h3>
             <div class="grid grid--3">
               ${relatedArticles.map(rel => `
                 <article class="blog-card" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('/blog/${rel.slug}')">
@@ -124,13 +130,10 @@ window.CareerAI.pages.article = function(slug) {
                     <span class="blog-card__tag" style="margin-bottom:var(--space-2);display:inline-block">${rel.categoryName}</span>
                     <h4 class="blog-card__title" style="font-size:var(--text-base);line-height:1.4">${rel.title}</h4>
                   </div>
-                
-    
-    <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
-    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
-      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'Ù…Ø­ØªÙˆÙ‰ Ù…ÙÙ…ÙˆÙŽÙ‘Ù„ ÙˆÙ…ÙÙ‚ØªØ±Ø­'}</span>
-      <iframe src="/ads/native-banner.html" width="100%" height="300" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-    </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
         ` : ''}
 
       </div>
@@ -143,14 +146,12 @@ window.CareerAI.copyProofCode = function(code) {
     const btn = document.getElementById('copyProofText');
     const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
     if (btn) {
-      btn.textContent = isEn ? 'Copied! âœ“' : 'ØªÙ… Ø§Ù„Ù†Ø³Ø®! âœ“';
+      btn.textContent = isEn ? 'Copied! ✓' : 'تم النسخ! ✓';
       setTimeout(() => {
-        btn.textContent = isEn ? 'Copy Code' : 'Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯';
+        btn.textContent = isEn ? 'Copy Code' : 'نسخ الكود';
       }, 2500);
     }
   }).catch(() => {
     prompt('Copy Proof Code:', code);
   });
 };
-
-

@@ -19,23 +19,70 @@ window.CareerAI.pages.blog = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©')}</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <span>${t('nav.blog', 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©')}</span>
+            <span>${t('nav.blog', 'المدونة')}</span>
           </div>
-          <h1 class="page-header__title">${isEn ? 'Career Insights & Knowledge Hub' : 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø© ÙˆØ§Ù„Ù…Ù‚Ø§Ù„Ø§Øª Ø§Ù„Ù…Ù‡Ù†ÙŠØ©'}</h1>
-          <p class="page-header__subtitle">${isEn ? 'Expert career advice, interview strategies, resume optimization, and industry guides.' : 'Ø¯Ù„ÙŠÙ„ Ø´Ø§Ù…Ù„ ÙˆÙ…Ù‚Ø§Ù„Ø§Øª Ù…ØªØ®ØµØµØ© Ù„ØªØ·ÙˆÙŠØ± Ù…Ø³ÙŠØ±ØªÙƒ Ø§Ù„Ù…Ù‡Ù†ÙŠØ© ÙˆØ§Ø¬ØªÙŠØ§Ø² Ø§Ù„Ù…Ù‚Ø§Ø¨Ù„Ø§Øª ÙˆØ§Ù„ØªÙˆØ¸ÙŠÙ.'}</p>
+          <h1 class="page-header__title">${isEn ? 'Career Insights & Knowledge Hub' : 'المدونة والمقالات المهنية'}</h1>
+          <p class="page-header__subtitle">${isEn ? 'Expert career advice, interview strategies, resume optimization, and industry guides.' : 'دليل شامل ومقالات متخصصة لتطوير مسيرتك المهنية واجتياز المقابلات والتوظيف.'}</p>
         </div>
       </div>
     </div>
 
-    
-    
-    <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
-    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
-      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'Ù…Ø­ØªÙˆÙ‰ Ù…ÙÙ…ÙˆÙŽÙ‘Ù„ ÙˆÙ…ÙÙ‚ØªØ±Ø­'}</span>
-      <iframe src="/ads/native-banner.html" width="100%" height="300" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+    <!-- Adsterra Native Banner (Top of Blog) -->
+    <div class="adsterra-native-container container" style="margin:2rem auto 1rem;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
+      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
+      <iframe src="/ads/native-banner.html" width="100%" height="280" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
     </div>
+
+    <section class="section" style="padding-top:var(--space-4)">
+      <div class="container">
+
+        <!-- Dynamic Category Filters -->
+        <div class="tools-page__filter animate-on-scroll">
+          <button class="tools-page__filter-btn active" data-blog-cat="all" onclick="CareerAI.filterBlogArticles('all')">
+            ${isEn ? 'All Articles' : 'جميع المقالات'} (${articles.length})
+          </button>
+          ${categories.map(cat => {
+            const count = articles.filter(a => a.categoryId === cat.id).length;
+            return `
+              <button class="tools-page__filter-btn" data-blog-cat="${cat.id}" onclick="CareerAI.filterBlogArticles('${cat.id}')">
+                ${cat.name} (${count})
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="blog-page__grid" id="blogArticlesGrid">
+          ${articles.length === 0 ? `
+            <div style="grid-column:1/-1;text-align:center;padding:var(--space-16)">
+              <h3>${isEn ? 'No articles available yet' : 'لا توجد مقالات منشورة حالياً'}</h3>
+              <p>${isEn ? 'We are preparing new articles. Check back soon!' : 'نعمل على إضافة مقالات جديدة باستمرار. تابعنا قريباً!'}</p>
+            </div>
+          ` : ''}
+
+          ${articles.map((article, i) => `
+            <article class="blog-card animate-on-scroll delay-${(i % 3) + 1}" data-article-cat="${article.categoryId}" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('/blog/${article.slug}')">
+              <div class="blog-card__image" style="height:200px">
+                <img src="${article.image}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+              </div>
+              <div class="blog-card__content">
+                <div class="blog-card__meta">
+                  <span class="blog-card__tag">${article.categoryName}</span>
+                  <span style="display:flex;align-items:center;gap:4px">
+                    <span style="width:14px;height:14px;display:inline-flex">${icons.clock}</span>
+                    ${article.publishedAt}
+                  </span>
+                </div>
+                <h2 class="blog-card__title">${article.title}</h2>
+                <p class="blog-card__excerpt">${article.excerpt}</p>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+
+      </div>
     </section>
   `;
 };
@@ -62,5 +109,3 @@ window.CareerAI.pages.blogSEO = {
   description: 'Explore comprehensive guides, resume tips, interview strategies, and actionable advice to advance your career.',
   keywords: 'Career Blog, Resume Tips, Interview Prep, Career Advice, Factor Career'
 };
-
-

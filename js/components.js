@@ -38,6 +38,7 @@ window.CareerAI.icons = {
 window.CareerAI.components.renderHeader = function() {
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const langName = t('langName', 'English');
 
   return `
@@ -189,3 +190,16 @@ window.CareerAI.components.renderFooter = function() {
   `;
 };
 
+
+
+/* --- Adsterra Native Banner Responsive Height Sync --- */
+window.addEventListener('message', function(event) {
+  if (event.data && event.data.type === 'adsterra-native-resize' && typeof event.data.height === 'number') {
+    var iframes = document.querySelectorAll('iframe[src*="native-banner.html"]');
+    iframes.forEach(function(f) {
+      var newHeight = event.data.height + 15;
+      f.style.height = newHeight + 'px';
+      f.height = newHeight;
+    });
+  }
+});
