@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    CareerAI - Main App & SPA Router
    ============================================ */
 
@@ -20,8 +20,8 @@ window.CareerAI.router = {
     '/contact': { render: window.CareerAI.pages.contact, seo: window.CareerAI.pages.contactSEO },
     '/privacy': { render: window.CareerAI.pages.privacy, seo: window.CareerAI.pages.privacySEO },
     '/terms': { render: window.CareerAI.pages.terms, seo: window.CareerAI.pages.termsSEO },
-    '/admin/login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù…Ø¯ÙŠØ± | Factor Career', description: 'ØµÙØ­Ø© ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù…Ø¯ÙŠØ±' } },
-    '/admin': { render: window.CareerAI.pages.adminDashboard, seo: { title: 'Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… Ø§Ù„Ù…Ø¯ÙŠØ± | Factor Career', description: 'Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ù…Ø­ØªÙˆÙ‰' } }
+    '/admin/login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'تسجيل دخول المدير | Factor Career', description: 'صفحة تسجيل دخول المدير' } },
+    '/admin': { render: window.CareerAI.pages.adminDashboard, seo: { title: 'لوحة تحكم المدير | Factor Career', description: 'لوحة تحكم إدارة المحتوى' } }
   },
 
   init: function() {
@@ -100,7 +100,10 @@ window.CareerAI.router = {
           window.CareerAI.initAnimations();
         }
 
-
+        // Dynamic Adsterra Native Banner loader
+        if (window.CareerAI.initAdsterraNative) {
+          window.CareerAI.initAdsterraNative();
+        }
       }
     } catch (err) {
       console.error('Router navigation error:', err);
@@ -117,18 +120,18 @@ window.CareerAI.router = {
         backBtn = document.createElement('button');
         backBtn.id = 'floatingBackBtn';
         backBtn.className = 'floating-back-btn';
-        backBtn.setAttribute('aria-label', t('common.back', 'Ø§Ù„Ø±Ø¬ÙˆØ¹ Ù„Ù„Ø®Ù„Ù'));
-        backBtn.setAttribute('title', t('common.back', 'Ø§Ù„Ø±Ø¬ÙˆØ¹ Ù„Ù„ØµÙØ­Ø© Ø§Ù„Ø³Ø§Ø¨Ù‚Ø©'));
+        backBtn.setAttribute('aria-label', t('common.back', 'الرجوع للخلف'));
+        backBtn.setAttribute('title', t('common.back', 'الرجوع للصفحة السابقة'));
         backBtn.onclick = () => window.CareerAI.goBack();
         backBtn.innerHTML = `
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-flex;transform:rotate(180deg)"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span>${t('common.back', 'Ø±Ø¬ÙˆØ¹')}</span>
+          <span>${t('common.back', 'رجوع')}</span>
         `;
         document.body.appendChild(backBtn);
       } else {
         backBtn.style.display = 'inline-flex';
         const span = backBtn.querySelector('span');
-        if (span) span.innerText = t('common.back', 'Ø±Ø¬ÙˆØ¹');
+        if (span) span.innerText = t('common.back', 'رجوع');
       }
     } else if (backBtn) {
       backBtn.style.display = 'none';
@@ -222,8 +225,24 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
 };
 
 
-/* --- Adsterra Native Banner: Handled via iframe srcdoc in each page template --- */
-window.CareerAI.initAdsterraNative = function() {};
+/* --- Adsterra Native Banner Dynamic Initializer --- */
+window.CareerAI.initAdsterraNative = function() {
+  setTimeout(() => {
+    const container = document.getElementById('container-88b8ff02af33c15d529cd7a1ab450129');
+    if (!container) return;
+
+    // Remove existing script if already injected
+    const existing = document.getElementById('adsterra-native-script');
+    if (existing) existing.remove();
+
+    const script = document.createElement('script');
+    script.id = 'adsterra-native-script';
+    script.async = true;
+    script.setAttribute('data-cfasync', 'false');
+    script.src = 'https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js';
+    document.head.appendChild(script);
+  }, 200);
+};
 
 /* SPA Google AdSense Removed */
 window.CareerAI.initAdSense = function() {};
@@ -362,7 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
+  // Initial Adsterra Native check
+  if (window.CareerAI.initAdsterraNative) {
+    window.CareerAI.initAdsterraNative();
+  }
 });
 
 /* --- Global Go Back Handler --- */
@@ -373,6 +395,5 @@ window.CareerAI.goBack = function() {
     window.CareerAI.router.navigate('/');
   }
 };
-
 
 
