@@ -34,8 +34,8 @@ window.CareerAI.pages.privacy = function() {
           <h2>${isEn ? '1. Introduction and Overview' : '1. مقدمة ونظرة عامة'}</h2>
           <p>
             ${isEn 
-              ? 'At <strong>Factor Career</strong> (accessible from <a href="https://factor-career.vercel.app/">https://factor-career.vercel.app/</a>), one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Factor Career and how we use and protect it.' 
-              : 'في منصة <strong>Factor Career</strong> (المتاحة عبر الرابط https://factor-career.vercel.app/)، تعد خصوصية زوارنا إحدى أهم أولوياتنا. توضح وثيقة سياسة الخصوصية هذه أنواع المعلومات التي يتم جمعها وتسجيلها وكيفية استخدامها وحمايتها.'}
+              ? 'At <strong>Factor Career</strong> (accessible from <a href="https://factor-career.com/">https://factor-career.com/</a>), one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Factor Career and how we use and protect it.' 
+              : 'في منصة <strong>Factor Career</strong> (المتاحة عبر الرابط https://factor-career.com/)، تعد خصوصية زوارنا إحدى أهم أولوياتنا. توضح وثيقة سياسة الخصوصية هذه أنواع المعلومات التي يتم جمعها وتسجيلها وكيفية استخدامها وحمايتها.'}
           </p>
           <p>
             ${isEn
@@ -65,7 +65,7 @@ window.CareerAI.pages.privacy = function() {
           </p>
           <p>
             ${isEn 
-              ? '<strong>Google DoubleClick DART Cookie:</strong> Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to factor-career.vercel.app and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a>.' 
+              ? '<strong>Google DoubleClick DART Cookie:</strong> Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to factor-career.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a>.' 
               : '<strong>ملف تعريف الارتباط Google DoubleClick DART:</strong> تعد Google أحد موردي الإعلانات الخارجيين في موقعنا. تستخدم ملفات تعريف الارتباط DART لعرض الإعلانات لزوار موقعنا استناداً إلى زيارتهم للموقع والمواقع الأخرى على الويب. يمكن للزوار إلغاء الاشتراك في استخدام ملفات تعريف الارتباط DART من خلال زيارة سياسة خصوصية إعلانات Google.'}
           </p>
 

@@ -7,4 +7,4 @@ Disallow: /admin/
 Disallow: /admin/login
 
 # Sitemap location
-Sitemap: https://factor-career.vercel.app/sitemap.xml
+Sitemap: https://factor-career.com/sitemap.xml

@@ -6,7 +6,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://factor-career.vercel.app/</loc>
+    <loc>https://factor-career.com/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -14,42 +14,42 @@
 
   <!-- AI Career Tools Suite -->
   <url>
-    <loc>https://factor-career.vercel.app/tools</loc>
+    <loc>https://factor-career.com/tools</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/tools/resume-builder</loc>
+    <loc>https://factor-career.com/tools/resume-builder</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/tools/resume-analyzer</loc>
+    <loc>https://factor-career.com/tools/resume-analyzer</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/tools/cover-letter-generator</loc>
+    <loc>https://factor-career.com/tools/cover-letter-generator</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/tools/interview-questions</loc>
+    <loc>https://factor-career.com/tools/interview-questions</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/tools/ats-keywords</loc>
+    <loc>https://factor-career.com/tools/ats-keywords</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
@@ -57,7 +57,7 @@
 
   <!-- Jobs & Careers Directory -->
   <url>
-    <loc>https://factor-career.vercel.app/jobs</loc>
+    <loc>https://factor-career.com/jobs</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
@@ -65,7 +65,7 @@
 
   <!-- Blog & Career Hub Index -->
   <url>
-    <loc>https://factor-career.vercel.app/blog</loc>
+    <loc>https://factor-career.com/blog</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
@@ -73,70 +73,70 @@
 
   <!-- 10 Comprehensive English Career Articles -->
   <url>
-    <loc>https://factor-career.vercel.app/blog/10-proven-strategies-to-beat-ats-resume-scanners</loc>
+    <loc>https://factor-career.com/blog/10-proven-strategies-to-beat-ats-resume-scanners</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/ultimate-guide-answering-tell-me-about-yourself-interviews</loc>
+    <loc>https://factor-career.com/blog/ultimate-guide-answering-tell-me-about-yourself-interviews</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/how-to-write-high-converting-cover-letter</loc>
+    <loc>https://factor-career.com/blog/how-to-write-high-converting-cover-letter</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/top-in-demand-skills-employers-look-for-2026</loc>
+    <loc>https://factor-career.com/blog/top-in-demand-skills-employers-look-for-2026</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/step-by-step-linkedin-profile-optimization-guide</loc>
+    <loc>https://factor-career.com/blog/step-by-step-linkedin-profile-optimization-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/how-to-transition-career-field-without-experience</loc>
+    <loc>https://factor-career.com/blog/how-to-transition-career-field-without-experience</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/mastering-star-method-behavioral-interview-questions</loc>
+    <loc>https://factor-career.com/blog/mastering-star-method-behavioral-interview-questions</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/how-to-negotiate-salary-compensation-confidence</loc>
+    <loc>https://factor-career.com/blog/how-to-negotiate-salary-compensation-confidence</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/uncover-hidden-job-market-search-strategies</loc>
+    <loc>https://factor-career.com/blog/uncover-hidden-job-market-search-strategies</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/blog/how-to-use-ai-to-accelerate-career-search</loc>
+    <loc>https://factor-career.com/blog/how-to-use-ai-to-accelerate-career-search</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -144,28 +144,28 @@
 
   <!-- Essential Legal & Trust Pages -->
   <url>
-    <loc>https://factor-career.vercel.app/about</loc>
+    <loc>https://factor-career.com/about</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/contact</loc>
+    <loc>https://factor-career.com/contact</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/privacy</loc>
+    <loc>https://factor-career.com/privacy</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://factor-career.vercel.app/terms</loc>
+    <loc>https://factor-career.com/terms</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
