@@ -900,3 +900,34 @@ ins.adsbygoogle {
     text-align: center !important;
   }
 }
+
+/* ============================================
+   Google AdSense Ad Units - Responsive
+   ============================================ */
+.adsense-below-header {
+  min-height: 50px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.adsense-native-container {
+  min-height: 100px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.adsense-footer-wrapper {
+  min-height: 100px;
+  max-width: 100%;
+  overflow: hidden;
+}
+#adsense-sticky-bottom {
+  min-height: 60px;
+}
+#adsense-sticky-bottom ins {
+  max-height: 100px;
+}
+/* Prevent sticky ad from covering CTA buttons */
+.btn-area, .cta-buttons { padding-bottom: 80px; }
+@media (max-width: 768px) {
+  .adsense-below-header { min-height: 60px; }
+  #adsense-sticky-bottom { min-height: 50px; }
+}

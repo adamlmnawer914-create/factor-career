@@ -228,13 +228,17 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
 /* --- Google AdSense SPA Re-initializer --- */
 window.CareerAI.initAdSense = function() {
   setTimeout(function() {
+    // Push all new (un-initialized) adsbygoogle units
     var ads = document.querySelectorAll('.adsbygoogle');
     ads.forEach(function(ad) {
       if (!ad.getAttribute('data-adsbygoogle-status')) {
         try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
       }
     });
-  }, 400);
+    // Re-show sticky bottom if it was hidden from prev page close
+    var sticky = document.getElementById('adsense-sticky-bottom');
+    if (sticky) sticky.style.display = '';
+  }, 500);
 };
 
 /* --- Foldable Sticky Bottom Banner Handler --- */
