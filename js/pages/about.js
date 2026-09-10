@@ -23,6 +23,17 @@ window.CareerAI.pages.about = function() {
           <p class="page-header__subtitle">${isEn ? 'Empowering job seekers worldwide with intelligent, accessible, and 100% free career development tools.' : 'تعرف على قصتنا ورؤيتنا لتطوير مسيرتك المهنية بالذكاء الاصطناعي'}</p>
         </div>
       </div>
+
+        <!-- Google AdSense - In-Article Ad -->
+        <div class="adsense-native-container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"></ins>
+        </div>
+
     </div>
 
     <!-- Story Section -->

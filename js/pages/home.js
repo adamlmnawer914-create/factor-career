@@ -224,13 +224,15 @@ window.CareerAI.pages.home = function() {
         </div>
       </div>
     </section>
-
-    
-        <!-- Adsterra Native Banner (Responsive for PC & Mobile) -->
-    <div class="adsterra-native-container container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;">
-      <span style="display:block;font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Recommended Content & Sponsored' : 'محتوى مُموَّل ومُقترح'}</span>
-      <iframe src="/ads/native-banner.html" width="100%" height="280" style="border:none;overflow:hidden;display:block;width:100%;min-height:150px;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-    </div>
+        <!-- Google AdSense - In-Article Ad -->
+        <div class="adsense-native-container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"></ins>
+        </div>
 
     <!-- FAQ Section -->
     <section class="section" id="faq">

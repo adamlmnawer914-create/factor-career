@@ -111,10 +111,14 @@ window.CareerAI.components.renderFooter = function() {
   return `
 
     
-        <!-- Adsterra 300x250 Display Banner (Safe SPA Iframe) -->
-    <div class="adsterra-banner-wrapper" style="text-align:center;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-      <span style="font-size:0.75rem;color:var(--color-text-muted,#94a3b8);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${isEn ? 'Sponsored Ad' : 'إعلان مُموَّل'}</span>
-      <iframe src="/ads/display-banner.html" width="300" height="260" style="border:none;overflow:hidden;display:block;margin:0 auto;max-width:100%;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+    <!-- Google AdSense - Footer Banner -->
+    <div class="adsense-footer-wrapper" style="text-align:center;padding:1.5rem 1rem;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7520213352755959"
+           data-ad-slot="9900112299"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
 
     <footer class="footer">
@@ -191,14 +195,5 @@ window.CareerAI.components.renderFooter = function() {
 };
 
 
-/* --- Adsterra Native Banner Responsive Height Sync --- */
-window.addEventListener('message', function(event) {
-  if (event.data && event.data.type === 'adsterra-native-resize' && typeof event.data.height === 'number') {
-    var iframes = document.querySelectorAll('iframe[src*="native-banner.html"]');
-    iframes.forEach(function(f) {
-      var newHeight = event.data.height + 15;
-      f.style.height = newHeight + 'px';
-      f.height = newHeight;
-    });
-  }
+}
 });

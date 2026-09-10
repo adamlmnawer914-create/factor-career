@@ -847,8 +847,8 @@ ins.adsbygoogle {
 }
 
 
-/* --- Adsterra Mobile & Desktop Responsiveness --- */
-.adsterra-banner-wrapper {
+/* --- AdSense Mobile & Desktop Responsiveness --- */
+.adsense-footer-wrapper {
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
@@ -859,7 +859,7 @@ ins.adsbygoogle {
   justify-content: center !important;
 }
 
-.adsterra-native-container {
+.adsense-native-container {
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
@@ -880,10 +880,10 @@ ins.adsbygoogle {
 }
 
 @media (max-width: 768px) {
-  .adsterra-banner-wrapper {
+  .adsense-footer-wrapper {
     padding: 1.25rem 0.5rem !important;
   }
-  .adsterra-native-container {
+  .adsense-native-container {
     padding: 0 0.75rem !important;
     margin: 1.5rem auto !important;
   }

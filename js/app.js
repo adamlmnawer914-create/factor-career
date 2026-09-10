@@ -100,9 +100,9 @@ window.CareerAI.router = {
           window.CareerAI.initAnimations();
         }
 
-        // Dynamic Adsterra Native Banner loader
-        if (window.CareerAI.initAdsterraNative) {
-          window.CareerAI.initAdsterraNative();
+        // Re-push AdSense units on new page
+        if (window.CareerAI.initAdSense) {
+          window.CareerAI.initAdSense();
         }
       }
     } catch (err) {
@@ -225,27 +225,17 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
 };
 
 
-/* --- Adsterra Native Banner Dynamic Initializer --- */
-window.CareerAI.initAdsterraNative = function() {
-  setTimeout(() => {
-    const container = document.getElementById('container-88b8ff02af33c15d529cd7a1ab450129');
-    if (!container) return;
-
-    // Remove existing script if already injected
-    const existing = document.getElementById('adsterra-native-script');
-    if (existing) existing.remove();
-
-    const script = document.createElement('script');
-    script.id = 'adsterra-native-script';
-    script.async = true;
-    script.setAttribute('data-cfasync', 'false');
-    script.src = 'https://pl31205602.profitableratecpmnetwork.com/88b8ff02af33c15d529cd7a1ab450129/invoke.js';
-    document.head.appendChild(script);
-  }, 200);
+/* --- Google AdSense SPA Re-initializer --- */
+window.CareerAI.initAdSense = function() {
+  setTimeout(function() {
+    var ads = document.querySelectorAll('.adsbygoogle');
+    ads.forEach(function(ad) {
+      if (!ad.getAttribute('data-adsbygoogle-status')) {
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+      }
+    });
+  }, 400);
 };
-
-/* SPA Google AdSense Removed */
-window.CareerAI.initAdSense = function() {};
 
 /* --- Foldable Sticky Bottom Banner Handler --- */
 window.CareerAI.toggleStickyAd = function() {};
@@ -379,11 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (main && window.CareerAI.pages && window.CareerAI.pages.home) {
       main.innerHTML = window.CareerAI.pages.home();
     }
-  }
-
-  // Initial Adsterra Native check
-  if (window.CareerAI.initAdsterraNative) {
-    window.CareerAI.initAdsterraNative();
   }
 });
 

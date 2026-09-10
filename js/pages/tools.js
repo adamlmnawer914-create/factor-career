@@ -109,6 +109,17 @@ window.CareerAI.pages.tools = function() {
       </div>
     </div>
 
+        <!-- Google AdSense - In-Article Ad -->
+        <div class="adsense-native-container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"></ins>
+        </div>
+
+
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
       <div class="container">
         <!-- Categories Filter -->

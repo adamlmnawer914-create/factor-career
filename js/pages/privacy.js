@@ -22,6 +22,17 @@ window.CareerAI.pages.privacy = function() {
           <p class="page-header__subtitle">${isEn ? 'Our commitment to protecting your personal information and transparent data handling practices.' : 'نحن نلتزم بحماية خصوصية بياناتك ومعلوماتك الشخصية في منصة Factor Career'}</p>
         </div>
       </div>
+
+        <!-- Google AdSense - In-Article Ad -->
+        <div class="adsense-native-container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"></ins>
+        </div>
+
     </div>
 
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
