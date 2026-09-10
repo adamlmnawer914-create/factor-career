@@ -134,6 +134,25 @@ window.CareerAI.pages.atsKeywords = function() {
       </div>
     </div>
 
+    
+    <!-- Google AdSense - Tool Top Leaderboard -->
+    <div class="container" style="margin-top:var(--space-4);margin-bottom:var(--space-2)">
+      <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
+        <div class="ad-frame-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          إعلان ممول / Sponsored
+        </div>
+        <div class="ad-frame-inner">
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px;max-width:100%;"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"
+               data-ad-format="horizontal"
+               data-full-width-responsive="true"></ins>
+        </div>
+      </div>
+    </div>
+
     <!-- Main Workspace -->
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-12)">
       <div class="container container--narrow">
@@ -197,6 +216,20 @@ window.CareerAI.pages.atsKeywords = function() {
           ${state.analysisComplete ? CareerAI.renderAKResults() : ''}
         </div>
 
+        <!-- Google AdSense - Tool Bottom Display Unit -->
+        <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin:3rem auto 1rem;max-width:340px;">
+          <div class="ad-frame-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            إعلان ممول / Sponsored
+          </div>
+          <div class="ad-frame-inner">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                 data-ad-client="ca-pub-7520213352755959"
+                 data-ad-slot="3316284985"
+                 data-ad-format="rectangle"></ins>
+          </div>
+        </div>
       </div>
     </section>
 

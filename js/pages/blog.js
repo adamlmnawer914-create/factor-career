@@ -58,8 +58,10 @@ window.CareerAI.pages.blog = function() {
           }).join('')}
         </div>
 
-        <!-- Articles Grid -->
-        <div class="blog-page__grid" id="blogArticlesGrid">
+        <div class="page-with-sidebar">
+          <div class="main-content-col">
+            <!-- Articles Grid -->
+            <div class="blog-page__grid" id="blogArticlesGrid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
           ${articles.length === 0 ? `
             <div style="grid-column:1/-1;text-align:center;padding:var(--space-16)">
               <h3>${isEn ? 'No articles available yet' : 'لا توجد مقالات منشورة حالياً'}</h3>
@@ -85,6 +87,25 @@ window.CareerAI.pages.blog = function() {
               </div>
             </article>
           `).join('')}
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar with Vertical Skyscraper (300x600) -->
+          <aside class="sticky-sidebar-ad animate-on-scroll">
+            <div class="ad-frame-wrapper ad-frame-skyscraper">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${isEn ? 'Sponsored' : 'إعلان ممول'}
+              </div>
+              <div class="ad-frame-inner">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="4455667788"
+                     data-ad-format="vertical"></ins>
+              </div>
+            </div>
+          </aside>
         </div>
 
       </div>

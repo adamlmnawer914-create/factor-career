@@ -109,15 +109,19 @@ window.CareerAI.pages.tools = function() {
       </div>
     </div>
 
-        <!-- Google AdSense - In-Article Ad -->
-        <div class="ad-frame-wrapper ad-frame-rectangle" style="margin:2.5rem auto;max-width:400px;">
-          <div class="ad-frame-label">Advertisement</div>
-          <div class="ad-frame-inner" style="min-height:250px;">
+        <!-- Google AdSense - Top Leaderboard Banner -->
+        <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:2.5rem auto 1rem;max-width:760px;">
+          <div class="ad-frame-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+          </div>
+          <div class="ad-frame-inner">
             <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                 style="display:inline-block;width:728px;height:90px;max-width:100%;"
                  data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="3316284985"
-                 data-ad-format="rectangle"></ins>
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
           </div>
         </div>
 
@@ -161,6 +165,39 @@ window.CareerAI.pages.tools = function() {
             ${i === 2 ? `
             ` : ''}
           `).join('')}
+        </div>
+
+        <!-- Google AdSense - Vertical & Display Units Row -->
+        <div style="display:flex;justify-content:center;gap:var(--space-6);margin-top:var(--space-12);flex-wrap:wrap;">
+          <!-- Skyscraper 300x600 -->
+          <div class="ad-frame-wrapper ad-frame-skyscraper animate-on-scroll">
+            <div class="ad-frame-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+              ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+            </div>
+            <div class="ad-frame-inner">
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                   data-ad-client="ca-pub-7520213352755959"
+                   data-ad-slot="4455667788"
+                   data-ad-format="vertical"></ins>
+            </div>
+          </div>
+
+          <!-- Rectangle 300x250 -->
+          <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin:0;max-width:340px;">
+            <div class="ad-frame-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+              ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+            </div>
+            <div class="ad-frame-inner">
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                   data-ad-client="ca-pub-7520213352755959"
+                   data-ad-slot="3316284985"
+                   data-ad-format="rectangle"></ins>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1122,3 +1122,98 @@ body { padding-bottom: 110px; }
   #adsense-sticky-bottom { padding: 4px 40px 4px 8px; min-height: 55px; }
   body { padding-bottom: 75px; }
 }
+
+/* ============================================
+   Vertical Half-Page Skyscraper (300x600)
+   ============================================ */
+.ad-frame-skyscraper {
+  width: 324px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,41,59,0.95) 100%);
+  border: 1px solid rgba(99,102,241,0.35);
+  border-radius: 20px;
+  padding: 0.85rem 1rem 1rem;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 25px rgba(99,102,241,0.15);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ad-frame-skyscraper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.8), rgba(139,92,246,0.8), transparent);
+}
+
+.ad-frame-skyscraper .ad-frame-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  min-height: 600px;
+  height: 600px;
+  max-width: 100%;
+  background: rgba(10,15,30,0.65);
+  border-radius: 12px;
+  border: 1px dashed rgba(99,102,241,0.25);
+  box-shadow: inset 0 2px 14px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+.ad-frame-skyscraper .ad-frame-inner::before {
+  content: "Google AdSense (300 × 600 Half-Page)";
+  position: absolute;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(148, 163, 184, 0.45);
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ad-frame-skyscraper ins.adsbygoogle {
+  position: relative;
+  z-index: 2;
+  display: inline-block !important;
+  width: 300px !important;
+  height: 600px !important;
+  max-width: 100% !important;
+  border: none !important;
+}
+
+/* ============================================
+   Responsive 2-Column Sidebar Layouts
+   ============================================ */
+.page-with-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.sticky-sidebar-ad {
+  position: sticky;
+  top: calc(var(--header-height, 70px) + 20px);
+  align-self: start;
+  z-index: 10;
+}
+
+@media (max-width: 1080px) {
+  .page-with-sidebar {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .sticky-sidebar-ad {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-6);
+  }
+}
