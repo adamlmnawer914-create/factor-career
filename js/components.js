@@ -193,7 +193,3 @@ window.CareerAI.components.renderFooter = function() {
     </button>
   `;
 };
-
-
-}
-});
