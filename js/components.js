@@ -96,7 +96,7 @@ window.CareerAI.components.renderHeader = function() {
       
       <div class="mobile-nav__cta">
         <a href="/tools" class="btn btn--primary btn--full" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'ابدأ الآن')}</a>
-        <a href="https://www.profitableratecpmnetwork.com/kkyq5vxu?key=545c1203bb7c2b234427dd5282b9477c" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--full" style="margin-top:0.75rem;border-color:rgba(99,102,241,0.5);background:rgba(99,102,241,0.15);color:#a5b4fc;font-weight:700;">⭐ ${isEn ? 'Partner Career Offers ↗' : 'عروض التوظيف والفرص ↗'}</a>
+
       </div>
     </nav>
   `;

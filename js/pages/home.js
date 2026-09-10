@@ -117,7 +117,7 @@ window.CareerAI.pages.home = function() {
               <a href="/tools" class="btn btn--ghost btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
                 ${t('hero.btnExplore', 'استكشف الأدوات')}
               </a>
-              <a href="https://www.profitableratecpmnetwork.com/kkyq5vxu?key=545c1203bb7c2b234427dd5282b9477c" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg" style="margin-inline-start:0.5rem;border-color:rgba(99,102,241,0.5);background:rgba(99,102,241,0.15);color:#a5b4fc;">⭐ ${isEn ? 'Remote Opportunities ↗' : 'عروض وفرص مميزة ↗'}</a>
+
             </div>
 
             <div class="hero__stats">
