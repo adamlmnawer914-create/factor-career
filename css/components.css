@@ -931,3 +931,175 @@ ins.adsbygoogle {
   .adsense-below-header { min-height: 60px; }
   #adsense-sticky-bottom { min-height: 50px; }
 }
+/* ============================================
+   Google AdSense - Beautiful Ad Frames
+   ============================================ */
+
+/* Base ad frame wrapper */
+.ad-frame-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,41,59,0.9) 100%);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 16px;
+  padding: 0.75rem 1rem 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Glowing top accent line */
+.ad-frame-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), rgba(139,92,246,0.6), transparent);
+}
+
+/* "Advertisement" label */
+.ad-frame-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(148,163,184,0.7);
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+/* Inner area holding the <ins> tag */
+.ad-frame-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  background: rgba(15,23,42,0.4);
+  border-radius: 10px;
+  border: 1px dashed rgba(99,102,241,0.15);
+  overflow: hidden;
+}
+
+/* Rectangle 300x250 frame */
+.ad-frame-rectangle {
+  max-width: 340px;
+  margin: 2.5rem auto;
+}
+.ad-frame-rectangle .ad-frame-inner {
+  min-height: 250px;
+}
+
+/* Leaderboard 728x90 frame (below header) */
+.adsense-below-header {
+  width: 100%;
+  background: rgba(15,23,42,0.95);
+  border-bottom: 1px solid rgba(99,102,241,0.15);
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+}
+.ad-frame-leaderboard {
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+.ad-frame-leaderboard .ad-frame-inner {
+  min-height: 90px;
+}
+
+/* Footer ad frame */
+.adsense-footer-wrapper {
+  padding: 1.5rem 1rem;
+  background: rgba(15,23,42,0.6);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ad-frame-footer {
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+.ad-frame-footer .ad-frame-inner {
+  min-height: 90px;
+}
+
+/* ============================================
+   Sticky Bottom Banner - Slim & Elegant
+   ============================================ */
+#adsense-sticky-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,15,30,0.97);
+  border-top: 1px solid rgba(99,102,241,0.4);
+  padding: 6px 48px 6px 12px;
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-height: 60px;
+  max-height: 110px;
+  box-sizing: border-box;
+}
+#adsense-sticky-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.8), rgba(139,92,246,0.8), transparent);
+}
+#adsense-sticky-close {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: rgba(99,102,241,0.15);
+  border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 50%;
+  color: #a5b4fc;
+  font-size: 16px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  line-height: 1;
+  padding: 0;
+}
+#adsense-sticky-close:hover {
+  background: rgba(99,102,241,0.3);
+  color: #fff;
+}
+.ad-frame-label-sticky {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(148,163,184,0.5);
+  margin-bottom: 3px;
+}
+#adsense-sticky-bottom ins {
+  display: inline-block !important;
+  max-width: 100%;
+}
+
+/* Add bottom padding to body so sticky ad doesnt cover content */
+body { padding-bottom: 110px; }
+
+@media (max-width: 768px) {
+  .ad-frame-rectangle { max-width: 100%; }
+  .ad-frame-leaderboard { max-width: 100%; }
+  #adsense-sticky-bottom { padding: 4px 40px 4px 8px; min-height: 55px; }
+  body { padding-bottom: 75px; }
+}

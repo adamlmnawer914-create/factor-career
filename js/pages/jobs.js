@@ -37,13 +37,15 @@ window.CareerAI.pages.jobs = function() {
           </div>
 
         <!-- Google AdSense - In-Article Ad -->
-        <div class="adsense-native-container" style="margin:2rem auto;text-align:center;width:100%;max-width:100%;overflow:hidden;">
-          <ins class="adsbygoogle"
-               style="display:block; text-align:center;"
-               data-ad-layout="in-article"
-               data-ad-format="fluid"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="3316284985"></ins>
+        <div class="ad-frame-wrapper ad-frame-rectangle" style="margin:2.5rem auto;max-width:400px;">
+          <div class="ad-frame-label">Advertisement</div>
+          <div class="ad-frame-inner" style="min-height:250px;">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                 data-ad-client="ca-pub-7520213352755959"
+                 data-ad-slot="3316284985"
+                 data-ad-format="rectangle"></ins>
+          </div>
         </div>
 
         </div>

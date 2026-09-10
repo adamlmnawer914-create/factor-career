@@ -112,13 +112,18 @@ window.CareerAI.components.renderFooter = function() {
 
     
     <!-- Google AdSense - Footer Banner -->
-    <div class="adsense-footer-wrapper" style="text-align:center;padding:1.5rem 1rem;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7520213352755959"
-           data-ad-slot="9900112299"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+    <div class="adsense-footer-wrapper">
+      <div class="ad-frame-wrapper ad-frame-footer">
+        <div class="ad-frame-label">Sponsored</div>
+        <div class="ad-frame-inner">
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px;max-width:100%;"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="9900112299"
+               data-ad-format="horizontal"
+               data-full-width-responsive="true"></ins>
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
@@ -191,15 +196,6 @@ window.CareerAI.components.renderFooter = function() {
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <span style="width:20px;height:20px;display:inline-flex">${icons.arrowUp}</span>
     </button>
-  <!-- AdSense: Sticky Bottom Anchor Ad (Fixed at bottom of viewport) -->
-  <div id="adsense-sticky-bottom" style="position:fixed;bottom:0;left:0;width:100%;z-index:9999;text-align:center;background:rgba(15,23,42,0.97);border-top:1px solid rgba(99,102,241,0.3);padding:4px 0;box-shadow:0 -2px 20px rgba(0,0,0,0.4);">
-    <button onclick="document.getElementById('adsense-sticky-bottom').style.display='none'" style="position:absolute;top:2px;right:8px;background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;line-height:1;z-index:1;" aria-label="Close ad">×</button>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-7520213352755959"
-         data-ad-slot="9900112299"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
+  
   `;
 };
