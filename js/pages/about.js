@@ -68,6 +68,26 @@ window.CareerAI.pages.about = function() {
             </div>
           </div>
         </div>
+
+        <!-- Vertical Skyscraper & Leaderboard Row -->
+        <div style="display:flex;justify-content:center;margin-top:var(--space-12);">
+          <!-- Sticky Sidebar with Vertical Half-Page Skyscraper (300x600) -->
+          <aside class="sticky-sidebar-ad animate-on-scroll">
+            <div class="ad-frame-wrapper ad-frame-skyscraper">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${isEn ? 'Sponsored' : 'إعلان ممول'}
+              </div>
+              <div class="ad-frame-inner">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="4455667788"
+                     data-ad-format="vertical"></ins>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -140,14 +160,17 @@ window.CareerAI.pages.about = function() {
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section" style="padding-top:var(--space-8);padding-bottom:var(--space-16)">
-      <div class="container">
-        <div class="cta-section animate-on-scroll">
-          <div class="cta-section__bg"></div>
-          <h2 class="cta-section__title">${isEn ? 'Ready to Elevate Your Career?' : 'انضم إلى مجتمع Factor Career'}</h2>
-          <p class="cta-section__text">${isEn ? 'Start creating your ATS-optimized resume in minutes with our free AI builder.' : 'ابدأ الآن في بناء سيرتك الذاتية واستعد للانطلاق نحو وظيفة أحلامك.'}</p>
-          <a href="/tools/resume-builder" class="btn btn--primary" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+    <!-- Full-Width Edge-to-Edge CTA Section (Ready to Elevate Your Career?) -->
+    <section class="section section--dark" style="background:var(--gradient-hero);width:100%;padding:var(--space-20) 0;position:relative;overflow:hidden">
+      <div class="container text-center" style="position:relative;z-index:2">
+        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;max-width:850px;margin:0 auto;padding:0">
+          <h2 class="cta-section__title" style="font-size:var(--text-4xl);font-weight:var(--font-extrabold);color:white;margin-bottom:var(--space-4)">
+            ${isEn ? 'Ready to Elevate Your Career?' : 'انضم إلى مجتمع Factor Career'}
+          </h2>
+          <p class="cta-section__text" style="max-width:650px;margin:0 auto var(--space-8);font-size:var(--text-lg);color:rgba(255,255,255,0.85);line-height:1.7">
+            ${isEn ? 'Start creating your ATS-optimized resume in minutes with our free AI builder.' : 'ابدأ الآن في بناء سيرتك الذاتية واستعد للانطلاق نحو وظيفة أحلامك.'}
+          </p>
+          <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
             ${isEn ? 'Build Your Free Resume' : 'أنشئ سيرتك الذاتية الآن'}
           </a>
         </div>

@@ -40,7 +40,9 @@ window.CareerAI.pages.contact = function() {
 
     <section class="section" style="padding-top:var(--space-6)">
       <div class="container">
-        <div class="contact-page__grid">
+        <div class="page-with-sidebar">
+          <div class="main-content-col">
+            <div class="contact-page__grid">
           
           <!-- Contact Form -->
           <div class="contact-form animate-on-scroll">
@@ -136,6 +138,25 @@ window.CareerAI.pages.contact = function() {
             </div>
           </div>
 
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar with Vertical Half-Page Skyscraper (300x600) -->
+          <aside class="sticky-sidebar-ad animate-on-scroll">
+            <div class="ad-frame-wrapper ad-frame-skyscraper">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${isEn ? 'Sponsored' : 'إعلان ممول'}
+              </div>
+              <div class="ad-frame-inner">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="4455667788"
+                     data-ad-format="vertical"></ins>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>

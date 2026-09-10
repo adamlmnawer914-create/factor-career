@@ -39,7 +39,9 @@ window.CareerAI.pages.privacy = function() {
 
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
       <div class="container">
-        <div class="legal-content animate-on-scroll">
+        <div class="page-with-sidebar">
+          <div class="main-content-col" style="max-width:820px;">
+            <div class="legal-content animate-on-scroll">
           <div class="legal-content__updated">
             ${isEn ? 'Last Updated: August 26, 2026' : 'آخر تحديث: 26 أغسطس 2026'}
           </div>
@@ -121,6 +123,25 @@ window.CareerAI.pages.privacy = function() {
               ? 'By using our website, you hereby consent to our Privacy Policy and agree to its terms. For any questions or notices regarding this policy, please reach us at: <a href="mailto:careerfactor@gmail.com">careerfactor@gmail.com</a>.' 
               : 'باستخدامك لموقعنا، فإنك توافق على سياسة الخصوصية الخاصة بنا وشروطها. لأي استفسارات، يرجى مراسلتنا عبر: <a href="mailto:careerfactor@gmail.com">careerfactor@gmail.com</a>.'}
           </p>
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar with Vertical Half-Page Skyscraper (300x600) -->
+          <aside class="sticky-sidebar-ad animate-on-scroll">
+            <div class="ad-frame-wrapper ad-frame-skyscraper">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${isEn ? 'Sponsored' : 'إعلان ممول'}
+              </div>
+              <div class="ad-frame-inner">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="4455667788"
+                     data-ad-format="vertical"></ins>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
