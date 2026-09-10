@@ -242,9 +242,30 @@ window.CareerAI.initAdSense = function() {
 };
 
 /* --- Foldable Sticky Bottom Banner Handler --- */
-window.CareerAI.toggleStickyAd = function() {};
+window.CareerAI.toggleStickyAd = function() {
+  const wrapper = document.getElementById('stickyBottomAd') || document.getElementById('adsense-sticky-bottom');
+  const arrow = document.getElementById('stickyAdArrow');
+  const text = document.getElementById('stickyAdText');
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  
+  if (wrapper) {
+    const isCollapsed = wrapper.classList.toggle('collapsed');
+    if (arrow) {
+      arrow.textContent = isCollapsed ? '▲' : '▼';
+    }
+    if (text) {
+      if (isCollapsed) {
+        text.textContent = isEn ? 'Show Ad' : 'إظهار الإعلان';
+      } else {
+        text.textContent = isEn ? 'Hide Ad' : 'طي الإعلان';
+      }
+    }
+  }
+};
 
-window.CareerAI.toggleBottomAd = function() {};
+window.CareerAI.toggleBottomAd = function() {
+  window.CareerAI.toggleStickyAd();
+};
 
 /* --- Mobile Menu Handlers --- */
 window.CareerAI.toggleMobileMenu = function() {

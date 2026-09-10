@@ -142,6 +142,23 @@ window.CareerAI.pages.home = function() {
               <div class="hero-image-glow"></div>
             </div>
           </div>
+
+          <!-- Square Ad (300x250 Medium Rectangle) - Left of Image in RTL -->
+          <div class="hero__ad-col animate-on-scroll">
+            <div class="hero-square-ad__card">
+              <span class="hero-square-ad__label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+              </span>
+              <div class="hero-square-ad__box">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="1122334455"
+                     data-ad-format="rectangle"></ins>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -222,19 +239,24 @@ window.CareerAI.pages.home = function() {
             </div>
           `).join('')}
         </div>
-      </div>
-    </section>
-        <!-- Google AdSense - In-Article Ad -->
-        <div class="ad-frame-wrapper ad-frame-rectangle" style="margin:2.5rem auto;max-width:400px;">
-          <div class="ad-frame-label">Advertisement</div>
-          <div class="ad-frame-inner" style="min-height:250px;">
+
+        <!-- Google AdSense - In Gray Space (Tools Section) -->
+        <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin: 3rem auto 0; max-width: 760px;">
+          <div class="ad-frame-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+          </div>
+          <div class="ad-frame-inner">
             <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                 style="display:inline-block;width:728px;height:90px;max-width:100%;"
                  data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="3316284985"
-                 data-ad-format="rectangle"></ins>
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
           </div>
         </div>
+      </div>
+    </section>
 
     <!-- FAQ Section -->
     <section class="section" id="faq">
