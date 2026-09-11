@@ -471,7 +471,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/63a88d3a-221-1.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159429-2",
@@ -492,7 +493,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201029093237-178554.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159430-3",
@@ -513,7 +515,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/63a88d3a-221-1.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159431-4",
@@ -534,7 +537,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/7f055a77-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159432-5",
@@ -555,7 +559,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/02/574531d8dd057e68801193a869098c18.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159433-6",
@@ -576,7 +581,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/63a88d3a-221-1.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159434-7",
@@ -597,7 +603,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/7f055a77-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159435-8",
@@ -618,7 +625,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/f81f478b71cf9399121a6f91aafc0bd3.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159435-9",
@@ -639,7 +647,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/f81f478b71cf9399121a6f91aafc0bd3.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789159436-10",
@@ -660,7 +669,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201029093237-178554.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158421-1",
@@ -681,7 +691,8 @@ window.CareerAI.db = {
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "RemoteOK"
+        "source": "RemoteOK",
+        "status": "active"
     },
     {
         "id": "job-1789158422-2",
@@ -702,7 +713,8 @@ window.CareerAI.db = {
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "RemoteOK"
+        "source": "RemoteOK",
+        "status": "active"
     },
     {
         "id": "job-1789158423-3",
@@ -723,7 +735,8 @@ window.CareerAI.db = {
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "RemoteOK"
+        "source": "RemoteOK",
+        "status": "active"
     },
     {
         "id": "job-1789158424-4",
@@ -744,7 +757,8 @@ window.CareerAI.db = {
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "RemoteOK"
+        "source": "RemoteOK",
+        "status": "active"
     },
     {
         "id": "job-1789158425-5",
@@ -765,7 +779,8 @@ window.CareerAI.db = {
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "RemoteOK"
+        "source": "RemoteOK",
+        "status": "active"
     },
     {
         "id": "job-1789158426-6",
@@ -786,7 +801,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/c86166a8-221.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158427-7",
@@ -807,7 +823,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/1791a8a0-221.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158428-8",
@@ -828,7 +845,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/9877fe33-221.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158428-9",
@@ -849,7 +867,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/63864ee6-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158429-10",
@@ -870,7 +889,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/fac7714c-221-1.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158430-11",
@@ -891,7 +911,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/63864ee6-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158431-12",
@@ -912,7 +933,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/fa45d149-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158432-13",
@@ -933,7 +955,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/01/56d3a520-221.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158433-14",
@@ -954,7 +977,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/1791a8a0-221.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158434-15",
@@ -975,7 +999,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/02/57995875e79f20bb0cd2cadad1b52775.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158435-16",
@@ -996,7 +1021,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158436-17",
@@ -1017,7 +1043,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158436-18",
@@ -1038,7 +1065,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158437-19",
@@ -1059,7 +1087,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201011073943-272457.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158438-20",
@@ -1080,7 +1109,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201011073943-272457.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158439-21",
@@ -1101,7 +1131,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158440-22",
@@ -1122,7 +1153,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/09/63e8d5a6-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158441-23",
@@ -1143,7 +1175,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158442-24",
@@ -1164,7 +1197,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/09/63e8d5a6-221.png",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158442-25",
@@ -1185,7 +1219,8 @@ window.CareerAI.db = {
         "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Jobicy"
+        "source": "Jobicy",
+        "status": "active"
     },
     {
         "id": "job-1789158443-26",
@@ -1206,7 +1241,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2086540/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158444-27",
@@ -1227,7 +1263,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091045/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158445-28",
@@ -1248,7 +1285,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/1185979/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158446-29",
@@ -1269,7 +1307,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/1749306/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158447-30",
@@ -1290,7 +1329,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091101/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158448-31",
@@ -1311,7 +1351,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091100/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158449-32",
@@ -1332,7 +1373,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091099/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158449-33",
@@ -1353,7 +1395,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091105/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158450-34",
@@ -1374,7 +1417,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091098/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158451-35",
@@ -1395,7 +1439,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091097/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158452-36",
@@ -1416,7 +1461,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/1919266/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158453-37",
@@ -1437,7 +1483,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/1919265/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158454-38",
@@ -1458,7 +1505,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091068/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158455-39",
@@ -1479,7 +1527,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2069746/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158455-40",
@@ -1500,7 +1549,8 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/2091093/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789158456-41",
@@ -1521,14 +1571,15 @@ window.CareerAI.db = {
         "image": "https://remotive.com/job/1680495/logo",
         "postedAt": "2026-09-11",
         "verified": true,
-        "source": "Remotive"
+        "source": "Remotive",
+        "status": "active"
     },
     {
         "id": "job-1789156352-1",
         "title": "External Data Specialist",
         "title_ar": "External Data Specialist",
         "company": "eClinical Solutions",
-        "category": "Development",
+        "category": "development",
         "category_ar": "برمجة وتطوير",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1541,14 +1592,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-external-data-specialist-eclinical-solutions-1137375",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-2",
         "title": "Business Development Manager",
         "title_ar": "Business Development Manager",
         "company": "Libertex Group",
-        "category": "Development",
+        "category": "development",
         "category_ar": "برمجة وتطوير",
         "type": "Full-time",
         "type_ar": "دوام كامل",
@@ -1561,14 +1613,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-business-development-manager-libertex-group-1137373",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-3",
         "title": "Quality Dispense Technician North",
         "title_ar": "Quality Dispense Technician North",
         "company": "Thatchers Cider",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Full-time",
         "type_ar": "دوام كامل",
@@ -1581,14 +1634,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-quality-dispense-technician-north-thatchers-cider-1137374",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-4",
         "title": "Social Comms",
         "title_ar": "Social Comms",
         "company": "NOPE",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1601,14 +1655,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-social-comms-nope-1137314",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-5",
         "title": "AI Response Analyst",
         "title_ar": "AI Response Analyst",
         "company": "iMerit Technology",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1621,14 +1676,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-ai-response-analyst-imerit-technology-1137309",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-6",
         "title": "Junior Crypto Analyst & Trader",
         "title_ar": "Junior Crypto Analyst & Trader",
         "company": "Empire Assets",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1641,14 +1697,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-junior-crypto-analyst-trader-empire-assets-1137307",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-7",
         "title": "Customer Support & Success Specialist",
         "title_ar": "Customer Support & Success Specialist",
         "company": "Warehance",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1661,14 +1718,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-customer-support-success-specialist-warehance-1137302",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-8",
         "title": "Regional Sales Manager",
         "title_ar": "Regional Sales Manager",
         "company": "OrderYOYO",
-        "category": "Marketing",
+        "category": "marketing",
         "category_ar": "تسويق ومبيعات",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1681,14 +1739,15 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-regional-sales-manager-orderyoyo-1137279",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     },
     {
         "id": "job-1789156352-9",
         "title": "AI Engineer Data APIs",
         "title_ar": "AI Engineer Data APIs",
         "company": "Benzinga",
-        "category": "Development",
+        "category": "development",
         "category_ar": "برمجة وتطوير",
         "type": "Remote",
         "type_ar": "عن بعد",
@@ -1701,18 +1760,25 @@ window.CareerAI.db = {
         "applyUrl": "https://remoteOK.com/remote-jobs/remote-ai-engineer-data-apis-benzinga-1137224",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
         "postedAt": "2026-09-11",
-        "verified": true
+        "verified": true,
+        "status": "active"
     }
 ],
 
-    init: function() {
+  init: function() {
     if (!localStorage.getItem(this.KEYS.CATEGORIES)) {
       localStorage.setItem(this.KEYS.CATEGORIES, JSON.stringify(this.defaultCategories));
     }
     if (!localStorage.getItem(this.KEYS.ARTICLES)) {
       localStorage.setItem(this.KEYS.ARTICLES, JSON.stringify(this.defaultArticles));
     }
-    if (!localStorage.getItem(this.KEYS.JOBS)) {
+    // Auto sync jobs if updated or empty
+    try {
+      const stored = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
+      if (!stored.length || stored.length < this.defaultJobs.length) {
+        localStorage.setItem(this.KEYS.JOBS, JSON.stringify(this.defaultJobs));
+      }
+    } catch(e) {
       localStorage.setItem(this.KEYS.JOBS, JSON.stringify(this.defaultJobs));
     }
   },
@@ -1786,11 +1852,20 @@ window.CareerAI.db = {
   getJobs: function(includeInactive = false) {
     this.init();
     const isAr = (window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'ar');
-    const jobs = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
-    const filtered = includeInactive ? jobs : jobs.filter(j => j.status === 'active');
+    let jobs = [];
+    try {
+      jobs = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
+    } catch(e) {
+      jobs = [];
+    }
+    if (!jobs.length || (this.defaultJobs && jobs.length < this.defaultJobs.length)) {
+      jobs = this.defaultJobs || [];
+    }
+    const filtered = includeInactive ? jobs : jobs.filter(j => j.status !== 'inactive');
     return filtered.map(j => ({
       ...j,
       title: isAr ? (j.title_ar || j.title) : (j.title_en || j.title),
+      category: isAr ? (j.category_ar || j.category) : (j.category_en || j.category),
       location: isAr ? (j.location_ar || j.location) : (j.location_en || j.location),
       type: isAr ? (j.type_ar || j.type) : (j.type_en || j.type),
       description: isAr ? (j.description_ar || j.description) : (j.description_en || j.description),

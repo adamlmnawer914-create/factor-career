@@ -286,6 +286,7 @@ def run_pipeline():
             "applyUrl": url or "mailto:factorcareer@gmail.com",
             "image": raw.get("image") or IMAGES[img_idx % len(IMAGES)],
             "postedAt": datetime.datetime.now().strftime("%Y-%m-%d"),
+            "status": "active",
             "verified": True,
             "source": raw.get("source",""),
         }
