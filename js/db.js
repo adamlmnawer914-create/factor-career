@@ -453,44 +453,1549 @@ window.CareerAI.db = {
   // Default Jobs / Opportunities
   defaultJobs: [
     {
-      id: 'job-1',
-      title: 'Frontend Developer (React & Modern UI)',
-      title_ar: 'مطور واجهات أمامية (Frontend Developer)',
-      company: 'TechFlow Digital Solutions',
-      location: 'Remote / Global',
-      location_ar: 'عن بُعد / عالمي',
-      type: 'Full-time',
-      type_ar: 'دوام كامل',
-      salary: '$3,000 - $4,500 / mo',
-      description: 'We are seeking a talented Frontend Developer proficient in HTML/CSS/JavaScript and React to build fast, responsive, and accessible web experiences.',
-      description_ar: 'نبحث عن مطور واجهات محترف لبناء تطبيقات ويب عصرية وسريعة الاستجابة.',
-      requirements: '3+ years web development experience, mastery of UI/UX best practices.',
-      requirements_ar: 'خبرة 3+ سنوات في تطوير الويب وإتقان React و JavaScript.',
-      applyUrl: 'mailto:factorcareer@gmail.com?subject=Application for Frontend Developer Position',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-      status: 'active',
-      createdAt: '2026-08-20'
+        "id": "job-1789158421-1",
+        "title": "Education Designer UX UI and AI",
+        "title_ar": "Education Designer UX UI and AI",
+        "company": "Interaction Design Foundation",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Remote",
+        "type_ar": "عن بُعد",
+        "location": "Remote / Global",
+        "salary": "Competitive",
+        "description": " You're a designer who has facilitated workshops or built online courses, and you noticed that Â you loved it and that you were unusually good at it .  You know how to make complex skills easy to learn, and how to guide people in applying their new skills. As one of our Education Designers, you'll s...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in design, content writing, education
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام design, content writing, education
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-education-designer-ux-ui-and-ai-interaction-design-foundation-1137138",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "RemoteOK"
     },
     {
-      id: 'job-2',
-      title: 'Senior HR Talent Acquisition Specialist',
-      title_ar: 'أخصائي استقطاب مواهب وموارد بشرية (Senior HR)',
-      company: 'Horizon Global Consulting',
-      location: 'Casablanca / Hybrid',
-      location_ar: 'الدار البيضاء / هجين',
-      type: 'Full-time',
-      type_ar: 'دوام كامل',
-      salary: '$2,200 - $3,200 / mo',
-      description: 'Lead recruitment lifecycles, manage ATS screening funnels, and coordinate candidate interviews across our expanding EMEA client portfolio.',
-      description_ar: 'إدارة عمليات التوظيف وفرز السير الذاتية وإجراء المقابلات الوظيفية.',
-      requirements: 'Degree in HR or Business, hands-on experience with modern ATS software.',
-      requirements_ar: 'شهادة في الموارد البشرية وخبرة في أنظمة التتبع ATS.',
-      applyUrl: 'mailto:factorcareer@gmail.com?subject=Application for HR Recruiter Position',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-      status: 'active',
-      createdAt: '2026-08-19'
+        "id": "job-1789158422-2",
+        "title": "Course Writer and Editor UX UI and AI",
+        "title_ar": "Course Writer and Editor UX UI and AI",
+        "company": "Interaction Design Foundation",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Remote",
+        "type_ar": "عن بُعد",
+        "location": "Remote / Global",
+        "salary": "Competitive",
+        "description": " You're the one people trust with the words, whether you're writing them or fixing them. You noticed thatÂ  you loved it, and that you were unusually good at it . You turn rough, complex ideas into words people understand.  Now you get the opportunity to work with some of the most respected designer...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in design, content writing
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام design, content writing
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-course-writer-and-editor-ux-ui-and-ai-interaction-design-foundation-1137136",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "RemoteOK"
+    },
+    {
+        "id": "job-1789158423-3",
+        "title": "Renewables Project Scheduler",
+        "title_ar": "Renewables Project Scheduler",
+        "company": "Transportation Partners &amp; Logistics",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Black Bess, ",
+        "salary": "Competitive",
+        "description": "Apply   Description    Job Summary:   The BESS Project Scheduler is responsible for developing, maintaining, and analyzing detailed project schedules for Battery Energy Storage System (BESS) projects. This role plays a critical part in ensuring projects are delivered on time by providing accurate sc...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in sys admin, technical, customer support, testing
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام sys admin, technical, customer support, testing
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-renewables-project-scheduler-transportation-partners-amp-logistics-1137194",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "RemoteOK"
+    },
+    {
+        "id": "job-1789158424-4",
+        "title": "Senior Backend Engineer Build AI Agents",
+        "title_ar": "Senior Backend Engineer Build AI Agents",
+        "company": "Salesforge",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Remote",
+        "type_ar": "عن بُعد",
+        "location": "Remote / Global",
+        "salary": "Competitive",
+        "description": "Remote - Most sales tools help you send emails. Weâre building something different.At Salesforge, weâre creating autonomous AI agents that can:Find the right prospectsGenerate highly personalized outreachRun conversationsAnd book meetingsAll without human invo...  Please mention the word **EMPAT...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in golang, senior, sales, engineer
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام golang, senior, sales, engineer
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-senior-backend-engineer-build-ai-agents-salesforge-1137114",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "RemoteOK"
+    },
+    {
+        "id": "job-1789158425-5",
+        "title": "Senior Specialist Global QMS",
+        "title_ar": "Senior Specialist Global QMS",
+        "company": "Orca Bio",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Remote",
+        "type_ar": "عن بُعد",
+        "location": "Remote / Global",
+        "salary": "Competitive",
+        "description": " More than one million people in the United States today are fighting blood cancer. While a traditional allogeneic stem cell transplant has been the best hope for many, the transplant itself can prove fatal or lead to serious conditions, such as graft vs. host disease. Orca Bio is a commercial-stage...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in hr, sys admin, customer support, marketing
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام hr, sys admin, customer support, marketing
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-senior-specialist-global-qms-orca-bio-1137072",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "RemoteOK"
+    },
+    {
+        "id": "job-1789158426-6",
+        "title": "Application Support / SQL - (12 Month Maternity-leave Contract)",
+        "title_ar": "Application Support / SQL - (12 Month Maternity-leave Contract)",
+        "company": "Varicent",
+        "category": "customer_support",
+        "category_ar": "دعم العملاء",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Romania",
+        "salary": "Competitive",
+        "description": " 
+ At Varicent, we’re not just transforming the Sales Performance Management (SPM) market—we’re redefining how organizations achieve revenue success. Our cutting-edge SaaS solutions empower revenue leaders globally to design smarter go-to-market strategies, maximize seller performance, and unlock un...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Technical Support, Contract
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Technical Support, Contract
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153061-application-support-sql-12-month-maternity-leave-contract",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/c86166a8-221.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158427-7",
+        "title": "Japanese - English PPC Freelancer (remote freelance)",
+        "title_ar": "Japanese - English PPC Freelancer (remote freelance)",
+        "company": "Brafton",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": " Brafton is one of the world's leading content marketing firms, with offices in Boston, London, Toronto and Sydney. We aspire to continually raise the bar on what people consider \"marketing content.\" We create result-focused strategies and content to drive SEO, social engagement and leads for our cl...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Marketing & Sales, Contract
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Marketing & Sales, Contract
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153060-japanese-english-ppc-freelancer-remote-freelance",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/1791a8a0-221.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158428-8",
+        "title": "Regional VP, Sales",
+        "title_ar": "Regional VP, Sales",
+        "company": "Sierra",
+        "category": "sales",
+        "category_ar": "المبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Spain",
+        "salary": "Competitive",
+        "description": "  About us  
+ Sierra is the leading platform for customer-facing AI agents, working with many of the world's biggest brands — including The GAP, Rocket Mortgage, SoFi, Sutter Health, and SoftBank — to transform how they serve customers and grow their businesses. We are primarily an in-person company...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Sales, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Sales, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153065-regional-vp-sales",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/9877fe33-221.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158428-9",
+        "title": "Product Support Specialist - EMEA",
+        "title_ar": "Product Support Specialist - EMEA",
+        "company": "Ashby",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Europe",
+        "salary": "Competitive",
+        "description": " Hello! I’m Barry, Support Manager at Ashby. I'm excited to share that we're hiring Product Support Specialists in Europe.  
+  Please note: we’re currently hiring Product Support Specialists to work one weekend day in exchange for a weekday off. This role will follow either a Tuesday–Saturday or Sun...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Technical Support, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Technical Support, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153069-product-support-specialist-emea",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/63864ee6-221.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158429-10",
+        "title": "Analyst II, Credit",
+        "title_ar": "Analyst II, Credit",
+        "company": "Affirm",
+        "category": "finance",
+        "category_ar": "مالية ومحاسبة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": " At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. 
+ As a Merchant Risk Analyst, you will assess financial risk related to credit, fraud and identity associated with the m...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Finance & Accounting, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Finance & Accounting, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153067-analyst-ii-credit",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/fac7714c-221-1.jpg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158430-11",
+        "title": "Staff Platform Engineer - UK",
+        "title_ar": "Staff Platform Engineer - UK",
+        "company": "Ashby",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": " We’re looking for a curious, rigorous, problem-hungry platform software engineer (who codes!) to carry the ball as we bring Ashby to the big leagues. Ashby builds software that lets talent teams build an efficient, delightful, respectful hiring process. Similarly, you’re an engineer who wants to bu...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in DevOps & Infrastructure, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام DevOps & Infrastructure, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153062-staff-platform-engineer-uk",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/08/63864ee6-221.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158431-12",
+        "title": "Solutions Engineer",
+        "title_ar": "Solutions Engineer",
+        "company": "ChargePoint",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": " About Us 
+ With electric vehicles expected to be nearly 30% of new vehicle sales by 2025 and more than 50% by 2040, electric mobility is becoming a reality. ChargePoint (NYSE: CHPT) is at the center of this revolution, powering one of the world’s leading EV charging networks and a comprehensive set...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Sales, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Sales, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153064-solutions-engineer-4",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/fa45d149-221.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158432-13",
+        "title": "Senior Product Designer",
+        "title_ar": "Senior Product Designer",
+        "company": "Kinsta",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Hungary",
+        "salary": "Competitive",
+        "description": " Kinsta is one of the top providers of managed hosting for WordPress, with a growing club of 120,000+ businesses including startups, universities, and Fortune 500 firms. We're motivated by excellent quality and proud to have received a 97% satisfaction rating from our customers. 
+ That's because, to...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Web, UI & UX Design, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Web, UI & UX Design, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153063-senior-product-designer-11",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/01/56d3a520-221.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158433-14",
+        "title": "Temporary Creative Production Project Manager - Germany",
+        "title_ar": "Temporary Creative Production Project Manager - Germany",
+        "company": "Brafton",
+        "category": "design",
+        "category_ar": "تصميم وإبداع",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Germany",
+        "salary": "Competitive",
+        "description": " Brafton is one of the world's leading content marketing firms, with offices in Boston, London, Toronto and Sydney. We aspire to continually raise the bar on what people consider \"marketing content.\" We create result-focused strategies and content to drive SEO, social engagement and leads for our cl...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Project & Program Management, Contract
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Project & Program Management, Contract
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153068-temporary-creative-production-project-manager-germany",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/1791a8a0-221.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158434-15",
+        "title": "Lead Software Engineer",
+        "title_ar": "Lead Software Engineer",
+        "company": "CoderPad",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "France",
+        "salary": "Competitive",
+        "description": " We are looking for a Lead Software Engineer to join our EMEA Engineering team in France (remote). 
+  What does a Lead Software Engineer at CoderPad do?  
+ As a Lead Software Engineer at CoderPad, you’ll design, build, and ship features across our full stack — taking ownership of complex technical p...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Software Engineering, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Software Engineering, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153066-lead-software-engineer",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/02/57995875e79f20bb0cd2cadad1b52775.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158435-16",
+        "title": "Proposal Manager",
+        "title_ar": "Proposal Manager",
+        "company": "D2L",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": " D2L is a cloud company that is modernizing education and building the Future of Work. The old models of teaching and learning are in the midst of the largest transformation in history, and D2L is at the heart of that fundamental shift.  
+ New models of teaching and learning enable a personalized, s...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Content & Editorial, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Content & Editorial, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153051-proposal-manager",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158436-17",
+        "title": "Senior Product Manager - Createspace, USA Based",
+        "title_ar": "Senior Product Manager - Createspace, USA Based",
+        "company": "D2L",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": " D2L is a cloud company that is modernizing education and building the Future of Work. The old models of teaching and learning are in the midst of the largest transformation in history, and D2L is at the heart of that fundamental shift.  
+ New models of teaching and learning enable a personalized, ...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Product & Operations, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Product & Operations, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153059-senior-product-manager-createspace-usa-based",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158436-18",
+        "title": "Senior Product Manager - Createspace, Canada Based",
+        "title_ar": "Senior Product Manager - Createspace, Canada Based",
+        "company": "D2L",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Canada",
+        "salary": "Competitive",
+        "description": " D2L is a cloud company that is modernizing education and building the Future of Work. The old models of teaching and learning are in the midst of the largest transformation in history, and D2L is at the heart of that fundamental shift.  
+ New models of teaching and learning enable a personalized, s...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Product & Operations, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Product & Operations, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153055-senior-product-manager-createspace-canada-based",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/0ac958a8-221.jpg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158437-19",
+        "title": "Account Executive - Enterprise, Grower",
+        "title_ar": "Account Executive - Enterprise, Grower",
+        "company": "Stripe",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": "  Who we are  
+  About Stripe  
+ Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to inc...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Sales, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Sales, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153057-account-executive-enterprise-grower",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201011073943-272457.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158438-20",
+        "title": "Abuse Research Engineer",
+        "title_ar": "Abuse Research Engineer",
+        "company": "Stripe",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": " Who we are 
+ About Stripe 
+ Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increas...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Cybersecurity, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Cybersecurity, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153053-abuse-research-engineer",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2020/10/WRILS-201011073943-272457.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158439-21",
+        "title": "FP&A Manager",
+        "title_ar": "FP&A Manager",
+        "company": "AlertMedia",
+        "category": "finance",
+        "category_ar": "مالية ومحاسبة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": "  Do work that matters.    
+ At  AlertMedia , we help organizations protect their people, operations, and brand. Our modern  Risk Intelligence and Response platform  empowers teams to detect emerging threats, assess impact, and respond with confidence. We believe building resilience should be simple...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Finance & Accounting, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Finance & Accounting, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153054-fpa-manager-2",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158440-22",
+        "title": "Customer Success Manager",
+        "title_ar": "Customer Success Manager",
+        "company": "Ping Identity",
+        "category": "customer_support",
+        "category_ar": "دعم العملاء",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": "  About Ping Identity:   
+ At Ping Identity, we believe in making digital experiences both secure and seamless for all users, without compromise. We call this digital freedom. And it's not just something we provide our customers. It's something that inspires our company. People don't come here to jo...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Customer Support & Success, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Customer Support & Success, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153052-customer-success-manager-45",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/09/63e8d5a6-221.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158441-23",
+        "title": "Product Manager",
+        "title_ar": "Product Manager",
+        "company": "AlertMedia",
+        "category": "marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": "  Do work that matters.     
+ At  AlertMedia , we help organizations protect their people, operations, and brand. Our modern  Risk Intelligence and Response platform  empowers teams to detect emerging threats, assess impact, and respond with confidence. We believe building resilience should be simpl...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Product & Operations, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Product & Operations, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153058-product-manager-4",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158442-24",
+        "title": "Cyber Security Engineer II",
+        "title_ar": "Cyber Security Engineer II",
+        "company": "Ping Identity",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "UK",
+        "salary": "Competitive",
+        "description": "  About Ping Identity:   
+ At Ping Identity, we believe in making digital experiences both secure and seamless for all users, without compromise. We call this digital freedom. And it's not just something we provide our customers. It's something that inspires our company. People don't come here to jo...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Cybersecurity, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Cybersecurity, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153056-cyber-security-engineer-ii",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/09/63e8d5a6-221.png",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158442-25",
+        "title": "Financial Systems Manager",
+        "title_ar": "Financial Systems Manager",
+        "company": "AlertMedia",
+        "category": "finance",
+        "category_ar": "مالية ومحاسبة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": "  Do work that matters.    
+  At AlertMedia,  we help organizations protect their people, operations, and brand. Our modern  Risk Intelligence and Response  platform empowers teams to detect emerging threats, assess impact, and respond with confidence. We believe building resilience should be simple...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in Finance & Accounting, Full-Time
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام Finance & Accounting, Full-Time
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://jobicy.com/jobs/153050-financial-systems-manager",
+        "image": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/03/38d8b6a506d39ead683086c25f6ac132.jpeg",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Jobicy"
+    },
+    {
+        "id": "job-1789158443-26",
+        "title": "Inside Sales Contractor",
+        "title_ar": "Inside Sales Contractor",
+        "company": "Credit Wellness, LLC",
+        "category": "sales",
+        "category_ar": "المبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": "  About Us  
+  We are a financial services start up focusing on helping to improve consumer credit profiles. We are currently seeking KPI driven sales representatives looking to earn up to 45K in their first year while working remotely. We offer comprehensive training and continuous sales coaching t...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in CRM, google sheets, financial services, Inside Sales
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام CRM, google sheets, financial services, Inside Sales
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/sales/inside-sales-contractor-2086540",
+        "image": "https://remotive.com/job/2086540/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158444-27",
+        "title": "Tier III Service Desk Engineer",
+        "title_ar": "Tier III Service Desk Engineer",
+        "company": "Unio Digital",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": " Unió Digital is an Arizona-based managed service provider (MSP) delivering Managed IT Services, Low Voltage Cabling, Access Control, Video Surveillance, and Intrusion Services. We believe technology should be intuitive, not intimidating. 
+   
+ We are looking for an experienced Tier 3 Service Desk T...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in azure, cisco, security, video
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام azure, cisco, security, video
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/information-technology/tier-iii-service-desk-engineer-2091045",
+        "image": "https://remotive.com/job/2091045/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158445-28",
+        "title": "Freelance Writer",
+        "title_ar": "Freelance Writer",
+        "company": "IAPWE",
+        "category": "other",
+        "category_ar": "أخرى",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": " Our organization is seeking content writers to create articles and blog posts on a variety of topics. 
+   
+ The rate of pay is $20 per 100 words (this comes out to approximately $100 per article or $50 per hour). 
+   
+ Some topics you may be asked to write about include the following (you can alway...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in REST
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام REST
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/writing/freelance-writer-1185979",
+        "image": "https://remotive.com/job/1185979/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158446-29",
+        "title": "Freelance Copywriter",
+        "title_ar": "Freelance Copywriter",
+        "company": "Coalition Technologies ",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": " CT Marketing Agency is seeking skilled Freelance Copywriters to write high-quality, SEO-driven content for eCommerce and lead generation websites. This is a freelance, project-based writing role. 
+   
+ The ideal candidate has excellent English writing skills, strong research ability, and experience...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in accounting, excel, research, data analysis
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام accounting, excel, research, data analysis
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",
+        "image": "https://remotive.com/job/1749306/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158447-30",
+        "title": "Senior React Full-stack Developer",
+        "title_ar": "Senior React Full-stack Developer",
+        "company": "Lemon.io",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "LATAM, Europe, USA, Canada, APAC",
+        "salary": "Competitive",
+        "description": " Are you a talented Senior Developer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  — the marketplace that connects you with hand-picked startups in the US and Europe. 
+     
+  What we offer:  
+ 
+ The rate depends on your seniorit...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in .Net, android, AWS, backend
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام .Net, android, AWS, backend
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/senior-react-full-stack-developer-2091101",
+        "image": "https://remotive.com/job/2091101/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158448-31",
+        "title": "Senior QA Engineer",
+        "title_ar": "Senior QA Engineer",
+        "company": "Lemon.io",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Europe",
+        "salary": "Competitive",
+        "description": " Are you a talented QA looking for a remote job that lets you show your skills and get better compensation and career growth? Look no further than  Lemon.io  - the marketplace that connects you with hand-picked startups in the US and Europe. 
+     
+  Requirements:  
+ 
+ 
+ 3+ years of experience in au...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in .Net, android, C, C#
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام .Net, android, C, C#
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/qa/senior-qa-engineer-2091100",
+        "image": "https://remotive.com/job/2091100/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158449-32",
+        "title": "Senior DevOps Engineer",
+        "title_ar": "Senior DevOps Engineer",
+        "company": "Lemon.io",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "LATAM, Europe, USA, Canada, APAC",
+        "salary": "Competitive",
+        "description": " Are you a talented Senior DevOps looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  — the marketplace that connects you with hand-picked startups in the US and Europe. 
+   
+   
+ We currently have multiple DevOps openings open at once...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in .Net, android, AWS, azure
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام .Net, android, AWS, azure
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/devops/senior-devops-engineer-2091099",
+        "image": "https://remotive.com/job/2091099/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158449-33",
+        "title": "Content Reviewer - English US",
+        "title_ar": "Content Reviewer - English US",
+        "company": "TELUS Digital",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": " Our global AI Community is a vibrant network of more than one million contributors from 
+ diverse backgrounds who help customers collect, enhance, train, translate, and localize 
+ content to build better AI models. Become part of our growing community and contribute 
+ to the development of innovati...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in android, ios, social media, AI/ML
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام android, ios, social media, AI/ML
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/all-others/content-reviewer-english-us-2091105",
+        "image": "https://remotive.com/job/2091105/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158450-34",
+        "title": "Senior Golang Developer",
+        "title_ar": "Senior Golang Developer",
+        "company": "Lemon.io",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Europe, USA, UK, Canada, Australia, Singapore",
+        "salary": "Competitive",
+        "description": " Are you a talented Senior Developer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  — the marketplace that connects you with hand-picked startups in the US and Europe. 
+   
+ We are currently seeking a Senior Software Engineer for ...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in .Net, android, C, C#
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام .Net, android, C, C#
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/senior-golang-developer-2091098",
+        "image": "https://remotive.com/job/2091098/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158451-35",
+        "title": "Senior Data Engineer",
+        "title_ar": "Senior Data Engineer",
+        "company": "Lemon.io",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "LATAM, Europe, USA, Canada, APAC",
+        "salary": "Competitive",
+        "description": " Are you a talented Senior Data Engineer looking for a remote job that lets you show your skills and get decent compensation? Look no further than  Lemon.io  — the marketplace that connects you with hand-picked startups in the US and Europe. 
+     
+  What we offer:  
+ 
+ The rate depends on your skil...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in .Net, android, apache, AWS
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام .Net, android, apache, AWS
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097",
+        "image": "https://remotive.com/job/2091097/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158452-36",
+        "title": "Senior Independent AI Engineer / Architect",
+        "title_ar": "Senior Independent AI Engineer / Architect",
+        "company": "A.Team",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Americas, Europe, Israel",
+        "salary": "Competitive",
+        "description": " Senior Independent AI Engineer / Architect 
+  Remote | Americas, Europe, or Israel  
+   
+ Most AI engineers can find work. 
+   
+ Finding work worth doing is harder. 
+   
+ A.Team is an invite-only network of senior AI engineers, ML engineers, and AI architects building production AI systems for star...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in go, UI/UX, wordpress, chat
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام go, UI/UX, wordpress, chat
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
+        "image": "https://remotive.com/job/1919266/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158453-37",
+        "title": "Senior Independent Software Developer",
+        "title_ar": "Senior Independent Software Developer",
+        "company": "A.Team",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Americas, Europe, Israel",
+        "salary": "Competitive",
+        "description": "  You must be located in the Americas, Europe, or Israel to apply.     A·Team  is a VC-backed, stealth, application-only home on the internet for senior independent software builders to team up with hand-picked, high-growth companies on their next big thing.  
+ After talking with hundreds of indepen...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in go, wordpress, chat, apple
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام go, wordpress, chat, apple
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/senior-independent-software-developer-1919265",
+        "image": "https://remotive.com/job/1919265/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158454-38",
+        "title": "Head of Marketing & Communications",
+        "title_ar": "Head of Marketing & Communications",
+        "company": "garden3d",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": "  We are hiring a  Head of Marketing &amp; Communications  to tell the garden3d story across the internet, from wherever in the world you happen to be.  
+  More details if you check our  original job posting link   
+  About  garden3d   
+ We are worker owned creative collective, innovating on everyth...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in C, video, open source, AI/ML
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام C, video, open source, AI/ML
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/marketing/head-of-marketing-communications-2091068",
+        "image": "https://remotive.com/job/2091068/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158455-39",
+        "title": "Tech Lead Full-Stack Rails Engineer",
+        "title_ar": "Tech Lead Full-Stack Rails Engineer",
+        "company": "Mitre Media",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA, Canada, USA timezones",
+        "salary": "Competitive",
+        "description": "  About Mitre Media  
+  Mitre Media is redefining FinTech with AI-driven tools that empower millions of investors. Our portfolio, including Dividend.com and MutualFunds.com, leverages LLMs to deliver novel data insights and visually rich user experiences. For over a decade, we’ve served individual i...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in api, CSS, docker, elasticsearch
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام api, CSS, docker, elasticsearch
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/software-development/tech-lead-full-stack-rails-engineer-2069746",
+        "image": "https://remotive.com/job/2069746/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158455-40",
+        "title": "Face Deduplication Collection",
+        "title_ar": "Face Deduplication Collection",
+        "company": "TELUS Digital",
+        "category": "other",
+        "category_ar": "أخرى",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "USA",
+        "salary": "Competitive",
+        "description": " The project compensation rate is $0.55 USD per accepted image.   The objective of this project is to collect a large and diverse dataset of current neutral selfies, head-pose captures, and historical facial images to support machine-learning research and facial recognition model training at TELUS. ...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in research
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام research
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/all-others/face-deduplication-collection-2091093",
+        "image": "https://remotive.com/job/2091093/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789158456-41",
+        "title": "Remote Office Assistant",
+        "title_ar": "Remote Office Assistant",
+        "company": "Coalition Technologies ",
+        "category": "development",
+        "category_ar": "تطوير وبرمجة",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Worldwide",
+        "salary": "Competitive",
+        "description": " Coalition Technologies is seeking a reliable, detail-oriented, and highly organized Remote Office Assistant to support administrative, bookkeeping, billing, reporting, data entry, and internal operations tasks. This role is ideal for someone with strong communication skills, discretion, attention t...",
+        "description_ar": "فرصة وظيفية مميزة في بيئة عمل احترافية ومتطورة.",
+        "requirements": "✅ Relevant experience in the field
+✅ Proficient in CSS, excel, frontend, git
+✅ Strong communication skills",
+        "requirements_ar": "✅ خبرة ذات صلة في المجال
+✅ إجادة استخدام CSS, excel, frontend, git
+✅ مهارات تواصل قوية",
+        "applyUrl": "https://remotive.com/remote-jobs/marketing/remote-office-assistant-1680495",
+        "image": "https://remotive.com/job/1680495/logo",
+        "postedAt": "2026-09-11",
+        "verified": true,
+        "source": "Remotive"
+    },
+    {
+        "id": "job-1789156352-1",
+        "title": "External Data Specialist",
+        "title_ar": "External Data Specialist",
+        "company": "eClinical Solutions",
+        "category": "Development",
+        "category_ar": "برمجة وتطوير",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote",
+        "salary": "Competitive / تنافسي",
+        "description": "eClinical Solutions helps life sciences organizations around the world accelerate clinical development initiatives with expert data services and the elluminate Clinical Data Cloud â the foundation o...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in cloud, exec, stats
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (cloud, exec, stats)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-external-data-specialist-eclinical-solutions-1137375",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-2",
+        "title": "Business Development Manager",
+        "title_ar": "Business Development Manager",
+        "company": "Libertex Group",
+        "category": "Development",
+        "category_ar": "برمجة وتطوير",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "ÙØ³ÙØ·, ÙØ³ÙØ· ÙØ³ÙØ· Ø¹ÙØ§Ù",
+        "salary": "Competitive / تنافسي",
+        "description": " Libertex Group Overview   Established in 1997, the Libertex Group is an international powerhouse with over 28 years of financial markets expertise.  Over the years, the Libertex Group has helped shap...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in product manager, exec, design, crypto, marketing
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (product manager, exec, design, crypto, marketing)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-business-development-manager-libertex-group-1137373",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-3",
+        "title": "Quality Dispense Technician North",
+        "title_ar": "Quality Dispense Technician North",
+        "company": "Thatchers Cider",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Greater Newcastle Area, ",
+        "salary": "Competitive / تنافسي",
+        "description": "As we grow so does our team. Weâre looking for a Quality Dispense Technician to join our team. We are looking for a practical person, who enjoys problem solving and wants to offer exceptional custom...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in education, marketing, finance, exec, excel
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (education, marketing, finance, exec, excel)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-quality-dispense-technician-north-thatchers-cider-1137374",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-4",
+        "title": "Social Comms",
+        "title_ar": "Social Comms",
+        "company": "NOPE",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": " Important:  This is a contract/part-time role: 10-20 hrs/week - rate $40-50/hr   NOPE is an AI safety company with a unique goal; we do not concern ourselves with bio or cyber-risks or other Hollywoo...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in marketing, education, technical, content writing, social media
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (marketing, education, technical, content writing, social media)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-social-comms-nope-1137314",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-5",
+        "title": "AI Response Analyst",
+        "title_ar": "AI Response Analyst",
+        "company": "iMerit Technology",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": " The work  iMerit, an EXL company, is looking for detail oriented analysts to evaluate and rank AI generated responses to image based prompts. You will judge answers on accuracy, relevance, clarity, c...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in content writing, quality assurance, ai
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (content writing, quality assurance, ai)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-ai-response-analyst-imerit-technology-1137309",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-6",
+        "title": "Junior Crypto Analyst & Trader",
+        "title_ar": "Junior Crypto Analyst & Trader",
+        "company": "Empire Assets",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": "   Application URL   https://empireground.com/work/remoteok   Empire Assets is a young and rapidly developing company working in the field of digital markets and analytics. We bring together enterpris...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in part time, junior, analyst, crypto, other
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (part time, junior, analyst, crypto, other)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-junior-crypto-analyst-trader-empire-assets-1137307",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-7",
+        "title": "Customer Support & Success Specialist",
+        "title_ar": "Customer Support & Success Specialist",
+        "company": "Warehance",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": " Customer Success &amp; Support Specialist  Warehance helps businesses manage orders, inventory, shipping, and fulfillment.  Weâre looking for someone who is  good with people, sharp with details, a...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in customer support
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (customer support)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-customer-support-success-specialist-warehance-1137302",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-8",
+        "title": "Regional Sales Manager",
+        "title_ar": "Regional Sales Manager",
+        "company": "OrderYOYO",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": "&lt;p&gt;&lt;strong&gt;Regional Sales Manager&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot;&gt;&lt;strong&gt;Netherlands - Field based&lt;/strong&gt;&lt;/p&gt;&lt;p clas...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in exec, customer support, marketing, scheme, mobile
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (exec, customer support, marketing, scheme, mobile)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-regional-sales-manager-orderyoyo-1137279",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-9",
+        "title": "AI Engineer Data APIs",
+        "title_ar": "AI Engineer Data APIs",
+        "company": "Benzinga",
+        "category": "Development",
+        "category_ar": "برمجة وتطوير",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": "Remote - Before you read further: applying to this role requires a Loom video walkthrough under 5 minutes of the best thing you have built, plus a repo or live link. Tell us the hardest problem you hi...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in golang, video, engineer
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (golang, video, engineer)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-ai-engineer-data-apis-benzinga-1137224",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-10",
+        "title": "Programmatic Campaign Operations Specialist Trader",
+        "title_ar": "Programmatic Campaign Operations Specialist Trader",
+        "company": "VirtuHire",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": " Location: South Africa â Remote  Hours: 14:00â23:00 SAST, MondayâFriday, aligned with U.S. Eastern business hours  Employment: Permanent, Full-Time Role Purpose Execute and maintain programmati...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in amazon, technical, customer support, quality assurance, video
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (amazon, technical, customer support, quality assurance, video)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-programmatic-campaign-operations-specialist-trader-virtuhire-1137169",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-11",
+        "title": "Principal Engineer",
+        "title_ar": "Principal Engineer",
+        "company": "The AI Whistleblower Initiative",
+        "category": "Development",
+        "category_ar": "برمجة وتطوير",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": "Remote - About AIWIAIWI is an independent non-profit that exists to ensure that insiders at frontier AI companies can speak up safely and effectively when they see something that should be addressed. ...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in golang, engineer
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (golang, engineer)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-principal-engineer-the-ai-whistleblower-initiative-1137162",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-12",
+        "title": "Senior Level Designer",
+        "title_ar": "Senior Level Designer",
+        "company": "Blackbird Interactive",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Vancouver, BC, Canada",
+        "salary": "Competitive / تنافسي",
+        "description": " Blackbird Interactive is a creative-fueled, future-driven, independent game studio where the best talent in the industry can find long-term careers to help grow their abilities while working on a wid...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in design, game dev, designer, technical, customer support
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (design, game dev, designer, technical, customer support)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-senior-level-designer-blackbird-interactive-1137156",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-13",
+        "title": "Oracle Fusion Cloud Lead â Logistics & Supply Chain Management",
+        "title_ar": "Oracle Fusion Cloud Lead â Logistics & Supply Chain Management",
+        "company": "Tessera Labs",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": "  Oracle Fusion Cloud Lead â Logistics &amp; Supply Chain Management    Greenfield Oracle Fusion Implementation   Company  Tessera Labs AI   Role Type Senior consulting engagement â full-time or c...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in design, sys admin, consulting, testing, exec
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (design, sys admin, consulting, testing, exec)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-oracle-fusion-cloud-lead-logistics-supply-chain-management-tessera-labs-1137155",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-14",
+        "title": "Course Director UX UI and AI",
+        "title_ar": "Course Director UX UI and AI",
+        "company": "Interaction Design Foundation",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Remote",
+        "type_ar": "عن بعد",
+        "location": "Remote / Global",
+        "salary": "Competitive / تنافسي",
+        "description": " You've been designing long enough to have watched tools become essential and then disappear. You know which design skills are timeless and which ones expire.Â  The human-centered design skills are wh...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in education, design, content writing
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (education, design, content writing)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://remoteOK.com/remote-jobs/remote-course-director-ux-ui-and-ai-interaction-design-foundation-1137139",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-15",
+        "title": "Senior Product Manager, Data Infrastructure",
+        "title_ar": "Senior Product Manager, Data Infrastructure",
+        "company": "Angi",
+        "category": "Development",
+        "category_ar": "برمجة وتطوير",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Hybrid - Germany - Berlin",
+        "salary": "Competitive / تنافسي",
+        "description": " For over 30 years, Angi has powered the future of the home services industry, creating an environment where homeowners and pros benefit from more jobs done well.  For homeowners, our platform is a re...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in Product
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (Product)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://www.arbeitnow.com/jobs/companies/angi/senior-product-manager-data-infrastructure-berlin-47693",
+        "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-16",
+        "title": "Investment Intern - Growth Stage",
+        "title_ar": "Investment Intern - Growth Stage",
+        "company": "Hv",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Berlin",
+        "salary": "Competitive / تنافسي",
+        "description": " HV backs bold founders from the first check to IPO.  With €2.8 billion in assets under management and a track record spanning nine fund generations, HV has invested in more than 290 companies across ...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in Growth
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (Growth)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://www.arbeitnow.com/jobs/companies/hv/investment-intern-growth-stage-berlin-83162",
+        "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-17",
+        "title": "Investment Intern – Early Stage",
+        "title_ar": "Investment Intern – Early Stage",
+        "company": "Hv",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Berlin",
+        "salary": "Competitive / تنافسي",
+        "description": " HV backs bold founders from the first check to IPO.  With €2.8 billion in assets under management and a track record spanning nine fund generations, HV has invested in more than 290 companies across ...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in Investment
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (Investment)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://www.arbeitnow.com/jobs/companies/hv/investment-intern-early-stage-berlin-396819",
+        "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-18",
+        "title": "Founder’s Associate Intern",
+        "title_ar": "Founder’s Associate Intern",
+        "company": "Pergolux",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Berlin | Global Team",
+        "salary": "Competitive / تنافسي",
+        "description": " The opportunity  Help build a new part of the business while the first Pergolux showrooms take shape. Working closely with leadership and the team leading the rollout, you’ll evaluate locations, buil...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in Global Revenue
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (Global Revenue)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://www.arbeitnow.com/jobs/companies/pergolux/founders-associate-intern-berlin-466510",
+        "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
+    },
+    {
+        "id": "job-1789156352-19",
+        "title": "Field CTO, DACH",
+        "title_ar": "Field CTO, DACH",
+        "company": "Mistral.ai",
+        "category": "Marketing",
+        "category_ar": "تسويق ومبيعات",
+        "type": "Full-time",
+        "type_ar": "دوام كامل",
+        "location": "Munich",
+        "salary": "Competitive / تنافسي",
+        "description": "  About Mistral   Mistral provides full-stack AI solutions: from frontier models to developer tools, applications, and compute. We partner with enterprises tackling the hardest problems—across high-st...",
+        "description_ar": "فرصة عمل متميزة مع إمكانية التقديم المباشر والانضمام لفريق عمل ديناميكي.",
+        "requirements": "• Relevant industry experience
+• Proficient in Solutions
+• Strong problem solving and communication",
+        "requirements_ar": "• خبرة مهنية سابقة في المجال
+• إتقان أدوات وتقنيات العمل (Solutions)
+• مهارات تواصل وعمل جماعي عالية",
+        "applyUrl": "https://www.arbeitnow.com/jobs/companies/mistralai/field-cto-dach-munich-476611",
+        "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80",
+        "postedAt": "2026-09-11",
+        "verified": true
     }
-  ],
+],
 
   // Initialization
   init: function() {
