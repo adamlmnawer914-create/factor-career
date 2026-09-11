@@ -160,6 +160,7 @@ window.CareerAI.pages.interviewQuestions = function() {
           </div>
         </div>
 
+        ${window.CareerAI.components.renderOtherTools('interview-questions')}
       </div>
     </section>
   `;

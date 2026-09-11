@@ -178,6 +178,7 @@ window.CareerAI.pages.atsKeywords = function() {
           </div>
         </div>
 
+        ${window.CareerAI.components.renderOtherTools('ats-keywords')}
       </div>
     </section>
   `;

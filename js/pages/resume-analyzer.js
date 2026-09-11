@@ -193,6 +193,7 @@ window.CareerAI.pages.resumeAnalyzer = function() {
           </div>
         </div>
 
+        ${window.CareerAI.components.renderOtherTools('resume-analyzer')}
       </div>
     </section>
   `;

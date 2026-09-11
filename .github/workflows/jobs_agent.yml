@@ -1,0 +1,49 @@
+﻿name: 'Factor Career: AI Job Agent (4x Daily)'
+
+on:
+  schedule:
+    # Runs every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
+    - cron: '0 0 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 18 * * *'
+  workflow_dispatch:  # Manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run AI Job Scraper & Gemini Verification
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "Starting Factor Career AI Job Agent v2.0..."
+          python scripts/fetch_and_verify_jobs.py
+
+      - name: Commit & Push Updated Jobs
+        run: |
+          git config --global user.name "FactorCareer-JobAgent"
+          git config --global user.email "factorcareer@gmail.com"
+          git add data/jobs.json js/db.js
+          if git diff --staged --quiet; then
+            echo "No new jobs to commit - all up to date."
+          else
+            git commit -m "chore(jobs): auto-update AI-verified job listings [skip ci]"
+            git push origin main
+            echo "Successfully pushed updated jobs!"
+          fi

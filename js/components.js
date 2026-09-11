@@ -199,3 +199,89 @@ window.CareerAI.components.renderFooter = function() {
     </button>
   `;
 };
+
+
+/* --- Cross-Tool Discovery & Quick-Launcher Suite --- */
+window.CareerAI.components.renderOtherTools = function(currentToolId) {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const icons = window.CareerAI.icons;
+
+  const allTools = [
+    {
+      id: 'resume-builder',
+      title: isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي',
+      desc: isEn ? 'Build ATS-optimized resumes with live preview and instant PDF export.' : 'أنشئ سيرة ذاتية متوافقة مع ATS مع معاينة مباشرة وتصدير PDF فوري.',
+      icon: icons.fileText || icons.speed,
+      link: '/tools/resume-builder',
+      badge: isEn ? 'Popular' : 'الأكثر طلباً'
+    },
+    {
+      id: 'resume-analyzer',
+      title: isEn ? 'ATS Resume Checker' : 'محلل وفاحص السيرة ATS',
+      desc: isEn ? 'Score your CV against job descriptions and uncover missing keywords.' : 'افحص نسبة توافق سيرتك مع الوظائف واكتشف الكلمات الناقصة.',
+      icon: icons.check,
+      link: '/tools/resume-analyzer',
+      badge: isEn ? 'Smart Scan' : 'فحص ذكي'
+    },
+    {
+      id: 'cover-letter-generator',
+      title: isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم',
+      desc: isEn ? 'Generate tailored, compelling cover letters in seconds with AI.' : 'ولّد خطابات تقديم احترافية ومخصصة لكل وظيفة بضغطة زر.',
+      icon: icons.mail,
+      link: '/tools/cover-letter-generator',
+      badge: isEn ? 'AI Writer' : 'توليد فوري'
+    },
+    {
+      id: 'interview-questions',
+      title: isEn ? 'Interview Coach' : 'مدرب أسئلة المقابلات',
+      desc: isEn ? 'Practice real-world interview questions with model STAR answers.' : 'تدرّب على أسئلة المقابلات مع إجابات نموذجية بأسلوب STAR.',
+      icon: icons.users,
+      link: '/tools/interview-questions',
+      badge: isEn ? 'STAR Method' : 'نموذج STAR'
+    },
+    {
+      id: 'ats-keywords',
+      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج كلمات ATS',
+      desc: isEn ? 'Extract high-priority skills and keywords from any job posting.' : 'استخرج أهم المهارات والكلمات المفتاحية من إعلانات التوظيف.',
+      icon: icons.target,
+      link: '/tools/ats-keywords',
+      badge: isEn ? 'Keywords' : 'مستخرج كلمات'
+    }
+  ];
+
+  const otherTools = allTools.filter(t => t.id !== currentToolId);
+
+  return `
+    <div class="other-tools-section" style="margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--color-border-light);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <h3 style="font-size:1.3rem;font-weight:800;color:var(--color-text);margin:0 0 4px 0">
+            ⚡ ${isEn ? 'Explore Other Free AI Career Tools' : 'استكشف باقي أدوات المنصة الذكية'}
+          </h3>
+          <p style="font-size:0.88rem;color:var(--color-text-muted);margin:0">
+            ${isEn ? 'Use our complete suite of career intelligence tools to boost your hiring chances.' : 'استفد من باقي أدوات الذكاء الاصطناعي المجانية لتطوير ملفك المهني بالكامل.'}
+          </p>
+        </div>
+        <a href="/tools" class="btn btn--secondary btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
+          ${isEn ? 'View All 5 Tools →' : 'عرض كافة الأدوات (5) ←'}
+        </a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;">
+        ${otherTools.map(tool => `
+          <div class="card" style="cursor:pointer;padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between;position:relative" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+            <span class="tag tag--accent" style="position:absolute;top:1rem;${isEn ? 'right' : 'left'}:1rem;font-size:0.7rem">${tool.badge}</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+              <span style="width:28px;height:28px;display:inline-flex;color:var(--color-primary)">${tool.icon}</span>
+              <h4 style="font-size:1rem;font-weight:700;color:var(--color-text);margin:0">${tool.title}</h4>
+            </div>
+            <p style="font-size:0.82rem;color:var(--color-text-muted);margin:0 0 0.75rem 0;line-height:1.5">${tool.desc}</p>
+            <a href="${tool.link}" class="card__link" style="font-size:0.82rem;font-weight:700" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+              ${isEn ? 'Launch Tool →' : 'فتح الأداة ←'}
+            </a>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+};

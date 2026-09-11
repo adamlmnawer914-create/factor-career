@@ -1,18 +1,59 @@
 /* ============================================
-   Factor Career - Jobs & Opportunities Page (Multilingual)
+   Factor Career - Jobs & Opportunities Page
+   Interactive Real-time Filter, AI Verified Badges,
+   Search & Direct Application
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
 window.CareerAI.pages = window.CareerAI.pages || {};
 
+window.CareerAI.jobsFilterState = {
+  searchQuery: '',
+  category: 'all',
+  type: 'all'
+};
+
 window.CareerAI.pages.jobs = function() {
   const icons = window.CareerAI.icons;
   const db = window.CareerAI.db;
-  const jobs = db.getJobs(false); // Only active jobs
+  const allJobs = db.getJobs ? db.getJobs(false) : (db.data ? db.data.jobs : []);
+  const state = window.CareerAI.jobsFilterState;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
 
+  // Apply filters
+  const filteredJobs = allJobs.filter(job => {
+    // Search query
+    if (state.searchQuery) {
+      const q = state.searchQuery.toLowerCase();
+      const matchTitle = (job.title && job.title.toLowerCase().includes(q)) || (job.title_ar && job.title_ar.toLowerCase().includes(q));
+      const matchComp = job.company && job.company.toLowerCase().includes(q);
+      const matchLoc = job.location && job.location.toLowerCase().includes(q);
+      const matchReq = (job.requirements && job.requirements.toLowerCase().includes(q)) || (job.requirements_ar && job.requirements_ar.toLowerCase().includes(q));
+      if (!matchTitle && !matchComp && !matchLoc && !matchReq) return false;
+    }
+
+    // Category filter
+    if (state.category !== 'all') {
+      const cat = (job.category || '').toLowerCase();
+      if (state.category === 'dev' && !cat.includes('dev') && !cat.includes('software') && !cat.includes('engineer')) return false;
+      if (state.category === 'marketing' && !cat.includes('market') && !cat.includes('sales')) return false;
+      if (state.category === 'design' && !cat.includes('design') && !cat.includes('ui')) return false;
+      if (state.category === 'hr' && !cat.includes('hr') && !cat.includes('recruit') && !cat.includes('manage')) return false;
+    }
+
+    // Type filter
+    if (state.type !== 'all') {
+      const jType = ((job.type || '') + ' ' + (job.location || '')).toLowerCase();
+      if (state.type === 'remote' && !jType.includes('remote') && !jType.includes('عن بعد')) return false;
+      if (state.type === 'fulltime' && !jType.includes('full') && !jType.includes('كامل')) return false;
+    }
+
+    return true;
+  });
+
   return `
+    <!-- Header -->
     <div class="page-header page-header--dark" style="background:var(--gradient-hero)">
       <div class="container">
         <nav class="breadcrumb" style="color:rgba(255,255,255,0.7)">
@@ -20,94 +61,142 @@ window.CareerAI.pages.jobs = function() {
           <span style="margin:0 8px">›</span>
           <span style="color:white">${t('nav.jobs', 'الوظائف والفرص')}</span>
         </nav>
-        <div class="page-header__content" style="text-align:center;max-width:700px;margin:0 auto">
+        <div class="page-header__content" style="text-align:center;max-width:760px;margin:0 auto">
+          <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
+            <span class="section__badge" style="background:rgba(16,185,129,0.2);color:#34d399;border:1px solid rgba(16,185,129,0.4)">
+              ✓ ${isEn ? 'AI Verified & Anti-Scam Filtered' : 'فرص عمل موثوقة ومفحوصة بالذكاء الاصطناعي'}
+            </span>
+          </div>
           <h1 class="page-header__title" style="color:white;font-size:var(--text-4xl)">
-            ${t('jobs.headerTitle', '💼 الوظائف والفرص المهنية')}
+            ${isEn ? 'Explore Verified Career Opportunities' : 'الوظائف والفرص المهنية اليومية'}
           </h1>
           <p class="page-header__subtitle" style="color:rgba(255,255,255,0.85);font-size:var(--text-lg)">
-            ${t('jobs.headerSubtitle', 'استكشف أحدث فرص العمل المُختارة بعناية لتناسب مهاراتك وطموحاتك المهنية')}
+            ${isEn ? 'Discover active, vetted jobs updated daily across top companies and remote startups.' : 'استكشف أحدث فرص العمل المحدثة يومياً بعد فحصها وتدقيقها بالذكاء الاصطناعي لضمان مصداقيتها.'}
           </p>
+
           <div style="display:flex;gap:var(--space-4);justify-content:center;margin-top:var(--space-6);flex-wrap:wrap">
-            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-full);padding:8px 20px;font-size:var(--text-sm);color:white;backdrop-filter:blur(8px)">
-              <span style="font-weight:bold;color:var(--color-accent-light)">${jobs.length}</span> ${t('jobs.available', 'فرصة متاحة الآن')}
+            <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:var(--radius-full);padding:8px 20px;font-size:var(--text-sm);color:white;backdrop-filter:blur(8px)">
+              <span style="font-weight:bold;color:#34d399">${allJobs.length}</span> ${isEn ? 'Active Verified Jobs' : 'وظيفة موثقة متاحة الآن'}
             </div>
-            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-full);padding:8px 20px;font-size:var(--text-sm);color:white;backdrop-filter:blur(8px)">
-              ${t('jobs.autoUpdated', '🔄 يتم التحديث باستمرار')}
+            <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:var(--radius-full);padding:8px 20px;font-size:var(--text-sm);color:white;backdrop-filter:blur(8px)">
+              ⚡ ${isEn ? 'Auto-Updated Daily via AI Pipeline' : 'تحديث آلي يومي عبر وكيل الذكاء الاصطناعي'}
             </div>
           </div>
-
-        <!-- Google AdSense - Top Leaderboard Banner -->
-        <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:2.5rem auto 1rem;max-width:760px;">
-          <div class="ad-frame-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-            ${t('common.sponsored', 'إعلان ممول / Sponsored')}
-          </div>
-          <div class="ad-frame-inner">
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px;max-width:100%;"
-                 data-ad-client="ca-pub-7520213352755959"
-                 data-ad-slot="3316284985"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-          </div>
-        </div>
-
         </div>
       </div>
     </div>
 
-    <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-16)">
+    <!-- Google AdSense - Top Leaderboard Banner -->
+    <div class="container" style="margin-top:var(--space-4);margin-bottom:var(--space-2)">
+      <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
+        <div class="ad-frame-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
+        </div>
+        <div class="ad-frame-inner">
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px;max-width:100%;"
+               data-ad-client="ca-pub-7520213352755959"
+               data-ad-slot="3316284985"
+               data-ad-format="horizontal"
+               data-full-width-responsive="true"></ins>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls Bar -->
+    <section class="section" style="padding-top:var(--space-4);padding-bottom:var(--space-16)">
       <div class="container">
+
+        <!-- Search & Filter Card -->
+        <div style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;margin-bottom:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;align-items:end;">
+            
+            <div class="form-group" style="margin:0">
+              <label class="form-label">${isEn ? 'Search Jobs, Companies or Skills' : 'البحث بالكلمة المفتاحية، المسمى، الشركة أو المهارات'}</label>
+              <input type="text" id="jobsSearchInput" class="form-input" value="${state.searchQuery || ''}" placeholder="${isEn ? 'e.g. React, Marketing, Remote, Manager...' : 'مثال: مهندس برمجيات، تسويق، عن بعد...'}" oninput="CareerAI.onJobsSearch(this.value)">
+            </div>
+
+            <div class="form-group" style="margin:0">
+              <label class="form-label">${isEn ? 'Field / Category' : 'مجال العمل والتخصص'}</label>
+              <select id="jobsCategoryFilter" class="form-input" onchange="CareerAI.onJobsFilterChange('category', this.value)">
+                <option value="all" ${state.category==='all'?'selected':''}>${isEn ? 'All Fields' : 'جميع المجالات'}</option>
+                <option value="dev" ${state.category==='dev'?'selected':''}>${isEn ? 'Software & Tech' : 'برمجة وتكنولوجيا'}</option>
+                <option value="marketing" ${state.category==='marketing'?'selected':''}>${isEn ? 'Marketing & Sales' : 'تسويق ومبيعات'}</option>
+                <option value="design" ${state.category==='design'?'selected':''}>${isEn ? 'UI/UX & Design' : 'تصميم وفنون'}</option>
+                <option value="hr" ${state.category==='hr'?'selected':''}>${isEn ? 'HR & Management' : 'موارد بشرية وإدارة'}</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin:0">
+              <label class="form-label">${isEn ? 'Work Mode' : 'نوع العمل'}</label>
+              <select id="jobsTypeFilter" class="form-input" onchange="CareerAI.onJobsFilterChange('type', this.value)">
+                <option value="all" ${state.type==='all'?'selected':''}>${isEn ? 'All Types' : 'جميع الأنواع'}</option>
+                <option value="remote" ${state.type==='remote'?'selected':''}>${isEn ? 'Remote Only 🌍' : 'عن بعد فقط 🌍'}</option>
+                <option value="fulltime" ${state.type==='fulltime'?'selected':''}>${isEn ? 'Full-Time' : 'دوام كامل'}</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2-Column Content Layout (Jobs Grid Left + Sticky Ad Sidebar Right) -->
         <div class="page-with-sidebar">
-          <!-- Main Jobs Column -->
-          <div class="main-content-col">
-            ${jobs.length === 0 ? `
-              <div class="text-center animate-on-scroll" style="padding:var(--space-16) 0">
-                <div style="font-size:4rem;margin-bottom:var(--space-4)">📭</div>
-                <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">${t('jobs.emptyTitle', 'لا توجد فرص متاحة حالياً')}</h2>
-                <p style="color:var(--color-text-secondary);max-width:500px;margin:0 auto">${t('jobs.emptyDesc', 'نعمل على إضافة فرص عمل جديدة باستمرار. تابعنا للحصول على آخر التحديثات!')}</p>
-                <a href="/tools" class="btn btn--primary" style="margin-top:var(--space-6)" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
-                  ${isEn ? 'Explore AI Career Tools' : 'استعد مع أدوات الذكاء الاصطناعي'}
-                </a>
+          
+          <!-- Main Jobs Cards Column -->
+          <div class="main-content-col" id="jobsListContainer">
+            ${filteredJobs.length === 0 ? `
+              <div class="text-center" style="padding:4rem 1rem;background:var(--color-bg-card);border-radius:16px;border:1px solid var(--color-border)">
+                <div style="font-size:3rem;margin-bottom:1rem">🔍</div>
+                <h3 style="font-size:1.3rem;font-weight:700;color:var(--color-text);margin-bottom:0.5rem">${isEn ? 'No matching jobs found' : 'لم يتم العثور على وظائف مطابقة'}</h3>
+                <p style="color:var(--color-text-muted);max-width:420px;margin:0 auto 1.5rem">${isEn ? 'Try adjusting your search terms or clearing filters to see all available jobs.' : 'جرّب تغيير كلمات البحث أو إعادة ضبط الفلاتر للاطلاع على كافة الفرص المتاحة.'}</p>
+                <button class="btn btn--secondary btn--sm" onclick="CareerAI.resetJobsFilter()">${isEn ? 'Reset All Filters' : 'إعادة ضبط الفلاتر'}</button>
               </div>
             ` : `
-              <div class="jobs-grid">
-                ${jobs.map((job, i) => `
-                  <div class="job-card animate-on-scroll delay-${(i % 3) + 1}" id="job-${job.id}">
-                    <div class="job-card__header">
-                      <div class="job-card__img-wrap">
-                        <img src="${job.image || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80'}" alt="${job.title}" class="job-card__img" loading="lazy">
+              <div class="jobs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;">
+                ${filteredJobs.map((job, i) => `
+                  <div class="job-card animate-on-scroll delay-${(i % 3) + 1}" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.25s, box-shadow 0.25s;box-shadow:0 4px 15px rgba(0,0,0,0.1)">
+                    <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+                      
+                      <!-- Card Top Badges -->
+                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem">
+                        <span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 10px;font-size:0.75rem;font-weight:700;display:inline-flex;align-items:center;gap:4px">
+                          ✓ ${isEn ? 'AI Verified' : 'موثقة ومفحوصة'}
+                        </span>
+                        <div style="display:flex;gap:0.4rem">
+                          <span class="job-badge job-badge--type" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-radius:6px;padding:3px 8px;font-size:0.75rem">${isEn ? (job.type || 'Remote') : (job.type_ar || job.type || 'عن بعد')}</span>
+                          <span class="job-badge job-badge--location" style="background:rgba(255,255,255,0.08);color:var(--color-text-muted);border-radius:6px;padding:3px 8px;font-size:0.75rem">${job.location || 'Remote'}</span>
+                        </div>
                       </div>
-                      <div class="job-card__badges">
-                        <span class="job-badge job-badge--type">${job.type}</span>
-                        <span class="job-badge job-badge--location">${job.location}</span>
-                      </div>
-                    </div>
-                    <div class="job-card__body">
-                      <h3 class="job-card__title">${job.title}</h3>
-                      <div class="job-card__company">
-                        <span style="width:16px;height:16px;display:inline-flex;color:var(--color-primary)">${icons.users}</span>
+
+                      <h3 style="font-size:1.15rem;font-weight:700;color:var(--color-text);margin:0 0 0.5rem 0;line-height:1.4">
+                        ${isEn ? job.title : (job.title_ar || job.title)}
+                      </h3>
+
+                      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;font-weight:600;color:var(--color-primary);margin-bottom:0.75rem">
+                        <span style="width:16px;height:16px;display:inline-flex">${icons.users}</span>
                         <span>${job.company}</span>
                       </div>
-                      ${job.salary ? `
-                        <div class="job-card__salary">
-                          <span style="color:var(--color-accent);font-weight:var(--font-bold)">💰 ${job.salary}</span>
+
+                      <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0 0 1rem 0;line-height:1.6;flex:1">
+                        ${isEn ? (job.description || '') : (job.description_ar || job.description || '')}
+                      </p>
+
+                      <!-- Requirements Snippet -->
+                      ${(job.requirements || job.requirements_ar) ? `
+                        <div style="background:rgba(15,23,42,0.4);border:1px solid var(--color-border-light);border-radius:8px;padding:0.75rem;margin-bottom:1.25rem;font-size:0.8rem;color:#cbd5e1;line-height:1.5;">
+                          ${isEn ? (job.requirements || '') : (job.requirements_ar || job.requirements || '')}
                         </div>
                       ` : ''}
-                      <p class="job-card__desc">${job.description || ''}</p>
-                      ${job.requirements ? `
-                        <div class="job-card__reqs">
-                          <strong style="font-size:var(--text-sm);color:var(--color-text)">📋 ${t('jobs.reqs', 'المتطلبات والشروط:')}</strong>
-                          <p style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:4px">${job.requirements}</p>
-                        </div>
-                      ` : ''}
-                    </div>
-                    <div class="job-card__footer">
-                      <span style="font-size:var(--text-xs);color:var(--color-text-muted)">📅 ${job.createdAt || 'Recent'}</span>
-                      <a href="${job.applyUrl || 'mailto:factorcareer@gmail.com'}" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
-                        ${t('common.applyNow', 'قدّم الآن')}
-                        <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
-                      </a>
+
+                      <!-- Action Button -->
+                      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.75rem;border-top:1px solid var(--color-border-light)">
+                        <span style="font-size:0.8rem;color:var(--color-text-muted)">${job.postedAt || 'Recently'}</span>
+                        <a href="${job.applyUrl || 'mailto:factorcareer@gmail.com'}" target="_blank" rel="noopener" class="btn btn--primary btn--sm" style="box-shadow:0 2px 10px rgba(99,102,241,0.3)">
+                          ${isEn ? 'Apply Direct ↗' : 'التقديم المباشر ↗'}
+                        </a>
+                      </div>
+
                     </div>
                   </div>
                 `).join('')}
@@ -115,12 +204,12 @@ window.CareerAI.pages.jobs = function() {
             `}
           </div>
 
-          <!-- Sticky Sidebar with Vertical Half-Page Skyscraper (300x600) -->
+          <!-- Sticky Sidebar with Skyscraper 300x600 -->
           <aside class="sticky-sidebar-ad animate-on-scroll">
             <div class="ad-frame-wrapper ad-frame-skyscraper">
               <div class="ad-frame-label">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-                ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+                ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
               </div>
               <div class="ad-frame-inner">
                 <ins class="adsbygoogle"
@@ -131,48 +220,56 @@ window.CareerAI.pages.jobs = function() {
               </div>
             </div>
           </aside>
-        </div>
-      </div>
-    </section>
 
-    <!-- Full-Width Edge-to-Edge Blue CTA Section (Haven't Found the Right Job Yet?) -->
-    <section class="section section--dark" style="background:var(--gradient-hero);width:100%;padding:var(--space-20) 0;position:relative;overflow:hidden">
-      <div style="position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--space-8);text-align:center">
-        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;width:100%;max-width:100%;margin:0 auto;padding:0">
-          <h2 class="cta-section__title" style="font-size:clamp(2.2rem, 4.5vw, 3.2rem);font-weight:800;color:white;margin-bottom:var(--space-4);line-height:1.25">
-            ${isEn ? "Haven't Found the Right Job Yet?" : 'لم تجد الوظيفة المناسبة بعد؟'}
-          </h2>
-          <p class="cta-section__text" style="font-size:clamp(1rem, 2vw, 1.25rem);color:rgba(255,255,255,0.92);max-width:900px;margin:0 auto var(--space-8);line-height:1.8">
-            ${isEn ? 'Create an ATS-friendly resume now and let leading recruiters discover your profile automatically.' : 'أنشئ سيرتك الذاتية المتوافقة مع أنظمة ATS الآن ودع الشركات ومسؤولي التوظيف يصلون إليك تلقائياً.'}
-          </p>
-          <div class="cta-section__actions" style="display:flex;gap:var(--space-5);justify-content:center;flex-wrap:wrap">
-            <a href="/resume-builder" class="btn btn--white btn--lg" data-nav style="box-shadow:0 12px 30px rgba(0,0,0,0.25);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700">
-              <span>📄</span>
-              <span>${isEn ? 'Build My Resume Now' : 'أنشئ سيرتي الذاتية الآن'}</span>
-            </a>
-            <a href="/tools" class="btn btn--outline btn--lg" data-nav style="color:white;border-color:rgba(255,255,255,0.6);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700;backdrop-filter:blur(8px)">
-              <span>⚡</span>
-              <span>${isEn ? 'Explore All Career Tools' : 'استكشف جميع الأدوات'}</span>
-            </a>
-          </div>
         </div>
+
       </div>
     </section>
   `;
+};
+
+// Interactive Filter Handlers
+CareerAI.onJobsSearch = function(val) {
+  window.CareerAI.jobsFilterState.searchQuery = val;
+  const main = document.getElementById('main-content');
+  if (main && window.CareerAI.pages.jobs) {
+    main.innerHTML = `<div class="page-transition">${window.CareerAI.pages.jobs()}</div>`;
+    const input = document.getElementById('jobsSearchInput');
+    if (input) {
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+    }
+  }
+};
+
+CareerAI.onJobsFilterChange = function(field, val) {
+  window.CareerAI.jobsFilterState[field] = val;
+  const main = document.getElementById('main-content');
+  if (main && window.CareerAI.pages.jobs) {
+    main.innerHTML = `<div class="page-transition">${window.CareerAI.pages.jobs()}</div>`;
+  }
+};
+
+CareerAI.resetJobsFilter = function() {
+  window.CareerAI.jobsFilterState = { searchQuery: '', category: 'all', type: 'all' };
+  const main = document.getElementById('main-content');
+  if (main && window.CareerAI.pages.jobs) {
+    main.innerHTML = `<div class="page-transition">${window.CareerAI.pages.jobs()}</div>`;
+  }
 };
 
 window.CareerAI.pages.jobsSEO = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   if (isEn) {
     return {
-      title: 'Curated Jobs & Career Opportunities | Factor Career',
-      description: 'Explore handpicked active job openings across tech, marketing, HR, and design with Factor Career.',
+      title: 'Verified Job Opportunities & Remote Careers | Factor Career',
+      description: 'Explore daily verified job opportunities from top tech employers and remote companies. Filter by category, role, and location on Factor Career.',
       keywords: 'Jobs, Remote Work, Tech Jobs, Career Opportunities, Hiring, Factor Career'
     };
   }
   return {
-    title: 'الوظائف والفرص المهنية المتاحة | Factor Career Jobs & Careers',
-    description: 'استكشف أحدث فرص العمل والوظائف المُختارة بعناية من Factor Career.',
-    keywords: 'jobs, careers, وظائف, فرص عمل, توظيف, عمل عن بعد, Factor Career'
+    title: 'أحدث الوظائف وفرص العمل الموثقة يومياً | فكتور كارير',
+    description: 'استكشف أحدث الوظائف وفرص العمل الموثقة والمحدثة يومياً بعد فحصها بالذكاء الاصطناعي في مجالات البرمجة والتسويق والإدارة والتصميم.',
+    keywords: 'وظائف, فرص عمل, وظائف عن بعد, وظائف تقنية, التوظيف, Factor Career'
   };
 };

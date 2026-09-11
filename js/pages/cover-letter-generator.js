@@ -212,6 +212,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
           </div>
         </div>
 
+        ${window.CareerAI.components.renderOtherTools('cover-letter-generator')}
       </div>
     </section>
   `;

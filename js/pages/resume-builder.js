@@ -288,6 +288,7 @@ window.CareerAI.pages.resumeBuilder = function() {
           </div>
         </div>
 
+        ${window.CareerAI.components.renderOtherTools('resume-builder')}
       </div>
     </section>
   `;
