@@ -1,13 +1,16 @@
 /* ============================================
    CareerAI - AI Resume Builder Tool Page
+   Full Bilingual (AR/EN), 100% Free, Instant Sample Data,
+   Live Responsive Preview & High-Quality PDF Export
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
 window.CareerAI.pages = window.CareerAI.pages || {};
 
-// In-memory state for Resume Builder (Privacy-first: no backend persistence required)
+// In-memory state for Resume Builder
 window.CareerAI.resumeState = {
   currentStep: 1,
+  themeColor: '#4f46e5',
   personal: {
     fullName: '',
     jobTitle: '',
@@ -45,29 +48,39 @@ window.CareerAI.resumeState = {
     {
       id: 'lang-1',
       name: 'العربية',
-      level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}'
+      level: 'اللغة الأم'
     },
     {
       id: 'lang-2',
-      name: 'الإنجليزية',
-      level: 'متقدم'
+      name: 'English',
+      level: 'Professional Working'
     }
   ]
 };
 
-// Sample data for quick testing
+// Sample data for instant one-click testing
 window.CareerAI.sampleResumeData = {
-  currentStep: 1,
+  themeColor: '#4f46e5',
   personal: {
     fullName: 'محمد عبد الله العتيبي',
-    jobTitle: 'أخصائي تسويق رقمي وتحسين محركات البحث SEO',
-    email: 'mohammed.alotaibi@example.com',
+    jobTitle: 'أخصائي تسويق رقمي وإدارة حملات إعلانية',
+    email: 'mohammed.otaibi@example.com',
     phone: '+966 50 123 4567',
     location: 'الرياض، المملكة العربية السعودية',
     linkedin: 'linkedin.com/in/mohammed-otaibi',
     website: 'mohammed-marketing.com'
   },
-  summary: 'أخصائي تسويق رقمي يتمتع بخبرة تزيد عن 5 سنوات في تحسين محركات البحث (SEO)، وإدارة الحملات الإعلانية المدفوعة على منصات Google Ads و Meta. أمتلك سجلاً حافلاً في زيادة الزيارات المجانية بنسبة 140% وتطوير استراتيجيات المحتوى التي تعزز التحويلات والنمو التجاري.',
+  personal_en: {
+    fullName: 'Mohammed Al-Otaibi',
+    jobTitle: 'Senior Digital Marketing & Growth Specialist',
+    email: 'mohammed.otaibi@example.com',
+    phone: '+966 50 123 4567',
+    location: 'Riyadh, Saudi Arabia',
+    linkedin: 'linkedin.com/in/mohammed-otaibi',
+    website: 'mohammed-marketing.com'
+  },
+  summary: 'أخصائي تسويق رقمي محترف بخبرة تزيد عن 5 سنوات في تحسين محركات البحث (SEO) وإدارة الحملات الإعلانية المدفوعة على Google Ads و Meta. حققت نمواً بنسبة 140% في الزيارات المجانية وإيرادات المبيعات عبر الإنترنت مع قيادة فرق عمل متعددة التخصصات.',
+  summary_en: 'Results-driven Digital Marketing Specialist with 5+ years of experience leading multi-channel campaigns, SEO optimization, and high-ROI paid ads on Google & Meta. Proven track record of boosting organic traffic by 140% and optimizing conversion funnels.',
   experiences: [
     {
       id: 'exp-1',
@@ -77,7 +90,7 @@ window.CareerAI.sampleResumeData = {
       startDate: '2022-01',
       endDate: '',
       current: true,
-      description: '• قيادة استراتيجية الـ SEO الشاملة لـ 15 عميلاً رئيسياً وتحقيق المرتبة الأولى في الكلمات المفتاحية التنافسية.\n• إدارة ميزانيات إعلانية بقيمة تتجاوز 500,000 ريال سنوياً مع تحقيق عائد على الإنفاق الإعلاني (ROAS) بنسبة 350%.\n• الإشراف على فريق مكون من 4 متخصصين في صناعة المحتوى وتحليل الأداء باستخدام Google Analytics 4.'
+      description: '• إدارة وتوجيه استراتيجية الـ SEO لـ 15 عميلاً رئيسياً مع تصدر الصفحة الأولى في الكلمات التنافسية.\n• إدارة ميزانيات إعلانية بقيمة تتجاوز 500,000 ريال سنوياً وتحقيق عائد على الإنفاق الإعلاني (ROAS) بنسبة 350%.\n• الإشراف على فريق مكون من 4 متخصصين في صناعة المحتوى وتحليل بيانات الزوار عبر GA4.'
     },
     {
       id: 'exp-2',
@@ -87,7 +100,7 @@ window.CareerAI.sampleResumeData = {
       startDate: '2019-06',
       endDate: '2021-12',
       current: false,
-      description: '• كتابة وتحسين مقالات وصفحات المنتجات بما يتوافق مع معايير محركات البحث وتجربة المستخدم.\n• بناء الروابط الخلفية عالية الجودة (Backlinks) وإجراء التحليل الفني للمواقع لإصلاح الأخطاء التقنية.\n• إعداد تقارير الأداء الشهرية وتحليل مسارات التحويل لتحسين تجربة المستخدم.'
+      description: '• كتابة وتحسين المقالات التسويقية بما يتوافق مع معايير محركات البحث وتجربة المستخدم.\n• بناء الروابط الخلفية عالية الجودة (Backlinks) وإجراء التحليل الفني للمواقع لإصلاح الأخطاء البرمجية.'
     }
   ],
   education: [
@@ -97,30 +110,22 @@ window.CareerAI.sampleResumeData = {
       degree: 'بكالوريوس في إدارة الأعمال والتسويق',
       startDate: '2015-09',
       endDate: '2019-05',
-      location: 'الرياض، السعودية'
+      location: 'الرياض'
     }
   ],
   skills: [
-    'تحسين محركات البحث (SEO)',
-    'Google Ads',
+    'SEO & Content Strategy',
+    'Google Ads & Meta Ads',
     'Google Analytics 4',
-    'استراتيجيات المحتوى',
-    'تحليل البيانات و Excel',
-    'إعلانات التواصل الاجتماعي Meta',
-    'SEO On-Page & Off-Page',
-    'إدارة المشاريع والتواصل'
+    'Conversion Rate Optimization',
+    'Email Marketing (Klaviyo)',
+    'Keyword Research (Ahrefs)',
+    'HTML/CSS Basics',
+    'Team Leadership'
   ],
   languages: [
-    {
-      id: 'lang-1',
-      name: 'العربية',
-      level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}'
-    },
-    {
-      id: 'lang-2',
-      name: 'الإنجليزية',
-      level: 'طليق / متقدم (C1)'
-    }
+    { id: 'lang-1', name: 'العربية', level: 'اللغة الأم / Native' },
+    { id: 'lang-2', name: 'English', level: 'Fluent / Full Professional' }
   ]
 };
 
@@ -140,30 +145,29 @@ window.CareerAI.pages.resumeBuilder = function() {
             <span>/</span>
             <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
             <span>/</span>
-            <span>${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}</span>
+            <span>${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي'}</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
             <span class="section__badge">
               <span style="width:16px;height:16px;display:inline-flex">${icons.sparkles || icons.rocket}</span>
-              ${isEn ? 'Free 100% & No Signup' : 'مجاني 100% وبدون تسجيل'}
+              ${isEn ? '100% Free & Unlimited' : 'مجاني 100% وبدون تسجيل'}
             </span>
             <span class="section__badge" style="background:rgba(16,185,129,0.15);color:var(--color-accent)">
-              ✓ ${isEn ? 'ATS-Optimized Format' : 'متوافق مع أنظمة ATS'}
+              ✓ ${isEn ? 'ATS-Friendly Formats' : 'متوافق مع أنظمة ATS'}
             </span>
           </div>
-          <h1 class="page-header__title">أداة إنشاء السيرة الذاتية الاحترافية (AI Resume Builder)</h1>
-          <p class="page-header__subtitle">أنشئ سيرة ذاتية ذكية، متوافقة مع أنظمة الفرز الآلي ATS، وحمّلها بصيغة PDF عالية الدقة مجاناً في دقائق</p>
+          <h1 class="page-header__title">${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الاحترافية بالذكاء الاصطناعي'}</h1>
+          <p class="page-header__subtitle">${isEn ? 'Create an ATS-optimized professional resume in minutes. Live preview and free instant PDF export.' : 'أنشئ سيرة ذاتية متوافقة مع أنظمة الفرز الآلي ATS مع معاينة مباشرة وتصدير PDF فوري مجاناً.'}</p>
         </div>
       </div>
     </div>
 
-    
     <!-- Google AdSense - Tool Top Leaderboard -->
     <div class="container" style="margin-top:var(--space-4);margin-bottom:var(--space-2)">
       <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
         <div class="ad-frame-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-          إعلان ممول / Sponsored
+          ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
         </div>
         <div class="ad-frame-inner">
           <ins class="adsbygoogle"
@@ -177,114 +181,87 @@ window.CareerAI.pages.resumeBuilder = function() {
     </div>
 
     <!-- Main Builder Workspace -->
-    <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-12)">
+    <section class="section" style="padding-top:var(--space-4);padding-bottom:var(--space-12)">
       <div class="container">
 
-        <!-- Top Action Bar -->
-        <div class="builder-actions-bar">
-          <div class="builder-actions-bar__group">
-            <button class="btn btn--secondary btn--sm" onclick="CareerAI.loadSampleResume()">
-              📄 تعبئة نموذج تجريبي
+        <!-- Top Instant Action Bar -->
+        <div class="builder-actions-bar" style="background:rgba(30,41,59,0.7);padding:1rem;border-radius:12px;border:1px solid rgba(99,102,241,0.25);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+          <div class="builder-actions-bar__group" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn--accent btn--sm" onclick="CareerAI.loadSampleResume()" style="box-shadow:0 2px 10px rgba(99,102,241,0.3)">
+              ⚡ ${isEn ? 'Try Sample Resume (1-Click)' : '⚡ تجربة نموذج سيرة جاهز فوراً'}
             </button>
-            <button class="btn btn--ghost btn--sm" style="color:#EF4444" onclick="CareerAI.resetResumeForm()">
-              ${isEn ? '🗑️ Clear & Start Fresh' : '🗑️ مسح البيانات والبدء من جديد'}
+            <button class="btn btn--ghost btn--sm" style="color:#f87171" onclick="CareerAI.resetResumeForm()">
+              🗑️ ${isEn ? 'Clear All' : 'مسح البيانات'}
             </button>
           </div>
-          <div class="builder-actions-bar__group">
-            <!-- Mobile Toggle Button -->
-            <button class="btn btn--primary btn--sm builder-mobile-toggle" onclick="CareerAI.toggleMobilePreview()">
+          <div class="builder-actions-bar__group" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn--secondary btn--sm builder-mobile-toggle" onclick="CareerAI.toggleMobilePreview()">
               👁️ <span id="mobilePreviewToggleText">${isEn ? 'Show Live Preview' : 'عرض المعاينة المباشرة'}</span>
             </button>
-            <!-- PDF Download Button -->
-            <button class="btn btn--accent btn--md" onclick="CareerAI.downloadResumePDF()">
-              <span style="font-size:1.1rem">📥</span>
-              <strong>${isEn ? 'Download Resume PDF' : 'تحميل السيرة الذاتية PDF'}</strong>
+            <button class="btn btn--primary btn--md" onclick="CareerAI.downloadResumePDF()" style="box-shadow:0 4px 15px rgba(16,185,129,0.3)">
+              📥 ${isEn ? 'Download Resume PDF' : 'تحميل السيرة الذاتية PDF'}
             </button>
           </div>
         </div>
 
-        <!-- Split Grid Workspace -->
-        <div class="builder-grid">
-
-          <!-- Left / Form Editor Column -->
-          <div class="builder-form-panel" id="builderFormPanel">
+        <!-- 2-Column Builder Layout (Editor Form Left/Right + Live Preview + Skyscraper Ad) -->
+        <div class="builder-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+          
+          <!-- Column 1: Step Form -->
+          <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;">
             
             <!-- Step Navigation Tabs -->
-            <div class="builder-steps-nav">
-              <button class="builder-step-btn ${state.currentStep === 1 ? 'active' : ''}" onclick="CareerAI.setResumeStep(1)">
-                <span class="builder-step-number">1</span>
-                <span class="builder-step-title">${isEn ? 'Personal Info' : 'المعلومات الشخصية'}</span>
-              </button>
-              <button class="builder-step-btn ${state.currentStep === 2 ? 'active' : ''}" onclick="CareerAI.setResumeStep(2)">
-                <span class="builder-step-number">2</span>
-                <span class="builder-step-title">${isEn ? 'Summary' : 'النبذة المهنية'}</span>
-              </button>
-              <button class="builder-step-btn ${state.currentStep === 3 ? 'active' : ''}" onclick="CareerAI.setResumeStep(3)">
-                <span class="builder-step-number">3</span>
-                <span class="builder-step-title">${isEn ? 'Experience' : 'الخبرات'}</span>
-              </button>
-              <button class="builder-step-btn ${state.currentStep === 4 ? 'active' : ''}" onclick="CareerAI.setResumeStep(4)">
-                <span class="builder-step-number">4</span>
-                <span class="builder-step-title">${isEn ? 'Education' : 'التعليم'}</span>
-              </button>
-              <button class="builder-step-btn ${state.currentStep === 5 ? 'active' : ''}" onclick="CareerAI.setResumeStep(5)">
-                <span class="builder-step-number">5</span>
-                <span class="builder-step-title">${isEn ? 'Skills' : 'المهارات'}</span>
-              </button>
-              <button class="builder-step-btn ${state.currentStep === 6 ? 'active' : ''}" onclick="CareerAI.setResumeStep(6)">
-                <span class="builder-step-number">6</span>
-                <span class="builder-step-title">${isEn ? 'Languages' : 'اللغات'}</span>
-              </button>
+            <div class="builder-steps-nav" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:0.5rem;border-bottom:1px solid var(--color-border-light);">
+              <button class="step-nav-btn ${state.currentStep === 1 ? 'active' : ''}" onclick="CareerAI.setResumeStep(1)">1. ${isEn ? 'Personal' : 'البيانات'}</button>
+              <button class="step-nav-btn ${state.currentStep === 2 ? 'active' : ''}" onclick="CareerAI.setResumeStep(2)">2. ${isEn ? 'Summary' : 'الملخص'}</button>
+              <button class="step-nav-btn ${state.currentStep === 3 ? 'active' : ''}" onclick="CareerAI.setResumeStep(3)">3. ${isEn ? 'Experience' : 'الخبرات'}</button>
+              <button class="step-nav-btn ${state.currentStep === 4 ? 'active' : ''}" onclick="CareerAI.setResumeStep(4)">4. ${isEn ? 'Education' : 'التعليم'}</button>
+              <button class="step-nav-btn ${state.currentStep === 5 ? 'active' : ''}" onclick="CareerAI.setResumeStep(5)">5. ${isEn ? 'Skills' : 'المهارات'}</button>
             </div>
 
-            <!-- Form Content Box -->
-            <div class="builder-form-card" id="builderFormContent">
+            <!-- Dynamic Step Content Form -->
+            <div id="resumeStepFormContent">
               ${CareerAI.renderBuilderStep(state.currentStep)}
             </div>
 
-            <!-- Bottom Step Controls -->
-            <div class="builder-step-controls">
-              <button class="btn btn--secondary" id="btnPrevStep" onclick="CareerAI.prevResumeStep()" style="${state.currentStep === 1 ? 'visibility:hidden' : ''}">
-                → الخطوة السابقة
+            <!-- Bottom Step Pagination Controls -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--color-border-light);">
+              <button class="btn btn--secondary btn--sm" id="btnPrevStep" onclick="CareerAI.prevResumeStep()" style="${state.currentStep === 1 ? 'visibility:hidden' : ''}">
+                ${isEn ? '← Previous' : '← السابق'}
               </button>
-              <div class="builder-step-indicator">
-                ${isEn ? 'Step' : 'الخطوة'} <strong>${state.currentStep}</strong> ${isEn ? 'of' : 'من'} <strong>6</strong>
-              </div>
-              <button class="btn btn--primary" id="btnNextStep" onclick="CareerAI.nextResumeStep()">
-                ${state.currentStep === 6 ? 'معاينة وتحميل PDF ✓' : 'الخطوة التالية ←'}
+              <span style="font-size:0.85rem;color:var(--color-text-muted)">${isEn ? 'Step' : 'الخطوة'} ${state.currentStep} ${isEn ? 'of' : 'من'} 5</span>
+              <button class="btn btn--primary btn--sm" id="btnNextStep" onclick="CareerAI.nextResumeStep()">
+                ${state.currentStep === 5 ? (isEn ? 'Finish & Download 📥' : 'إنهاء وتحميل 📥') : (isEn ? 'Next →' : 'التالي →')}
               </button>
             </div>
-
           </div>
 
-          <!-- Right / Live A4 Resume Preview Column -->
-          <div class="builder-preview-panel" id="builderPreviewPanel">
-            <div class="builder-preview-header">
-              <div class="builder-preview-badge">
-                <span class="status-indicator-dot"></span>
-                ${isEn ? 'Live Preview (A4 Format)' : 'معاينة حية ومباشرة (A4 Format)'}
+          <!-- Column 2: Live Preview Frame -->
+          <div class="preview-card" id="resumePreviewContainer" style="position:sticky;top:90px;background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--color-border-light);">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#10B981;display:inline-block"></span>
+                <span style="font-size:0.9rem;font-weight:700;color:var(--color-text)">${isEn ? 'Live ATS Resume Preview' : 'معاينة السيرة المباشرة (ATS Format)'}</span>
               </div>
               <button class="btn btn--accent btn--sm" onclick="CareerAI.downloadResumePDF()">
-                ${isEn ? 'Download PDF 📄' : 'تحميل PDF 📄'}
+                📥 ${isEn ? 'Download PDF' : 'تحميل PDF'}
               </button>
             </div>
 
-            <!-- Live CV A4 Canvas Container -->
-            <div class="cv-preview-scroll-wrapper">
-              <div class="cv-paper" id="cvPaper">
-                ${CareerAI.renderLiveResumeHTML()}
-              </div>
+            <div class="resume-paper-wrapper" style="background:#ffffff;color:#1e293b;border-radius:8px;padding:2rem;min-height:550px;box-shadow:0 10px 25px rgba(0,0,0,0.15);overflow-y:auto;max-height:650px;" id="liveResumeDocument">
+              ${CareerAI.renderLiveResumeHTML()}
             </div>
           </div>
 
         </div>
 
-        <!-- Google AdSense - Vertical Skyscraper (300x600) & Rectangle Row -->
-        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3rem auto 1rem;flex-wrap:wrap;">
+        <!-- Google AdSense - Vertical Skyscraper (300x600) & Medium Rectangle (300x250) Row -->
+        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3.5rem auto 1.5rem;flex-wrap:wrap;">
+          <!-- Skyscraper 300x600 -->
           <div class="ad-frame-wrapper ad-frame-skyscraper animate-on-scroll">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -295,10 +272,11 @@ window.CareerAI.pages.resumeBuilder = function() {
             </div>
           </div>
           
+          <!-- Medium Rectangle 300x250 -->
           <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin:0;max-width:340px;">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -312,661 +290,382 @@ window.CareerAI.pages.resumeBuilder = function() {
 
       </div>
     </section>
-
-    <!-- SEO & Educational Content Section -->
-    <section class="section section--alt" style="padding:var(--space-16) 0">
-      <div class="container">
-        
-        <div class="section__header">
-          <span class="section__badge">
-            <span style="width:16px;height:16px;display:inline-flex">${icons.skills}</span>
-            دليل إرشادي شامل
-          </span>
-          <h2 class="section__title">${isEn ? 'Everything You Need to Know About <span class="text-gradient">Professional Resumes</span>' : 'كل ما تحتاج معرفته عن <span class="text-gradient">السيرة الذاتية الاحترافية</span>'}</h2>
-          <p class="section__subtitle">دليل إرشادي من الخبراء لكتابة سيرة ذاتية مميزة تفتح لك أبواب أفضل الوظائف</p>
-        </div>
-
-        <div class="grid grid--2" style="gap:var(--space-8);margin-bottom:var(--space-12)">
-          
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.resume}</span>
-            </div>
-            <h3 class="card__title">ما هي السيرة الذاتية (Curriculum Vitae)؟</h3>
-            <p class="card__text">
-              السيرة الذاتية هي بطاقتك التعريفية المهنية الأولى التي تقدمها للشركات ومسؤولي التوظيف. تلخص مؤهلاتك العلمية، وخبراتك العملية، وإنجازاتك، ومهاراتك بطريقة منظمة ومقنعة تبين مدى ملاءمتك للوظيفة الشاغرة.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.rocket}</span>
-            </div>
-            <h3 class="card__title">كيفية إنشاء سيرة ذاتية احترافية ناجحة</h3>
-            <p class="card__text">
-              تبدأ كتابة السيرة الذاتية باختيار تصميم بسيط ونظيف، وتحديد الهدف الوظيفي أو النبذة المهنية بدقة، ثم سرد الخبرات العملية من الأحدث إلى الأقدم مع التركيز على الأرقام والإنجازات القابلة للقياس بدلاً من مجرد سرد المسؤوليات الروتينية.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.cover}</span>
-            </div>
-            <h3 class="card__title">أهم الأقسام الأساسية في أي سيرة ذاتية</h3>
-            <p class="card__text">
-              يجب أن تشتمل سيرتك الذاتية على: <strong>1. المعلومات الشخصية وروابط التواصل</strong>، <strong>2. النبذة المهنية الموجزة</strong>، <strong>3. سجل الخبرات العملية</strong>، <strong>4. المؤهلات الدراسية والتعليم</strong>، <strong>5. المهارات التقنية والشخصية</strong>، و <strong>6. اللغات</strong>.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.shield}</span>
-            </div>
-            <h3 class="card__title">نصائح ذهبية لاجتياز فحص أنظمة ATS</h3>
-            <p class="card__text">
-              تستخدم 90% من الشركات أنظمة تتبع المتقدمين (ATS). لضمان قبول ملفك: تجنب وضع النصوص داخل جداول معقدة أو رسومات بيانية، استخدم خطوطاً واضحة، وركز على تضمين الكلمات المفتاحية المذكورة في الوصف الوظيفي.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="section__header" style="margin-top:var(--space-16)">
-          <h2 class="section__title">الأسئلة الشائعة حول <span class="text-gradient">منشئ السيرة الذاتية</span></h2>
-          <p class="section__subtitle">إجابات على كل استفساراتك حول استخدام الأداة وتصدير السيرة الذاتية</p>
-        </div>
-
-        <div class="accordion" style="max-width:800px;margin:0 auto">
-          
-          <div class="accordion__item active">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل أداة إنشاء السيرة الذاتية مجانية بالكامل؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body" style="max-height:200px">
-              <div class="accordion__content">
-                نعم، الأداة مجانية 100% لجميع الزوار بدون أي اشتراكات أو رسوم خفية، ويمكنك إنشاء وتنزيل سيرتك الذاتية بصيغة PDF بعدد غير محدود من المرات.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل أحتاج إلى إنشاء حساب أو تسجيل دخول لحفظ سيرتي الذاتية؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body">
-              <div class="accordion__content">
-                لا، احتراماً لخصوصيتك صممنا الأداة لتعمل مباشرة على متصفحك دون الحاجة لتسجيل أي حساب، ولا يتم تخزين أي بيانات شخصية على خوادم المنصة.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل القالب متوافق مع برامج فحص السير الذاتية (ATS)؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body">
-              <div class="accordion__content">
-                نعم، تم تصميم القالب وفق أعلى معايير الـ ATS: نصوص واضحة، عناوين قياسية سهلة القراءة، هيكل نصوص نظيف، وتوافق تام مع مقاس A4 المعياري عالمياً.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>كيف يعمل زر "التحسين بالذكاء الاصطناعي"؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body">
-              <div class="accordion__content">
-                يقوم زر التحسين بالذكاء الاصطناعي بصياغة نبذة مهنية قوية ومؤثرة مبنية على مجالك ومسماك الوظيفي، باستخدام كلمات عمل قوية (Action Verbs) وأسلوب احترافي يلفت انتباه مسؤولي التوظيف.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
   `;
 };
 
-/* ==========================================================================
-   RENDER STEP FORMS
-   ========================================================================== */
-
+// Render step forms
 CareerAI.renderBuilderStep = function(stepNumber) {
   const state = window.CareerAI.resumeState;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
-  switch (stepNumber) {
-    // Step 1: Personal Information
-    case 1:
-      return `
-        <div class="builder-step-header">
-          <h3 class="builder-step-head-title">👤 ${isEn ? 'Personal Information & Contact' : 'المعلومات الشخصية وبيانات التواصل'}</h3>
-          <p class="builder-step-head-desc">أدخل بياناتك الأساسية التي سيتواصل معك مسؤولو التوظيف من خلالها.</p>
-        </div>
-
-        <div class="contact-form__row">
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'Full Name *' : 'الاسم الكامل *'}</label>
-            <input type="text" class="form-input" placeholder="مثال: أحمد محمد علي" value="${state.personal.fullName}" oninput="CareerAI.updatePersonalField('fullName', this.value)">
-          </div>
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'Target Job Title *' : 'المسمى الوظيفي المستهدف *'}</label>
-            <input type="text" class="form-input" placeholder="مثال: مطور برمجيات واجهات أمامية Frontend" value="${state.personal.jobTitle}" oninput="CareerAI.updatePersonalField('jobTitle', this.value)">
-          </div>
-        </div>
-
-        <div class="contact-form__row">
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'Email Address *' : 'البريد الإلكتروني *'}</label>
-            <input type="email" class="form-input" placeholder="name@example.com" value="${state.personal.email}" oninput="CareerAI.updatePersonalField('email', this.value)">
-          </div>
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'Phone Number *' : 'رقم الهاتف *'}</label>
-            <input type="tel" class="form-input" placeholder="+966 5x xxx xxxx" value="${state.personal.phone}" oninput="CareerAI.updatePersonalField('phone', this.value)">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">${isEn ? 'City & Country *' : 'المدينة والدولة *'}</label>
-          <input type="text" class="form-input" placeholder="مثال: الرياض، المملكة العربية السعودية" value="${state.personal.location}" oninput="CareerAI.updatePersonalField('location', this.value)">
-        </div>
-
-        <div class="contact-form__row">
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'LinkedIn Profile URL (Optional)' : 'رابط حساب LinkedIn (اختياري)'}</label>
-            <input type="text" class="form-input" placeholder="linkedin.com/in/username" value="${state.personal.linkedin}" oninput="CareerAI.updatePersonalField('linkedin', this.value)">
-          </div>
-          <div class="form-group">
-            <label class="form-label">${isEn ? 'Portfolio / Website URL (Optional)' : 'رابط الموقع الشخصي أو المعرض (اختياري)'}</label>
-            <input type="text" class="form-input" placeholder="portfolio.com" value="${state.personal.website}" oninput="CareerAI.updatePersonalField('website', this.value)">
-          </div>
-        </div>
-      `;
-
-    // Step 2: Professional Summary
-    case 2:
-      return `
-        <div class="builder-step-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
-            <div>
-              <h3 class="builder-step-head-title">✍️ النبذة المهنية (Professional Summary)</h3>
-              <p class="builder-step-head-desc">${isEn ? 'A concise 2-4 line paragraph summarizing your experience, key skills, and value proposition.' : 'فقرة موجزة (2-4 أسطر) تلخص سنوات خبرتك، أبرز مهاراتك وقيمتك المضافة.'}</p>
-            </div>
-            <button class="btn btn--primary btn--sm btn-ai-enhance" onclick="CareerAI.enhanceSummaryWithAI()">
-              ✨ تحسين بالذكاء الاصطناعي
-            </button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">${isEn ? 'Professional Summary Text' : 'نص النبذة المهنية'}</label>
-          <textarea class="form-textarea" style="min-height:160px" placeholder="اكتب نبذة موجزة عن خبراتك ومؤهلاتك أو اضغط على زر التحسين بالذكاء الاصطناعي للمساعدة..." oninput="CareerAI.updateSummary(this.value)">${state.summary}</textarea>
-        </div>
-
-        <div class="ai-suggestions-box">
-          <div class="ai-suggestions-box__title">💡 أمثلة سريعة جاهزة للاقتباس:</div>
-          <div class="ai-suggestion-tags">
-            <button class="ai-suggestion-chip" onclick="CareerAI.applySummaryTemplate('tech')">
-              نموذج تقني وبرمجة
-            </button>
-            <button class="ai-suggestion-chip" onclick="CareerAI.applySummaryTemplate('marketing')">
-              ${isEn ? 'Marketing & Business Management' : 'نموذج تسويق وإدارة أعمال'}
-            </button>
-            <button class="ai-suggestion-chip" onclick="CareerAI.applySummaryTemplate('fresh')">
-              نموذج خريج جديد
-            </button>
-          </div>
-        </div>
-      `;
-
-    // Step 3: Work Experience
-    case 3:
-      return `
-        <div class="builder-step-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
-            <div>
-              <h3 class="builder-step-head-title">💼 الخبرات المهنية وسجل العمل</h3>
-              <p class="builder-step-head-desc">أضف وظائفك السابقة بدءاً من الأحدث. ركز على الإنجازات والمهام الرئيسية.</p>
-            </div>
-            <button class="btn btn--secondary btn--sm" onclick="CareerAI.addExperience()">
-              + إضافة خبرة جديدة
-            </button>
-          </div>
-        </div>
-
-        <div id="experiencesContainer">
-          ${state.experiences.map((exp, index) => `
-            <div class="repeater-card">
-              <div class="repeater-card__header">
-                <span class="repeater-card__badge">خبرة عمل #${index + 1}</span>
-                ${state.experiences.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeExperience('${exp.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
-                ` : ''}
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">${isEn ? 'Job Title *' : 'المسمى الوظيفي *'}</label>
-                  <input type="text" class="form-input" placeholder="مثال: مهندس برمجيات" value="${exp.jobTitle}" oninput="CareerAI.updateExperienceField('${exp.id}', 'jobTitle', this.value)">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">اسم الشركة أو جهة العمل *</label>
-                  <input type="text" class="form-input" placeholder="مثال: شركة الحلول المتقدمة" value="${exp.company}" oninput="CareerAI.updateExperienceField('${exp.id}', 'company', this.value)">
-                </div>
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">المدينة</label>
-                  <input type="text" class="form-input" placeholder="مثال: الرياض" value="${exp.city}" oninput="CareerAI.updateExperienceField('${exp.id}', 'city', this.value)">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">تاريخ البدء</label>
-                  <input type="text" class="form-input" placeholder="مثال: 2022-01" value="${exp.startDate}" oninput="CareerAI.updateExperienceField('${exp.id}', 'startDate', this.value)">
-                </div>
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">${isEn ? 'End Date' : 'تاريخ الانتهاء'}</label>
-                  <input type="text" class="form-input" placeholder="مثال: 2024-05" value="${exp.endDate}" ${exp.current ? 'disabled' : ''} id="exp_end_${exp.id}" oninput="CareerAI.updateExperienceField('${exp.id}', 'endDate', this.value)">
-                </div>
-                <div class="form-group" style="display:flex;align-items:center;padding-top:var(--space-6)">
-                  <label style="display:flex;align-items:center;gap:var(--space-2);cursor:pointer">
-                    <input type="checkbox" ${exp.current ? 'checked' : ''} onchange="CareerAI.toggleExpCurrent('${exp.id}', this.checked)">
-                    <span style="font-weight:var(--font-medium)">أعمل هنا حالياً</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">الوصف والمهام والإنجازات (استخدم النقاط • للترتيب)</label>
-                <textarea class="form-textarea" style="min-height:100px" placeholder="• قدت فريقاً مكوناً من 5 مطورين...\n• قمت بزيادة كفاءة النظام بنسبة 30%..." oninput="CareerAI.updateExperienceField('${exp.id}', 'description', this.value)">${exp.description}</textarea>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-    // Step 4: Education
-    case 4:
-      return `
-        <div class="builder-step-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
-            <div>
-              <h3 class="builder-step-head-title">🎓 المؤهلات العلمية والتعليم</h3>
-              <p class="builder-step-head-desc">أضف درجاتك الأكاديمية والشهادات الجامعية التي حصلت عليها.</p>
-            </div>
-            <button class="btn btn--secondary btn--sm" onclick="CareerAI.addEducation()">
-              + إضافة مؤهل دراسي
-            </button>
-          </div>
-        </div>
-
-        <div id="educationContainer">
-          ${state.education.map((edu, index) => `
-            <div class="repeater-card">
-              <div class="repeater-card__header">
-                <span class="repeater-card__badge">مؤهل دراسي #${index + 1}</span>
-                ${state.education.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeEducation('${edu.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
-                ` : ''}
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">اسم الجامعة أو المؤسسة التعليمية *</label>
-                  <input type="text" class="form-input" placeholder="مثال: جامعة الملك فهد للبترول والمعادن" value="${edu.school}" oninput="CareerAI.updateEducationField('${edu.id}', 'school', this.value)">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">${isEn ? 'Degree & Major *' : 'الدرجة العلمية والتخصص *'}</label>
-                  <input type="text" class="form-input" placeholder="مثال: بكالوريوس في علوم الحاسب" value="${edu.degree}" oninput="CareerAI.updateEducationField('${edu.id}', 'degree', this.value)">
-                </div>
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">سنة البدء</label>
-                  <input type="text" class="form-input" placeholder="مثال: 2017" value="${edu.startDate}" oninput="CareerAI.updateEducationField('${edu.id}', 'startDate', this.value)">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">سنة التخرج أو الانتهاء</label>
-                  <input type="text" class="form-input" placeholder="مثال: 2021" value="${edu.endDate}" oninput="CareerAI.updateEducationField('${edu.id}', 'endDate', this.value)">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">المدينة أو الدولة</label>
-                <input type="text" class="form-input" placeholder="مثال: الظهران، المملكة العربية السعودية" value="${edu.location}" oninput="CareerAI.updateEducationField('${edu.id}', 'location', this.value)">
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-    // Step 5: Skills
-    case 5:
-      return `
-        <div class="builder-step-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
-            <div>
-              <h3 class="builder-step-head-title">💡 المهارات المهنية والتقنية</h3>
-              <p class="builder-step-head-desc">أضف مهاراتك المتنوعة التي تبرز كفاءتك وملاءمتك لسوق العمل.</p>
-            </div>
-            <button class="btn btn--primary btn--sm btn-ai-enhance" onclick="CareerAI.suggestSkillsWithAI()">
-              ✨ اقتراح مهارات بالذكاء الاصطناعي
-            </button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">أدخل مهارة جديدة ثم اضغط Enter أو زر الإضافة</label>
-          <div style="display:flex;gap:var(--space-2)">
-            <input type="text" id="newSkillInput" class="form-input" placeholder="مثال: تحسين محركات البحث SEO، Python، إدارة المشاريع..." onkeydown="if(event.key==='Enter'){event.preventDefault();CareerAI.addSkillFromInput();}">
-            <button type="button" class="btn btn--accent" onclick="CareerAI.addSkillFromInput()">إضافة</button>
-          </div>
-        </div>
-
-        <div class="builder-skills-list" id="builderSkillsList">
-          ${state.skills.length === 0 ? `
-            <div style="color:var(--color-text-muted);font-size:var(--text-sm);padding:var(--space-4);text-align:center;border:1px dashed var(--color-border);border-radius:var(--radius-lg)">
-              لم تقم بإضافة مهارات بعد. اختر من الاقتراحات السريعة أدناه أو اكتب مهاراتك.
-            </div>
-          ` : ''}
-          ${state.skills.map((skill, idx) => `
-            <span class="builder-skill-tag">
-              ${skill}
-              <button type="button" class="builder-skill-tag__remove" onclick="CareerAI.removeSkill(${idx})">&times;</button>
-            </span>
-          `).join('')}
-        </div>
-
-        <div class="ai-suggestions-box" style="margin-top:var(--space-6)">
-          <div class="ai-suggestions-box__title">🔥 اقتراحات مهارات شائعة (اضغط للإضافة الفورية):</div>
-          <div class="ai-suggestion-tags">
-            ${['SEO', 'Google Ads', 'Microsoft Excel', 'Graphic Design', 'Programming', 'إدارة المشاريع', 'التواصل الفعال', 'تحليل البيانات', 'حل المشكلات', 'العمل الجماعي', 'Python', 'إدارة الوقت'].map(sk => `
-              <button class="ai-suggestion-chip" onclick="CareerAI.addQuickSkill('${sk}')">
-                + ${sk}
-              </button>
-            `).join('')}
-          </div>
-        </div>
-      `;
-
-    // Step 6: Languages
-    case 6:
-      return `
-        <div class="builder-step-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
-            <div>
-              <h3 class="builder-step-head-title">🌐 اللغات ومستوى الإتقان</h3>
-              <p class="builder-step-head-desc">أضف اللغات التي تتقنها مع تحديد مستوى إجادتك لكل لغة.</p>
-            </div>
-            <button class="btn btn--secondary btn--sm" onclick="CareerAI.addLanguage()">
-              + إضافة لغة
-            </button>
-          </div>
-        </div>
-
-        <div id="languagesContainer">
-          ${state.languages.map((lang, index) => `
-            <div class="repeater-card">
-              <div class="repeater-card__header">
-                <span class="repeater-card__badge">اللغة #${index + 1}</span>
-                ${state.languages.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeLanguage('${lang.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
-                ` : ''}
-              </div>
-
-              <div class="contact-form__row">
-                <div class="form-group">
-                  <label class="form-label">اسم اللغة *</label>
-                  <input type="text" class="form-input" placeholder="مثال: العربية، الإنجليزية، الفرنسية..." value="${lang.name}" oninput="CareerAI.updateLanguageField('${lang.id}', 'name', this.value)">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">${isEn ? 'Proficiency Level *' : 'مستوى الإتقان *'}</label>
-                  <select class="form-input form-select" onchange="CareerAI.updateLanguageField('${lang.id}', 'level', this.value)">
-                    <option value="${isEn ? 'Native Speaker' : 'اللغة الأم'}" ${lang.level === '${isEn ? 'Native Speaker' : 'اللغة الأم'}' ? 'selected' : ''}>${isEn ? 'Native Speaker' : 'اللغة الأم'}</option>
-                    <option value="طليق / ممتاز (C2)" ${lang.level === 'طليق / ممتاز (C2)' ? 'selected' : ''}>طليق / ممتاز (C2)</option>
-                    <option value="متقدم (C1)" ${lang.level === 'متقدم (C1)' || lang.level === 'متقدم' ? 'selected' : ''}>متقدم (C1)</option>
-                    <option value="فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)" ${lang.level === 'فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)' ? 'selected' : ''}>فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)</option>
-                    <option value="${isEn ? 'Intermediate' : 'متوسط'} (B1)" ${lang.level === '${isEn ? 'Intermediate' : 'متوسط'} (B1)' || lang.level === '${isEn ? 'Intermediate' : 'متوسط'}' ? 'selected' : ''}>${isEn ? 'Intermediate' : 'متوسط'} (B1)</option>
-                    <option value="${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)" ${lang.level === '${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)' ? 'selected' : ''}>${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-    default:
-      return '';
-  }
-};
-
-/* ==========================================================================
-   RENDER LIVE A4 RESUME TEMPLATE (ATS-FRIENDLY)
-   ========================================================================== */
-
-CareerAI.renderLiveResumeHTML = function() {
-  const p = window.CareerAI.resumeState.personal;
-  const summary = window.CareerAI.resumeState.summary;
-  const experiences = window.CareerAI.resumeState.experiences.filter(e => e.jobTitle || e.company || e.description);
-  const education = window.CareerAI.resumeState.education.filter(e => e.school || e.degree);
-  const skills = window.CareerAI.resumeState.skills;
-  const languages = window.CareerAI.resumeState.languages.filter(l => l.name);
-
-  const hasContent = p.fullName || p.jobTitle || summary || experiences.length > 0 || education.length > 0 || skills.length > 0;
-
-  if (!hasContent) {
+  if (stepNumber === 1) {
     return `
-      <div class="cv-empty-state">
-        <div class="cv-empty-icon">📄</div>
-        <h3>معاينة السيرة الذاتية المباشرة</h3>
-        <p>ابدأ بإدخال بياناتك في النموذج على اليمين أو اضغط على "تعبئة نموذج تجريبي" لمشاهدة النتيجة فوراً.</p>
+      <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
+        ${isEn ? '1. Personal & Contact Information' : '1. المعلومات الشخصية وبيانات التواصل'}
+      </h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group" style="grid-column:1 / -1">
+          <label class="form-label">${isEn ? 'Full Name *' : 'الاسم الكامل *'}</label>
+          <input type="text" class="form-input" value="${state.personal.fullName || ''}" placeholder="${isEn ? 'e.g. John Doe' : 'مثال: محمد عبد الله'}" oninput="CareerAI.updatePersonalField('fullName', this.value)">
+        </div>
+        <div class="form-group" style="grid-column:1 / -1">
+          <label class="form-label">${isEn ? 'Job Title / Target Role *' : 'المسمى الوظيفي المستهدف *'}</label>
+          <input type="text" class="form-input" value="${state.personal.jobTitle || ''}" placeholder="${isEn ? 'e.g. Senior Software Engineer' : 'مثال: مهندس برمجيات أول'}" oninput="CareerAI.updatePersonalField('jobTitle', this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">${isEn ? 'Email Address *' : 'البريد الإلكتروني *'}</label>
+          <input type="email" class="form-input" value="${state.personal.email || ''}" placeholder="example@domain.com" oninput="CareerAI.updatePersonalField('email', this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">${isEn ? 'Phone Number *' : 'رقم الهاتف *'}</label>
+          <input type="tel" class="form-input" value="${state.personal.phone || ''}" placeholder="+966 50 000 0000" oninput="CareerAI.updatePersonalField('phone', this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">${isEn ? 'Location (City, Country)' : 'المدينة والدولة'}</label>
+          <input type="text" class="form-input" value="${state.personal.location || ''}" placeholder="${isEn ? 'e.g. Riyadh, KSA' : 'مثال: الرياض، السعودية'}" oninput="CareerAI.updatePersonalField('location', this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">${isEn ? 'LinkedIn Profile URL' : 'رابط لينكد إن LinkedIn'}</label>
+          <input type="text" class="form-input" value="${state.personal.linkedin || ''}" placeholder="linkedin.com/in/username" oninput="CareerAI.updatePersonalField('linkedin', this.value)">
+        </div>
       </div>
     `;
   }
 
-  return `
-    <!-- CV Header Section -->
-    <div class="cv-header">
-      <h1 class="cv-name">${p.fullName || 'الاسم الكامل'}</h1>
-      <div class="cv-title">${p.jobTitle || 'المسمى الوظيفي المستهدف'}</div>
-
-      <!-- Contact Info Bar -->
-      <div class="cv-contact-bar">
-        ${p.email ? `<span>✉️ ${p.email}</span>` : ''}
-        ${p.phone ? `<span>📱 ${p.phone}</span>` : ''}
-        ${p.location ? `<span>📍 ${p.location}</span>` : ''}
-        ${p.linkedin ? `<span>🔗 ${p.linkedin}</span>` : ''}
-        ${p.website ? `<span>🌐 ${p.website}</span>` : ''}
+  if (stepNumber === 2) {
+    return `
+      <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
+        ${isEn ? '2. Professional Summary' : '2. الملخص والنبذة المهنية'}
+      </h3>
+      <p style="font-size:0.85rem;color:var(--color-text-muted);margin-bottom:1rem">
+        ${isEn ? 'A powerful 2-4 sentence summary highlighting your top strengths and career achievements.' : 'فقرة موجزة ومقنعة (3-4 أسطر) تلخص خبراتك وأهم إنجازاتك المهنية لجذب مسؤولي التوظيف.'}
+      </p>
+      <div class="form-group">
+        <textarea class="form-textarea" rows="6" placeholder="${isEn ? 'Type your summary here or click AI Optimize below...' : 'اكتب نبذتك المهنية هنا أو اضغط على أحد النماذج الذكية بالأسفل...'}" oninput="CareerAI.updateSummary(this.value)">${state.summary || ''}</textarea>
       </div>
-    </div>
-
-    <!-- Summary Section -->
-    ${summary ? `
-      <div class="cv-section">
-        <h2 class="cv-section-title">النبذة المهنية</h2>
-        <p class="cv-summary-text">${summary}</p>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem;">
+        <button type="button" class="btn btn--secondary btn--sm" onclick="CareerAI.enhanceSummaryWithAI()">
+          ✨ ${isEn ? 'AI Enhance Summary' : 'تحسين بالذكاء الاصطناعي ✨'}
+        </button>
       </div>
-    ` : ''}
+    `;
+  }
 
-    <!-- Experiences Section -->
-    ${experiences.length > 0 ? `
-      <div class="cv-section">
-        <h2 class="cv-section-title">الخبرات المهنية</h2>
-        <div class="cv-items-list">
-          ${experiences.map(exp => `
-            <div class="cv-item">
-              <div class="cv-item-header">
-                <div>
-                  <strong class="cv-item-title">${exp.jobTitle || 'المسمى الوظيفي'}</strong>
-                  <div class="cv-item-subtitle">${exp.company || 'اسم الشركة'} ${exp.city ? `— ${exp.city}` : ''}</div>
-                </div>
-                <div class="cv-item-date">
-                  ${exp.startDate || ''} ${exp.startDate && (exp.endDate || exp.current) ? '—' : ''} ${exp.current ? 'حتى الآن' : (exp.endDate || '')}
-                </div>
+  if (stepNumber === 3) {
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h3 style="font-size:1.15rem;font-weight:700;color:var(--color-text)">
+          ${isEn ? '3. Work Experience' : '3. الخبرات المهنية'}
+        </h3>
+        <button type="button" class="btn btn--secondary btn--sm" onclick="CareerAI.addExperience()">
+          + ${isEn ? 'Add Job' : 'إضافة خبرة'}
+        </button>
+      </div>
+      
+      <div id="experienceListContainer">
+        ${state.experiences.map((exp, idx) => `
+          <div style="background:rgba(15,23,42,0.4);border:1px solid var(--color-border-light);border-radius:10px;padding:1rem;margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+              <span style="font-weight:700;font-size:0.95rem;color:var(--color-accent)">#${idx + 1} ${exp.jobTitle || (isEn ? 'Job Title' : 'المسمى الوظيفي')}</span>
+              ${state.experiences.length > 1 ? `
+                <button type="button" class="btn btn--ghost btn--sm" style="color:#f87171;padding:2px 8px" onclick="CareerAI.removeExperience('${exp.id}')">✕ ${isEn ? 'Delete' : 'حذف'}</button>
+              ` : ''}
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'Job Title *' : 'المسمى الوظيفي *'}</label>
+                <input type="text" class="form-input" value="${exp.jobTitle || ''}" placeholder="${isEn ? 'e.g. Marketing Manager' : 'مثال: مدير تسويق'}" oninput="CareerAI.updateExperienceField('${exp.id}', 'jobTitle', this.value)">
               </div>
-              ${exp.description ? `
-                <div class="cv-item-desc">${exp.description.replace(/\n/g, '<br>')}</div>
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'Company Name *' : 'اسم الشركة *'}</label>
+                <input type="text" class="form-input" value="${exp.company || ''}" placeholder="${isEn ? 'e.g. Acme Corp' : 'مثال: شركة أفق'}" oninput="CareerAI.updateExperienceField('${exp.id}', 'company', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'Start Date' : 'تاريخ البدء'}</label>
+                <input type="text" class="form-input" value="${exp.startDate || ''}" placeholder="2021-01" oninput="CareerAI.updateExperienceField('${exp.id}', 'startDate', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'End Date' : 'تاريخ الانتهاء'}</label>
+                <input type="text" class="form-input" value="${exp.endDate || ''}" placeholder="${isEn ? 'Present / Date' : 'حتى الآن / تاريخ'}" oninput="CareerAI.updateExperienceField('${exp.id}', 'endDate', this.value)">
+              </div>
+              <div class="form-group" style="grid-column:1 / -1">
+                <label class="form-label">${isEn ? 'Key Responsibilities & Achievements (Bullet points)' : 'أهم المهام والإنجازات (نقاط)'}</label>
+                <textarea class="form-textarea" rows="3" placeholder="${isEn ? '• Increased sales by 25%\n• Managed a team of 5' : '• قيادة وإدارة الفريق بنجاح\n• تحقيق نمو في المبيعات بنسبة 25%'}" oninput="CareerAI.updateExperienceField('${exp.id}', 'description', this.value)">${exp.description || ''}</textarea>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (stepNumber === 4) {
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h3 style="font-size:1.15rem;font-weight:700;color:var(--color-text)">
+          ${isEn ? '4. Education & Qualifications' : '4. المؤهلات التعليمية'}
+        </h3>
+        <button type="button" class="btn btn--secondary btn--sm" onclick="CareerAI.addEducation()">
+          + ${isEn ? 'Add Degree' : 'إضافة مؤهل'}
+        </button>
+      </div>
+
+      <div id="educationListContainer">
+        ${state.education.map((edu, idx) => `
+          <div style="background:rgba(15,23,42,0.4);border:1px solid var(--color-border-light);border-radius:10px;padding:1rem;margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+              <span style="font-weight:700;font-size:0.95rem;color:var(--color-accent)">#${idx + 1} ${edu.degree || (isEn ? 'Degree' : 'الشهادة')}</span>
+              ${state.education.length > 1 ? `
+                <button type="button" class="btn btn--ghost btn--sm" style="color:#f87171;padding:2px 8px" onclick="CareerAI.removeEducation('${edu.id}')">✕ ${isEn ? 'Delete' : 'حذف'}</button>
+              ` : ''}
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+              <div class="form-group" style="grid-column:1 / -1">
+                <label class="form-label">${isEn ? 'Degree / Field of Study *' : 'الدرجة العلمية والتخصص *'}</label>
+                <input type="text" class="form-input" value="${edu.degree || ''}" placeholder="${isEn ? 'e.g. Bachelor of Science in Marketing' : 'مثال: بكالوريوس في إدارة الأعمال'}" oninput="CareerAI.updateEducationField('${edu.id}', 'degree', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'University / Institution *' : 'الجامعة أو المعهد *'}</label>
+                <input type="text" class="form-input" value="${edu.school || ''}" placeholder="${isEn ? 'e.g. King Saud University' : 'مثال: جامعة الملك سعود'}" oninput="CareerAI.updateEducationField('${edu.id}', 'school', this.value)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${isEn ? 'Graduation Year / Duration' : 'سنة التخرج أو الفترة'}</label>
+                <input type="text" class="form-input" value="${edu.endDate || ''}" placeholder="2019" oninput="CareerAI.updateEducationField('${edu.id}', 'endDate', this.value)">
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (stepNumber === 5) {
+    return `
+      <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
+        ${isEn ? '5. Skills & Languages' : '5. المهارات واللغات'}
+      </h3>
+      
+      <!-- Skills Input -->
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label class="form-label">${isEn ? 'Add Key Skills (Press Enter or Add)' : 'أضف مهاراتك الأساسية'}</label>
+        <div style="display:flex;gap:0.5rem">
+          <input type="text" id="newSkillInput" class="form-input" placeholder="${isEn ? 'e.g. Project Management, SEO, Python' : 'مثال: إدارة المشاريع، SEO، تحليل البيانات'}" onkeydown="if(event.key==='Enter'){event.preventDefault();CareerAI.addSkillFromInput();}">
+          <button type="button" class="btn btn--primary btn--sm" onclick="CareerAI.addSkillFromInput()">${isEn ? 'Add' : 'إضافة'}</button>
+        </div>
+        
+        <div id="skillsBadgesContainer" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem">
+          ${state.skills.map((s, idx) => `
+            <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.4);border-radius:20px;padding:4px 12px;font-size:0.85rem;display:inline-flex;align-items:center;gap:6px">
+              ${s}
+              <button type="button" style="background:none;border:none;color:#f87171;cursor:pointer;font-weight:bold" onclick="CareerAI.removeSkill(${idx})">✕</button>
+            </span>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="form-group">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <label class="form-label" style="margin:0">${isEn ? 'Languages' : 'اللغات'}</label>
+          <button type="button" class="btn btn--secondary btn--sm" onclick="CareerAI.addLanguage()">+ ${isEn ? 'Add Language' : 'إضافة لغة'}</button>
+        </div>
+        <div id="languagesContainer">
+          ${state.languages.map((l, idx) => `
+            <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center">
+              <input type="text" class="form-input" value="${l.name}" placeholder="${isEn ? 'Language' : 'اللغة'}" oninput="CareerAI.updateLanguageField('${l.id}', 'name', this.value)" style="flex:1">
+              <input type="text" class="form-input" value="${l.level}" placeholder="${isEn ? 'Proficiency' : 'المستوى'}" oninput="CareerAI.updateLanguageField('${l.id}', 'level', this.value)" style="flex:1">
+              ${state.languages.length > 1 ? `
+                <button type="button" class="btn btn--ghost btn--sm" style="color:#f87171" onclick="CareerAI.removeLanguage('${l.id}')">✕</button>
               ` : ''}
             </div>
           `).join('')}
         </div>
       </div>
-    ` : ''}
+    `;
+  }
+};
 
-    <!-- Education Section -->
-    ${education.length > 0 ? `
-      <div class="cv-section">
-        <h2 class="cv-section-title">المؤهلات العلمية والتعليم</h2>
-        <div class="cv-items-list">
-          ${education.map(edu => `
-            <div class="cv-item">
-              <div class="cv-item-header">
-                <div>
-                  <strong class="cv-item-title">${edu.degree || 'الشهادة والتخصص'}</strong>
-                  <div class="cv-item-subtitle">${edu.school || 'المؤسسة التعليمية'} ${edu.location ? `— ${edu.location}` : ''}</div>
-                </div>
-                <div class="cv-item-date">
-                  ${edu.startDate || ''} ${edu.startDate && edu.endDate ? '—' : ''} ${edu.endDate || ''}
-                </div>
+// Render Live ATS Resume HTML for Preview & Print
+CareerAI.renderLiveResumeHTML = function() {
+  const state = window.CareerAI.resumeState;
+  const p = state.personal;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+
+  const hasPersonal = p.fullName || p.jobTitle || p.email;
+  if (!hasPersonal && !state.summary && (!state.experiences[0] || !state.experiences[0].jobTitle)) {
+    return `
+      <div style="text-align:center;padding:3rem 1rem;color:#64748b;">
+        <div style="font-size:2.5rem;margin-bottom:1rem">📄</div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#334155;margin-bottom:0.5rem">
+          ${isEn ? 'Your resume preview is waiting!' : 'معاينة سيرتك الذاتية في انتظارك!'}
+        </h4>
+        <p style="font-size:0.85rem;max-width:320px;margin:0 auto 1.25rem">
+          ${isEn ? 'Fill in the form on the left, or click the button below to load sample data instantly.' : 'ابدأ بملء البيانات على اليمين، أو اضغط الزر بالأسفل لتجربة نموذج جاهز بنقرة واحدة.'}
+        </p>
+        <button class="btn btn--accent btn--sm" onclick="CareerAI.loadSampleResume()">
+          ⚡ ${isEn ? 'Load Sample Data' : 'ملء نموذج تجريبي فوري'}
+        </button>
+      </div>
+    `;
+  }
+
+  return `
+    <div style="font-family:'Inter', 'Cairo', sans-serif;line-height:1.5;color:#1e293b;">
+      <!-- Header -->
+      <div style="border-bottom:2px solid #3b82f6;padding-bottom:1rem;margin-bottom:1.25rem;text-align:center;">
+        <h1 style="font-size:1.6rem;font-weight:800;color:#0f172a;margin:0 0 4px 0;letter-spacing:-0.02em;">${p.fullName || (isEn ? 'Your Name' : 'الاسم الكامل')}</h1>
+        <div style="font-size:1rem;font-weight:600;color:#3b82f6;margin-bottom:8px;">${p.jobTitle || ''}</div>
+        <div style="font-size:0.82rem;color:#475569;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+          ${p.email ? `<span>📧 ${p.email}</span>` : ''}
+          ${p.phone ? `<span>📞 ${p.phone}</span>` : ''}
+          ${p.location ? `<span>📍 ${p.location}</span>` : ''}
+          ${p.linkedin ? `<span>🔗 ${p.linkedin}</span>` : ''}
+        </div>
+      </div>
+
+      <!-- Summary -->
+      ${state.summary ? `
+        <div style="margin-bottom:1.25rem;">
+          <h2 style="font-size:0.95rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:6px;">
+            ${isEn ? 'Professional Summary' : 'الملخص المهني'}
+          </h2>
+          <p style="font-size:0.85rem;color:#334155;margin:0;line-height:1.6;">${state.summary}</p>
+        </div>
+      ` : ''}
+
+      <!-- Experience -->
+      ${state.experiences.some(e => e.jobTitle || e.company) ? `
+        <div style="margin-bottom:1.25rem;">
+          <h2 style="font-size:0.95rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:8px;">
+            ${isEn ? 'Work Experience' : 'الخبرات المهنية'}
+          </h2>
+          ${state.experiences.filter(e => e.jobTitle || e.company).map(exp => `
+            <div style="margin-bottom:0.75rem;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:0.88rem;font-weight:700;color:#0f172a;">
+                <span>${exp.jobTitle}</span>
+                <span style="font-size:0.78rem;font-weight:500;color:#64748b;">${exp.startDate || ''} ${exp.startDate && (exp.endDate || exp.current) ? '–' : ''} ${exp.current ? (isEn ? 'Present' : 'حتى الآن') : (exp.endDate || '')}</span>
               </div>
+              <div style="font-size:0.82rem;font-weight:600;color:#3b82f6;margin-bottom:4px;">${exp.company} ${exp.city ? '• ' + exp.city : ''}</div>
+              ${exp.description ? `
+                <div style="font-size:0.82rem;color:#334155;white-space:pre-line;line-height:1.5;">${exp.description}</div>
+              ` : ''}
             </div>
           `).join('')}
         </div>
-      </div>
-    ` : ''}
+      ` : ''}
 
-    <!-- Skills Section -->
-    ${skills.length > 0 ? `
-      <div class="cv-section">
-        <h2 class="cv-section-title">المهارات</h2>
-        <div class="cv-skills-grid">
-          ${skills.map(skill => `<span class="cv-skill-pill">• ${skill}</span>`).join('')}
-        </div>
-      </div>
-    ` : ''}
-
-    <!-- Languages Section -->
-    ${languages.length > 0 ? `
-      <div class="cv-section">
-        <h2 class="cv-section-title">اللغات</h2>
-        <div class="cv-languages-grid">
-          ${languages.map(lang => `
-            <div class="cv-language-item">
-              <strong>${lang.name}:</strong> <span>${lang.level}</span>
+      <!-- Education -->
+      ${state.education.some(e => e.degree || e.school) ? `
+        <div style="margin-bottom:1.25rem;">
+          <h2 style="font-size:0.95rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:8px;">
+            ${isEn ? 'Education' : 'التعليم والمؤهلات'}
+          </h2>
+          ${state.education.filter(e => e.degree || e.school).map(edu => `
+            <div style="margin-bottom:0.5rem;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:0.86rem;font-weight:700;color:#0f172a;">
+                <span>${edu.degree}</span>
+                <span style="font-size:0.78rem;font-weight:500;color:#64748b;">${edu.endDate || ''}</span>
+              </div>
+              <div style="font-size:0.82rem;color:#475569;">${edu.school}</div>
             </div>
           `).join('')}
         </div>
-      </div>
-    ` : ''}
+      ` : ''}
+
+      <!-- Skills -->
+      ${state.skills && state.skills.length > 0 ? `
+        <div style="margin-bottom:1.25rem;">
+          <h2 style="font-size:0.95rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:6px;">
+            ${isEn ? 'Skills' : 'المهارات'}
+          </h2>
+          <div style="font-size:0.82rem;color:#334155;line-height:1.6;">
+            ${state.skills.join(' • ')}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- Languages -->
+      ${state.languages && state.languages.some(l => l.name) ? `
+        <div>
+          <h2 style="font-size:0.95rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:6px;">
+            ${isEn ? 'Languages' : 'اللغات'}
+          </h2>
+          <div style="font-size:0.82rem;color:#334155;">
+            ${state.languages.filter(l => l.name).map(l => l.name + (l.level ? ' (' + l.level + ')' : '')).join(' • ')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
   `;
 };
 
-/* ==========================================================================
-   STATE MUTATION & ACTIONS
-   ========================================================================== */
-
+// Handlers & State Updaters
 CareerAI.updateLivePreview = function() {
-  const paper = document.getElementById('cvPaper');
-  if (paper) {
-    paper.innerHTML = CareerAI.renderLiveResumeHTML();
-  }
+  const el = document.getElementById('liveResumeDocument');
+  if (el) el.innerHTML = CareerAI.renderLiveResumeHTML();
 };
 
 CareerAI.setResumeStep = function(step) {
-  CareerAI.resumeState.currentStep = step;
-  const content = document.getElementById('builderFormContent');
-  if (content) {
-    content.innerHTML = CareerAI.renderBuilderStep(step);
-  }
-
-  // Update Nav Buttons
-  document.querySelectorAll('.builder-step-btn').forEach((btn, idx) => {
+  window.CareerAI.resumeState.currentStep = step;
+  const formEl = document.getElementById('resumeStepFormContent');
+  if (formEl) formEl.innerHTML = CareerAI.renderBuilderStep(step);
+  
+  document.querySelectorAll('.step-nav-btn').forEach((btn, idx) => {
     btn.classList.toggle('active', idx + 1 === step);
   });
 
-  // Update Controls
   const prevBtn = document.getElementById('btnPrevStep');
   const nextBtn = document.getElementById('btnNextStep');
-  if (prevBtn) prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
-  if (nextBtn) nextBtn.innerHTML = step === 6 ? 'معاينة وتحميل PDF ✓' : 'الخطوة التالية ←';
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
-  const indicator = document.querySelector('.builder-step-indicator');
-  if (indicator) indicator.innerHTML = `الخطوة <strong>${step}</strong> من <strong>6</strong>`;
+  if (prevBtn) prevBtn.style.visibility = (step === 1 ? 'hidden' : 'visible');
+  if (nextBtn) {
+    nextBtn.textContent = (step === 5 ? (isEn ? 'Finish & Download 📥' : 'إنهاء وتحميل 📥') : (isEn ? 'Next →' : 'التالي →'));
+  }
 };
 
 CareerAI.nextResumeStep = function() {
-  if (CareerAI.resumeState.currentStep < 6) {
-    CareerAI.setResumeStep(CareerAI.resumeState.currentStep + 1);
-    window.scrollTo({ top: 300, behavior: 'smooth' });
+  const current = window.CareerAI.resumeState.currentStep;
+  if (current < 5) {
+    CareerAI.setResumeStep(current + 1);
   } else {
-    // Reached end -> trigger download or prompt
     CareerAI.downloadResumePDF();
   }
 };
 
 CareerAI.prevResumeStep = function() {
-  if (CareerAI.resumeState.currentStep > 1) {
-    CareerAI.setResumeStep(CareerAI.resumeState.currentStep - 1);
-    window.scrollTo({ top: 300, behavior: 'smooth' });
+  const current = window.CareerAI.resumeState.currentStep;
+  if (current > 1) {
+    CareerAI.setResumeStep(current - 1);
   }
 };
 
-// Personal Info
 CareerAI.updatePersonalField = function(field, value) {
-  CareerAI.resumeState.personal[field] = value;
+  window.CareerAI.resumeState.personal[field] = value;
   CareerAI.updateLivePreview();
 };
 
-// Summary
 CareerAI.updateSummary = function(value) {
-  CareerAI.resumeState.summary = value;
+  window.CareerAI.resumeState.summary = value;
   CareerAI.updateLivePreview();
 };
 
 CareerAI.enhanceSummaryWithAI = function() {
-  const title = CareerAI.resumeState.personal.jobTitle || 'المجال المهني';
-  const name = CareerAI.resumeState.personal.fullName || 'المتخصص';
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const role = window.CareerAI.resumeState.personal.jobTitle || (isEn ? 'Professional' : 'محترف في مجالي');
   
-  let enhanced = '';
-  if (title.includes('برمج') || title.includes('مطور') || title.includes('Frontend') || title.includes('Full Stack')) {
-    enhanced = `مهندس برمجيات ومطور شغوف يتمتع بخبرة مثبتة في بناء تطبيقات ويب متطورة وقابلة للتوسع. أتقن أحدث التقنيات وأفضل الممارسات البرمجية، مع التركيز العالي على الأداء وتجربة المستخدم السلسة وكتابة كود نظيف وقابل للصيانة.`;
-  } else if (title.includes('تسويق') || title.includes('SEO') || title.includes('Marketing')) {
-    enhanced = `أخصائي تسويق رقمي ذو خبرة استراتيجية في إدارة الحملات الإعلانية المدفوعة وتحسين محركات البحث SEO. أمتلك سجلاً حافلاً في تنمية الزيارات المجانية، تحسين معدلات التحويل (CRO)، وتعزيز العائد على الاستثمار للمشاريع التجارية.`;
-  } else {
-    enhanced = `مهني طموح ومتميز في مجال ${title}، أمتلك خبرة عملية ومهارات تحليلية وتنظيمية متقدمة. ملتزم بتحقيق أعلى معايير الجودة ومساعدة فريق العمل على تحقيق الأهداف الاستراتيجية بكفاءة واحترافية.`;
-  }
+  const aiGenerated = isEn
+    ? `Dedicated and results-oriented ${role} with extensive experience leading impactful projects, optimizing workflows, and driving strategic growth. Proven ability to deliver high-quality outcomes and collaborate across cross-functional teams.`
+    : `مهني متخصص ومتحمس في مجال ${role} بخبرة عملية مثبتة في إدارة المشاريع وتطوير الأداء وتحقيق نتائج ملموسة. أتميز بالقدرة العالية على الابتكار والعمل الجماعي وحل المشكلات المعقدة لتحقيق أهداف المؤسسة.`;
 
-  CareerAI.resumeState.summary = enhanced;
-  CareerAI.setResumeStep(2);
+  window.CareerAI.resumeState.summary = aiGenerated;
+  const textarea = document.querySelector('textarea.form-textarea');
+  if (textarea) textarea.value = aiGenerated;
   CareerAI.updateLivePreview();
 };
 
-CareerAI.applySummaryTemplate = function(type) {
-  if (type === 'tech') {
-    CareerAI.resumeState.summary = `مطور برمجيات ذو خبرة في بناء الأنظمة السحابية وتطبيقات الويب عالية الأداء، أمتلك مهارات قوية في حل المشكلات البرمجية المعقدة والعمل ضمن فرق رشيقة (Agile).`;
-  } else if (type === 'marketing') {
-    CareerAI.resumeState.summary = `مسؤول تسويق رقمي ذو خبرة في صياغة الاستراتيجيات الترويجية، إدارة الحملات الإعلانية على منصات التواصل ومحركات البحث، وتحليل بيانات العملاء لرفع المبيعات.`;
-  } else if (type === 'fresh') {
-    CareerAI.resumeState.summary = `خريج شغوف وطموح أسعى لتوظيف مهاراتي الأكاديمية والعملية في بيئة مهنية محفزة تسهم في صقل خبراتي وتحقيق نتائج ملموسة للشركة.`;
-  }
-  CareerAI.setResumeStep(2);
-  CareerAI.updateLivePreview();
-};
-
-// Experience
 CareerAI.addExperience = function() {
-  CareerAI.resumeState.experiences.push({
+  window.CareerAI.resumeState.experiences.push({
     id: 'exp-' + Date.now(),
     jobTitle: '',
     company: '',
@@ -981,40 +680,24 @@ CareerAI.addExperience = function() {
 };
 
 CareerAI.removeExperience = function(id) {
-  CareerAI.resumeState.experiences = CareerAI.resumeState.experiences.filter(e => e.id !== id);
+  window.CareerAI.resumeState.experiences = window.CareerAI.resumeState.experiences.filter(e => e.id !== id);
   CareerAI.setResumeStep(3);
   CareerAI.updateLivePreview();
 };
 
 CareerAI.updateExperienceField = function(id, field, value) {
-  const exp = CareerAI.resumeState.experiences.find(e => e.id === id);
+  const exp = window.CareerAI.resumeState.experiences.find(e => e.id === id);
   if (exp) {
     exp[field] = value;
     CareerAI.updateLivePreview();
   }
 };
 
-CareerAI.toggleExpCurrent = function(id, checked) {
-  const exp = CareerAI.resumeState.experiences.find(e => e.id === id);
-  if (exp) {
-    exp.current = checked;
-    if (checked) exp.endDate = '';
-    const endInput = document.getElementById('exp_end_' + id);
-    if (endInput) {
-      endInput.disabled = checked;
-      if (checked) endInput.value = '';
-    }
-    CareerAI.updateLivePreview();
-  }
-};
-
-// Education
 CareerAI.addEducation = function() {
-  CareerAI.resumeState.education.push({
+  window.CareerAI.resumeState.education.push({
     id: 'edu-' + Date.now(),
-    school: '',
     degree: '',
-    startDate: '',
+    school: '',
     endDate: '',
     location: ''
   });
@@ -1023,132 +706,138 @@ CareerAI.addEducation = function() {
 };
 
 CareerAI.removeEducation = function(id) {
-  CareerAI.resumeState.education = CareerAI.resumeState.education.filter(e => e.id !== id);
+  window.CareerAI.resumeState.education = window.CareerAI.resumeState.education.filter(e => e.id !== id);
   CareerAI.setResumeStep(4);
   CareerAI.updateLivePreview();
 };
 
 CareerAI.updateEducationField = function(id, field, value) {
-  const edu = CareerAI.resumeState.education.find(e => e.id === id);
+  const edu = window.CareerAI.resumeState.education.find(e => e.id === id);
   if (edu) {
     edu[field] = value;
     CareerAI.updateLivePreview();
   }
 };
 
-// Skills
 CareerAI.addSkillFromInput = function() {
   const input = document.getElementById('newSkillInput');
-  if (input && input.value.trim()) {
-    CareerAI.addQuickSkill(input.value.trim());
-    input.value = '';
-    input.focus();
+  if (!input || !input.value.trim()) return;
+  const val = input.value.trim();
+  if (!window.CareerAI.resumeState.skills.includes(val)) {
+    window.CareerAI.resumeState.skills.push(val);
   }
-};
-
-CareerAI.addQuickSkill = function(skillName) {
-  if (!CareerAI.resumeState.skills.includes(skillName)) {
-    CareerAI.resumeState.skills.push(skillName);
-    CareerAI.setResumeStep(5);
-    CareerAI.updateLivePreview();
-  }
-};
-
-CareerAI.removeSkill = function(index) {
-  CareerAI.resumeState.skills.splice(index, 1);
+  input.value = '';
   CareerAI.setResumeStep(5);
   CareerAI.updateLivePreview();
 };
 
-CareerAI.suggestSkillsWithAI = function() {
-  const title = CareerAI.resumeState.personal.jobTitle || '';
-  let suggested = [];
-
-  if (title.includes('برمج') || title.includes('مطور') || title.includes('Frontend') || title.includes('Web')) {
-    suggested = ['JavaScript (ES6+)', 'HTML5 & CSS3', 'React.js', 'Git & GitHub', 'RESTful APIs', 'حل المشكلات البرمجية', 'Responsive Design'];
-  } else if (title.includes('تسويق') || title.includes('SEO') || title.includes('Marketing')) {
-    suggested = ['SEO (تحسين محركات البحث)', 'Google Ads', 'Google Analytics 4', 'صناعة المحتوى', 'إدارة الحملات الإعلانية', 'التسويق عبر البريد الإلكتروني'];
-  } else {
-    suggested = ['إدارة المشاريع', 'التواصل الفعال', 'حل المشكلات والتفكير النقدي', 'Microsoft Office & Excel', 'العمل الجماعي', 'إدارة الوقت'];
-  }
-
-  suggested.forEach(s => {
-    if (!CareerAI.resumeState.skills.includes(s)) {
-      CareerAI.resumeState.skills.push(s);
-    }
-  });
-
+CareerAI.removeSkill = function(idx) {
+  window.CareerAI.resumeState.skills.splice(idx, 1);
   CareerAI.setResumeStep(5);
   CareerAI.updateLivePreview();
 };
 
-// Languages
 CareerAI.addLanguage = function() {
-  CareerAI.resumeState.languages.push({
+  window.CareerAI.resumeState.languages.push({
     id: 'lang-' + Date.now(),
     name: '',
-    level: '${isEn ? 'Intermediate' : 'متوسط'}'
+    level: ''
   });
-  CareerAI.setResumeStep(6);
+  CareerAI.setResumeStep(5);
   CareerAI.updateLivePreview();
 };
 
 CareerAI.removeLanguage = function(id) {
-  CareerAI.resumeState.languages = CareerAI.resumeState.languages.filter(l => l.id !== id);
-  CareerAI.setResumeStep(6);
+  window.CareerAI.resumeState.languages = window.CareerAI.resumeState.languages.filter(l => l.id !== id);
+  CareerAI.setResumeStep(5);
   CareerAI.updateLivePreview();
 };
 
 CareerAI.updateLanguageField = function(id, field, value) {
-  const lang = CareerAI.resumeState.languages.find(l => l.id === id);
-  if (lang) {
-    lang[field] = value;
+  const l = window.CareerAI.resumeState.languages.find(l => l.id === id);
+  if (l) {
+    l[field] = value;
     CareerAI.updateLivePreview();
   }
 };
 
-// Reset & Sample
 CareerAI.loadSampleResume = function() {
-  CareerAI.resumeState = JSON.parse(JSON.stringify(CareerAI.sampleResumeData));
-  CareerAI.setResumeStep(CareerAI.resumeState.currentStep);
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const sample = window.CareerAI.sampleResumeData;
+
+  window.CareerAI.resumeState.personal = isEn ? { ...sample.personal_en } : { ...sample.personal };
+  window.CareerAI.resumeState.summary = isEn ? sample.summary_en : sample.summary;
+  window.CareerAI.resumeState.experiences = JSON.parse(JSON.stringify(sample.experiences));
+  window.CareerAI.resumeState.education = JSON.parse(JSON.stringify(sample.education));
+  window.CareerAI.resumeState.skills = [...sample.skills];
+  window.CareerAI.resumeState.languages = JSON.parse(JSON.stringify(sample.languages));
+
+  CareerAI.setResumeStep(window.CareerAI.resumeState.currentStep);
   CareerAI.updateLivePreview();
 };
 
 CareerAI.resetResumeForm = function() {
-  if (confirm('هل أنت متأكد من رغبتك في مسح كافة البيانات والبدء من جديد؟')) {
-    CareerAI.resumeState = {
-      currentStep: 1,
-      personal: { fullName: '', jobTitle: '', email: '', phone: '', location: '', linkedin: '', website: '' },
-      summary: '',
-      experiences: [{ id: 'exp-1', jobTitle: '', company: '', city: '', startDate: '', endDate: '', current: false, description: '' }],
-      education: [{ id: 'edu-1', school: '', degree: '', startDate: '', endDate: '', location: '' }],
-      skills: [],
-      languages: [{ id: 'lang-1', name: 'العربية', level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}' }]
-    };
-    CareerAI.setResumeStep(1);
-    CareerAI.updateLivePreview();
-  }
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!confirm(isEn ? 'Are you sure you want to clear all data and start fresh?' : 'هل أنت متأكد من رغبتك في مسح كافة البيانات والبدء من جديد؟')) return;
+
+  window.CareerAI.resumeState = {
+    currentStep: 1,
+    themeColor: '#4f46e5',
+    personal: { fullName: '', jobTitle: '', email: '', phone: '', location: '', linkedin: '', website: '' },
+    summary: '',
+    experiences: [{ id: 'exp-1', jobTitle: '', company: '', city: '', startDate: '', endDate: '', current: false, description: '' }],
+    education: [{ id: 'edu-1', school: '', degree: '', startDate: '', endDate: '', location: '' }],
+    skills: [],
+    languages: [{ id: 'lang-1', name: 'العربية', level: 'اللغة الأم' }]
+  };
+
+  CareerAI.setResumeStep(1);
+  CareerAI.updateLivePreview();
 };
 
-// Mobile Toggle
 CareerAI.toggleMobilePreview = function() {
-  const panel = document.getElementById('builderPreviewPanel');
-  const text = document.getElementById('mobilePreviewToggleText');
-  if (panel) {
-    const isShowing = panel.classList.toggle('active-mobile');
-    if (text) text.innerText = isShowing ? 'العودة إلى نموذج التعديل' : 'عرض المعاينة المباشرة';
-    if (isShowing) panel.scrollIntoView({ behavior: 'smooth' });
+  const preview = document.getElementById('resumePreviewContainer');
+  const btnText = document.getElementById('mobilePreviewToggleText');
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+
+  if (preview) {
+    const isVisible = preview.classList.toggle('mobile-visible');
+    if (btnText) {
+      btnText.textContent = isVisible 
+        ? (isEn ? 'Hide Preview' : 'إخفاء المعاينة')
+        : (isEn ? 'Show Live Preview' : 'عرض المعاينة المباشرة');
+    }
   }
 };
 
-// PDF Download via clean browser print engine
 CareerAI.downloadResumePDF = function() {
+  const resumeEl = document.getElementById('liveResumeDocument');
+  if (!resumeEl) return;
+
+  const fullName = window.CareerAI.resumeState.personal.fullName || 'Resume';
+  const originalTitle = document.title;
+  document.title = fullName + ' - Factor Career Resume';
+
+  // Native Print to PDF engine
   window.print();
+
+  setTimeout(() => {
+    document.title = originalTitle;
+  }, 1000);
 };
 
-// SEO Metadata for Resume Builder
-window.CareerAI.pages.resumeBuilderSEO = {
-  title: 'صانع السيرة الذاتية بالذكاء الاصطناعي مجاناً | Factor Career Resume Builder',
-  description: 'أنشئ سيرة ذاتية احترافية متوافقة مع أنظمة ATS مجاناً وبدون تسجيل. احصل على معاينة مباشرة وحمّل سيرتك الذاتية بصيغة PDF عالية الجودة.',
-  keywords: 'صانع سيرة ذاتية, سيرة ذاتية بالذكاء الاصطناعي, إنشاء CV احترافي, قالب سيرة ذاتية ATS, تحميل سيرة ذاتية PDF, Resume Builder AI'
+window.CareerAI.pages.resumeBuilderSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Free AI Resume Builder | ATS-Compliant CV Maker - Factor Career',
+      description: 'Build a professional ATS-compliant resume with free AI suggestions, modern templates, live preview, and instant PDF download on Factor Career.',
+      keywords: 'AI Resume Builder, Free CV Maker, ATS Resume, Resume Generator, Factor Career'
+    };
+  }
+  return {
+    title: 'منشئ السيرة الذاتية بالذكاء الاصطناعي مجاناً | فكتور كارير',
+    description: 'أنشئ سيرة ذاتية احترافية متوافقة مع أنظمة ATS بنقرة واحدة. قوالب مجانية جاهزة وتصدير PDF فوري بدون تسجيل.',
+    keywords: 'منشئ السيرة الذاتية, إنشاء سيرة ذاتية, سيرة ذاتية ATS, عمل CV مجاني, Factor Career'
+  };
 };

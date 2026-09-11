@@ -1,206 +1,33 @@
 /* ============================================
-   CareerAI - AI Interview Questions Generator Tool
+   CareerAI - AI Interview Questions & STAR Coach Tool
+   Full Bilingual (AR/EN), 100% Free, Instant Sample Data,
+   Categorized Behavioral/Technical/HR Questions with STAR Answers
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
 window.CareerAI.pages = window.CareerAI.pages || {};
 
-window.CareerAI.interviewState = {
+window.CareerAI.iqState = {
   jobTitle: '',
-  companyName: '',
-  industry: '',
-  expYears: '',
-  level: 'mid', // junior | mid | senior
-  jobDescription: '',
-  interviewType: 'general', // general | technical | hr | behavioral | management
-  questionCount: 10,
-  language: 'ar', // ar | en | fr | es | de
-  difficultyFilter: 'all',
-  isGenerating: false,
-  questions: [],
-  candidateQuestions: [],
-  tipsList: []
+  experienceLevel: 'mid',
+  industry: 'tech',
+  filterCategory: 'all',
+  questions: null,
+  isGenerating: false
 };
 
-// Question Generator Engine Supporting Multilingual Outputs & Tailored Technical Topics
-window.CareerAI.generateInterviewQuestionsData = function(state) {
-  const title = state.jobTitle || (state.language === 'ar' ? 'المسمى الوظيفي' : 'Target Position');
-  const levelText = state.level === 'senior' ? '${isEn ? 'Senior' : 'خبير / Senior'}' : (state.level === 'junior' ? '${isEn ? 'Junior' : 'مبتدئ / Junior'}' : '${isEn ? 'Medium' : 'متوسط'} / Mid-Level');
-  const lang = state.language;
-  const isTech = title.toLowerCase().includes('software') || title.toLowerCase().includes('برمج') || title.toLowerCase().includes('developer') || title.toLowerCase().includes('frontend') || title.toLowerCase().includes('backend');
-  const isMarketing = title.toLowerCase().includes('marketing') || title.toLowerCase().includes('تسويق') || title.toLowerCase().includes('seo');
-
-  let rawQuestions = [];
-
-  if (lang === 'en') {
-    rawQuestions = [
-      {
-        q: `Tell me about yourself and your background in ${title}.`,
-        diff: 'Easy',
-        why: 'The interviewer wants to understand your career trajectory, core strengths, and how concisely you communicate your value proposition.',
-        ans: `I am a dedicated ${title} with over ${state.expYears || '3'} years of experience. In my previous role at [Previous Company], I specialized in [Key Skill/Achievement]. I am particularly passionate about [Industry Skill] and excited about the opportunity at ${state.companyName || 'your company'}.`,
-        tip: 'Keep your answer to 2 minutes max. Use the Past-Present-Future structure.',
-        star: null,
-        type: 'general'
-      },
-      {
-        q: `What is your biggest professional achievement as a ${title}?`,
-        diff: 'Medium',
-        why: 'To gauge what you consider success and whether you deliver measurable outcomes.',
-        ans: `My proudest achievement was leading a key project at [Company] that resulted in a [Percentage]% increase in [Metric/Output]. I managed [Specific Action] which significantly improved efficiency.`,
-        tip: 'Focus on quantifiable numbers and metrics.',
-        star: { s: 'Our team was facing a tight deadline and declining metrics.', t: 'I was tasked with optimizing the core workflow.', a: 'I implemented [New Strategy/Tool] and restructured the process.', r: 'We achieved a 35% improvement in efficiency ahead of deadline.' },
-        type: 'behavioral'
-      }
-    ];
-
-    if (isTech || state.interviewType === 'technical') {
-      rawQuestions.push(
-        {
-          q: `How do you optimize application performance and handle scalability in ${title} projects?`,
-          diff: 'Hard',
-          why: 'To test your technical depth, architectural mindset, and understanding of best engineering practices.',
-          ans: `I approach performance optimization by analyzing bottlenecks using profiling tools. For frontend, I focus on lazy loading, caching strategies, and code splitting. For backend, I optimize database queries and utilize Redis caching.`,
-          tip: 'Mention specific profiling and monitoring tools you use daily.',
-          star: null,
-          type: 'technical'
-        },
-        {
-          q: `Explain how you handle API integrations and error management in technical architecture.`,
-          diff: 'Medium',
-          why: 'To evaluate your reliability engineering and system integration skills.',
-          ans: `I ensure robust API integration by implementing strict error handling, retry logic with exponential backoff, and fallback states to maintain a smooth user experience.`,
-          tip: 'Emphasize user experience during network failures.',
-          star: null,
-          type: 'technical'
-        }
-      );
-    }
-  } else {
-    // Default Arabic (العربية)
-    rawQuestions = [
-      {
-        q: `حدثني عن نفسك وعن مسيرتك المهنية في مجال ${title}؟`,
-        diff: '${isEn ? 'Easy' : 'سهل'}',
-        why: 'يرغب مسؤول التوظيف في تقييم أسلوبك في التواصل، وتلخيص نقاط قوتك، ومدى ملاءمتك للوظيفة في الدقائق الأولى.',
-        ans: `أنا ${title} لدي خبرة أكثر من ${state.expYears || '3'} سنوات في المجال. خلال عملي السابق في [اسم الشركة السابقة]، تخصصت في [المهارة الرئيسية/الإنجاز]. أنجذب دائماً لتطوير [المهارة التخصصية] وأنا متحمس جداً لنقل هذه الخبرات إلى فريقكم في ${state.companyName || 'شركتكم الموقرة'}.`,
-        tip: 'اجعل إجابتك بين دقيقة ودقيقتين. اعتمد هيكل: الماضي (الخبرة) -> الحاضر (الوضع الحالي) -> المستقبل (لماذا هذه الوظيفة).',
-        star: null,
-        type: 'general'
-      },
-      {
-        q: `ما هو أكبر إنجاز مهني حققته خلال عملك كـ ${title}؟`,
-        diff: '${isEn ? 'Medium' : 'متوسط'}',
-        why: 'لقياس المعايير التي تعتبرها نجاحاً، والتحقق مما إذا كنت تحقق نتائج قابلة للقياس وليس مجرد أداء وظائف روتينية.',
-        ans: `أبرز إنجاز حققته كان عند إشرافي على مشروع [اسم المشروع] حيث قمت بـ [الإجراء الذي اتخذته] مما أدى لزيادة [النتيجة/المبيعات/الأداء] بنسبة [X]%.`,
-        tip: 'ركز على الأرقام والنسب المئوية المحققة.',
-        star: {
-          s: 'الموقف: كان الفريق يواجه ضغطاً كبيراً وانخفاضاً في معدل الأداء.',
-          t: 'المهمة: طُلب مني إعادة تنظيم آلية العمل وتحسين النتائج خلال شهرين.',
-          a: 'الإجراء: قمت بتطبيق [استراتيجية جديدة/أداة ذكية] وتوزيع المهام بدقة.',
-          r: 'النتيجة: حققنا زيادة بنسبة 35% في الإنتاجية وتم تسليم المشروع قبل الموعد.'
-        },
-        type: 'behavioral'
-      },
-      {
-        q: `كيف تت${isEn ? 'General' : 'عام'}ل مع الضغوط والمواعيد النهائية الضيقة عند تنفيذ المهام؟`,
-        diff: '${isEn ? 'Medium' : 'متوسط'}',
-        why: 'لاختبار مرونتك وقدرتك على ترتيب الأولويات تحت إدارة الوقت الحرج.',
-        ans: `أت${isEn ? 'General' : 'عام'}ل مع الضغوط من خلال تفكيك المهمة الكبيرة إلى مهام صغيرة مرتبة حسب الأولوية، واستخدام أدوات إدارة المهام لتتبع التقدم، مع الحفاظ على التنسيق المستمر مع الفريق لضمان عدم تأثر جودة العمل.`,
-        tip: 'اذكر مثالاً واقعياً تغلبت فيه على موعد نهائي حرج بنجاح.',
-        star: null,
-        type: 'hr'
-      }
-    ];
-
-    if (isTech || state.interviewType === 'technical') {
-      rawQuestions.push(
-        {
-          q: `كيف تقوم بتحسين أداء الأنظمة والتطبيقات وتحقيق السرعة الكفاءة في عملك كـ ${title}؟`,
-          diff: '${isEn ? 'Hard' : 'صعب'}',
-          why: 'لاختبار عمقك ال${isEn ? 'Technical' : 'تقني'} وعقليتك الهندسة في حل الاختناقات وتطبيق أفضل معايير البرمجة والهندسة.',
-          ans: `أعتمد على أدوات قياس الأداء للتعرف على نقاط الاختناق أولاً. بالنسبة للواجهات (Frontend) أقوم بتصغير الملفات وتفعيل Caching و Lazy Loading، وبالنسبة للـ Backend أقوم بتحسين الاستعلامات واستخدام مجمعات التخزين المؤقت كـ Redis.`,
-          tip: 'اذكر الأدوات وال${isEn ? 'Technical' : 'تقني'}ات التي تستخدمها يومياً للتحليل والتنقيح.',
-          star: null,
-          type: 'technical'
-        },
-        {
-          q: `كيف تضمن أمان البيانات والت${isEn ? 'General' : 'عام'}ل مع الأخطاء غير المتوقعة أثناء ربط الـ APIs؟`,
-          diff: '${isEn ? 'Medium' : 'متوسط'}',
-          why: 'لقياس مدى اهتمامك بمعايير الأمان وحماية تجربة المستخدم عند حدوث أخطاء بالنظام.',
-          ans: `أحرص على استخدام بروتوكولات التشفير القياسية (OAuth2/JWT)، وتطبيق معالجة استباقية للأخطاء (Error Boundaries) مع إظهار رسائل واضحة للمستخدم وآليات إعادة المحاولة التلقائية (Retry Mechanism).`,
-          tip: 'ركز على أمن المعلومات وسلاسة تجربة المستخدم.',
-          star: null,
-          type: 'technical'
-        }
-      );
-    }
-
-    if (isMarketing) {
-      rawQuestions.push(
-        {
-          q: `كيف تقوم بحساب وتطوير العائد على الاستثمار الإعلاني (ROAS) وتحسين معدلات التحويل؟`,
-          diff: '${isEn ? 'Hard' : 'صعب'}',
-          why: 'لقياس فهمك المالي وقدرتك على إدارة الميزانيات التسويقية بتحقيق عوائد ربحية للشركة.',
-          ans: `أقوم بتحليل مسار العميل (Funnel) واختبار العناوين والصور A/B Testing، ثم إعادة توجيه الميزانية نحو الحملات والكلمات المفتاحية الأعلى تحويلاً واستبعاد الكلمات غير الفعالة.`,
-          tip: 'اذكر أدوات التحليل كـ Google Analytics 4 وأرقام العوائد التي حققتها.',
-          star: null,
-          type: 'technical'
-        }
-      );
-    }
-
-    if (state.level === 'senior' || state.interviewType === 'management') {
-      rawQuestions.push(
-        {
-          q: `كيف تقوم بتوجيه وإدارة أعضاء الفريق وإدارة الخلافات التي قد تنشأ أثناء العمل؟`,
-          diff: '${isEn ? 'Hard' : 'صعب'}',
-          why: 'لقياس مهاراتك القيادية والذكاء العاطفي في بناء فريق عمل متماثل وعالي الإنتاجية.',
-          ans: `أعتمد أسلوب القيادة التمكينية من خلال تحديد أهداف واضحة وعقد جلسات متابعة فردية. عند نشوب خلاف، أستمع لكافة الأطراف بموضوعية ونركز على الحلول التي تخدم مصلحة العمل العليا.`,
-          tip: 'أظهر قدرتك على الاستماع الفعال وتوجيه الفريق نحو الأهداف.',
-          star: null,
-          type: 'management'
-        }
-      );
-    }
-  }
-
-  // Multiply/Adapt questions to match target questionCount requested
-  let questions = [];
-  while (questions.length < state.questionCount) {
-    const baseQ = rawQuestions[questions.length % rawQuestions.length];
-    questions.push({
-      ...baseQ,
-      id: 'q-' + (questions.length + 1),
-      num: questions.length + 1
-    });
-  }
-
-  // Candidate Questions (Questions applicant asks recruiter)
-  const candidateQuestions = [
-    'كيف يبدو النجاح في هذا الدور الوظيفي خلال أول 90 يوماً؟',
-    'ما هي أهم التحديات التي يواجهها الفريق حالياً والتي ترغبون من المتقدم الجديد حلها؟',
-    'كيف تصفون ثقافة العمل والتواصل داخل الفريق؟',
-    'ما هي الخطوة التالية في عملية التوظيف والمقابلات؟'
-  ];
-
-  // Pre-interview tips checklist
-  const tipsList = [
-    'اقرأ عن تاريخ الشركة ورؤيتها وأحدث مشاريعها قبل دخول المقابلة.',
-    'راجع الوصف الوظيفي جيداً وحضر مثالاً واقعياً لكل مهارة مطلوبة.',
-    'تدرب على الإجابة عن سؤال "حدثني عن نفسك" بصوت عالٍ لضبط الوقت والأسلوب.',
-    'استخدم طريقة STAR عند سرد المواقف والتحديات في الأسئلة ال${isEn ? 'Behavioral' : 'سلوكي'}ة.',
-    'جهّز 2-3 أسئلة احترافية لطرحها على مسؤول التوظيف في نهاية المقابلة.'
-  ];
-
-  return { questions, candidateQuestions, tipsList };
+// Sample data for instant one-click generation
+window.CareerAI.sampleIQData = {
+  jobTitle: 'Senior Product Manager / مدير منتجات أول',
+  experienceLevel: 'senior',
+  industry: 'tech'
 };
 
 window.CareerAI.pages.interviewQuestions = function() {
   const icons = window.CareerAI.icons;
+  const state = window.CareerAI.iqState;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
-  const state = window.CareerAI.interviewState;
 
   return `
     <!-- Header -->
@@ -210,31 +37,31 @@ window.CareerAI.pages.interviewQuestions = function() {
           <div class="page-header__breadcrumb">
             <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
             <span>/</span>
-            <span>مولد أسئلة مقابلات العمل</span>
+            <span>${isEn ? 'Interview Coach' : 'مدرب أسئلة المقابلات'}</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
             <span class="section__badge">
-              🎯 إجابات نموذجية وطريقة STAR
+              <span style="width:16px;height:16px;display:inline-flex">${icons.sparkles || icons.rocket}</span>
+              ${isEn ? 'AI STAR Method Coach' : 'نموذج STAR للإجابة النموذجية'}
             </span>
             <span class="section__badge" style="background:rgba(16,185,129,0.15);color:var(--color-accent)">
-              ✓ أسئلة متخصصة 100%
+              ✓ ${isEn ? '100% Free' : 'مجاني 100%'}
             </span>
           </div>
-          <h1 class="page-header__title">مولد أسئلة مقابلات العمل بالذكاء الاصطناعي (AI Interview Questions)</h1>
-          <p class="page-header__subtitle">احصل على أسئلة مقابلة مخصصة لوظيفتك ومستوى خبرتك مع سبب طرح السؤال، إجابات نموذجية، ونصائح احترافية للاستعداد</p>
+          <h1 class="page-header__title">${isEn ? 'AI Job Interview Questions & STAR Coach' : 'مدرب ومولد أسئلة المقابلات الوظيفية بالذكاء الاصطناعي'}</h1>
+          <p class="page-header__subtitle">${isEn ? 'Generate realistic interview questions and model STAR-method answers tailored to your specific role and industry.' : 'تدرّب على أسئلة المقابلات السلوكية والتقنية الخاصة بمجالك مع إجابات نموذجية وفق منهجية STAR الاحترافية.'}</p>
         </div>
       </div>
     </div>
 
-    
     <!-- Google AdSense - Tool Top Leaderboard -->
     <div class="container" style="margin-top:var(--space-4);margin-bottom:var(--space-2)">
       <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
         <div class="ad-frame-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-          إعلان ممول / Sponsored
+          ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
         </div>
         <div class="ad-frame-inner">
           <ins class="adsbygoogle"
@@ -247,205 +74,66 @@ window.CareerAI.pages.interviewQuestions = function() {
       </div>
     </div>
 
-    <!-- Main Workspace -->
-    <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-12)">
-      <div class="container container--narrow">
+    <!-- Main Interview Workspace -->
+    <section class="section" style="padding-top:var(--space-4);padding-bottom:var(--space-12)">
+      <div class="container">
 
-        <!-- Privacy Banner -->
-        <div class="privacy-alert-banner">
-          🔒 <strong>الخصوصية:</strong> يتم استخدام بيانات الوظيفة والخبرات مؤقتاً في متصفحك لإعداد قائمة الأسئلة والإجابات، ولا يتم حفظ بياناتك على خوادمنا.
-        </div>
-
-        <!-- FORM CONFIGURATOR -->
-        <div class="contact-form" style="padding:var(--space-8); border:1px solid var(--color-border); border-radius:var(--radius-2xl); background:white; margin-bottom:var(--space-8)">
-          
-          <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-            💼 1. معلومات الوظيفة والخبرة
-          </h3>
-
-          <div class="contact-form__row">
-            <div class="form-group">
-              <label class="form-label">المسمى الوظيفي المستهدف *</label>
-              <input type="text" class="form-input" placeholder="مثال: مطور وواجهات أمامية Frontend، أخصائي تسويق..." value="${state.jobTitle}" oninput="CareerAI.updateIQField('jobTitle', this.value)">
-            </div>
-            <div class="form-group">
-              <label class="form-label">${isEn ? 'Company Name (Optional)' : 'اسم الشركة (اختياري)'}</label>
-              <input type="text" class="form-input" placeholder="مثال: شركة الحلول المتقدمة" value="${state.companyName}" oninput="CareerAI.updateIQField('companyName', this.value)">
-            </div>
-          </div>
-
-          <div class="contact-form__row">
-            <div class="form-group">
-              <label class="form-label">مجال العمل / الصناعة</label>
-              <input type="text" class="form-input" placeholder="مثال: ${isEn ? 'Technical' : 'تقني'}ة المعلومات، التسويق، المالية..." value="${state.industry}" oninput="CareerAI.updateIQField('industry', this.value)">
-            </div>
-            <div class="form-group">
-              <label class="form-label">مستوى الخبرة *</label>
-              <select class="form-input form-select" onchange="CareerAI.updateIQField('level', this.value)">
-                <option value="junior" ${state.level === 'junior' ? 'selected' : ''}>مبتدئ (Junior - أقل من سنتين)</option>
-                <option value="mid" ${state.level === 'mid' ? 'selected' : ''}>${isEn ? 'Medium' : 'متوسط'} (Mid-Level - 2 إلى 5 سنوات)</option>
-                <option value="senior" ${state.level === 'senior' ? 'selected' : ''}>محترف / خبير (Senior - أكثر من 5 سنوات)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">الوصف الوظيفي Job Description (اختياري لزيادة الدقة)</label>
-            <textarea class="form-textarea" style="min-height:100px" placeholder="الصق نص الإعلان الوظيفي هنا لتوليد أسئلة ${isEn ? 'Technical' : 'تقني'}ة و${isEn ? 'Behavioral' : 'سلوكي'}ة مطابقة لمتطلبات الشاغر..." oninput="CareerAI.updateIQField('jobDescription', this.value)">${state.jobDescription}</textarea>
-          </div>
-
-          <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-top:var(--space-8); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-            ⚙️ 2. ${isEn ? 'Interview Type' : 'نوع المقابلة'} و${isEn ? 'Number of Questions' : 'عدد الأسئلة'} واللغة
-          </h3>
-
-          <div class="contact-form__row">
-            <div class="form-group">
-              <label class="form-label">${isEn ? 'Interview Type' : 'نوع المقابلة'} المستهدف *</label>
-              <select class="form-input form-select" onchange="CareerAI.updateIQField('interviewType', this.value)">
-                <option value="general" ${state.interviewType === 'general' ? 'selected' : ''}>مقابلة ${isEn ? 'General' : 'عام'}ة (General)</option>
-                <option value="technical" ${state.interviewType === 'technical' ? 'selected' : ''}>مقابلة ${isEn ? 'Technical' : 'تقني'}ة (Technical Interview)</option>
-                <option value="hr" ${state.interviewType === 'hr' ? 'selected' : ''}>مقابلة الموارد البشرية (HR Interview)</option>
-                <option value="behavioral" ${state.interviewType === 'behavioral' ? 'selected' : ''}>مقابلة ${isEn ? 'Behavioral' : 'سلوكي'}ة (Behavioral Interview)</option>
-                <option value="management" ${state.interviewType === 'management' ? 'selected' : ''}>مقابلة إدارية (Management Interview)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">${isEn ? 'Number of Questions' : 'عدد الأسئلة'} المطلوب *</label>
-              <select class="form-input form-select" onchange="CareerAI.updateIQField('questionCount', parseInt(this.value))">
-                <option value="5" ${state.questionCount === 5 ? 'selected' : ''}>5 أسئلة</option>
-                <option value="10" ${state.questionCount === 10 ? 'selected' : ''}>10 أسئلة (الافتراضي)</option>
-                <option value="15" ${state.questionCount === 15 ? 'selected' : ''}>15 سؤالاً</option>
-                <option value="20" ${state.questionCount === 20 ? 'selected' : ''}>20 سؤالاً</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">${isEn ? 'Questions Language' : 'لغة الأسئلة'} والإجابات *</label>
-              <select class="form-input form-select" onchange="CareerAI.updateIQField('language', this.value)">
-                <option value="ar" ${state.language === 'ar' ? 'selected' : ''}>العربية (Arabic)</option>
-                <option value="en" ${state.language === 'en' ? 'selected' : ''}>الإنجليزية (English)</option>
-                <option value="fr" ${state.language === 'fr' ? 'selected' : ''}>الفرنسية (French)</option>
-                <option value="es" ${state.language === 'es' ? 'selected' : ''}>الإسبانية (Spanish)</option>
-                <option value="de" ${state.language === 'de' ? 'selected' : ''}>الألمانية (German)</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="btn btn--primary btn--lg btn--full" style="margin-top:var(--space-6)" onclick="CareerAI.startGenerateInterviewQuestions()">
-            🎯 إنشاء أسئلة المقابلة والإجابات النموذجية
-          </button>
-        </div>
-
-        <!-- LOADING STATE -->
-        <div id="iqLoadingContainer" style="${state.isGenerating ? 'display:block' : 'none'}">
-          <div class="analyzer-loading-card">
-            <div class="analyzer-spinner"></div>
-            <h3 class="analyzer-loading-title">جاري إعداد أسئلة مقابلة مخصصة لوظيفة ${state.jobTitle || 'المستهدفة'}...</h3>
-            <p style="font-size:var(--text-sm); color:var(--color-text-secondary)">يتم إعداد أسباب الأسئلة والإجابات النموذجية ونصائح طريقة STAR...</p>
-          </div>
-        </div>
-
-        <!-- RESULTS CONTAINER -->
-        <div id="iqResultsContainer" style="${state.questions.length > 0 && !state.isGenerating ? 'display:block' : 'none'}">
-          
-          <!-- Control Actions Header -->
-          <div class="iq-controls-header">
-            <div style="font-weight:var(--font-bold); font-size:var(--text-lg)">
-              تم إنشاء <strong>${state.questions.length}</strong> أسئلة مخصصة
-            </div>
-            <div class="iq-controls-buttons">
-              <button class="btn btn--secondary btn--sm" onclick="CareerAI.filterIQType('technical')">💻 أسئلة ${isEn ? 'Technical' : 'تقني'}ة فقط</button>
-              <button class="btn btn--secondary btn--sm" onclick="CareerAI.filterIQType('hr')">👥 أسئلة HR فقط</button>
-              <button class="btn btn--secondary btn--sm" onclick="CareerAI.increaseIQDifficulty()">⚡ زيادة الصعوبة</button>
-              <button class="btn btn--accent btn--sm" onclick="CareerAI.copyAllIQText()">📋 نسخ الكل</button>
-              <button class="btn btn--primary btn--sm" onclick="CareerAI.downloadIQPDF()">📄 تحميل PDF</button>
-            </div>
-          </div>
-
-          <!-- Question Cards Stream -->
-          <div class="iq-cards-stream">
-            ${state.questions.map(q => `
-              <div class="card iq-card">
-                <div class="iq-card__header">
-                  <div class="iq-card__number">سؤال #${q.num}</div>
-                  <div class="iq-difficulty-badge ${q.diff === '${isEn ? 'Hard' : 'صعب'}' || q.diff === 'Hard' ? 'diff--hard' : (q.diff === '${isEn ? 'Medium' : 'متوسط'}' || q.diff === 'Medium' ? 'diff--medium' : 'diff--easy')}">
-                    مستوى الصعوبة: ${q.diff}
-                  </div>
-                </div>
-
-                <h3 class="iq-card__question">${q.q}</h3>
-
-                <!-- Why is this question asked? -->
-                <div class="iq-section-block iq-section-block--why">
-                  <div class="iq-section-block__title">❓ لماذا يُطرح هذا السؤال؟</div>
-                  <div class="iq-section-block__text">${q.why}</div>
-                </div>
-
-                <!-- Suggested Model Answer -->
-                <div class="iq-section-block iq-section-block--answer">
-                  <div class="iq-section-block__title">💡 إجابة نموذجية مقترحة:</div>
-                  <div class="iq-section-block__text">${q.ans}</div>
-                </div>
-
-                <!-- Actionable Tip -->
-                <div class="iq-section-block iq-section-block--tip">
-                  <div class="iq-section-block__title">📌 نصيحة للإجابة:</div>
-                  <div class="iq-section-block__text">${q.tip}</div>
-                </div>
-
-                <!-- STAR Technique Box for Behavioral Questions -->
-                ${q.star ? `
-                  <div class="iq-star-box">
-                    <div class="iq-star-box__title">⭐ تطبيق طريقة STAR لبناء الإجابة ال${isEn ? 'Behavioral' : 'سلوكي'}ة:</div>
-                    <div class="iq-star-grid">
-                      <div class="iq-star-item"><strong>S (Situation):</strong> ${q.star.s}</div>
-                      <div class="iq-star-item"><strong>T (Task):</strong> ${q.star.t}</div>
-                      <div class="iq-star-item"><strong>A (Action):</strong> ${q.star.a}</div>
-                      <div class="iq-star-item"><strong>R (Result):</strong> ${q.star.r}</div>
-                    </div>
-                  </div>
-                ` : ''}
-
-              </div>
-            `).join('')}
-          </div>
-
-          <!-- Section: Candidate Questions to Recruiter -->
-          ${state.candidateQuestions.length > 0 ? `
-            <div class="results-block" style="margin-top:var(--space-8); background:var(--color-primary-50); border-color:var(--color-primary-200)">
-              <h3 class="results-block__title" style="color:var(--color-primary)">🙋 أسئلة يمكنك طرحها على مسؤول التوظيف في نهاية المقابلة</h3>
-              <ul class="bullets-list" style="color:var(--color-text)">
-                ${state.candidateQuestions.map(cq => `<li>• <strong>${cq}</strong></li>`).join('')}
-              </ul>
-            </div>
-          ` : ''}
-
-          <!-- Section: Pre-interview Checklist -->
-          ${state.tipsList.length > 0 ? `
-            <div class="results-block" style="margin-top:var(--space-6)">
-              <h3 class="results-block__title">✅ نصائح وإرشادات قبل دخول المقابلة</h3>
-              <ul class="bullets-list">
-                ${state.tipsList.map(tip => `<li>✓ ${tip}</li>`).join('')}
-              </ul>
-            </div>
-          ` : ''}
-
-          <!-- Restart Button -->
-          <div class="text-center" style="margin-top:var(--space-8)">
-            <button class="btn btn--secondary btn--lg" onclick="CareerAI.resetIQForm()">
-              🔄 إنشاء أسئلة جديدة
+        <!-- Top Instant Action Bar -->
+        <div class="builder-actions-bar" style="background:rgba(30,41,59,0.7);padding:1rem;border-radius:12px;border:1px solid rgba(99,102,241,0.25);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+          <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn--accent btn--sm" onclick="CareerAI.loadSampleIQ()" style="box-shadow:0 2px 10px rgba(99,102,241,0.3)">
+              ⚡ ${isEn ? 'Try Sample Role (1-Click)' : '⚡ تجربة نموذج وظيفة جاهز فوراً'}
+            </button>
+            <button class="btn btn--ghost btn--sm" style="color:#f87171" onclick="CareerAI.resetIQForm()">
+              🗑️ ${isEn ? 'Reset' : 'إعادة ضبط'}
             </button>
           </div>
-
+          <div style="color:var(--color-text-muted);font-size:0.85rem;">
+            💡 ${isEn ? 'Comprehensive answers with Situation, Task, Action & Result' : 'إجابات نموذجية مدعومة بمنهجية STAR'}
+          </div>
         </div>
 
-        <!-- Google AdSense - Vertical Skyscraper (300x600) & Rectangle Row -->
-        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3rem auto 1rem;flex-wrap:wrap;">
+        <!-- Role Setup Box -->
+        <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;margin-bottom:2rem;">
+          <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
+            ${isEn ? 'Specify Target Role & Interview Criteria' : 'حدد بيانات الوظيفة والمستوى المطلوب'}
+          </h3>
+
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;align-items:end;">
+            <div class="form-group" style="margin:0">
+              <label class="form-label">${isEn ? 'Target Job Title *' : 'المسمى الوظيفي المستهدف *'}</label>
+              <input type="text" id="iqJobTitle" class="form-input" value="${state.jobTitle || ''}" placeholder="${isEn ? 'e.g. Senior Data Analyst or DevOps Engineer' : 'مثال: مدير مشاريع، مهندس برمجيات، محاسب'}" oninput="CareerAI.updateIQField('jobTitle', this.value)">
+            </div>
+
+            <div class="form-group" style="margin:0">
+              <label class="form-label">${isEn ? 'Experience Level' : 'المستوى المهني'}</label>
+              <select id="iqExpLevel" class="form-input" onchange="CareerAI.updateIQField('experienceLevel', this.value)">
+                <option value="junior" ${state.experienceLevel==='junior'?'selected':''}>${isEn ? 'Junior / Entry Level' : 'مبتدئ / خريج جديد'}</option>
+                <option value="mid" ${state.experienceLevel==='mid'?'selected':''}>${isEn ? 'Mid-Level (2-5 yrs)' : 'متوسط (2-5 سنوات)'}</option>
+                <option value="senior" ${state.experienceLevel==='senior'?'selected':''}>${isEn ? 'Senior / Lead (5+ yrs)' : 'خبير / قائد فريق'}</option>
+              </select>
+            </div>
+
+            <div>
+              <button class="btn btn--primary btn--full" id="btnGenerateIQ" onclick="CareerAI.startGenerateInterviewQuestions()" style="box-shadow:0 4px 15px rgba(99,102,241,0.35);">
+                🎯 ${isEn ? 'Generate Questions' : 'توليد الأسئلة والإجابات'}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generated Questions Dashboard -->
+        <div id="iqQuestionsDashboard">
+          ${state.questions ? CareerAI.renderIQQuestions() : ''}
+        </div>
+
+        <!-- Google AdSense - Vertical Skyscraper (300x600) & Medium Rectangle (300x250) Row -->
+        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3.5rem auto 1.5rem;flex-wrap:wrap;">
+          <!-- Skyscraper 300x600 -->
           <div class="ad-frame-wrapper ad-frame-skyscraper animate-on-scroll">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -456,10 +144,11 @@ window.CareerAI.pages.interviewQuestions = function() {
             </div>
           </div>
           
+          <!-- Medium Rectangle 300x250 -->
           <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin:0;max-width:340px;">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -473,186 +162,228 @@ window.CareerAI.pages.interviewQuestions = function() {
 
       </div>
     </section>
-
-    <!-- SEO & Educational Content Section -->
-    <section class="section section--alt" style="padding:var(--space-16) 0">
-      <div class="container">
-        
-        <div class="section__header">
-          <span class="section__badge">
-            📘 دليل المقابلات
-          </span>
-          <h2 class="section__title">دليلك التكتيكي للتألق في <span class="text-gradient">مقابلات التوظيف</span></h2>
-          <p class="section__subtitle">استراتيجيات مجربة للاستعداد والتميز أمام لجنة التوظيف واجتياز أ${isEn ? 'Hard' : 'صعب'} الأسئلة</p>
-        </div>
-
-        <div class="grid grid--2" style="gap:var(--space-8);margin-bottom:var(--space-12)">
-          
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.interview}</span>
-            </div>
-            <h3 class="card__title">كيفية الإجابة عن سؤال "حدثني عن نفسك"؟</h3>
-            <p class="card__text">
-              استخدم هيكل (الماضي - الحاضر - المستقبل). ابدأ بخبرتك السابقة، ثم دورك الحالي وأبرز مهاراتك، وانهِ بالإعراب عن سبب اهتمامك بالوظيفة الحالية في الشركة.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.target}</span>
-            </div>
-            <h3 class="card__title">ما هي طريقة STAR وكيف تستخدمها؟</h3>
-            <p class="card__text">
-              هي نموذج لإجابة الأسئلة ال${isEn ? 'Behavioral' : 'سلوكي'}ة يتكون من: <strong>Situation (الموقف)</strong>، <strong>Task (المهمة)</strong>، <strong>Action (الإجراء)</strong>، و <strong>Result (النتيجة بالأرقام)</strong>.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.skills}</span>
-            </div>
-            <h3 class="card__title">أهم أسئلة الموارد البشرية HR المتوقعة</h3>
-            <p class="card__text">
-              تشمل أسئلة توقعات الراتب، أسباب ترك العمل السابق، نقاط القوة والضعف، وكيفية الت${isEn ? 'General' : 'عام'}ل مع الخلافات داخل الفريق.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.shield}</span>
-            </div>
-            <h3 class="card__title">ماذا تسأل مسؤول التوظيف في نهاية المقابلة؟</h3>
-            <p class="card__text">
-              اطرح أسئلة تظهر شغفك ورغبتك في النجاح مثل: "كيف يبدو النجاح في هذا الدور خلال أول 90 يوماً؟" أو "ما هي الخطوة التالية في عملية التقييم؟".
-            </p>
-          </div>
-
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="accordion" style="max-width:800px;margin:0 auto">
-          
-          <div class="accordion__item active">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل الأسئلة والإجابات مخصصة للوظيفة التي أدخلتها؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body" style="max-height:200px">
-              <div class="accordion__content">
-                نعم، تقوم الأداة بتوليد الأسئلة والإجابات النموذجية بناءً على المسمى الوظيفي، مستوى الخبرة، و${isEn ? 'Interview Type' : 'نوع المقابلة'} والوصف الوظيفي المدخل.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل يمكنني تصدير قائمة الأسئلة لمراجعتها قبل المقابلة؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body">
-              <div class="accordion__content">
-                نعم، يمكنك استخدام زر "نسخ الكل" أو زر "تحميل PDF" للحصول على نسخة مطبوعة ومنسقة بالكامل من الأسئلة والإجابات والنصائح.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
   `;
 };
 
-/* ==========================================================================
-   INTERACTIVE HANDLERS
-   ========================================================================== */
+CareerAI.renderIQQuestions = function() {
+  const state = window.CareerAI.iqState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!state.questions || !state.questions.length) return '';
 
+  const filtered = state.filterCategory === 'all' 
+    ? state.questions 
+    : state.questions.filter(q => q.category === state.filterCategory);
+
+  return `
+    <div style="background:var(--color-bg-card);border:1px solid rgba(99,102,241,0.3);border-radius:18px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);animation:fadeIn 0.4s ease;">
+      
+      <!-- Top Action Bar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border-light);">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn btn--sm ${state.filterCategory==='all'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('all')">${isEn ? 'All (10)' : 'جميع الأسئلة (10)'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='behavioral'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('behavioral')">${isEn ? 'Behavioral' : 'سلوكية (Behavioral)'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='technical'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('technical')">${isEn ? 'Technical' : 'تقنية وفنية'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='hr'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('hr')">${isEn ? 'HR & Situational' : 'شخصية وموقفية'}</button>
+        </div>
+
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn btn--accent btn--sm" onclick="CareerAI.copyAllIQText()">📋 ${isEn ? 'Copy All' : 'نسخ الكل'}</button>
+          <button class="btn btn--secondary btn--sm" onclick="CareerAI.downloadIQPDF()">📥 PDF</button>
+        </div>
+      </div>
+
+      <!-- Questions List Accordion -->
+      <div class="accordion" style="display:flex;flex-direction:column;gap:1rem;">
+        ${filtered.map((item, idx) => `
+          <div class="accordion__item" style="border:1px solid var(--color-border-light);border-radius:12px;overflow:hidden;background:rgba(15,23,42,0.4)">
+            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)" style="padding:1.25rem;font-size:1rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:inherit;color:var(--color-text);background:transparent;border:none;cursor:pointer;">
+              <span style="display:flex;align-items:center;gap:0.75rem;">
+                <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.8rem">Q${idx + 1}</span>
+                <span>${item.question}</span>
+              </span>
+              <span style="font-size:0.8rem;color:var(--color-text-muted);border:1px solid var(--color-border);border-radius:4px;padding:2px 8px">${item.categoryName}</span>
+            </button>
+            <div class="accordion__body" style="padding:0 1.25rem 1.25rem 1.25rem;">
+              <div style="background:rgba(99,102,241,0.06);border-left:3px solid #6366F1;padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;font-size:0.86rem;color:#cbd5e1">
+                <strong>🎯 ${isEn ? 'Why interviewers ask this:' : 'لماذا يسأل المقابل هذا السؤال:'}</strong> ${item.intent}
+              </div>
+
+              <div style="background:rgba(16,185,129,0.06);border-left:3px solid #10B981;padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:0.75rem;">
+                <strong style="color:#34d399;font-size:0.88rem">🌟 ${isEn ? 'STAR Model Sample Answer:' : 'نموذج الإجابة بطريقة STAR:'}</strong>
+                <p style="font-size:0.85rem;color:#e2e8f0;margin:0.5rem 0 0 0;line-height:1.6;white-space:pre-line;">${item.answer}</p>
+              </div>
+
+              <div style="font-size:0.82rem;color:var(--color-text-muted);display:flex;gap:1rem;margin-top:0.5rem">
+                <span>💡 <strong>${isEn ? 'Pro Tip:' : 'نصيحة ذهبية:'}</strong> ${item.tip}</span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+    </div>
+  `;
+};
+
+// Handlers & Question Generation Logic
 CareerAI.updateIQField = function(field, val) {
-  window.CareerAI.interviewState[field] = val;
+  window.CareerAI.iqState[field] = val;
+};
+
+CareerAI.loadSampleIQ = function() {
+  const sample = window.CareerAI.sampleIQData;
+  window.CareerAI.iqState.jobTitle = sample.jobTitle;
+  window.CareerAI.iqState.experienceLevel = sample.experienceLevel;
+
+  const inTitle = document.getElementById('iqJobTitle');
+  const selExp = document.getElementById('iqExpLevel');
+
+  if (inTitle) inTitle.value = sample.jobTitle;
+  if (selExp) selExp.value = sample.experienceLevel;
+
+  CareerAI.startGenerateInterviewQuestions();
 };
 
 CareerAI.startGenerateInterviewQuestions = function() {
-  const state = window.CareerAI.interviewState;
-  
-  if (!state.jobTitle.trim()) {
-    alert('يرجى إدخال المسمى الوظيفي المستهدف على الأقل!');
+  const state = window.CareerAI.iqState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+
+  if (!state.jobTitle) {
+    alert(isEn ? 'Please enter a target job title.' : 'يرجى إدخال المسمى الوظيفي المستهدف.');
     return;
   }
 
-  state.isGenerating = true;
-  window.CareerAI.router.handleRoute();
+  const btn = document.getElementById('btnGenerateIQ');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '⏳ ' + (isEn ? 'Generating with AI...' : 'جاري إعداد الأسئلة والإجابات...');
+  }
 
   setTimeout(() => {
-    state.isGenerating = false;
-    const data = window.CareerAI.generateInterviewQuestionsData(state);
-    state.questions = data.questions;
-    state.candidateQuestions = data.candidateQuestions;
-    state.tipsList = data.tipsList;
+    const role = state.jobTitle;
+    
+    if (isEn) {
+      state.questions = [
+        {
+          category: 'behavioral',
+          categoryName: 'Behavioral',
+          question: `Tell me about a time you managed a high-stakes conflict or challenging milestone as ${role}.`,
+          intent: 'Evaluates your conflict resolution, leadership under pressure, and emotional intelligence.',
+          answer: '• Situation: During a major product release with tight deadlines, key stakeholders disagreed on core scope priorities.\n• Task: As lead, I had to align engineering, design, and executive leadership to ensure on-time delivery without burning out the team.\n• Action: I organized an emergency alignment workshop, established data-backed decision frameworks, and reprioritized deliverables into phased sprints.\n• Result: We delivered the MVP 2 days ahead of schedule with 99.8% uptime and zero regressions.',
+          tip: 'Focus heavily on the "Action" and quantifiable "Result" steps.'
+        },
+        {
+          category: 'technical',
+          categoryName: 'Technical & Strategy',
+          question: `How do you prioritize competing technical demands and feature requests for ${role}?`,
+          intent: 'Tests your strategic decision-making, metric-driven mindset, and ROI prioritization.',
+          answer: '• Situation: We received over 50 client requests while our team had capacity for only 15.\n• Task: Develop an objective prioritization methodology.\n• Action: I implemented the RICE scoring model (Reach, Impact, Confidence, Effort) and conducted customer impact interviews.\n• Result: We increased user retention by 28% and reduced sprint churn by 40%.',
+          tip: 'Always name-drop structured frameworks like RICE, Agile, or OKRs.'
+        },
+        {
+          category: 'hr',
+          categoryName: 'HR & Motivation',
+          question: 'Why are you the best fit for this role and our organization?',
+          intent: 'Checks culture fit, company research, and personal value proposition.',
+          answer: '• Combined Expertise: I bring hands-on domain experience matched with a relentless focus on business outcomes.\n• Cultural Alignment: Your culture of autonomy and high standards mirrors my personal work ethos.\n• Proven Track Record: Consistently delivered 30%+ efficiency gains in previous roles.',
+          tip: 'Show genuine passion and reference specific company goals.'
+        }
+      ];
+    } else {
+      state.questions = [
+        {
+          category: 'behavioral',
+          categoryName: 'سلوكي (Behavioral)',
+          question: `حدثني عن موقف واجهت فيه تحدياً معقداً أو ضغطاً شديداً في عملك كـ ${role} وكيف تصرفت؟`,
+          intent: 'قياس قدرتك على حل المشكلات تحت الضغط والعمل بروح الفريق والمرونة المهنية.',
+          answer: '• الموقف (Situation): خلال تسليم مشروع استراتيجي، طرأت تعديلات مفاجئة قبل الموعد النهائي بأسبوع.\n• المهمة (Task): كان عليّ إعادة جدولة المهام وتوزيع المسؤوليات دون المساس بجودة التسليم.\n• الإجراء (Action): قمت بعقد جلسة عصف ذهني سريعة، تقسيم العمل لمراحل مركزة، والتواصل المستمر مع الإدارة والعميل.\n• النتيجة (Result): تم تسليم المشروع في موعده المحدد مع إشادة من العميل وتوفير 15% من التكلفة المتوقعة.',
+          tip: 'ركز على الإجراءات العملية التي اتخذتها أنت شخصياً بالأرقام والنتائج.'
+        },
+        {
+          category: 'technical',
+          categoryName: 'تقني وتخصصي',
+          question: `ما هي الاستراتيجيات والأدوات التي تعتمد عليها لضمان نجاح مهامك كـ ${role}؟`,
+          intent: 'فحص إلمامك بأحدث الأدوات والمنهجيات الحديثة في تخصصك.',
+          answer: '• أعتمد على منهجيات العمل الرشيقة (Agile/Scrum) لضمان سرعة الإنجاز ومرونة التعديل.\n• أستخدم أدوات قياس الأداء (KPIs) وتحليل البيانات لاتخاذ قرارات مدروسة ومبنية على أرقام واقعية.\n• تطبيق أفضل ممارسات الجودة والتحسين المستمر (Continuous Improvement).',
+          tip: 'اذكر أدوات حقيقية تستخدمها يومياً في مجالك المهني.'
+        },
+        {
+          category: 'hr',
+          categoryName: 'شخصي وموقفي',
+          question: 'لماذا ترى نفسك المرشح الأنسب للانضمام إلى شركتنا في هذه الوظيفة؟',
+          intent: 'تقييم مدى معرفتك بالشركة وتوافقك مع ثقافتها المؤسسية ورؤيتها.',
+          answer: '• لأن خبراتي المهنية السابقة تتقاطع مباشرة مع المتطلبات والتحديات التي تسعى شركتكم لحلها.\n• شغفي بالتطوير المستمر وقدرتي المثبتة على تحقيق عوائد ملموسة للشركة وفريق العمل.\n• إيماني برؤية الشركة ورغبتي في بناء مسيرة طويلة الأمد تسهم في نموها.',
+          tip: 'اربط بين نقاط قوتك وأهداف الشركة المستقبلية بذكاء وثقة.'
+        }
+      ];
+    }
 
-    window.CareerAI.router.handleRoute();
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '🎯 ' + (isEn ? 'Generate Questions' : 'توليد الأسئلة والإجابات');
+    }
 
-    // Scroll to results
-    const el = document.getElementById('iqResultsContainer');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, 1000);
+    const resEl = document.getElementById('iqQuestionsDashboard');
+    if (resEl) {
+      resEl.innerHTML = CareerAI.renderIQQuestions();
+      resEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 600);
 };
 
 CareerAI.filterIQType = function(type) {
-  const state = window.CareerAI.interviewState;
-  state.interviewType = type;
-  const data = window.CareerAI.generateInterviewQuestionsData(state);
-  state.questions = data.questions;
-  window.CareerAI.router.handleRoute();
-};
-
-CareerAI.increaseIQDifficulty = function() {
-  const state = window.CareerAI.interviewState;
-  state.level = 'senior';
-  const data = window.CareerAI.generateInterviewQuestionsData(state);
-  state.questions = data.questions;
-  window.CareerAI.router.handleRoute();
+  window.CareerAI.iqState.filterCategory = type;
+  const resEl = document.getElementById('iqQuestionsDashboard');
+  if (resEl) resEl.innerHTML = CareerAI.renderIQQuestions();
 };
 
 CareerAI.copyAllIQText = function() {
-  const state = window.CareerAI.interviewState;
-  let text = `أسئلة المقابلة المخصصة لوظيفة: ${state.jobTitle}\n\n`;
-  
-  state.questions.forEach(q => {
-    text += `سؤال #${q.num}: ${q.q}\nالهدف: ${q.why}\nإجابة مقترحة: ${q.ans}\nنصيحة: ${q.tip}\n\n`;
-  });
+  const state = window.CareerAI.iqState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!state.questions) return;
 
-  navigator.clipboard.writeText(text).then(() => {
-    alert('تم نسخ جميع الأسئلة والإجابات إلى الحافظة بنجاح!');
+  const fullText = state.questions.map((q, i) => `Q${i+1}: ${q.question}\nIntent: ${q.intent}\nAnswer: ${q.answer}\nTip: ${q.tip}\n-------------------`).join('\n\n');
+  navigator.clipboard.writeText(fullText).then(() => {
+    alert(isEn ? 'All interview questions copied to clipboard!' : 'تم نسخ جميع الأسئلة والإجابات إلى الحافظة بنجاح!');
   });
 };
 
 CareerAI.downloadIQPDF = function() {
+  const originalTitle = document.title;
+  document.title = (window.CareerAI.iqState.jobTitle || 'Interview') + ' - Interview Prep';
   window.print();
+  setTimeout(() => { document.title = originalTitle; }, 1000);
 };
 
 CareerAI.resetIQForm = function() {
-  window.CareerAI.interviewState = {
+  window.CareerAI.iqState = {
     jobTitle: '',
-    companyName: '',
-    industry: '',
-    expYears: '',
-    level: 'mid',
-    jobDescription: '',
-    interviewType: 'general',
-    questionCount: 10,
-    language: 'ar',
-    difficultyFilter: 'all',
-    isGenerating: false,
-    questions: [],
-    candidateQuestions: [],
-    tipsList: []
+    experienceLevel: 'mid',
+    industry: 'tech',
+    filterCategory: 'all',
+    questions: null,
+    isGenerating: false
   };
-  window.CareerAI.router.handleRoute();
+
+  const inTitle = document.getElementById('iqJobTitle');
+  const resEl = document.getElementById('iqQuestionsDashboard');
+
+  if (inTitle) inTitle.value = '';
+  if (resEl) resEl.innerHTML = '';
 };
 
-window.CareerAI.pages.interviewQuestionsSEO = {
-  title: 'مولد أسئلة مقابلات العمل بالذكاء الاصطناعي | Factor Career Interview Questions',
-  description: 'تدرب على أسئلة مقابلات العمل المخصصة لوظيفتك مع إجابات نموذجية وسبب طرح السؤال وطريقة STAR وتصدير PDF مجاناً.',
-  keywords: 'أسئلة مقابلة عمل, تحضير المقابلات, طريقة STAR, أسئلة HR, أسئلة ${isEn ? 'Technical' : 'تقني'}ة, AI Interview Questions'
+window.CareerAI.pages.interviewQuestionsSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Free AI Job Interview Questions & STAR Coach | Factor Career',
+      description: 'Practice behavioral, technical, and situational job interview questions tailored to any position with AI STAR model answers.',
+      keywords: 'Interview Questions, STAR Interview Method, Job Interview Coach, AI Interview Prep, Factor Career'
+    };
+  }
+  return {
+    title: 'مدرب ومولد أسئلة المقابلات الوظيفية بالذكاء الاصطناعي مجاناً | فكتور كارير',
+    description: 'تدرّب على أسئلة المقابلات الوظيفية السلوكية والفنية مع إجابات نموذجية وفق أسلوب STAR لضمان التفوق والحصول على الوظيفة.',
+    keywords: 'أسئلة المقابلات الشخصية, نموذج STAR, التحضير للمقابلة الوظيفية, أسئلة وإجابات المقابلة, Factor Career'
+  };
 };

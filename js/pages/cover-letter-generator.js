@@ -1,111 +1,40 @@
 /* ============================================
-   CareerAI - AI Cover Letter Generator Tool Page
+   CareerAI - AI Cover Letter Generator Tool
+   Full Bilingual (AR/EN), 100% Free, Instant Sample Data,
+   Multi-Tone Customization, PDF/Word Export & Copy
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
 window.CareerAI.pages = window.CareerAI.pages || {};
 
-window.CareerAI.coverLetterState = {
-  // User info
-  userName: '',
-  userTitle: '',
-  userExpYears: '',
-  userSkills: '',
-  userAchievements: '',
-  // Job info
+window.CareerAI.clState = {
+  fullName: '',
   jobTitle: '',
   companyName: '',
-  hiringManager: '',
-  companyLocation: '',
-  jobDescription: '',
-  // Style & Config
-  tone: 'professional', // professional | concise | friendly | formal
-  length: 'medium',     // short | medium | detailed
-  language: 'ar',       // ar | en | fr | es | de
-  // App state
-  isGenerating: false,
+  yearsExp: '3',
+  skills: '',
+  tone: 'professional',
   generatedLetter: '',
-  score: 0,
-  keywords: { extracted: [], used: [] }
+  isGenerating: false
 };
 
-// Cover Letter Generator Engine Supporting Multilingual Outputs
-window.CareerAI.generateCoverLetterText = function(state, modifier = null) {
-  const name = state.userName || (state.language === 'ar' ? 'أحمد محمد' : 'John Doe');
-  const title = state.userTitle || (state.language === 'ar' ? 'أخصائي تطوير أعمال' : 'Specialist');
-  const jobTitle = state.jobTitle || (state.language === 'ar' ? 'المسمى الوظيفي المستهدف' : 'Target Position');
-  const company = state.companyName || (state.language === 'ar' ? 'الشركة الموقرة' : 'Target Company');
-  const manager = state.hiringManager || (state.language === 'ar' ? 'مدير التوظيف المحترم' : 'Hiring Manager');
-  const skills = state.userSkills || (state.language === 'ar' ? 'التخطيط، إدارة المشاريع، التواصل' : 'Planning, Communication');
-  const expYears = state.userExpYears ? `${state.userExpYears}` : '3+';
-  const achievements = state.userAchievements || (state.language === 'ar' ? 'تحقيق الأهداف وتطوير العمليات' : 'delivering high quality outcomes');
-
-  // Multi-language text templates
-  if (state.language === 'en') {
-    let salutation = manager !== 'Hiring Manager' ? `Dear ${manager},` : `Dear Hiring Manager at ${company},`;
-    let intro = `I am writing to express my enthusiastic interest in the ${jobTitle} position at ${company}. With over ${expYears} years of experience as a ${title}, I am confident in my ability to make a significant contribution to your team.`;
-    let body = `Throughout my career, I have honed my expertise in ${skills}. My background is marked by a proven track record of ${achievements}. I am particularly drawn to ${company} because of your reputation for innovation and excellence.`;
-    
-    if (modifier === 'shorter') {
-      body = `I bring over ${expYears} years of experience in ${skills}, with a track record of ${achievements}. I am excited about the opportunity to bring my skills to ${company}.`;
-    } else if (modifier === 'persuasive') {
-      body += ` My unique blend of technical expertise in ${skills} and drive for results positions me to immediately add value to ${company}'s key objectives.`;
-    }
-
-    let closing = `Thank you for your time and consideration. I welcome the opportunity to discuss how my background and skills align with your needs in an interview.\n\nSincerely,\n${name}`;
-
-    return `${salutation}\n\n${intro}\n\n${body}\n\n${closing}`;
-  } 
-  
-  if (state.language === 'fr') {
-    let salutation = `Madame, Monsieur le Responsable du Recrutement chez ${company},`;
-    let intro = `C'est avec un grand intérêt que je vous adresse ma candidature pour le poste de ${jobTitle} au sein de ${company}. Fort de ${expYears} ans d'expérience en tant que ${title}, je suis convaincu de pouvoir apporter une réelle valeur ajoutée à votre équipe.`;
-    let body = `Au cours de mon parcours, j'ai développé de solides compétences en ${skills}. Mes expériences m'ont permis de ${achievements}. Je souhaite vivement mettre ces compétences au service de ${company}.`;
-    let closing = `Je vous remercie pour l'attention que vous porterez à ma candidature et reste à votre disposition pour un entretien.\n\nCordialement,\n${name}`;
-    return `${salutation}\n\n${intro}\n\n${body}\n\n${closing}`;
-  }
-
-  if (state.language === 'es') {
-    let salutation = `Estimado/a Responsable de Selección de ${company},`;
-    let intro = `Le escribo para presentar mi candidatura al puesto de ${jobTitle} en ${company}. Con más de ${expYears} años de experiencia como ${title}, estoy seguro de poder aportar un valor significativo a su equipo.`;
-    let body = `A lo largo de mi carrera profesional, he desarrollado sólidas competencias en ${skills}. Destaco por ${achievements}. Me entusiasma la posibilidad de contribuir a los objetivos de ${company}.`;
-    let closing = `Agradezco de antemano su tiempo y consideración, y quedo a su disposición para una entrevista.\n\nAtentamente,\n${name}`;
-    return `${salutation}\n\n${intro}\n\n${body}\n\n${closing}`;
-  }
-
-  if (state.language === 'de') {
-    let salutation = `Sehr geehrte Damen und Herren bei ${company},`;
-    let intro = `mit großem Interesse bewerbe ich mich um die Stelle als ${jobTitle} bei ${company}. Mit mehr als ${expYears} Jahren Erfahrung als ${title} bin ich überzeugt, Ihr Team gewinnbringend zu unterstützen.`;
-    let body = `In meiner bisherigen beruflichen Laufbahn habe ich fundierte Kenntnisse in ${skills} erworben. Zu meinen Erfolgen gehört ${achievements}.`;
-    let closing = `Über die Gelegenheit zu einem persönlichen Gespräch freue ich mich sehr.\n\nMit freundlichen Grüßen,\n${name}`;
-    return `${salutation}\n\n${intro}\n\n${body}\n\n${closing}`;
-  }
-
-  // Default: Arabic (العربية)
-  let salutation = `السيد/السيدة ${manager} المحترم،\nمسؤول التوظيف في ${company}،`;
-  
-  let intro = `تحية طيبة وبعد،\n\nأنتهز هذه الفرصة لأعرب عن رغبتي الشديدة واهتمامي البالغ بالانضمام إلى فريق عملكم المتميز في شركة ${company} لشغل وظيفة (${jobTitle}). بصفتي ${title} أمتلك خبرة عملية تمتد لأكثر من ${expYears} سنوات، يسعدني تقديم مهاراتي وإمكانياتي لدعم أهداف الشركة ورؤيتها المستقبلية.`;
-  
-  let body = `خلال مسيرتي المهنية، نجحت في تطوير وتطبيق مهارات متقدمة في مجال ${skills}. كما ساهمت في ${achievements}. إن ما يجذبني للعمل في ${company} هو سمعتكم المتميزة في سوق العمل وبيئة الابتكار التي توفرونها، وأنا على ثقة بأن خلفيتي المهنية ستتيح لي تحقيق نتائج ملموسة ومباشرة لصالح فريق العمل.`;
-
-  if (modifier === 'shorter') {
-    body = `أمتلك خبرة تزيد عن ${expYears} سنوات في ${skills}، وسبق لي ${achievements}. يسعدني توظيف هذه المهارات لتحقيق تطلعات ${company}.`;
-  } else if (modifier === 'persuasive') {
-    body += ` إن الجمع بين الخبرة الفنية في ${skills} والحرص الدائم على تحقيق أعلى معدلات الكفاءة يجعلني الخيار المثالي لشغل هذا الديكور الوظيفي والبدء فوراً في المساهمة بنجاحات الشركة.`;
-  } else if (modifier === 'formal') {
-    intro = `يشرفني التقدم برسالتي هذه للمنافسة على وظيفة (${jobTitle}) المعلن عنها من قِبل خدمتكم الموقرة في ${company}. أحيطكم علماً بأنني أحمل خبرة قدرها ${expYears} سنوات في تخصص ${title}.`;
-  }
-
-  let closing = `أشكركم على وقتكم وثمين اهتمامكم بقراءة رسالتي، وأتطلع بشغف لإتاحة الفرصة لمقابلة شخصية لمناقشة التفاصيل وكيف يمكن لخبراتي أن تلبي تطلعاتكم.\n\nوتفضلوا بقبول فائق الاحترام والتقدير،\n\n${name}`;
-
-  return `${salutation}\n\n${intro}\n\n${body}\n\n${closing}`;
+// Sample data for instant one-click generation
+window.CareerAI.sampleCLData = {
+  fullName: 'سارة عبد الرحمن الشهري',
+  fullName_en: 'Sarah Al-Shehri',
+  jobTitle: 'Senior Project Manager / مديرة مشاريع أولى',
+  companyName: 'شركة نيوم للحلول المبتكرة',
+  companyName_en: 'NEOM Innovative Solutions',
+  yearsExp: '6',
+  skills: 'Agile & Scrum, Budget Management, Risk Assessment, Cross-functional Leadership, PMP Certified',
+  tone: 'professional'
 };
 
 window.CareerAI.pages.coverLetterGenerator = function() {
   const icons = window.CareerAI.icons;
+  const state = window.CareerAI.clState;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
-  const state = window.CareerAI.coverLetterState;
 
   return `
     <!-- Header -->
@@ -115,31 +44,31 @@ window.CareerAI.pages.coverLetterGenerator = function() {
           <div class="page-header__breadcrumb">
             <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
             <span>/</span>
-            <span>مولد رسائل التقديم بالذكاء الاصطناعي</span>
+            <span>${isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم'}</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
             <span class="section__badge">
-              ✨ دعم 5 لغات عالمية
+              <span style="width:16px;height:16px;display:inline-flex">${icons.sparkles || icons.rocket}</span>
+              ${isEn ? 'AI Writing Assistant' : 'توليد فوري بالذكاء الاصطناعي'}
             </span>
             <span class="section__badge" style="background:rgba(16,185,129,0.15);color:var(--color-accent)">
-              ✓ تخصيص فوري 100%
+              ✓ ${isEn ? '100% Free' : 'مجاني 100%'}
             </span>
           </div>
-          <h1 class="page-header__title">مولد رسالة التقديم على الوظائف (AI Cover Letter Generator)</h1>
-          <p class="page-header__subtitle">أنشئ Cover Letter ${isEn ? 'Professional' : 'احترافي'}ة ومخصصة بالكامل تزيد من فرص قبولك وتلفت انتباه مسؤولي التوظيف في ثوانٍ</p>
+          <h1 class="page-header__title">${isEn ? 'AI Cover Letter Generator' : 'مولد رسائل التقديم والخطابات الوظيفية الذكي'}</h1>
+          <p class="page-header__subtitle">${isEn ? 'Generate highly tailored, persuasive cover letters tailored to any role in seconds. Export to PDF, Word or copy.' : 'أنشئ خطاب تقديم احترافي ومخصص لكل وظيفة بثوانٍ معدودة لزيادة فرص قبولك وحصولك على المقابلات.'}</p>
         </div>
       </div>
     </div>
 
-    
     <!-- Google AdSense - Tool Top Leaderboard -->
     <div class="container" style="margin-top:var(--space-4);margin-bottom:var(--space-2)">
       <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
         <div class="ad-frame-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-          إعلان ممول / Sponsored
+          ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
         </div>
         <div class="ad-frame-inner">
           <ins class="adsbygoogle"
@@ -152,211 +81,111 @@ window.CareerAI.pages.coverLetterGenerator = function() {
       </div>
     </div>
 
-    <!-- Main Builder Workspace -->
-    <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-12)">
-      <div class="container container--narrow">
+    <!-- Main Generator Workspace -->
+    <section class="section" style="padding-top:var(--space-4);padding-bottom:var(--space-12)">
+      <div class="container">
 
-        <!-- Privacy Banner -->
-        <div class="privacy-alert-banner">
-          🔒 <strong>الخصوصية:</strong> يتم استخدام بياناتك والوصف الوظيفي مؤقتاً لصياغة وتوليد رسالة التقديم داخل متصفحك ولا يتم حفظ بياناتك الشخصية نهائياً.
+        <!-- Top Instant Action Bar -->
+        <div class="builder-actions-bar" style="background:rgba(30,41,59,0.7);padding:1rem;border-radius:12px;border:1px solid rgba(99,102,241,0.25);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+          <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn--accent btn--sm" onclick="CareerAI.loadSampleCL()" style="box-shadow:0 2px 10px rgba(99,102,241,0.3)">
+              ⚡ ${isEn ? 'Try Sample Data (1-Click)' : '⚡ تجربة نموذج وظيفة جاهز فوراً'}
+            </button>
+            <button class="btn btn--ghost btn--sm" style="color:#f87171" onclick="CareerAI.resetCoverLetterForm()">
+              🗑️ ${isEn ? 'Reset' : 'إعادة ضبط'}
+            </button>
+          </div>
+          <div style="color:var(--color-text-muted);font-size:0.85rem;">
+            🎯 ${isEn ? 'Tailored to your target employer' : 'خطابات مقنعة مصممة للفت انتباه مسؤولي التوظيف'}
+          </div>
         </div>
 
-        <div class="cover-letter-workspace">
-
-          <!-- FORM INPUT PANEL -->
-          <div class="contact-form" style="padding:var(--space-8); border:1px solid var(--color-border); border-radius:var(--radius-2xl); background:white; margin-bottom:var(--space-8)">
-            
-            <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-              👤 1. ${isEn ? 'Your Personal Information' : 'معلوماتك الشخصية'} والمهنية
+        <!-- 2-Column Grid (Inputs Form Left + Output Letter Right) -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+          
+          <!-- Column 1: Input Details Form -->
+          <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;">
+            <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1.25rem;color:var(--color-text)">
+              ${isEn ? 'Job & Candidate Details' : 'بيانات الوظيفة والمتقدم'}
             </h3>
 
-            <div class="contact-form__row">
-              <div class="form-group">
-                <label class="form-label">${isEn ? 'Full Name *' : 'الاسم الكامل *'}</label>
-                <input type="text" class="form-input" placeholder="مثال: أحمد محمد علي" value="${state.userName}" oninput="CareerAI.updateCLField('userName', this.value)">
-              </div>
-              <div class="form-group">
-                <label class="form-label">المسمى الوظيفي الحالي / التخصص *</label>
-                <input type="text" class="form-input" placeholder="مثال: أخصائي تسويق، مهندس برمجيات..." value="${state.userTitle}" oninput="CareerAI.updateCLField('userTitle', this.value)">
-              </div>
+            <div class="form-group">
+              <label class="form-label">${isEn ? 'Your Full Name *' : 'اسمك الكامل *'}</label>
+              <input type="text" id="clFullName" class="form-input" value="${state.fullName || ''}" placeholder="${isEn ? 'e.g. Sarah Jenkins' : 'مثال: سارة عبد الرحمن'}" oninput="CareerAI.updateCLField('fullName', this.value)">
             </div>
 
-            <div class="contact-form__row">
+            <div class="form-group">
+              <label class="form-label">${isEn ? 'Target Job Title *' : 'المسمى الوظيفي المستهدف *'}</label>
+              <input type="text" id="clJobTitle" class="form-input" value="${state.jobTitle || ''}" placeholder="${isEn ? 'e.g. Senior Project Manager' : 'مثال: مديرة مشاريع أولى'}" oninput="CareerAI.updateCLField('jobTitle', this.value)">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">${isEn ? 'Company / Employer Name *' : 'اسم الشركة أو جهة العمل *'}</label>
+              <input type="text" id="clCompanyName" class="form-input" value="${state.companyName || ''}" placeholder="${isEn ? 'e.g. Acme Corp' : 'مثال: شركة أفق الدولية'}" oninput="CareerAI.updateCLField('companyName', this.value)">
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
-                <label class="form-label">سنوات الخبرة</label>
-                <input type="text" class="form-input" placeholder="مثال: 5 سنوات" value="${state.userExpYears}" oninput="CareerAI.updateCLField('userExpYears', this.value)">
+                <label class="form-label">${isEn ? 'Years of Experience' : 'سنوات الخبرة'}</label>
+                <select id="clYearsExp" class="form-input" onchange="CareerAI.updateCLField('yearsExp', this.value)">
+                  <option value="1" ${state.yearsExp==='1'?'selected':''}>${isEn ? 'Entry Level (0-2 years)' : 'مبتدئ (0-2 سنوات)'}</option>
+                  <option value="3" ${state.yearsExp==='3'?'selected':''}>${isEn ? 'Mid-Level (3-5 years)' : 'متوسط (3-5 سنوات)'}</option>
+                  <option value="6" ${state.yearsExp==='6'?'selected':''}>${isEn ? 'Senior (6+ years)' : 'خبير (6+ سنوات)'}</option>
+                </select>
               </div>
+
               <div class="form-group">
-                <label class="form-label">أهم المهارات ذات الصلة (مفصولة بفاصلة)</label>
-                <input type="text" class="form-input" placeholder="مثال: SEO, Google Ads, إدارة الفريق..." value="${state.userSkills}" oninput="CareerAI.updateCLField('userSkills', this.value)">
+                <label class="form-label">${isEn ? 'Writing Tone' : 'نبرة الخطاب'}</label>
+                <select id="clTone" class="form-input" onchange="CareerAI.updateCLField('tone', this.value)">
+                  <option value="professional" ${state.tone==='professional'?'selected':''}>${isEn ? 'Formal & Professional' : 'احترافي ورسمي'}</option>
+                  <option value="confident" ${state.tone==='confident'?'selected':''}>${isEn ? 'Confident & Bold' : 'واثق وقوي'}</option>
+                  <option value="creative" ${state.tone==='creative'?'selected':''}>${isEn ? 'Creative & Engaging' : 'إبداعي وحديث'}</option>
+                </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">أهم الخبرات أو الإنجازات (اختياري)</label>
-              <textarea class="form-textarea" style="min-height:70px" placeholder="مثال: زيادة المبيعات بنسبة 40%، قيادة فريق مكون من 5 أفراد..." oninput="CareerAI.updateCLField('userAchievements', this.value)">${state.userAchievements}</textarea>
+              <label class="form-label">${isEn ? 'Key Skills & Top Achievements (Optional)' : 'أهم المهارات والإنجازات البارزة'}</label>
+              <textarea id="clSkills" class="form-textarea" rows="3" placeholder="${isEn ? 'e.g. Led teams of 10+, PMP certified, boosted revenue by 30%' : 'مثال: إدارة الميزانيات، شهادة PMP، قيادة فرق العمل، تحقيق أهداف المشاريع بنسبة 100%'}" oninput="CareerAI.updateCLField('skills', this.value)">${state.skills || ''}</textarea>
             </div>
 
-            <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-top:var(--space-8); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-              💼 2. تفاصيل الوظيفة والشركة المستهدفة
-            </h3>
-
-            <div class="contact-form__row">
-              <div class="form-group">
-                <label class="form-label">اسم الوظيفة المستهدفة *</label>
-                <input type="text" class="form-input" placeholder="مثال: Senior Digital Marketing Specialist" value="${state.jobTitle}" oninput="CareerAI.updateCLField('jobTitle', this.value)">
-              </div>
-              <div class="form-group">
-                <label class="form-label">${isEn ? 'Company Name *' : 'اسم الشركة *'}</label>
-                <input type="text" class="form-input" placeholder="مثال: شركة الحلول المتقدمة" value="${state.companyName}" oninput="CareerAI.updateCLField('companyName', this.value)">
-              </div>
-            </div>
-
-            <div class="contact-form__row">
-              <div class="form-group">
-                <label class="form-label">اسم مسؤول التوظيف (اختياري)</label>
-                <input type="text" class="form-input" placeholder="مثال: أ. سارة المنصوري" value="${state.hiringManager}" oninput="CareerAI.updateCLField('hiringManager', this.value)">
-              </div>
-              <div class="form-group">
-                <label class="form-label">${isEn ? 'Company Location' : 'موقع الشركة'} / الدولة (اختياري)</label>
-                <input type="text" class="form-input" placeholder="مثال: الرياض، الإمارات..." value="${state.companyLocation}" oninput="CareerAI.updateCLField('companyLocation', this.value)">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">وصف الوظيفة (Job Description) *</label>
-              <textarea class="form-textarea" style="min-height:120px" placeholder="الصق نص إعلان الوظيفة هنا بالكامل لتوليد رسالة مخصصة 100% تطابق الكلمات المفتاحية المطلوبة..." oninput="CareerAI.updateCLField('jobDescription', this.value)">${state.jobDescription}</textarea>
-              <p style="font-size:var(--text-xs); color:var(--color-text-secondary); margin-top:var(--space-1)">💡 إضافة الوصف الوظيفي يساعد الذكاء الاصطناعي على استخراج المتطلبات وتضمين الكلمات المفتاحية المهمة تلقائياً.</p>
-            </div>
-
-            <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-top:var(--space-8); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-              ⚙️ 3. الأسلوب، الطول، و${isEn ? 'Letter Language' : 'لغة الرسالة'}
-            </h3>
-
-            <div class="contact-form__row">
-              <div class="form-group">
-                <label class="form-label">أسلوب الرسالة *</label>
-                <select class="form-input form-select" onchange="CareerAI.updateCLField('tone', this.value)">
-                  <option value="professional" ${state.tone === 'professional' ? 'selected' : ''}>${isEn ? 'Professional' : 'احترافي'} (Professional)</option>
-                  <option value="concise" ${state.tone === 'concise' ? 'selected' : ''}>مختصر ومباشر (Concise)</option>
-                  <option value="friendly" ${state.tone === 'friendly' ? 'selected' : ''}>${isEn ? 'Friendly' : 'ودود'} ومبتكر (Friendly)</option>
-                  <option value="formal" ${state.tone === 'formal' ? 'selected' : ''}>${isEn ? 'Formal' : 'رسمي'} ومباشر (Formal)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">${isEn ? 'Letter Length' : 'طول الرسالة'} *</label>
-                <select class="form-input form-select" onchange="CareerAI.updateCLField('length', this.value)">
-                  <option value="short" ${state.length === 'short' ? 'selected' : ''}>${isEn ? 'Short' : 'قصيرة'} (Short - 2 الفقرات)</option>
-                  <option value="medium" ${state.length === 'medium' ? 'selected' : ''}>${isEn ? 'Medium' : 'متوسطة'} (Medium - 3 الفقرات)</option>
-                  <option value="detailed" ${state.length === 'detailed' ? 'selected' : ''}>مفصلة (Detailed - 4 الفقرات)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">لغة إنشاء الرسالة *</label>
-                <select class="form-input form-select" onchange="CareerAI.updateCLField('language', this.value)">
-                  <option value="ar" ${state.language === 'ar' ? 'selected' : ''}>العربية (Arabic)</option>
-                  <option value="en" ${state.language === 'en' ? 'selected' : ''}>الإنجليزية (English)</option>
-                  <option value="fr" ${state.language === 'fr' ? 'selected' : ''}>الفرنسية (French)</option>
-                  <option value="es" ${state.language === 'es' ? 'selected' : ''}>الإسبانية (Spanish)</option>
-                  <option value="de" ${state.language === 'de' ? 'selected' : ''}>الألمانية (German)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Action Button -->
-            <button class="btn btn--primary btn--lg btn--full" style="margin-top:var(--space-6)" onclick="CareerAI.startGenerateCoverLetter()">
-              ✨ إنشاء رسالة التقديم بالذكاء الاصطناعي
+            <button class="btn btn--primary btn--full" id="btnGenerateCL" onclick="CareerAI.startGenerateCoverLetter()" style="margin-top:0.5rem;box-shadow:0 4px 15px rgba(99,102,241,0.35);font-size:1.05rem;">
+              ✨ ${isEn ? 'Generate Cover Letter with AI' : 'توليد رسالة التقديم بالذكاء الاصطناعي'}
             </button>
           </div>
 
-          <!-- LOADING STATE -->
-          <div id="clLoadingContainer" style="${state.isGenerating ? 'display:block' : 'none'}">
-            <div class="analyzer-loading-card">
-              <div class="analyzer-spinner"></div>
-              <h3 class="analyzer-loading-title">جاري تحليل الوصف الوظيفي وصياغة رسالة تقديم مخصصة...</h3>
-              <p style="font-size:var(--text-sm); color:var(--color-text-secondary)">يتم مطابقة الكلمات المفتاحية واختيار أفضل المصطلحات باللغة المختارة...</p>
-            </div>
-          </div>
-
-          <!-- OUTPUT RESULT WORKSPACE -->
-          <div id="clResultContainer" style="${state.generatedLetter && !state.isGenerating ? 'display:block' : 'none'}">
-            
-            <div class="results-block">
-              
-              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-3); margin-bottom:var(--space-4)">
-                <h3 class="results-block__title" style="margin-bottom:0">✉️ رسالة التقديم الناتجة (قابل للتعديل المباشر)</h3>
-                <div style="display:flex; gap:var(--space-2); flex-wrap:wrap">
-                  <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyCoverLetterText()">📋 نسخ الرسالة</button>
-                  <button class="btn btn--accent btn--sm" onclick="CareerAI.downloadCLPDF()">📄 ${isEn ? 'Download PDF' : 'تحميل PDF'}</button>
-                  <button class="btn btn--primary btn--sm" onclick="CareerAI.downloadCLDOCX()">📝 ${isEn ? 'Download Word' : 'تحميل Word'} (DOCX)</button>
-                </div>
+          <!-- Column 2: Generated Letter Output & Action Buttons -->
+          <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--color-border-light);flex-wrap:wrap;gap:0.5rem;">
+              <h3 style="font-size:1.15rem;font-weight:700;color:var(--color-text);margin:0">
+                📄 ${isEn ? 'Generated Cover Letter' : 'رسالة التقديم المُولّدة'}
+              </h3>
+              <div style="display:flex;gap:0.4rem;">
+                <button class="btn btn--accent btn--sm" onclick="CareerAI.copyCoverLetterText()">📋 ${isEn ? 'Copy' : 'نسخ'}</button>
+                <button class="btn btn--secondary btn--sm" onclick="CareerAI.downloadCLPDF()">📥 PDF</button>
               </div>
-
-              <!-- Refine Buttons Toolbar -->
-              <div class="cl-refine-toolbar">
-                <span style="font-size:var(--text-xs); font-weight:var(--font-bold); color:var(--color-text-muted)">تحسينات سريعة:</span>
-                <button class="cl-refine-btn" onclick="CareerAI.refineCL('shorter')">✂️ اجعلها أقصر</button>
-                <button class="cl-refine-btn" onclick="CareerAI.refineCL('formal')">💼 أكثر ${isEn ? 'Professional' : 'احترافي'}ة و${isEn ? 'Formal' : 'رسمي'}ة</button>
-                <button class="cl-refine-btn" onclick="CareerAI.refineCL('persuasive')">🚀 أكثر إقناعاً وقوة</button>
-                <button class="cl-refine-btn" onclick="CareerAI.refineCL('regenerate')">🔄 إعادة الإنشاء</button>
-              </div>
-
-              <!-- Editable Textbox -->
-              <div class="cl-output-paper" id="clOutputPaper" contenteditable="true" dir="${state.language === 'ar' ? 'rtl' : 'ltr'}" oninput="CareerAI.onCLEdited(this.innerText)">
-                ${state.generatedLetter ? state.generatedLetter.replace(/\n/g, '<br>') : ''}
-              </div>
-
-              <!-- Score & Quality Metrics -->
-              <div class="cl-score-box">
-                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-4); margin-bottom:var(--space-3)">
-                  <div style="display:flex; align-items:center; gap:var(--space-3)">
-                    <div class="cl-score-num">${state.score}<span>/100</span></div>
-                    <div>
-                      <strong style="font-size:var(--text-base)">مؤشر جودة وتخصيص الرسالة (Cover Letter Score)</strong>
-                      <div style="font-size:var(--text-xs); color:var(--color-text-secondary)">درجة استرشادية تعبر عن مدى مطابقة الرسالة ومتانتها</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid--2" style="gap:var(--space-3); font-size:var(--text-xs)">
-                  <div>✓ التخصيص للوظيفة: <strong>ممتاز (95%)</strong></div>
-                  <div>✓ الوضوح والأسلوب المهني: <strong>مرتفع جداً</strong></div>
-                  <div>✓ استخدام الكلمات المتعلقة بالوظيفة: <strong>مطابق</strong></div>
-                  <div>✓ الطول والتركيز: <strong>مثالي</strong></div>
-                </div>
-              </div>
-
-              <!-- Extracted Keywords Box -->
-              ${state.keywords.extracted.length > 0 ? `
-                <div style="margin-top:var(--space-6); background:var(--color-bg-alt); padding:var(--space-4); border-radius:var(--radius-xl); border:1px solid var(--color-border)">
-                  <div style="font-size:var(--text-xs); font-weight:var(--font-bold); color:var(--color-text); margin-bottom:var(--space-2)">🔑 الكلمات المهمة التي تم استخراجها وتضمينها من الوصف الوظيفي:</div>
-                  <div style="display:flex; flex-wrap:wrap; gap:var(--space-2)">
-                    ${state.keywords.extracted.map(kw => `<span class="tag tag--accent" style="margin:0">${kw}</span>`).join('')}
-                  </div>
-                </div>
-              ` : ''}
-
-              <!-- Reset / Start New -->
-              <div style="display:flex; justify-content:center; gap:var(--space-4); margin-top:var(--space-8)">
-                <button class="btn btn--secondary" onclick="CareerAI.resetCoverLetterForm()">
-                  🔄 إنشاء Cover Letter جديدة
-                </button>
-              </div>
-
             </div>
 
+            <textarea id="clOutputText" class="form-textarea" style="flex:1;min-height:380px;background:#ffffff;color:#1e293b;font-family:'Inter', 'Cairo', sans-serif;font-size:0.9rem;line-height:1.7;padding:1.25rem;border-radius:8px;" placeholder="${isEn ? 'Your tailored cover letter will appear here ready to edit, copy, and export...' : 'سيظهر خطاب التقديم المُولّد هنا جاهزاً للتعديل، النسخ والتحميل...'}" oninput="CareerAI.onCLEdited(this.value)">${state.generatedLetter || ''}</textarea>
+
+            <!-- AI Refinement Chips -->
+            <div style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:0.8rem;color:var(--color-text-muted)">${isEn ? 'AI Refine:' : 'تعديل ذكي:'}</span>
+              <button class="btn btn--ghost btn--sm" onclick="CareerAI.refineCL('shorten')">⚡ ${isEn ? 'Shorter' : 'اختصار'}</button>
+              <button class="btn btn--ghost btn--sm" onclick="CareerAI.refineCL('expand')">📈 ${isEn ? 'Expand' : 'تفصيل أكثر'}</button>
+              <button class="btn btn--ghost btn--sm" onclick="CareerAI.refineCL('skills')">🎯 ${isEn ? 'More Technical' : 'تركيز أكبر على المهارات'}</button>
+            </div>
           </div>
 
         </div>
 
-        <!-- Google AdSense - Vertical Skyscraper (300x600) & Rectangle Row -->
-        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3rem auto 1rem;flex-wrap:wrap;">
+        <!-- Google AdSense - Vertical Skyscraper (300x600) & Medium Rectangle (300x250) Row -->
+        <div style="display:flex;justify-content:center;align-items:center;gap:var(--space-8);margin:3.5rem auto 1.5rem;flex-wrap:wrap;">
+          <!-- Skyscraper 300x600 -->
           <div class="ad-frame-wrapper ad-frame-skyscraper animate-on-scroll">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -367,10 +196,11 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             </div>
           </div>
           
+          <!-- Medium Rectangle 300x250 -->
           <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin:0;max-width:340px;">
             <div class="ad-frame-label">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-              إعلان ممول / Sponsored
+              ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored'}
             </div>
             <div class="ad-frame-inner">
               <ins class="adsbygoogle"
@@ -384,207 +214,196 @@ window.CareerAI.pages.coverLetterGenerator = function() {
 
       </div>
     </section>
-
-    <!-- SEO & Educational Content Section -->
-    <section class="section section--alt" style="padding:var(--space-16) 0">
-      <div class="container">
-        
-        <div class="section__header">
-          <span class="section__badge">
-            📘 دليل إرشادي
-          </span>
-          <h2 class="section__title">كل ما تحتاج معرفته عن <span class="text-gradient">رسالة التقديم (Cover Letter)</span></h2>
-          <p class="section__subtitle">تعلم كيف تصيغ خطابات تقديم ${isEn ? 'Professional' : 'احترافي'}ة ترفع نسبة قبولك في الوظائف إلى الضعف</p>
-        </div>
-
-        <div class="grid grid--2" style="gap:var(--space-8);margin-bottom:var(--space-12)">
-          
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.cover}</span>
-            </div>
-            <h3 class="card__title">ما هي رسالة التقديم (Cover Letter)؟</h3>
-            <p class="card__text">
-              هي خطاب ${isEn ? 'Formal' : 'رسمي'} موجه لمسؤول التوظيف يُرفق مع السيرة الذاتية. يهدف إلى توضيح أسباب اهتمامك بالوظيفة وكيف تتطابق خبراتك ومهاراتك المحددة مع احتياجات الشركة.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.rocket}</span>
-            </div>
-            <h3 class="card__title">هل ما زالت رسائل التقديم مهمة في 2026؟</h3>
-            <p class="card__text">
-              نعم! تشير الإحصائيات إلى أن 83% من مسؤولي التوظيف يعيرون اهتماماً كبيراً للمتقدمين الذين يرفقون Cover Letter مخصصة، حيث تظهر مدى جديتك واهتمامك بالشركة بدلاً من إرسال طلبات عشوائية.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.resume}</span>
-            </div>
-            <h3 class="card__title">الفرق بين السيرة الذاتية (CV) ورسالة التقديم</h3>
-            <p class="card__text">
-              السيرة الذاتية هي ملخص شامل وسجل تاريخي لمسيرتك ومؤهلاتك، بينما Cover Letter هي سياق شخصي ومستهدف يربط مؤهلاتك بشكل مباشر بالوظيفة الحالية وأهداف الشركة.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.shield}</span>
-            </div>
-            <h3 class="card__title">أشهر الأخطاء في رسائل التقديم وكيف تتجنبها</h3>
-            <p class="card__text">
-              1. إرسال رسالة عامة ومكررة لكل الوظائف دون تخصيص.<br>
-              2. إعادة نسخ ما هو مكتوب في السيرة الذاتية حرفياً.<br>
-              3. الإطالة الزائدة عن صفحة واحدة أو 3-4 فقرات.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="accordion" style="max-width:800px;margin:0 auto">
-          
-          <div class="accordion__item active">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>ما هو الطول المثالي لرسالة التقديم (Cover Letter)؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body" style="max-height:200px">
-              <div class="accordion__content">
-                الطول المثالي هو صفحة واحدة بحد أقصى (ما بين 250 إلى 400 كلمة مقسمة على 3 إلى 4 فقرات ${isEn ? 'Concise' : 'موجز'}ة ومباشرة).
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>هل يمكنني التعديل على الرسالة الناتجة؟</span>
-              <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
-            </button>
-            <div class="accordion__body">
-              <div class="accordion__content">
-                نعم، صندوق نتيجة الرسالة قابل للتعديل المباشر داخل الصفحة مجاناً، كما يمكنك استخدام أزرار التحسين السريع أو تحميل الملف بصيغة Word (DOCX) وتعديله على جهازك.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
   `;
 };
 
-/* ==========================================================================
-   INTERACTIVE HANDLERS
-   ========================================================================== */
-
+// Handlers & Generation Logic
 CareerAI.updateCLField = function(field, val) {
-  window.CareerAI.coverLetterState[field] = val;
-};
-
-CareerAI.startGenerateCoverLetter = function() {
-  const state = window.CareerAI.coverLetterState;
-  
-  state.isGenerating = true;
-  window.CareerAI.router.handleRoute();
-
-  setTimeout(() => {
-    state.isGenerating = false;
-    state.generatedLetter = window.CareerAI.generateCoverLetterText(state);
-    state.score = 88 + Math.floor(Math.random() * 8);
-
-    // Extract mock keywords from job description if present
-    if (state.jobDescription) {
-      const keywordsList = ['إدارة', 'تطوير', 'تحليل', 'تسويق', 'برمجة', 'قيادة', 'تنفيذ', 'التواصل', 'SEO', 'Google'];
-      state.keywords.extracted = keywordsList.filter(k => state.jobDescription.includes(k) || Math.random() > 0.4).slice(0, 5);
-    } else {
-      state.keywords.extracted = [];
-    }
-
-    window.CareerAI.router.handleRoute();
-    
-    // Scroll to results
-    const el = document.getElementById('clResultContainer');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, 1200);
-};
-
-CareerAI.refineCL = function(type) {
-  const state = window.CareerAI.coverLetterState;
-  state.generatedLetter = window.CareerAI.generateCoverLetterText(state, type);
-  
-  const output = document.getElementById('clOutputPaper');
-  if (output) {
-    output.innerHTML = state.generatedLetter.replace(/\n/g, '<br>');
-  }
+  window.CareerAI.clState[field] = val;
 };
 
 CareerAI.onCLEdited = function(text) {
-  window.CareerAI.coverLetterState.generatedLetter = text;
+  window.CareerAI.clState.generatedLetter = text;
+};
+
+CareerAI.loadSampleCL = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const sample = window.CareerAI.sampleCLData;
+
+  window.CareerAI.clState.fullName = isEn ? sample.fullName_en : sample.fullName;
+  window.CareerAI.clState.jobTitle = sample.jobTitle;
+  window.CareerAI.clState.companyName = isEn ? sample.companyName_en : sample.companyName;
+  window.CareerAI.clState.yearsExp = sample.yearsExp;
+  window.CareerAI.clState.skills = sample.skills;
+  window.CareerAI.clState.tone = sample.tone;
+
+  const fn = document.getElementById('clFullName');
+  const jt = document.getElementById('clJobTitle');
+  const cn = document.getElementById('clCompanyName');
+  const sk = document.getElementById('clSkills');
+
+  if (fn) fn.value = window.CareerAI.clState.fullName;
+  if (jt) jt.value = window.CareerAI.clState.jobTitle;
+  if (cn) cn.value = window.CareerAI.clState.companyName;
+  if (sk) sk.value = window.CareerAI.clState.skills;
+
+  CareerAI.startGenerateCoverLetter();
+};
+
+CareerAI.startGenerateCoverLetter = function() {
+  const s = window.CareerAI.clState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+
+  if (!s.jobTitle || !s.companyName) {
+    alert(isEn ? 'Please specify at least the Job Title and Company Name.' : 'يرجى إدخال المسمى الوظيفي واسم الشركة على الأقل.');
+    return;
+  }
+
+  const btn = document.getElementById('btnGenerateCL');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '⏳ ' + (isEn ? 'Generating with AI...' : 'جاري كتابة الخطاب بالذكاء الاصطناعي...');
+  }
+
+  setTimeout(() => {
+    const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+    const name = s.fullName || (isEn ? 'Applicant Name' : 'اسم المتقدم');
+    const company = s.companyName;
+    const role = s.jobTitle;
+    const skills = s.skills || (isEn ? 'Strategic leadership, project execution, and cross-team collaboration' : 'القيادة الاستراتيجية، تنفيذ المشاريع، وإدارة فرق العمل');
+
+    let letter = '';
+    if (isEn) {
+      letter = `${today}
+
+Hiring Team / HR Department
+${company}
+
+Subject: Application for ${role} Position
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the ${role} opportunity at ${company}. With over ${s.yearsExp} years of hands-on experience and a proven background in ${skills}, I am confident in my ability to make an immediate, positive impact on your team.
+
+Throughout my career, I have focused on driving results, optimizing workflows, and delivering complex projects on time and within budget. What excites me most about ${company} is your commitment to innovation and industry leadership. I am eager to bring my expertise in ${skills} to help achieve your strategic goals.
+
+Thank you for your time and consideration. I welcome the opportunity to discuss in an interview how my skills and background align with the needs of ${company}.
+
+Sincerely,
+${name}`;
+    } else {
+      letter = `التاريخ: ${today}
+
+إلى: إدارة الموارد البشرية ولجنة التوظيف الموقرة
+شركة: ${company}
+
+الموضوع: التقدم لشغل وظيفة "${role}"
+
+تحية طيبة وبعد،
+
+يسرني أن أتقدم بطلبي هذا لشغل وظيفة "${role}" لدى مؤسستكم المرموقة "${company}". بفضل خبرتي المهنية الممتدة لأكثر من ${s.yearsExp} سنوات، وسجلي الحافل في ${skills}، فإنني على ثقة تامة بقدرتي على تقديم قيمة مضافة نوعية والمساهمة الفعالة في تحقيق أهدافكم الاستراتيجية.
+
+خلال مسيرتي المهنية السابقة، نجحت في قيادة العديد من المبادرات والمشاريع بكفاءة عالية، وتطوير آليات العمل بما يضمن تحقيق أعلى معدلات الجودة والإنتاجية. ما يشجعني على الانضمام إلى ${company} هو سمعتكم الرائدة وبيئة العمل المحفزة على الابتكار والتميز.
+
+أشكركم جزيل الشكر على وقتكم واهتمامكم، وأتطلع بشغف لإجراء مقابلة شخصية لمناقشة كيف يمكن لخبراتي ومهاراتي أن تخدم تطلعات مؤسستكم.
+
+وتفضلوا بقبول فائق التقدير والاحترام،،
+
+المتقدم: ${name}`;
+    }
+
+    s.generatedLetter = letter;
+    const ta = document.getElementById('clOutputText');
+    if (ta) ta.value = letter;
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '✨ ' + (isEn ? 'Generate Cover Letter with AI' : 'توليد رسالة التقديم بالذكاء الاصطناعي');
+    }
+  }, 600);
+};
+
+CareerAI.refineCL = function(type) {
+  const s = window.CareerAI.clState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!s.generatedLetter) {
+    CareerAI.startGenerateCoverLetter();
+    return;
+  }
+
+  if (type === 'shorten') {
+    s.generatedLetter = isEn 
+      ? s.generatedLetter.split('\n\n').filter((_, i) => i !== 2).join('\n\n')
+      : s.generatedLetter.replace(/خلال مسيرتي المهنية السابقة[sS]*?والإنتاجية./, 'لدي سجل مثبت في تحقيق أعلى معدلات الإنتاجية وتطوير آليات العمل.');
+  } else if (type === 'expand') {
+    s.generatedLetter += isEn 
+      ? `\n\nFurthermore, my collaborative mindset and strong problem-solving capabilities ensure smooth alignment across cross-functional stakeholders.`
+      : `\n\nإضافة إلى ذلك، أمتلك مهارات تواصل قيادية وقدرة عالية على اتخاذ القرارات وحل التحديات التشغيلية المعقدة في بيئات العمل التنافسية.`;
+  }
+  
+  const ta = document.getElementById('clOutputText');
+  if (ta) ta.value = s.generatedLetter;
 };
 
 CareerAI.copyCoverLetterText = function() {
-  const state = window.CareerAI.coverLetterState;
-  if (state.generatedLetter) {
-    navigator.clipboard.writeText(state.generatedLetter).then(() => {
-      alert('تم نسخ رسالة التقديم إلى الحافظة بنجاح!');
-    });
-  }
+  const s = window.CareerAI.clState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!s.generatedLetter) return;
+
+  navigator.clipboard.writeText(s.generatedLetter).then(() => {
+    alert(isEn ? 'Cover letter copied to clipboard!' : 'تم نسخ خطاب التقديم بنجاح إلى الحافظة!');
+  });
 };
 
 CareerAI.downloadCLPDF = function() {
+  const s = window.CareerAI.clState;
+  if (!s.generatedLetter) {
+    CareerAI.startGenerateCoverLetter();
+    return;
+  }
+  const originalTitle = document.title;
+  document.title = (s.fullName || 'Cover Letter') + ' - Cover Letter';
   window.print();
-};
-
-CareerAI.downloadCLDOCX = function() {
-  const state = window.CareerAI.coverLetterState;
-  const content = state.generatedLetter.replace(/\n/g, '<br>');
-  
-  const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Cover Letter</title><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:40px;}</style></head><body>`;
-  const footer = `</body></html>`;
-  const sourceHTML = header + content + footer;
-  
-  const blob = new Blob(['\ufeff', sourceHTML], {
-    type: 'application/msword'
-  });
-  
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `Cover_Letter_${state.companyName || 'Application'}.docx`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  setTimeout(() => { document.title = originalTitle; }, 1000);
 };
 
 CareerAI.resetCoverLetterForm = function() {
-  window.CareerAI.coverLetterState = {
-    userName: '',
-    userTitle: '',
-    userExpYears: '',
-    userSkills: '',
-    userAchievements: '',
+  window.CareerAI.clState = {
+    fullName: '',
     jobTitle: '',
     companyName: '',
-    hiringManager: '',
-    companyLocation: '',
-    jobDescription: '',
+    yearsExp: '3',
+    skills: '',
     tone: 'professional',
-    length: 'medium',
-    language: 'ar',
-    isGenerating: false,
     generatedLetter: '',
-    score: 0,
-    keywords: { extracted: [], used: [] }
+    isGenerating: false
   };
-  window.CareerAI.router.handleRoute();
+
+  const fn = document.getElementById('clFullName');
+  const jt = document.getElementById('clJobTitle');
+  const cn = document.getElementById('clCompanyName');
+  const sk = document.getElementById('clSkills');
+  const ta = document.getElementById('clOutputText');
+
+  if (fn) fn.value = '';
+  if (jt) jt.value = '';
+  if (cn) cn.value = '';
+  if (sk) sk.value = '';
+  if (ta) ta.value = '';
 };
 
-window.CareerAI.pages.coverLetterGeneratorSEO = {
-  title: 'مولد رسائل التقديم بالذكاء الاصطناعي Cover Letter Generator | Factor Career',
-  description: 'أنشئ رسالة تقديم على الوظائف (Cover Letter) مخصصة و${isEn ? 'Professional' : 'احترافي'}ة بالذكاء الاصطناعي مجاناً من Factor Career وبعدة لغات مع التعديل المباشر و${isEn ? 'Download PDF' : 'تحميل PDF'} و Word.',
-  keywords: 'مولد Cover Letter, كاتب رسالة التغطية, رسالة تقديم على وظيفة, Cover Letter AI Generator, كتابة خطاب التوصية, Factor Career'
+window.CareerAI.pages.coverLetterGeneratorSEO = function() {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (isEn) {
+    return {
+      title: 'Free AI Cover Letter Generator | Factor Career',
+      description: 'Generate high-impact, custom cover letters tailored to any job description in seconds with AI. Free online generator with PDF export.',
+      keywords: 'Cover Letter Generator, AI Cover Letter, Job Application Letter, Free Cover Letter Maker, Factor Career'
+    };
+  }
+  return {
+    title: 'مولد رسائل وخطابات التقديم بالذكاء الاصطناعي مجاناً | فكتور كارير',
+    description: 'أنشئ خطاب تقديم احترافي ومخصص لكل وظيفة بثوانٍ معدودة. نماذج ذكية مجانية وتصدير فوري بصيغة PDF.',
+    keywords: 'مولد رسائل التقديم, خطاب تقديم وظيفة, Cover Letter بالعربي, كتابة رسالة التقديم, Factor Career'
+  };
 };
