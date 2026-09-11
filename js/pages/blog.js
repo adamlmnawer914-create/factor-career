@@ -90,7 +90,7 @@ window.CareerAI.pages.blog = function() {
             </div>
           </div>
 
-          <!-- Sticky Sidebar with Vertical Skyscraper (300x600) -->
+          <!-- Sticky Sidebar with Vertical Skyscraper (300x600) + Second Display Unit -->
           <aside class="sticky-sidebar-ad animate-on-scroll">
             <div class="ad-frame-wrapper ad-frame-skyscraper">
               <div class="ad-frame-label">
@@ -103,6 +103,21 @@ window.CareerAI.pages.blog = function() {
                      data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="4455667788"
                      data-ad-format="vertical"></ins>
+              </div>
+            </div>
+
+            <!-- Second Ad Below Skyscraper with Spacing -->
+            <div class="ad-frame-wrapper ad-frame-rectangle animate-on-scroll" style="margin-top: 2rem; max-width: 324px;">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${isEn ? 'Sponsored' : 'إعلان ممول'}
+              </div>
+              <div class="ad-frame-inner" style="min-height:250px;">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="3316284985"
+                     data-ad-format="rectangle"></ins>
               </div>
             </div>
           </aside>

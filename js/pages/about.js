@@ -69,10 +69,64 @@ window.CareerAI.pages.about = function() {
           </div>
         </div>
 
-        <!-- Vertical Skyscraper & Leaderboard Row -->
-        <div style="display:flex;justify-content:center;margin-top:var(--space-12);">
-          <!-- Sticky Sidebar with Vertical Half-Page Skyscraper (300x600) -->
-          <aside class="sticky-sidebar-ad animate-on-scroll">
+        <!-- High-Impact 3-Column Showcase: Right Content + Center Skyscraper + Left Content -->
+        <div class="about-heroic-trio animate-on-scroll" style="margin-top:var(--space-16);margin-bottom:var(--space-8);">
+          
+          <!-- Luxurious Card 1 (Right in RTL, Left in LTR): Vision & AI Precision -->
+          <div class="card luxury-about-card" style="background:linear-gradient(145deg, rgba(15,23,42,0.88) 0%, rgba(30,41,59,0.92) 100%);border:1px solid rgba(99,102,241,0.35);border-radius:24px;padding:2rem;color:white;box-shadow:0 16px 40px rgba(0,0,0,0.35);display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.18);border:1px solid rgba(99,102,241,0.35);padding:4px 12px;border-radius:var(--radius-full);color:#a5b4fc;font-size:12px;font-weight:700;margin-bottom:1rem">
+                <span>🚀</span>
+                <span>${isEn ? 'Innovation & Excellence' : 'الابتكار والريادة المهنية'}</span>
+              </div>
+              <h3 style="font-size:var(--text-2xl);font-weight:800;color:white;margin-bottom:0.75rem;line-height:1.3">
+                ${isEn ? 'Empowering Careers with AI Precision' : 'تمكين الكفاءات بأدق تقنيات الذكاء الاصطناعي'}
+              </h3>
+              <p style="color:rgba(255,255,255,0.75);font-size:var(--text-sm);line-height:1.7;margin-bottom:1.5rem">
+                ${isEn ? 'We bridge the gap between talented job seekers and leading recruiters by deploying cutting-edge LLMs trained exclusively on modern global recruitment algorithms.' : 'نسد الفجوة بين الباحثين عن عمل والشركات الرائدة عبر نماذج ذكاء اصطناعي مدربة على أحدث خوارزميات التوظيف العالمية لعام 2026.'}
+              </p>
+              
+              <div style="display:flex;flex-direction:column;gap:1.1rem">
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#60a5fa">
+                    ⚡
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? 'ATS-Optimized Formatting' : 'صياغة متوافقة 100% مع ATS'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'Guaranteed to bypass automated corporate filters.' : 'تضمن اجتياز الفرز الآلي لكبرى الشركات بدون أخطاء.'}</span>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#34d399">
+                    🎯
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? 'Targeted Keyword Matcher' : 'مطابقة ذكية للكلمات المفتاحية'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'Instant job description keyword density audit.' : 'فحص دقيق لمطابقة مهاراتك مع متطلبات الوظيفة.'}</span>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(139,92,246,0.2);border:1px solid rgba(139,92,246,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#c084fc">
+                    🏆
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? 'STAR Method Interview Coach' : 'تدريب مقابلات بمنهجية STAR'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'Behavioral & technical model answers tailored to your role.' : 'أجوبة نموذجية لأسئلة المقابلات في كبرى الشركات.'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center">
+              <span style="color:rgba(255,255,255,0.6);font-size:12px">${isEn ? 'User Satisfaction' : 'نسبة رضا المستخدمين'}</span>
+              <span style="color:#34d399;font-weight:800;font-size:var(--text-lg)">99.4%</span>
+            </div>
+          </div>
+
+          <!-- Center Column: Vertical Half-Page Skyscraper (300x600) -->
+          <div style="display:flex;justify-content:center;align-items:center;">
             <div class="ad-frame-wrapper ad-frame-skyscraper">
               <div class="ad-frame-label">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
@@ -86,7 +140,61 @@ window.CareerAI.pages.about = function() {
                      data-ad-format="vertical"></ins>
               </div>
             </div>
-          </aside>
+          </div>
+
+          <!-- Luxurious Card 2 (Left in RTL, Right in LTR): Trust & Absolute Privacy -->
+          <div class="card luxury-about-card" style="background:linear-gradient(145deg, rgba(15,23,42,0.88) 0%, rgba(30,41,59,0.92) 100%);border:1px solid rgba(99,102,241,0.35);border-radius:24px;padding:2rem;color:white;box-shadow:0 16px 40px rgba(0,0,0,0.35);display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.35);padding:4px 12px;border-radius:var(--radius-full);color:#6ee7b7;font-size:12px;font-weight:700;margin-bottom:1rem">
+                <span>🛡️</span>
+                <span>${isEn ? 'Trust & Privacy First' : 'أمان وخصوصية فائقة'}</span>
+              </div>
+              <h3 style="font-size:var(--text-2xl);font-weight:800;color:white;margin-bottom:0.75rem;line-height:1.3">
+                ${isEn ? 'Zero Data Retention & True Free Access' : 'معايير أمان موثوقة ومجانية مطلقة'}
+              </h3>
+              <p style="color:rgba(255,255,255,0.75);font-size:var(--text-sm);line-height:1.7;margin-bottom:1.5rem">
+                ${isEn ? 'Your resume data is processed locally inside your browser session. We never sell, harvest, or monetize your sensitive career documents.' : 'تتم معالجة بياناتك مباشرة في متصفحك محلياً. لا نقوم بتخزين أو بيع أي وثيقة أو معلومة شخصية لأي طرف خارجي.'}
+              </p>
+              
+              <div style="display:flex;flex-direction:column;gap:1.1rem">
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#34d399">
+                    🔒
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? 'Client-Side Processing' : 'معالجة محلية داخل المتصفح'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'Encrypted and kept strictly private.' : 'حماية مشفرة لجميع بيانات السيرة الذاتية.'}</span>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#60a5fa">
+                    📄
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? 'Crystal Clear PDF Export' : 'تصدير PDF فوري عالي الدقة'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'Clean vector layout with no watermarks.' : 'تصاميم رسمية بدون أي علامة مائية.'}</span>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:12px;align-items:flex-start">
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fbbf24">
+                    💎
+                  </div>
+                  <div>
+                    <strong style="color:white;font-size:var(--text-sm);display:block">${isEn ? '100% Free Forever' : 'مجاني بالكامل بدون أي اشتراكات'}</strong>
+                    <span style="color:rgba(255,255,255,0.65);font-size:12px">${isEn ? 'No paywalls, hidden fees or trial expirations.' : 'لا نطلب أي بطاقة بنكية أو رسوم خفية.'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center">
+              <span style="color:rgba(255,255,255,0.6);font-size:12px">${isEn ? 'Privacy Score' : 'مستوى الأمان والخصوصية'}</span>
+              <span style="color:#60a5fa;font-weight:800;font-size:var(--text-lg)">100% A+</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -162,17 +270,24 @@ window.CareerAI.pages.about = function() {
 
     <!-- Full-Width Edge-to-Edge CTA Section (Ready to Elevate Your Career?) -->
     <section class="section section--dark" style="background:var(--gradient-hero);width:100%;padding:var(--space-20) 0;position:relative;overflow:hidden">
-      <div class="container text-center" style="position:relative;z-index:2">
-        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;max-width:850px;margin:0 auto;padding:0">
-          <h2 class="cta-section__title" style="font-size:var(--text-4xl);font-weight:var(--font-extrabold);color:white;margin-bottom:var(--space-4)">
-            ${isEn ? 'Ready to Elevate Your Career?' : 'انضم إلى مجتمع Factor Career'}
+      <div style="position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--space-8);text-align:center">
+        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;width:100%;max-width:100%;margin:0 auto;padding:0">
+          <h2 class="cta-section__title" style="font-size:clamp(2.2rem, 4.5vw, 3.2rem);font-weight:800;color:white;margin-bottom:var(--space-4);line-height:1.25">
+            ${isEn ? 'Ready to Elevate Your Career?' : 'هل أنت مستعد للانطلاق بمسيرتك المهنية؟'}
           </h2>
-          <p class="cta-section__text" style="max-width:650px;margin:0 auto var(--space-8);font-size:var(--text-lg);color:rgba(255,255,255,0.85);line-height:1.7">
-            ${isEn ? 'Start creating your ATS-optimized resume in minutes with our free AI builder.' : 'ابدأ الآن في بناء سيرتك الذاتية واستعد للانطلاق نحو وظيفة أحلامك.'}
+          <p class="cta-section__text" style="font-size:clamp(1rem, 2vw, 1.25rem);color:rgba(255,255,255,0.92);max-width:900px;margin:0 auto var(--space-8);line-height:1.8">
+            ${isEn ? 'Join thousands of job seekers who landed their dream roles using our free AI-powered career platform.' : 'انضم إلى آلاف الباحثين عن عمل الذين حققوا أهدافهم المهنية باستخدام أدواتنا الذكية والمجانية بالكامل.'}
           </p>
-          <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-            ${isEn ? 'Build Your Free Resume' : 'أنشئ سيرتك الذاتية الآن'}
-          </a>
+          <div class="cta-section__actions" style="display:flex;gap:var(--space-5);justify-content:center;flex-wrap:wrap">
+            <a href="/resume-builder" class="btn btn--white btn--lg" data-nav style="box-shadow:0 12px 30px rgba(0,0,0,0.25);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700">
+              <span>📄</span>
+              <span>${isEn ? 'Create Resume Now' : 'ابدأ بإنشاء سيرتك الذاتية'}</span>
+            </a>
+            <a href="/jobs" class="btn btn--outline btn--lg" data-nav style="color:white;border-color:rgba(255,255,255,0.6);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700;backdrop-filter:blur(8px)">
+              <span>💼</span>
+              <span>${isEn ? 'Explore Verified Jobs' : 'تصفح الوظائف المتاحة'}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

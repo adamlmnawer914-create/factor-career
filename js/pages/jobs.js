@@ -137,20 +137,22 @@ window.CareerAI.pages.jobs = function() {
 
     <!-- Full-Width Edge-to-Edge Blue CTA Section (Haven't Found the Right Job Yet?) -->
     <section class="section section--dark" style="background:var(--gradient-hero);width:100%;padding:var(--space-20) 0;position:relative;overflow:hidden">
-      <div class="container text-center" style="position:relative;z-index:2">
-        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;max-width:850px;margin:0 auto;padding:0">
-          <h2 class="cta-section__title" style="font-size:var(--text-4xl);font-weight:var(--font-extrabold);color:white;margin-bottom:var(--space-4)">
-            ${t('jobs.ctaTitle', 'لم تجد الوظيفة المناسبة؟')}
+      <div style="position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--space-8);text-align:center">
+        <div class="cta-section animate-on-scroll" style="background:transparent;border:none;width:100%;max-width:100%;margin:0 auto;padding:0">
+          <h2 class="cta-section__title" style="font-size:clamp(2.2rem, 4.5vw, 3.2rem);font-weight:800;color:white;margin-bottom:var(--space-4);line-height:1.25">
+            ${isEn ? "Haven't Found the Right Job Yet?" : 'لم تجد الوظيفة المناسبة بعد؟'}
           </h2>
-          <p class="cta-section__text" style="max-width:650px;margin:0 auto var(--space-8);font-size:var(--text-lg);color:rgba(255,255,255,0.85);line-height:1.7">
-            ${t('jobs.ctaText', 'جهّز سيرتك الذاتية باستخدام أدواتنا الذكية المجانية وكن مستعداً لأي فرصة قادمة!')}
+          <p class="cta-section__text" style="font-size:clamp(1rem, 2vw, 1.25rem);color:rgba(255,255,255,0.92);max-width:900px;margin:0 auto var(--space-8);line-height:1.8">
+            ${isEn ? 'Create an ATS-friendly resume now and let leading recruiters discover your profile automatically.' : 'أنشئ سيرتك الذاتية المتوافقة مع أنظمة ATS الآن ودع الشركات ومسؤولي التوظيف يصلون إليك تلقائياً.'}
           </p>
-          <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
-            <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-              ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
+          <div class="cta-section__actions" style="display:flex;gap:var(--space-5);justify-content:center;flex-wrap:wrap">
+            <a href="/resume-builder" class="btn btn--white btn--lg" data-nav style="box-shadow:0 12px 30px rgba(0,0,0,0.25);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700">
+              <span>📄</span>
+              <span>${isEn ? 'Build My Resume Now' : 'أنشئ سيرتي الذاتية الآن'}</span>
             </a>
-            <a href="/tools" class="btn btn--secondary btn--lg" style="border-color:white;color:white" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
-              ${t('hero.btnExplore', 'تصفح جميع الأدوات')}
+            <a href="/tools" class="btn btn--outline btn--lg" data-nav style="color:white;border-color:rgba(255,255,255,0.6);padding:1.1rem 2.8rem;font-size:1.1rem;font-weight:700;backdrop-filter:blur(8px)">
+              <span>⚡</span>
+              <span>${isEn ? 'Explore All Career Tools' : 'استكشف جميع الأدوات'}</span>
             </a>
           </div>
         </div>

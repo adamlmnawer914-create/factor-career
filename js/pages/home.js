@@ -175,37 +175,57 @@ window.CareerAI.pages.home = function() {
           <p class="section__subtitle">${t('home.whySubtitle', 'كل ما تحتاجه للارتقاء بمسيرتك المهنية في مكان واحد وبأحدث تقنيات الذكاء الاصطناعي')}</p>
         </div>
 
-        <div class="features__grid">
-          <div class="card animate-on-scroll delay-1">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.speed}</span>
+        <div class="features-showcase-layout">
+          <!-- Features 2x2 Grid -->
+          <div class="features__grid">
+            <div class="card animate-on-scroll delay-1">
+              <div class="card__icon card__icon--primary">
+                <span style="width:28px;height:28px;display:inline-flex">${icons.speed}</span>
+              </div>
+              <h3 class="card__title">${t('home.feat1Title', 'صانع السيرة الذاتية ATS')}</h3>
+              <p class="card__text">${t('home.feat1Desc', 'أنشئ سيرة ذاتية احترافية خالية من الأخطاء ومتوافقة مع أنظمة تتبع المتقدمين الآلية لضمان وصولك للمقابلة.')}</p>
             </div>
-            <h3 class="card__title">${t('home.feat1Title', 'صانع السيرة الذاتية ATS')}</h3>
-            <p class="card__text">${t('home.feat1Desc', 'أنشئ سيرة ذاتية احترافية خالية من الأخطاء ومتوافقة مع أنظمة تتبع المتقدمين الآلية لضمان وصولك للمقابلة.')}</p>
+
+            <div class="card animate-on-scroll delay-2">
+              <div class="card__icon card__icon--accent">
+                <span style="width:28px;height:28px;display:inline-flex">${icons.target}</span>
+              </div>
+              <h3 class="card__title">${t('home.feat2Title', 'فحص وتدقيق السيرة الذاتية')}</h3>
+              <p class="card__text">${t('home.feat2Desc', 'احصل على تحليل فوري لنقاط القوة والضعف في سيرتك الذاتية مع مقترحات عملية لتحسين صياغة الإنجازات.')}</p>
+            </div>
+
+            <div class="card animate-on-scroll delay-3">
+              <div class="card__icon card__icon--primary">
+                <span style="width:28px;height:28px;display:inline-flex">${icons.easy}</span>
+              </div>
+              <h3 class="card__title">${t('home.feat3Title', 'رسائل التغطية الذكية')}</h3>
+              <p class="card__text">${t('home.feat3Desc', 'ولّد رسائل تقديم وCover Letters مقنعة ومخصصة لكل وظيفة بضغطة زر وبعدة لغات.')}</p>
+            </div>
+
+            <div class="card animate-on-scroll delay-4">
+              <div class="card__icon card__icon--accent">
+                <span style="width:28px;height:28px;display:inline-flex">${icons.free}</span>
+              </div>
+              <h3 class="card__title">${t('home.feat4Title', 'التحضير للمقابلات الوظيفية')}</h3>
+              <p class="card__text">${t('home.feat4Desc', 'تدرّب على أسئلة المقابلات النموذجية في مجالك مع أفضل إجابات باستراتيجية STAR الاحترافية.')}</p>
+            </div>
           </div>
 
-          <div class="card animate-on-scroll delay-2">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.target}</span>
+          <!-- Vertical Half-Page Skyscraper (300x600) on the Left -->
+          <div class="features-ad-col animate-on-scroll">
+            <div class="ad-frame-wrapper ad-frame-skyscraper">
+              <div class="ad-frame-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+              </div>
+              <div class="ad-frame-inner">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
+                     data-ad-client="ca-pub-7520213352755959"
+                     data-ad-slot="4455667788"
+                     data-ad-format="vertical"></ins>
+              </div>
             </div>
-            <h3 class="card__title">${t('home.feat2Title', 'فحص وتدقيق السيرة الذاتية')}</h3>
-            <p class="card__text">${t('home.feat2Desc', 'احصل على تحليل فوري لنقاط القوة والضعف في سيرتك الذاتية مع مقترحات عملية لتحسين صياغة الإنجازات.')}</p>
-          </div>
-
-          <div class="card animate-on-scroll delay-3">
-            <div class="card__icon card__icon--primary">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.easy}</span>
-            </div>
-            <h3 class="card__title">${t('home.feat3Title', 'رسائل التغطية الذكية')}</h3>
-            <p class="card__text">${t('home.feat3Desc', 'ولّد رسائل تقديم وCover Letters مقنعة ومخصصة لكل وظيفة بضغطة زر وبعدة لغات.')}</p>
-          </div>
-
-          <div class="card animate-on-scroll delay-4">
-            <div class="card__icon card__icon--accent">
-              <span style="width:28px;height:28px;display:inline-flex">${icons.free}</span>
-            </div>
-            <h3 class="card__title">${t('home.feat4Title', 'التحضير للمقابلات الوظيفية')}</h3>
-            <p class="card__text">${t('home.feat4Desc', 'تدرّب على أسئلة المقابلات النموذجية في مجالك مع أفضل إجابات باستراتيجية STAR الاحترافية.')}</p>
           </div>
         </div>
       </div>

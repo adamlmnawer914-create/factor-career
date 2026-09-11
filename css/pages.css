@@ -3100,21 +3100,7 @@
 
 /* Mobile: responsive banner and ad containers */
 @media (max-width: 768px) {
-  .sticky-bottom-ad-wrapper .ad-box {
-    width: 100% !important;
-    max-width: 345px !important;
-    height: 60px !important; /* ارتفاع وحجم أكبر قليلاً وأوضح */
-    background: #ffffff !important;
-    border-radius: 8px 8px 0 0 !important;
-    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.16) !important;
-  }
-
-  .sticky-bottom-ad-wrapper .ad-box ins.adsbygoogle {
-    width: 336px !important;
-    height: 60px !important;
-    display: inline-block !important;
-    max-width: 100% !important;
-  }
+  
 
   .sticky-bottom-ad__btn {
     padding: 4px 15px !important;
@@ -3158,4 +3144,127 @@
   font-size: 11px;
   font-weight: 600;
   z-index: 1;
+}
+
+
+/* Features Showcase Layout with 300x600 Skyscraper on Left */
+.features-showcase-layout {
+  display: grid !important;
+  grid-template-columns: 324px minmax(0, 1fr) !important;
+  gap: var(--space-8);
+  align-items: start;
+}
+[dir="ltr"] .features-showcase-layout .features-ad-col {
+  order: 1 !important;
+}
+[dir="ltr"] .features-showcase-layout .features__grid {
+  order: 2 !important;
+}
+[dir="rtl"] .features-showcase-layout {
+  grid-template-columns: minmax(0, 1fr) 324px !important;
+}
+[dir="rtl"] .features-showcase-layout .features-ad-col {
+  order: 2 !important;
+}
+[dir="rtl"] .features-showcase-layout .features__grid {
+  order: 1 !important;
+}
+.features-showcase-layout .features__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: var(--space-6) !important;
+}
+
+@media (max-width: 960px) {
+  .features-showcase-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .features-showcase-layout .features__grid {
+    grid-template-columns: 1fr !important;
+  }
+  .features-ad-col {
+    display: flex;
+    justify-content: center;
+    order: 3 !important;
+    margin-top: var(--space-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .features-showcase-layout .features__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* About Heroic Trio (Content Right - Skyscraper Center - Content Left) */
+.about-heroic-trio {
+  display: grid;
+  grid-template-columns: 1fr 324px 1fr;
+  gap: var(--space-8);
+  align-items: stretch;
+}
+@media (max-width: 1200px) {
+  .about-heroic-trio {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+
+/* Strict Mobile Sticky Bottom Ad Clamp - Prevent Big Square Blowout */
+@media (max-width: 768px) {
+  .sticky-bottom-ad-wrapper {
+    max-height: 75px !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+  .sticky-bottom-ad__tab {
+    margin-bottom: 0 !important;
+  }
+  .sticky-bottom-ad__btn {
+    padding: 3px 14px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    border-radius: 8px 8px 0 0 !important;
+  }
+  .sticky-bottom-ad__content {
+    max-height: 52px !important;
+    height: 52px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+  .sticky-bottom-ad__frame {
+    width: 320px !important;
+    max-width: calc(100vw - 12px) !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    border-radius: 8px 8px 0 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .sticky-bottom-ad__frame ins.adsbygoogle,
+  .sticky-bottom-ad__frame ins.adsbygoogle iframe,
+  .sticky-bottom-ad__frame iframe {
+    width: 320px !important;
+    max-width: calc(100vw - 12px) !important;
+    height: 50px !important;
+    max-height: 50px !important;
+    min-height: 50px !important;
+    overflow: hidden !important;
+  }
+  .sticky-bottom-ad__frame .ad-frame-placeholder {
+    font-size: 9px !important;
+    gap: 2px !important;
+  }
+  .sticky-bottom-ad__frame .ad-frame-placeholder svg {
+    display: none !important;
+  }
+  body {
+    padding-bottom: 75px !important;
+  }
 }
