@@ -5,8 +5,10 @@
 window.CareerAI = window.CareerAI || {};
 window.CareerAI.components = {};
 
-/* --- SVG Icons --- */
+/* --- Comprehensive SVG Icons Dictionary --- */
 window.CareerAI.icons = {
+  sparkles: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>',
+  fileText: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
   resume: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
   cover: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
   interview: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
@@ -43,245 +45,138 @@ window.CareerAI.components.renderHeader = function() {
 
   return `
     <a href="#main-content" class="skip-link">${t('nav.home', 'انتقل إلى المحتوى')}</a>
-    <header class="header" id="header">
-      <div class="header__inner">
-        <a href="/" class="header__logo" onclick="event.preventDefault();CareerAI.router.navigate('/')">
-          <div class="header__logo-icon">FC</div>
-          <div class="header__logo-text">Factor<span>Career</span></div>
+    <header class="header" id="header" role="banner">
+      <div class="container header__inner">
+        
+        <!-- Brand Logo -->
+        <a href="/" class="header__logo" onclick="event.preventDefault();CareerAI.router.navigate('/')" aria-label="Factor Career Home">
+          <span class="logo__text">Factor<span class="logo__highlight">Career</span></span>
+          <span class="logo__badge">FC</span>
         </a>
 
-        <nav class="nav" aria-label="Main Navigation">
-          <a href="/" class="nav__link" data-page="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-          <a href="/tools" class="nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-          <a href="/jobs" class="nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-          <a href="/blog" class="nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-          <a href="/about" class="nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
-          <a href="/contact" class="nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
+        <!-- Desktop Navigation Links -->
+        <nav class="header__nav" id="main-nav" role="navigation" aria-label="Main Navigation">
+          <a href="/" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
+          <a href="/tools" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
+          <a href="/jobs" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
+          <a href="/blog" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
+          <a href="/about" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
+          <a href="/contact" class="nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
         </nav>
 
-        <div style="display:flex;align-items:center;gap:var(--space-3)">
+        <!-- Right Side Header Actions -->
+        <div class="header__actions">
+          
           <!-- Language Switcher Button -->
-          <button class="lang-btn" onclick="CareerAI.i18n.toggleLang()" title="تغيير اللغة / Change Language" aria-label="Change Language">
-            <span style="width:15px;height:15px;display:inline-flex">${icons.globe}</span>
-            <span>${langName}</span>
+          <button class="lang-switch-btn" id="lang-switch" onclick="CareerAI.i18n.toggleLang()" title="Switch Language" aria-label="Toggle language between Arabic and English">
+            <span style="width:16px;height:16px;display:inline-flex">${icons.globe}</span>
+            <span class="lang-switch__label">${langName}</span>
           </button>
 
-          <a href="/tools" class="btn btn--primary btn--sm nav__cta" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'ابدأ الآن')}</a>
+          <!-- Primary CTA Button -->
+          <a href="/tools/resume-builder" class="btn btn--primary btn--sm header__cta" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+            <span>${t('hero.btnBuild', 'ابدأ الآن')}</span>
+          </a>
 
-          <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false">
-            <span class="menu-toggle__line"></span>
-            <span class="menu-toggle__line"></span>
-            <span class="menu-toggle__line"></span>
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle" id="mobile-toggle" onclick="CareerAI.toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="mobile-toggle__bar"></span>
+            <span class="mobile-toggle__bar"></span>
+            <span class="mobile-toggle__bar"></span>
           </button>
+
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
+        <div class="container mobile-nav__inner">
+          <a href="/" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
+          <a href="/tools" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools');CareerAI.closeMobileMenu()">${t('nav.tools', 'الأدوات الذكية')}</a>
+          <a href="/jobs" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/jobs');CareerAI.closeMobileMenu()">${t('nav.jobs', 'الوظائف والفرص')}</a>
+          <a href="/blog" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/blog');CareerAI.closeMobileMenu()">${t('nav.blog', 'المدونة والمقالات')}</a>
+          <a href="/about" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/about');CareerAI.closeMobileMenu()">${t('nav.about', 'من نحن')}</a>
+          <a href="/contact" class="mobile-nav__link" onclick="event.preventDefault();CareerAI.router.navigate('/contact');CareerAI.closeMobileMenu()">${t('nav.contact', 'تواصل معنا')}</a>
+          <div class="mobile-nav__actions" style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem">
+            <a href="/tools/resume-builder" class="btn btn--primary btn--block" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder');CareerAI.closeMobileMenu()">
+              ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
+            </a>
+          </div>
         </div>
       </div>
     </header>
-
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="القائمة الجانبية">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-border-light)">
-        <div class="header__logo-text">Factor<span>Career</span></div>
-        <button class="lang-btn" onclick="CareerAI.i18n.toggleLang();CareerAI.closeMobileMenu()">
-          <span style="width:15px;height:15px;display:inline-flex">${icons.globe}</span>
-          <span>${langName}</span>
-        </button>
-      </div>
-
-      <a href="/" class="mobile-nav__link" data-page="/" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-      <a href="/tools" class="mobile-nav__link" data-page="/tools" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-      <a href="/jobs" class="mobile-nav__link" data-page="/jobs" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-      <a href="/blog" class="mobile-nav__link" data-page="/blog" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-      <a href="/about" class="mobile-nav__link" data-page="/about" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
-      <a href="/contact" class="mobile-nav__link" data-page="/contact" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
-      
-      <div class="mobile-nav__cta">
-        <a href="/tools" class="btn btn--primary btn--full" onclick="event.preventDefault();CareerAI.closeMobileMenu();CareerAI.router.navigate('/tools')">${t('nav.startNow', 'ابدأ الآن')}</a>
-
-      </div>
-    </nav>
   `;
 };
 
 /* --- Footer Component --- */
 window.CareerAI.components.renderFooter = function() {
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
-  const icons = window.CareerAI.icons;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   return `
-    <footer class="footer" id="mainFooter">
-      <!-- Google AdSense - Footer Banner -->
-      <div class="adsense-footer-wrapper">
-        <div class="ad-frame-wrapper ad-frame-footer">
-          <div class="ad-frame-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-            ${isEn ? 'Sponsored' : 'إعلان ممول / Sponsored'}
-          </div>
-          <div class="ad-frame-inner">
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px;max-width:100%;"
-                 data-ad-client="ca-pub-7520213352755959"
-                 data-ad-slot="9900112299"
-                 data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="footer__grid">
-          <div class="footer__brand">
-            <a href="/" class="header__logo" onclick="event.preventDefault();CareerAI.router.navigate('/')">
-              <div class="header__logo-icon">FC</div>
-              <div class="header__logo-text" style="color:white">Factor<span>Career</span></div>
-            </a>
-            <p>${t('footer.brandDesc', 'نساعد الباحثين عن عمل في بناء مسيرة مهنية ناجحة باستخدام منصة Factor Career وأحدث أدوات الذكاء الاصطناعي المجانية.')}</p>
-            <div class="footer__social">
-              <a href="#" class="footer__social-link" aria-label="Twitter">${icons.twitter}</a>
-              <a href="#" class="footer__social-link" aria-label="LinkedIn">${icons.linkedin}</a>
-              <a href="#" class="footer__social-link" aria-label="GitHub">${icons.github}</a>
-            </div>
-          </div>
-
+    <footer class="footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:2.5rem;margin-bottom:3rem">
+          
+          <!-- Column 1: Brand Info -->
           <div>
-            <h3 class="footer__title">${t('footer.quickLinks', 'روابط سريعة')}</h3>
-            <div class="footer__links">
-              <a href="/" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
-              <a href="/tools" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-              <a href="/jobs" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
-              <a href="/blog" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
-              <a href="/about" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
+              <span style="font-size:1.4rem;font-weight:800;color:white">Factor<span style="color:var(--color-primary-light)">Career</span></span>
+              <span class="logo__badge" style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:var(--color-primary);color:white">FC</span>
+            </div>
+            <p style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.6;margin-bottom:1.25rem">
+              ${isEn ? 'Empowering job seekers worldwide with AI tools, ATS resume building, and verified career opportunities.' : 'منصة رائدة تمكّن الباحثين عن عمل بالذكاء الاصطناعي لإنشاء سير ذاتية متوافقة مع ATS واستكشاف أحدث الوظائف الموثقة.'}
+            </p>
+            <div style="font-size:0.85rem;color:var(--color-text-muted);display:flex;align-items:center;gap:6px">
+              <span>📧</span>
+              <a href="mailto:factorcareer@gmail.com" style="color:var(--color-primary-light)">factorcareer@gmail.com</a>
             </div>
           </div>
 
+          <!-- Column 2: Tools Links -->
           <div>
-            <h3 class="footer__title">${t('footer.toolsTitle', 'الأدوات الذكية')}</h3>
-            <div class="footer__links">
-              <a href="/tools/resume-builder" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية'}</a>
-              <a href="/tools/resume-analyzer" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-analyzer')">${isEn ? 'ATS Resume Checker' : 'محلل وفاحص السيرة ATS'}</a>
-              <a href="/tools/cover-letter-generator" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/cover-letter-generator')">${isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم'}</a>
-              <a href="/tools/interview-questions" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/interview-questions')">${isEn ? 'Interview Questions Coach' : 'مولد أسئلة المقابلات'}</a>
-              <a href="/tools/ats-keywords" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/tools/ats-keywords')">${isEn ? 'ATS Keywords Matcher' : 'مستخرج كلمات ATS'}</a>
-            </div>
+            <h4 style="font-size:1rem;font-weight:700;color:white;margin-bottom:1rem">${isEn ? 'AI Career Tools' : 'أدوات الذكاء الاصطناعي'}</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem">
+              <li><a href="/tools/resume-builder" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">${isEn ? 'Resume Builder' : 'منشئ السيرة الذاتية'}</a></li>
+              <li><a href="/tools/resume-analyzer" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-analyzer')">${isEn ? 'ATS Resume Checker' : 'فاحص ومحلل ATS'}</a></li>
+              <li><a href="/tools/cover-letter-generator" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/cover-letter-generator')">${isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم'}</a></li>
+              <li><a href="/tools/interview-questions" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/interview-questions')">${isEn ? 'Interview Prep' : 'مدرب أسئلة المقابلات'}</a></li>
+              <li><a href="/tools/ats-keywords" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/ats-keywords')">${isEn ? 'ATS Keywords Matcher' : 'مستخرج الكلمات المفتاحية'}</a></li>
+            </ul>
           </div>
 
+          <!-- Column 3: Platform Links -->
           <div>
-            <h3 class="footer__title">${t('footer.contactTitle', 'تواصل معنا')}</h3>
-            <div class="footer__links">
-              <a href="mailto:factorcareer@gmail.com" class="footer__link">
-                <span style="width:16px;height:16px;display:inline-flex">${icons.mail}</span>
-                factorcareer@gmail.com
-              </a>
-              <a href="tel:+212642394756" class="footer__link" dir="ltr" style="text-align:inherit">
-                <span style="width:16px;height:16px;display:inline-flex">${icons.phone}</span>
-                +212 642 394 756
-              </a>
-              <a href="/contact" class="footer__link" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">
-                <span style="width:16px;height:16px;display:inline-flex">${icons.mapPin}</span>
-                ${t('footer.location', 'المملكة المغربية، سوق السبت أولاد النمة')}
-              </a>
-            </div>
+            <h4 style="font-size:1rem;font-weight:700;color:white;margin-bottom:1rem">${isEn ? 'Quick Links' : 'روابط سريعة'}</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem">
+              <li><a href="/jobs" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${isEn ? 'Verified Jobs' : 'الوظائف والفرص'}</a></li>
+              <li><a href="/blog" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${isEn ? 'Career Blog' : 'المدونة والمقالات'}</a></li>
+              <li><a href="/about" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${isEn ? 'About Us' : 'من نحن'}</a></li>
+              <li><a href="/contact" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${isEn ? 'Contact Us' : 'تواصل معنا'}</a></li>
+              <li><a href="/admin-login" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/admin-login')">${isEn ? 'Admin Portal' : 'بوابة الإدارة'}</a></li>
+            </ul>
           </div>
+
+          <!-- Column 4: Legal & Privacy -->
+          <div>
+            <h4 style="font-size:1rem;font-weight:700;color:white;margin-bottom:1rem">${isEn ? 'Legal & Privacy' : 'الخصوصية والشروط'}</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem">
+              <li><a href="/privacy" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</a></li>
+              <li><a href="/terms" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${isEn ? 'Terms of Service' : 'شروط الخدمة'}</a></li>
+              <li><a href="/contact" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${isEn ? 'Help & Support' : 'المساعدة والدعم'}</a></li>
+            </ul>
+          </div>
+
         </div>
 
-        <div class="footer__bottom">
-          <p class="footer__copyright">&copy; ${new Date().getFullYear()} Factor Career. ${t('footer.rights', 'جميع الحقوق محفوظة.')}</p>
-          <div class="footer__legal">
-            <a href="/privacy" class="footer__legal-link" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${t('footer.privacy', 'سياسة الخصوصية')}</a>
-            <a href="/terms" class="footer__legal-link" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${t('footer.terms', 'شروط الاستخدام')}</a>
-          </div>
+        <!-- Bottom Copyright Row -->
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.85rem;color:var(--color-text-muted)">
+          <div>© ${new Date().getFullYear()} Factor Career. ${isEn ? 'All rights reserved.' : 'جميع الحقوق محفوظة.'}</div>
+          <div>Official Support: <a href="mailto:factorcareer@gmail.com" style="color:var(--color-primary-light)">factorcareer@gmail.com</a></div>
         </div>
+
       </div>
     </footer>
-
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="${isEn ? 'Back to top' : 'الرجوع للأعلى'}" title="${isEn ? 'Back to top' : 'الرجوع للأعلى'}">
-      <span style="width:18px;height:18px;display:inline-flex">${icons.arrowUp}</span>
-    </button>
-  `;
-};
-
-
-/* --- Cross-Tool Discovery & Quick-Launcher Suite --- */
-window.CareerAI.components.renderOtherTools = function(currentToolId) {
-  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
-  const icons = window.CareerAI.icons;
-
-  const allTools = [
-    {
-      id: 'resume-builder',
-      title: isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي',
-      desc: isEn ? 'Build ATS-optimized resumes with live preview and instant PDF export.' : 'أنشئ سيرة ذاتية متوافقة مع ATS مع معاينة مباشرة وتصدير PDF فوري.',
-      icon: icons.fileText || icons.speed,
-      link: '/tools/resume-builder',
-      badge: isEn ? 'Popular' : 'الأكثر طلباً'
-    },
-    {
-      id: 'resume-analyzer',
-      title: isEn ? 'ATS Resume Checker' : 'محلل وفاحص السيرة ATS',
-      desc: isEn ? 'Score your CV against job descriptions and uncover missing keywords.' : 'افحص نسبة توافق سيرتك مع الوظائف واكتشف الكلمات الناقصة.',
-      icon: icons.check,
-      link: '/tools/resume-analyzer',
-      badge: isEn ? 'Smart Scan' : 'فحص ذكي'
-    },
-    {
-      id: 'cover-letter-generator',
-      title: isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم',
-      desc: isEn ? 'Generate tailored, compelling cover letters in seconds with AI.' : 'ولّد خطابات تقديم احترافية ومخصصة لكل وظيفة بضغطة زر.',
-      icon: icons.mail,
-      link: '/tools/cover-letter-generator',
-      badge: isEn ? 'AI Writer' : 'توليد فوري'
-    },
-    {
-      id: 'interview-questions',
-      title: isEn ? 'Interview Coach' : 'مدرب أسئلة المقابلات',
-      desc: isEn ? 'Practice real-world interview questions with model STAR answers.' : 'تدرّب على أسئلة المقابلات مع إجابات نموذجية بأسلوب STAR.',
-      icon: icons.users,
-      link: '/tools/interview-questions',
-      badge: isEn ? 'STAR Method' : 'نموذج STAR'
-    },
-    {
-      id: 'ats-keywords',
-      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج كلمات ATS',
-      desc: isEn ? 'Extract high-priority skills and keywords from any job posting.' : 'استخرج أهم المهارات والكلمات المفتاحية من إعلانات التوظيف.',
-      icon: icons.target,
-      link: '/tools/ats-keywords',
-      badge: isEn ? 'Keywords' : 'مستخرج كلمات'
-    }
-  ];
-
-  const otherTools = allTools.filter(t => t.id !== currentToolId);
-
-  return `
-    <div class="other-tools-section" style="margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--color-border-light);">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
-        <div>
-          <h3 style="font-size:1.3rem;font-weight:800;color:var(--color-text);margin:0 0 4px 0">
-            ⚡ ${isEn ? 'Explore Other Free AI Career Tools' : 'استكشف باقي أدوات المنصة الذكية'}
-          </h3>
-          <p style="font-size:0.88rem;color:var(--color-text-muted);margin:0">
-            ${isEn ? 'Use our complete suite of career intelligence tools to boost your hiring chances.' : 'استفد من باقي أدوات الذكاء الاصطناعي المجانية لتطوير ملفك المهني بالكامل.'}
-          </p>
-        </div>
-        <a href="/tools" class="btn btn--secondary btn--sm" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
-          ${isEn ? 'View All 5 Tools →' : 'عرض كافة الأدوات (5) ←'}
-        </a>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;">
-        ${otherTools.map(tool => `
-          <div class="card" style="cursor:pointer;padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between;position:relative" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
-            <span class="tag tag--accent" style="position:absolute;top:1rem;${isEn ? 'right' : 'left'}:1rem;font-size:0.7rem">${tool.badge}</span>
-            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
-              <span style="width:28px;height:28px;display:inline-flex;color:var(--color-primary)">${tool.icon}</span>
-              <h4 style="font-size:1rem;font-weight:700;color:var(--color-text);margin:0">${tool.title}</h4>
-            </div>
-            <p style="font-size:0.82rem;color:var(--color-text-muted);margin:0 0 0.75rem 0;line-height:1.5">${tool.desc}</p>
-            <a href="${tool.link}" class="card__link" style="font-size:0.82rem;font-weight:700" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
-              ${isEn ? 'Launch Tool →' : 'فتح الأداة ←'}
-            </a>
-          </div>
-        `).join('')}
-      </div>
-    </div>
   `;
 };

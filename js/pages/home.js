@@ -8,14 +8,14 @@ window.CareerAI.pages = window.CareerAI.pages || {};
 window.CareerAI.pages.home = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
-  const icons = window.CareerAI.icons;
+  const icons = window.CareerAI.icons || {};
 
   const toolsList = [
     {
       id: 'resume-builder',
       title: isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي',
       desc: isEn ? 'Create professional, ATS-optimized resumes in minutes with intelligent suggestions.' : 'أنشئ سيرة ذاتية احترافية ومتوافقة مع أنظمة الفرز الآلي ATS مع اقتراحات ذكية وتصدير PDF فوري.',
-      icon: icons.fileText,
+      icon: icons.fileText || icons.resume,
       tag: isEn ? 'Most Popular' : 'الأكثر استخداماً',
       color: 'primary',
       link: '/tools/resume-builder'
@@ -41,77 +41,75 @@ window.CareerAI.pages.home = function() {
     {
       id: 'interview-questions',
       title: isEn ? 'Interview Coach' : 'مدرب أسئلة المقابلات',
-      desc: isEn ? 'Practice real-world interview questions tailored to your field with STAR answers.' : 'تدرّب على أسئلة المقابلات الوظيفية الواقعية مع إجابات نموذجية وفق أسلوب STAR.',
-      icon: icons.users,
+      desc: isEn ? 'Practice real-world interview questions tailored to your field with STAR method answers.' : 'تدرّب على أسئلة المقابلات الوظيفية الواقعية وإجابات نموذجية وفق نموذج STAR الاحترافي.',
+      icon: icons.interview,
       tag: isEn ? 'STAR Method' : 'نموذج STAR',
-      color: 'warning',
+      color: 'primary',
       link: '/tools/interview-questions'
     },
     {
       id: 'ats-keywords',
-      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج كلمات ATS',
-      desc: isEn ? 'Extract high-priority skills and keywords from any job description in seconds.' : 'استخرج أهم المهارات والكلمات المفتاحية من إعلانات التوظيف لتعزيز قوة سيرتك الذاتية.',
-      icon: icons.target,
-      tag: isEn ? 'High Priority' : 'مستخرج مهارات',
-      color: 'primary',
+      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج الكلمات المفتاحية',
+      desc: isEn ? 'Extract essential job keywords and match them against your resume skills in seconds.' : 'استخرج الكلمات المفتاحية والمهارات الأساسية من وصف الوظيفة لرفع فرص اجتياز الفرز الآلي.',
+      icon: icons.skills,
+      tag: isEn ? 'Keyword Optimizer' : 'مطابقة ذكية',
+      color: 'accent',
       link: '/tools/ats-keywords'
     }
   ];
 
-  const faqs = [
-    {
-      q: isEn ? 'Are Factor Career tools completely free to use?' : 'هل أدوات Factor Career مجانية بالكامل؟',
-      a: isEn ? 'Yes, all AI career tools on Factor Career are 100% free with unlimited access and no hidden charges or subscriptions required.' : 'نعم، جميع أدوات المنصة مجانية بنسبة 100% بدون أي رسوم خفية أو اشتراكات، ويمكنك استخدامها وتنزيل النتائج بصيغة PDF بدون حدود.'
-    },
-    {
-      q: isEn ? 'What is an ATS-friendly resume?' : 'ما هي السيرة الذاتية المتوافقة مع أنظمة ATS؟',
-      a: isEn ? 'An ATS (Applicant Tracking System) friendly resume uses clean formatting and industry-standard keywords so automated recruiting software can accurately parse your qualifications.' : 'السيرة المتوافقة مع ATS هي سيرة مصممة بهيكل قياسي وكلمات مفتاحية واضحة يفهمها الروبوت ونظام الفرز الآلي الذي تستخدمه 95% من الشركات الكبرى قبل وصول السيرة للمسؤول البشري.'
-    },
-    {
-      q: isEn ? 'Do I need to create an account to download my resume?' : 'هل أحتاج لإنشاء حساب لتنزيل سيرتي الذاتية؟',
-      a: isEn ? 'No registration is required. You can build, customize, and download your professional resume in PDF format instantly.' : 'لا، لا يتطلب الموقع أي تسجيل دخول إجباري. يمكنك بناء سيرتك الذاتية وتنزيلها بصيغة PDF فوراً مع الحفاظ التام على خصوصية بياناتك.'
-    },
-    {
-      q: isEn ? 'How does the AI Resume Checker work?' : 'كيف يعمل فاحص السيرة الذاتية بالذكاء الاصطناعي؟',
-      a: isEn ? 'It compares your resume text with your target job description to calculate keyword density, layout compliance, and gives you missing keywords with actionable advice.' : 'يقوم بمقارنة محتوى سيرتك الذاتية مع نص الإعلان الوظيفي المستهدف، ويحلل المهارات والكلمات الناقصة ويعطيك تقييماً دقيقاً مع خطوات عملية لرفع نسبة القبول.'
-    }
+  const faqs = isEn ? [
+    { q: 'Is Factor Career completely free?', a: 'Yes! All core features including the AI Resume Builder, Cover Letter Generator, ATS Scanner, and Job Listings are 100% free with unlimited access.' },
+    { q: 'What makes an ATS-friendly resume?', a: 'An ATS-friendly resume uses standard typography, clean structural hierarchy without complex tables, clear section headings, and relevant job keywords.' },
+    { q: 'Can I export my resume as PDF?', a: 'Yes! You can instantly download and print your resume in standard high-resolution PDF format with one click.' },
+    { q: 'How often are jobs updated on Factor Career?', a: 'Our automated AI pipeline verifies and refreshes jobs multiple times every day to ensure only active, legitimate career opportunities are listed.' }
+  ] : [
+    { q: 'هل استخدام Factor Career مجاني بالكامل؟', a: 'نعم! جميع الأدوات الأساسية بما في ذلك منشئ السيرة الذاتية، ومولد خطابات التقديم، وفاحص ATS، وتصفح الوظائف مجانية 100% دون أي رسوم.' },
+    { q: 'ما الذي يجعل السيرة الذاتية متوافقة مع نظام ATS؟', a: 'السيرة المتوافقة مع ATS تعتمد على هيكل نصوص قياسي ونظيف بدون جداول معقدة، واستخدام عناوين واضحة وكلمات مفتاحية مطابقة للوظيفة.' },
+    { q: 'هل يمكنني تنزيل السيرة الذاتية بتنسيق PDF؟', a: 'نعم! يمكنك طباعة وتنزيل سيرتك الذاتية فوراً بتنسيق PDF عالي الدقة بنقرة زر واحدة.' },
+    { q: 'كم مرة يتم تحديث الوظائف في المنصة؟', a: 'يقوم وكيل الذكاء الاصطناعي بتدقيق وتحديث قائمة الوظائف آلياً عدة مرات يومياً لضمان توفير فرص حقيقية وموثوقة فقط.' }
   ];
 
   return `
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" style="position:relative;overflow:hidden;padding:3rem 0 2rem;background:var(--gradient-hero)">
       <div class="hero__bg-glow"></div>
-      <div class="container">
-        <div class="hero__content">
-          <div class="hero__badge animate-on-scroll">
-            <span style="width:18px;height:18px;display:inline-flex">${icons.sparkles}</span>
-            <span>${t('hero.badge', 'منصة السيرة الذاتية والبحث عن وظائف بالذكاء الاصطناعي')}</span>
+      <div class="container" style="position:relative;z-index:2">
+        <div class="hero__content" style="max-width:860px;margin:0 auto;text-align:center">
+          
+          <!-- Hero Badge (Safe SVG Icon) -->
+          <div class="hero__badge animate-on-scroll" style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:30px;padding:6px 16px;margin-bottom:1.5rem">
+            <span style="width:16px;height:16px;display:inline-flex;color:#818cf8">${icons.sparkles || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>'}</span>
+            <span style="font-size:0.85rem;font-weight:700;color:#c7d2fe">${t('hero.badge', 'منصة السيرة الذاتية والبحث عن وظائف بالذكاء الاصطناعي')}</span>
           </div>
 
-          <h1 class="hero__title animate-on-scroll delay-1">
+          <!-- Hero Title -->
+          <h1 class="hero__title animate-on-scroll delay-1" style="font-size:clamp(2rem, 5vw, 3rem);font-weight:800;color:#ffffff;line-height:1.25;margin-bottom:1.25rem">
             ${isEn ? 'Craft Winning Resumes & Land Your <span class="text-gradient">Dream Career</span>' : 'اصنع <span class="text-gradient">السيرة الذاتية</span> الاحترافية وابدأ مسيرتك المهنية بثقة'}
           </h1>
 
-          <p class="hero__subtitle animate-on-scroll delay-2">
-            ${isEn ? 'Build ATS-optimized resumes, practice job interviews with AI STAR models, generate persuasive cover letters, and discover career opportunities.' : 'صمم سيرة ذاتية احترافية متوافقة مع أنظمة ATS، تدرّب على أسئلة المقابلات، واستخرج الكلمات المفتاحية بنقرة واحدة مجاناً.'}
+          <!-- Hero Subtitle -->
+          <p class="hero__subtitle animate-on-scroll delay-2" style="font-size:1.1rem;color:#cbd5e1;line-height:1.6;max-width:720px;margin:0 auto 2rem">
+            ${isEn ? 'Build ATS-optimized resumes, practice job interviews with AI STAR models, generate persuasive cover letters, and discover verified career opportunities.' : 'صمم سيرة ذاتية احترافية متوافقة مع أنظمة ATS، تدرّب على أسئلة المقابلات، واستخرج الكلمات المفتاحية بنقرة واحدة مجاناً.'}
           </p>
 
-          <div class="hero__actions animate-on-scroll delay-3">
-            <a href="/tools/resume-builder" class="btn btn--primary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+          <!-- Hero Action Buttons -->
+          <div class="hero__actions animate-on-scroll delay-3" style="display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:2rem">
+            <a href="/tools/resume-builder" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.4)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
               ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
             </a>
             <a href="/tools" class="btn btn--secondary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
-              ${t('hero.btnExplore', 'استكشف جميع الأدوات والوظائف')}
+              ${t('hero.btnExplore', 'استكشف جميع الوظائف والأدوات')}
             </a>
           </div>
 
-          <!-- Hero Square Ad Placement (300x250) -->
-          <div class="hero-square-ad animate-on-scroll delay-3">
-            <div class="hero-square-ad__frame">
-              <span class="hero-square-ad__label">
+          <!-- Hero Centered Google Ad Placement (300x250) -->
+          <div class="hero-ad-container animate-on-scroll delay-3" style="display:flex;justify-content:center;align-items:center;margin:2rem auto 1.5rem;width:100%">
+            <div class="hero-square-ad__card" style="margin:0 auto">
+              <div class="hero-square-ad__label">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:3px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-                ${t('common.sponsored', 'إعلان ممول / Sponsored')}
-              </span>
+                ${t('common.sponsored', 'إعلان ممول / SPONSORED')}
+              </div>
               <div class="hero-square-ad__box">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:300px;height:250px"
@@ -123,95 +121,28 @@ window.CareerAI.pages.home = function() {
           </div>
 
           <!-- Stats / Highlights Row -->
-          <div class="hero__stats animate-on-scroll delay-4">
-            <div class="hero__stat">
-              <div class="hero__stat-num">100%</div>
-              <div class="hero__stat-label">${isEn ? 'Free Forever' : 'مجاني بالكامل'}</div>
+          <div class="hero__stats animate-on-scroll delay-4" style="display:flex;justify-content:center;align-items:center;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.12);flex-wrap:wrap">
+            <div class="hero__stat" style="text-align:center;min-width:100px">
+              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#ffffff;line-height:1.2;text-shadow:0 0 20px rgba(99,102,241,0.5)">100%</div>
+              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'Free Forever' : 'مجاني بالكامل'}</div>
             </div>
-            <div class="hero__stat-divider"></div>
-            <div class="hero__stat">
-              <div class="hero__stat-num">5+</div>
-              <div class="hero__stat-label">${isEn ? 'AI Career Tools' : 'أدوات ذكاء اصطناعي'}</div>
+            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
+            <div class="hero__stat" style="text-align:center;min-width:100px">
+              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#38bdf8;line-height:1.2;text-shadow:0 0 20px rgba(56,189,248,0.5)">5+</div>
+              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'AI Smart Tools' : 'أدوات ذكاء اصطناعي'}</div>
             </div>
-            <div class="hero__stat-divider"></div>
-            <div class="hero__stat">
-              <div class="hero__stat-num">ATS</div>
-              <div class="hero__stat-label">${isEn ? 'Optimized Format' : 'متوافق مع الفرز الآلي'}</div>
+            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
+            <div class="hero__stat" style="text-align:center;min-width:100px">
+              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#34d399;line-height:1.2;text-shadow:0 0 20px rgba(52,211,153,0.5)">ATS</div>
+              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'ATS Friendly' : 'متوافق مع الفرز الآلي'}</div>
             </div>
-            <div class="hero__stat-divider"></div>
-            <div class="hero__stat">
-              <div class="hero__stat-num">PDF</div>
-              <div class="hero__stat-label">${isEn ? 'Instant Download' : 'تحميل فوري'}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section with 300x600 Skyscraper Ad -->
-    <section class="section" id="features" style="background:var(--color-bg-secondary)">
-      <div class="container">
-        <div class="section__header animate-on-scroll">
-          <span class="section__badge">
-            <span style="width:16px;height:16px;display:inline-flex">${icons.shield}</span>
-            ${isEn ? 'Why Factor Career?' : 'لماذا تختار Factor Career؟'}
-          </span>
-          <h2 class="section__title">${isEn ? 'Features that Make Us the <span class="text-gradient">Best Choice</span>' : 'مميزات تجعلنا <span class="text-gradient">الخيار الأفضل</span>'}</h2>
-          <p class="section__subtitle">${isEn ? 'Everything you need to level up your career in one place with cutting-edge AI technologies.' : 'كل ما تحتاجه للارتقاء بمسيرتك المهنية في مكان واحد وبأحدث تقنيات الذكاء الاصطناعي.'}</p>
-        </div>
-
-        <div class="features-showcase-layout">
-          <!-- Features 2x2 Grid -->
-          <div class="features__grid">
-            <div class="card animate-on-scroll delay-1">
-              <div class="card__icon card__icon--primary">
-                <span style="width:28px;height:28px;display:inline-flex">${icons.speed}</span>
-              </div>
-              <h3 class="card__title">${isEn ? 'ATS Resume Builder' : 'صانع السيرة الذاتية ATS'}</h3>
-              <p class="card__text">${isEn ? 'Build error-free, ATS-friendly resumes that pass employer scanning systems.' : 'أنشئ سيرة ذاتية احترافية خالية من الأخطاء ومتوافقة مع أنظمة تتبع المتقدمين الآلية لضمان وصولك للمقابلة.'}</p>
-            </div>
-
-            <div class="card animate-on-scroll delay-2">
-              <div class="card__icon card__icon--accent">
-                <span style="width:28px;height:28px;display:inline-flex">${icons.target}</span>
-              </div>
-              <h3 class="card__title">${isEn ? 'Resume ATS Audit' : 'فحص وتدقيق السيرة الذاتية'}</h3>
-              <p class="card__text">${isEn ? 'Get instant feedback on resume strength and missing keywords for targeted jobs.' : 'احصل على تحليل فوري لنقاط القوة والضعف في سيرتك الذاتية مع مقترحات عملية لتحسين صياغة الإنجازات.'}</p>
-            </div>
-
-            <div class="card animate-on-scroll delay-3">
-              <div class="card__icon card__icon--primary">
-                <span style="width:28px;height:28px;display:inline-flex">${icons.easy}</span>
-              </div>
-              <h3 class="card__title">${isEn ? 'Smart Cover Letters' : 'رسائل التغطية الذكية'}</h3>
-              <p class="card__text">${isEn ? 'Generate convincing cover letters tailored to every job description with AI.' : 'ولّد رسائل تقديم Cover Letters مقنعة ومخصصة لكل وظيفة بضغطة زر وبعدة لغات.'}</p>
-            </div>
-
-            <div class="card animate-on-scroll delay-4">
-              <div class="card__icon card__icon--accent">
-                <span style="width:28px;height:28px;display:inline-flex">${icons.free}</span>
-              </div>
-              <h3 class="card__title">${isEn ? 'Job Interview Prep' : 'التحضير للمقابلات الوظيفية'}</h3>
-              <p class="card__text">${isEn ? 'Practice common interview questions with STAR method structured answers.' : 'تدرّب على أسئلة المقابلات النموذجية في مجالك مع أفضل إجابات باستراتيجية STAR الاحترافية.'}</p>
+            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
+            <div class="hero__stat" style="text-align:center;min-width:100px">
+              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#a78bfa;line-height:1.2;text-shadow:0 0 20px rgba(167,139,250,0.5)">فوري</div>
+              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'Instant PDF Export' : 'تحميل فوري'}</div>
             </div>
           </div>
 
-          <!-- Vertical Half-Page Skyscraper (300x600) on the Left/Side -->
-          <div class="features-ad-col animate-on-scroll">
-            <div class="ad-frame-wrapper ad-frame-skyscraper">
-              <div class="ad-frame-label">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-                ${t('common.sponsored', 'إعلان ممول / Sponsored')}
-              </div>
-              <div class="ad-frame-inner">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:600px;max-width:100%;"
-                     data-ad-client="ca-pub-7520213352755959"
-                     data-ad-slot="4455667788"
-                     data-ad-format="vertical"></ins>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -245,7 +176,7 @@ window.CareerAI.pages.home = function() {
           `).join('')}
         </div>
 
-        <!-- Google AdSense - In Gray Space (Tools Section) -->
+        <!-- Google AdSense - Horizontal Banner (728x90) -->
         <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin: 3rem auto 0; max-width: 760px;">
           <div class="ad-frame-label">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
