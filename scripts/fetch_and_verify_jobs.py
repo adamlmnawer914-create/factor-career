@@ -311,9 +311,8 @@ def run_pipeline():
         idx_jobs = db_code.find('defaultJobs:')
         idx_init = db_code.find('init:', idx_jobs) if idx_jobs != -1 else -1
         if idx_jobs != -1 and idx_init != -1:
-            new_db_code = db_code[:idx_jobs] + 'defaultJobs: ' + jobs_json_str + ',
-
-    ' + db_code[idx_init:]
+            separator = ",\n\n    "
+            new_db_code = db_code[:idx_jobs] + "defaultJobs: " + jobs_json_str + separator + db_code[idx_init:]
             with open(db_file, "w", encoding="utf-8") as f:
                 f.write(new_db_code)
             print("[Step 4] Synced into js/db.js safely without escape corruption")
