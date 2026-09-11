@@ -466,7 +466,7 @@ window.CareerAI.db = {
       description_ar: 'نبحث عن مطور واجهات محترف لبناء تطبيقات ويب عصرية وسريعة الاستجابة.',
       requirements: '3+ years web development experience, mastery of UI/UX best practices.',
       requirements_ar: 'خبرة 3+ سنوات في تطوير الويب وإتقان React و JavaScript.',
-      applyUrl: 'mailto:careerfactor@gmail.com?subject=Application for Frontend Developer Position',
+      applyUrl: 'mailto:factorcareer@gmail.com?subject=Application for Frontend Developer Position',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
       status: 'active',
       createdAt: '2026-08-20'
@@ -485,7 +485,7 @@ window.CareerAI.db = {
       description_ar: 'إدارة عمليات التوظيف وفرز السير الذاتية وإجراء المقابلات الوظيفية.',
       requirements: 'Degree in HR or Business, hands-on experience with modern ATS software.',
       requirements_ar: 'شهادة في الموارد البشرية وخبرة في أنظمة التتبع ATS.',
-      applyUrl: 'mailto:careerfactor@gmail.com?subject=Application for HR Recruiter Position',
+      applyUrl: 'mailto:factorcareer@gmail.com?subject=Application for HR Recruiter Position',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
       status: 'active',
       createdAt: '2026-08-19'

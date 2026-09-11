@@ -168,9 +168,9 @@ window.CareerAI.components.renderFooter = function() {
           <div>
             <h3 class="footer__title">${t('footer.contactTitle', 'تواصل معنا')}</h3>
             <div class="footer__links">
-              <a href="mailto:careerfactor@gmail.com" class="footer__link">
+              <a href="mailto:factorcareer@gmail.com" class="footer__link">
                 <span style="width:16px;height:16px;display:inline-flex">${icons.mail}</span>
-                careerfactor@gmail.com
+                factorcareer@gmail.com
               </a>
               <a href="tel:+212642394756" class="footer__link" dir="ltr" style="text-align:inherit">
                 <span style="width:16px;height:16px;display:inline-flex">${icons.phone}</span>

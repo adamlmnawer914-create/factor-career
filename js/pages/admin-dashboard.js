@@ -236,7 +236,7 @@ window.CareerAI.pages.adminDashboard = function() {
 
             <div class="form-group">
               <label class="form-label">?????? ?????????? ?????? ??????</label>
-              <input type="email" class="form-input" value="careerfactor@gmail.com" readonly>
+              <input type="email" class="form-input" value="factorcareer@gmail.com" readonly>
             </div>
 
             <div class="form-group">
@@ -332,7 +332,7 @@ window.CareerAI.pages.adminDashboard = function() {
               <button type="button" onclick="CareerAI.execFormat('italic')" title="????"><i>I</i></button>
               <button type="button" onclick="CareerAI.execFormat('formatBlock', 'h3')" title="????? 3">H3</button>
               <button type="button" onclick="CareerAI.execFormat('formatBlock', 'p')" title="????">P</button>
-              <button type="button" onclick="CareerAI.execFormat('insertUnorderedList')" title="?????">• ?????</button>
+              <button type="button" onclick="CareerAI.execFormat('insertUnorderedList')" title="?????">ï¿½ ?????</button>
               <button type="button" onclick="CareerAI.promptLink()" title="????">?? ????</button>
             </div>
             <div id="editorContent" class="editor-rich-content" contenteditable="true" style="min-height:180px"></div>
@@ -441,7 +441,7 @@ window.CareerAI.pages.adminDashboard = function() {
 
           <div class="form-group">
             <label class="form-label">???? ??????? ?? ?????? ?????????? *</label>
-            <input type="text" id="editorJobApplyUrl" class="form-input" required placeholder="mailto:careerfactor@gmail.com ?? https://company.com/apply">
+            <input type="text" id="editorJobApplyUrl" class="form-input" required placeholder="mailto:factorcareer@gmail.com ?? https://company.com/apply">
           </div>
 
           <div class="form-group">
@@ -701,7 +701,7 @@ window.CareerAI.openJobModal = function(jobId = null) {
   } else {
     title.innerText = '????? ???? ??? ?????';
     document.getElementById('editorJobId').value = '';
-    document.getElementById('editorJobApplyUrl').value = 'mailto:careerfactor@gmail.com';
+    document.getElementById('editorJobApplyUrl').value = 'mailto:factorcareer@gmail.com';
   }
 
   overlay.classList.add('active');

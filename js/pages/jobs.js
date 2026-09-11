@@ -104,7 +104,7 @@ window.CareerAI.pages.jobs = function() {
                     </div>
                     <div class="job-card__footer">
                       <span style="font-size:var(--text-xs);color:var(--color-text-muted)">📅 ${job.createdAt || 'Recent'}</span>
-                      <a href="${job.applyUrl || 'mailto:careerfactor@gmail.com'}" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                      <a href="${job.applyUrl || 'mailto:factorcareer@gmail.com'}" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                         ${t('common.applyNow', 'قدّم الآن')}
                         <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
                       </a>

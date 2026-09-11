@@ -56,7 +56,7 @@ window.CareerAI.pages.terms = function() {
           <p>${isEn ? 'All branding, design assets, and interface components are proprietary to Factor Career and protected by intellectual property laws.' : 'جميع المحتويات، العلامات التجارية، والشعارات والمواد المتاحة على المنصة هي ملك لمنصة Factor Career ومحمية بموجب حقوق الملكية الفكرية والقوانين ذات الصلة.'}</p>
 
           <h2>${isEn ? '4. Contact & Inquiries' : '4. تواصل معنا'}</h2>
-          <p>${isEn ? 'For questions concerning our Terms of Service, contact us at: <a href="mailto:careerfactor@gmail.com" style="color:var(--color-primary);font-weight:600">careerfactor@gmail.com</a>.' : 'إذا كان لديك أي استفسارات حول شروط الاستخدام، يرجى التواصل معنا عبر: <a href="mailto:careerfactor@gmail.com" style="color:var(--color-primary);font-weight:600">careerfactor@gmail.com</a>.'}</p>
+          <p>${isEn ? 'For questions concerning our Terms of Service, contact us at: <a href="mailto:factorcareer@gmail.com" style="color:var(--color-primary);font-weight:600">factorcareer@gmail.com</a>.' : 'إذا كان لديك أي استفسارات حول شروط الاستخدام، يرجى التواصل معنا عبر: <a href="mailto:factorcareer@gmail.com" style="color:var(--color-primary);font-weight:600">factorcareer@gmail.com</a>.'}</p>
             </div>
           </div>
 

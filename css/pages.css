@@ -3136,7 +3136,7 @@
 }
 
 
-/* Features Showcase Layout with 300x600 Skyscraper on Left */
+/* Features Showcase Layout with 300x600 Skyscraper */
 .features-showcase-layout {
   display: grid !important;
   grid-template-columns: 324px minmax(0, 1fr) !important;
@@ -3164,26 +3164,46 @@
   gap: var(--space-6) !important;
 }
 
-@media (max-width: 960px) {
-  .features-showcase-layout {
+/* Mobile & Tablet Responsive Fix for Features & 300x600 Ad */
+@media (max-width: 1024px) {
+  .features-showcase-layout,
+  [dir="rtl"] .features-showcase-layout,
+  [dir="ltr"] .features-showcase-layout {
+    display: flex !important;
+    flex-direction: column !important;
     grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
   }
-  .features-showcase-layout .features__grid {
+  .features-showcase-layout .features__grid,
+  [dir="rtl"] .features-showcase-layout .features__grid,
+  [dir="ltr"] .features-showcase-layout .features__grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
+    order: 1 !important;
+    width: 100% !important;
+    gap: var(--space-4) !important;
   }
-  .features-ad-col {
-    display: flex;
-    justify-content: center;
-    order: 3 !important;
-    margin-top: var(--space-8);
+  .features-showcase-layout .features-ad-col,
+  [dir="rtl"] .features-showcase-layout .features-ad-col,
+  [dir="ltr"] .features-showcase-layout .features-ad-col {
+    order: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: var(--space-6) !important;
   }
 }
 
-@media (max-width: 640px) {
-  .features-showcase-layout .features__grid {
+/* Responsive Builder & Tool Workspaces on Mobile */
+@media (max-width: 960px) {
+  .builder-layout {
     grid-template-columns: 1fr !important;
   }
+  .preview-card {
+    position: static !important;
+  }
 }
+
 
 
 /* About Heroic Trio (Content Right - Skyscraper Center - Content Left) */

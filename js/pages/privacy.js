@@ -54,8 +54,8 @@ window.CareerAI.pages.privacy = function() {
           </p>
           <p>
             ${isEn
-              ? 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at <a href="mailto:careerfactor@gmail.com">careerfactor@gmail.com</a>.'
-              : 'إذا كانت لديك أسئلة إضافية أو تحتاج إلى مزيد من المعلومات حول سياسة الخصوصية الخاصة بنا، فلا تتردد في التواصل معنا عبر البريد الإلكتروني careerfactor@gmail.com.'}
+              ? 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at <a href="mailto:factorcareer@gmail.com">factorcareer@gmail.com</a>.'
+              : 'إذا كانت لديك أسئلة إضافية أو تحتاج إلى مزيد من المعلومات حول سياسة الخصوصية الخاصة بنا، فلا تتردد في التواصل معنا عبر البريد الإلكتروني factorcareer@gmail.com.'}
           </p>
 
           <h2>${isEn ? '2. Client-Side Resume & Career Data Processing' : '2. معالجة بيانات السيرة الذاتية داخل المتصفح'}</h2>
@@ -120,8 +120,8 @@ window.CareerAI.pages.privacy = function() {
           <h2>${isEn ? '9. Consent and Contact Information' : '9. الموافقة والتواصل'}</h2>
           <p>
             ${isEn 
-              ? 'By using our website, you hereby consent to our Privacy Policy and agree to its terms. For any questions or notices regarding this policy, please reach us at: <a href="mailto:careerfactor@gmail.com">careerfactor@gmail.com</a>.' 
-              : 'باستخدامك لموقعنا، فإنك توافق على سياسة الخصوصية الخاصة بنا وشروطها. لأي استفسارات، يرجى مراسلتنا عبر: <a href="mailto:careerfactor@gmail.com">careerfactor@gmail.com</a>.'}
+              ? 'By using our website, you hereby consent to our Privacy Policy and agree to its terms. For any questions or notices regarding this policy, please reach us at: <a href="mailto:factorcareer@gmail.com">factorcareer@gmail.com</a>.' 
+              : 'باستخدامك لموقعنا، فإنك توافق على سياسة الخصوصية الخاصة بنا وشروطها. لأي استفسارات، يرجى مراسلتنا عبر: <a href="mailto:factorcareer@gmail.com">factorcareer@gmail.com</a>.'}
           </p>
             </div>
           </div>

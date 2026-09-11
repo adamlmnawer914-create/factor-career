@@ -96,13 +96,13 @@ window.CareerAI.pages.contact = function() {
             <p class="contact-info__subtitle">${isEn ? 'Feel free to connect directly via email or our support center.' : 'يمكنك أيضاً التواصل معنا عبر القنوات التالية مباشرة'}</p>
 
             <div class="contact-info__list">
-              <a href="mailto:careerfactor@gmail.com" class="contact-info__item">
+              <a href="mailto:factorcareer@gmail.com" class="contact-info__item">
                 <div class="contact-info__icon">
                   <span style="width:24px;height:24px;display:inline-flex">${icons.mail}</span>
                 </div>
                 <div>
                   <div class="contact-info__label">${isEn ? 'Official Email' : 'البريد الإلكتروني'}</div>
-                  <div class="contact-info__value">careerfactor@gmail.com</div>
+                  <div class="contact-info__value">factorcareer@gmail.com</div>
                 </div>
               </a>
 
