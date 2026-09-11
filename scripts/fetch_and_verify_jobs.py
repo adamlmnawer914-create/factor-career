@@ -308,13 +308,17 @@ def run_pipeline():
         with open(db_file, "r", encoding="utf-8") as f:
             db_code = f.read()
         jobs_json_str = json.dumps(all_jobs, ensure_ascii=False, indent=4)
-        new_db_code = re.sub(r"(defaultJobs:\s*)\[[\s\S]*?\](\s*[,\n])", rf"\1{jobs_json_str}\2", db_code, count=1)
-        if new_db_code == db_code:
-            print("[Step 4] Warning: could not find defaultJobs pattern in db.js")
-        else:
+        idx_jobs = db_code.find('defaultJobs:')
+        idx_init = db_code.find('init:', idx_jobs) if idx_jobs != -1 else -1
+        if idx_jobs != -1 and idx_init != -1:
+            new_db_code = db_code[:idx_jobs] + 'defaultJobs: ' + jobs_json_str + ',
+
+    ' + db_code[idx_init:]
             with open(db_file, "w", encoding="utf-8") as f:
                 f.write(new_db_code)
-            print("[Step 4] Synced into js/db.js")
+            print("[Step 4] Synced into js/db.js safely without escape corruption")
+        else:
+            print("[Step 4] Warning: could not locate defaultJobs boundary in db.js")
     else:
         print("[Step 4] js/db.js not found")
 
