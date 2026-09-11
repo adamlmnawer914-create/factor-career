@@ -308,19 +308,9 @@ window.CareerAI.i18n = {
 
     // Re-render Header & Footer with new language texts
     const app = document.getElementById('app');
-    const existingHeader = document.getElementById('header');
-    const existingMobileNav = document.getElementById('mobileNav');
-    const existingOverlay = document.getElementById('mobileOverlay');
-    const existingAdSection = document.querySelector('.ad-section-wrapper');
-    const existingFooter = document.querySelector('footer.footer');
-    const existingBackToTop = document.getElementById('backToTop');
-
-    if (existingHeader) existingHeader.remove();
-    if (existingMobileNav) existingMobileNav.remove();
-    if (existingOverlay) existingOverlay.remove();
-    if (existingAdSection) existingAdSection.remove();
-    if (existingFooter) existingFooter.remove();
-    if (existingBackToTop) existingBackToTop.remove();
+    
+    // Completely remove all old headers, footers, and footer ad wrappers
+    document.querySelectorAll('#header, #mobileNav, #mobileOverlay, .adsense-footer-wrapper, .ad-section-wrapper, footer.footer, #mainFooter, #backToTop').forEach(el => el.remove());
 
     if (app && window.CareerAI.components) {
       try { app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader()); } catch(e){ console.error(e); }

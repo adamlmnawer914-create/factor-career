@@ -3000,18 +3000,7 @@
   transform: rotate(180deg) !important;
 }
 
-@media (max-width: 768px) {
-  .sticky-bottom-ad__frame {
-    max-width: 340px !important;
-    min-height: 50px !important;
-    max-height: 70px !important;
-    padding: 3px 6px 4px !important;
-  }
-  .sticky-bottom-ad__frame ins.adsbygoogle {
-    width: 320px !important;
-    height: 50px !important;
-  }
-}
+
 
 .footer {
   padding-bottom: 125px !important;
@@ -3212,49 +3201,80 @@
 }
 
 
-/* Strict Mobile Sticky Bottom Ad Clamp - Prevent Big Square Blowout */
+/* Strict Mobile Sticky Bottom Ad Clamp - Ultra-slim & Full Width */
 @media (max-width: 768px) {
   .sticky-bottom-ad-wrapper {
-    max-height: 75px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100% !important;
+    max-height: 70px !important;
     height: auto !important;
-    overflow: hidden !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .sticky-bottom-ad__tab {
     margin-bottom: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
   }
   .sticky-bottom-ad__btn {
-    padding: 3px 14px !important;
+    padding: 2px 14px !important;
     font-size: 10px !important;
+    font-weight: 700 !important;
     line-height: 1.2 !important;
-    border-radius: 8px 8px 0 0 !important;
+    height: 18px !important;
+    border-radius: 6px 6px 0 0 !important;
+    gap: 4px !important;
   }
   .sticky-bottom-ad__content {
-    max-height: 52px !important;
-    height: 52px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    max-height: 50px !important;
+    min-height: 50px !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important;
+    background: rgba(10, 15, 30, 0.98) !important;
+    border-top: 1px solid rgba(99, 102, 241, 0.4) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .sticky-bottom-ad__frame {
-    width: 320px !important;
-    max-width: calc(100vw - 12px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
     height: 50px !important;
     min-height: 50px !important;
     max-height: 50px !important;
     padding: 0 !important;
-    margin: 0 auto !important;
-    border-radius: 8px 8px 0 0 !important;
-    overflow: hidden !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     box-sizing: border-box !important;
+  }
+  .sticky-bottom-ad__frame::before {
+    display: none !important;
   }
   .sticky-bottom-ad__frame ins.adsbygoogle,
   .sticky-bottom-ad__frame ins.adsbygoogle iframe,
   .sticky-bottom-ad__frame iframe {
-    width: 320px !important;
-    max-width: calc(100vw - 12px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
     height: 50px !important;
     max-height: 50px !important;
     min-height: 50px !important;
+    margin: 0 auto !important;
     overflow: hidden !important;
   }
   .sticky-bottom-ad__frame .ad-frame-placeholder {
@@ -3264,7 +3284,10 @@
   .sticky-bottom-ad__frame .ad-frame-placeholder svg {
     display: none !important;
   }
+  .footer {
+    padding-bottom: 80px !important;
+  }
   body {
-    padding-bottom: 75px !important;
+    padding-bottom: 70px !important;
   }
 }

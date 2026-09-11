@@ -1033,11 +1033,18 @@ ins.adsbygoogle {
 
 /* Footer ad frame */
 .adsense-footer-wrapper {
-  padding: 1.5rem 1rem;
-  background: rgba(15,23,42,0.6);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
+  max-width: 100%;
+  padding: 2.5rem 1rem 1.5rem;
+  background: rgba(10, 15, 30, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 .ad-frame-footer {
+  width: 100%;
   max-width: 760px;
   margin: 0 auto;
   border-radius: 12px;

@@ -109,24 +109,25 @@ window.CareerAI.components.renderFooter = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   return `
-
-    
-    <!-- Google AdSense - Footer Banner -->
-    <div class="adsense-footer-wrapper">
-      <div class="ad-frame-wrapper ad-frame-footer">
-        <div class="ad-frame-label">Sponsored</div>
-        <div class="ad-frame-inner">
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px;max-width:100%;"
-               data-ad-client="ca-pub-7520213352755959"
-               data-ad-slot="9900112299"
-               data-ad-format="horizontal"
-               data-full-width-responsive="true"></ins>
+    <footer class="footer" id="mainFooter">
+      <!-- Google AdSense - Footer Banner -->
+      <div class="adsense-footer-wrapper">
+        <div class="ad-frame-wrapper ad-frame-footer">
+          <div class="ad-frame-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            ${isEn ? 'Sponsored' : 'إعلان ممول / Sponsored'}
+          </div>
+          <div class="ad-frame-inner">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px;max-width:100%;"
+                 data-ad-client="ca-pub-7520213352755959"
+                 data-ad-slot="9900112299"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+          </div>
         </div>
       </div>
-    </div>
 
-    <footer class="footer">
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
@@ -184,18 +185,17 @@ window.CareerAI.components.renderFooter = function() {
         </div>
 
         <div class="footer__bottom">
-          <p class="footer__copyright">© ${new Date().getFullYear()} Factor Career. ${t('footer.rights', 'جميع الحقوق محفوظة.')}</p>
-          <div class="footer__bottom-links">
-            <a href="/privacy" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${t('footer.privacy', 'سياسة الخصوصية')}</a>
-            <a href="/terms" class="footer__bottom-link" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${t('footer.terms', 'شروط الاستخدام')}</a>
+          <p class="footer__copyright">&copy; ${new Date().getFullYear()} Factor Career. ${t('footer.rights', 'جميع الحقوق محفوظة.')}</p>
+          <div class="footer__legal">
+            <a href="/privacy" class="footer__legal-link" onclick="event.preventDefault();CareerAI.router.navigate('/privacy')">${t('footer.privacy', 'سياسة الخصوصية')}</a>
+            <a href="/terms" class="footer__legal-link" onclick="event.preventDefault();CareerAI.router.navigate('/terms')">${t('footer.terms', 'شروط الاستخدام')}</a>
           </div>
         </div>
       </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <span style="width:20px;height:20px;display:inline-flex">${icons.arrowUp}</span>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="${isEn ? 'Back to top' : 'الرجوع للأعلى'}" title="${isEn ? 'Back to top' : 'الرجوع للأعلى'}">
+      <span style="width:18px;height:18px;display:inline-flex">${icons.arrowUp}</span>
     </button>
-  
   `;
 };
