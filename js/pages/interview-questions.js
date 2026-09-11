@@ -25,7 +25,7 @@ window.CareerAI.interviewState = {
 // Question Generator Engine Supporting Multilingual Outputs & Tailored Technical Topics
 window.CareerAI.generateInterviewQuestionsData = function(state) {
   const title = state.jobTitle || (state.language === 'ar' ? 'المسمى الوظيفي' : 'Target Position');
-  const levelText = state.level === 'senior' ? 'خبير / Senior' : (state.level === 'junior' ? 'مبتدئ / Junior' : 'متوسط / Mid-Level');
+  const levelText = state.level === 'senior' ? '${isEn ? 'Senior' : 'خبير / Senior'}' : (state.level === 'junior' ? '${isEn ? 'Junior' : 'مبتدئ / Junior'}' : '${isEn ? 'Medium' : 'متوسط'} / Mid-Level');
   const lang = state.language;
   const isTech = title.toLowerCase().includes('software') || title.toLowerCase().includes('برمج') || title.toLowerCase().includes('developer') || title.toLowerCase().includes('frontend') || title.toLowerCase().includes('backend');
   const isMarketing = title.toLowerCase().includes('marketing') || title.toLowerCase().includes('تسويق') || title.toLowerCase().includes('seo');
@@ -81,7 +81,7 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
     rawQuestions = [
       {
         q: `حدثني عن نفسك وعن مسيرتك المهنية في مجال ${title}؟`,
-        diff: 'سهل',
+        diff: '${isEn ? 'Easy' : 'سهل'}',
         why: 'يرغب مسؤول التوظيف في تقييم أسلوبك في التواصل، وتلخيص نقاط قوتك، ومدى ملاءمتك للوظيفة في الدقائق الأولى.',
         ans: `أنا ${title} لدي خبرة أكثر من ${state.expYears || '3'} سنوات في المجال. خلال عملي السابق في [اسم الشركة السابقة]، تخصصت في [المهارة الرئيسية/الإنجاز]. أنجذب دائماً لتطوير [المهارة التخصصية] وأنا متحمس جداً لنقل هذه الخبرات إلى فريقكم في ${state.companyName || 'شركتكم الموقرة'}.`,
         tip: 'اجعل إجابتك بين دقيقة ودقيقتين. اعتمد هيكل: الماضي (الخبرة) -> الحاضر (الوضع الحالي) -> المستقبل (لماذا هذه الوظيفة).',
@@ -90,7 +90,7 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
       },
       {
         q: `ما هو أكبر إنجاز مهني حققته خلال عملك كـ ${title}؟`,
-        diff: 'متوسط',
+        diff: '${isEn ? 'Medium' : 'متوسط'}',
         why: 'لقياس المعايير التي تعتبرها نجاحاً، والتحقق مما إذا كنت تحقق نتائج قابلة للقياس وليس مجرد أداء وظائف روتينية.',
         ans: `أبرز إنجاز حققته كان عند إشرافي على مشروع [اسم المشروع] حيث قمت بـ [الإجراء الذي اتخذته] مما أدى لزيادة [النتيجة/المبيعات/الأداء] بنسبة [X]%.`,
         tip: 'ركز على الأرقام والنسب المئوية المحققة.',
@@ -103,10 +103,10 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
         type: 'behavioral'
       },
       {
-        q: `كيف تتعامل مع الضغوط والمواعيد النهائية الضيقة عند تنفيذ المهام؟`,
-        diff: 'متوسط',
+        q: `كيف تت${isEn ? 'General' : 'عام'}ل مع الضغوط والمواعيد النهائية الضيقة عند تنفيذ المهام؟`,
+        diff: '${isEn ? 'Medium' : 'متوسط'}',
         why: 'لاختبار مرونتك وقدرتك على ترتيب الأولويات تحت إدارة الوقت الحرج.',
-        ans: `أتعامل مع الضغوط من خلال تفكيك المهمة الكبيرة إلى مهام صغيرة مرتبة حسب الأولوية، واستخدام أدوات إدارة المهام لتتبع التقدم، مع الحفاظ على التنسيق المستمر مع الفريق لضمان عدم تأثر جودة العمل.`,
+        ans: `أت${isEn ? 'General' : 'عام'}ل مع الضغوط من خلال تفكيك المهمة الكبيرة إلى مهام صغيرة مرتبة حسب الأولوية، واستخدام أدوات إدارة المهام لتتبع التقدم، مع الحفاظ على التنسيق المستمر مع الفريق لضمان عدم تأثر جودة العمل.`,
         tip: 'اذكر مثالاً واقعياً تغلبت فيه على موعد نهائي حرج بنجاح.',
         star: null,
         type: 'hr'
@@ -117,16 +117,16 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
       rawQuestions.push(
         {
           q: `كيف تقوم بتحسين أداء الأنظمة والتطبيقات وتحقيق السرعة الكفاءة في عملك كـ ${title}؟`,
-          diff: 'صعب',
-          why: 'لاختبار عمقك التقني وعقليتك الهندسة في حل الاختناقات وتطبيق أفضل معايير البرمجة والهندسة.',
+          diff: '${isEn ? 'Hard' : 'صعب'}',
+          why: 'لاختبار عمقك ال${isEn ? 'Technical' : 'تقني'} وعقليتك الهندسة في حل الاختناقات وتطبيق أفضل معايير البرمجة والهندسة.',
           ans: `أعتمد على أدوات قياس الأداء للتعرف على نقاط الاختناق أولاً. بالنسبة للواجهات (Frontend) أقوم بتصغير الملفات وتفعيل Caching و Lazy Loading، وبالنسبة للـ Backend أقوم بتحسين الاستعلامات واستخدام مجمعات التخزين المؤقت كـ Redis.`,
-          tip: 'اذكر الأدوات والتقنيات التي تستخدمها يومياً للتحليل والتنقيح.',
+          tip: 'اذكر الأدوات وال${isEn ? 'Technical' : 'تقني'}ات التي تستخدمها يومياً للتحليل والتنقيح.',
           star: null,
           type: 'technical'
         },
         {
-          q: `كيف تضمن أمان البيانات والتعامل مع الأخطاء غير المتوقعة أثناء ربط الـ APIs؟`,
-          diff: 'متوسط',
+          q: `كيف تضمن أمان البيانات والت${isEn ? 'General' : 'عام'}ل مع الأخطاء غير المتوقعة أثناء ربط الـ APIs؟`,
+          diff: '${isEn ? 'Medium' : 'متوسط'}',
           why: 'لقياس مدى اهتمامك بمعايير الأمان وحماية تجربة المستخدم عند حدوث أخطاء بالنظام.',
           ans: `أحرص على استخدام بروتوكولات التشفير القياسية (OAuth2/JWT)، وتطبيق معالجة استباقية للأخطاء (Error Boundaries) مع إظهار رسائل واضحة للمستخدم وآليات إعادة المحاولة التلقائية (Retry Mechanism).`,
           tip: 'ركز على أمن المعلومات وسلاسة تجربة المستخدم.',
@@ -140,7 +140,7 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
       rawQuestions.push(
         {
           q: `كيف تقوم بحساب وتطوير العائد على الاستثمار الإعلاني (ROAS) وتحسين معدلات التحويل؟`,
-          diff: 'صعب',
+          diff: '${isEn ? 'Hard' : 'صعب'}',
           why: 'لقياس فهمك المالي وقدرتك على إدارة الميزانيات التسويقية بتحقيق عوائد ربحية للشركة.',
           ans: `أقوم بتحليل مسار العميل (Funnel) واختبار العناوين والصور A/B Testing، ثم إعادة توجيه الميزانية نحو الحملات والكلمات المفتاحية الأعلى تحويلاً واستبعاد الكلمات غير الفعالة.`,
           tip: 'اذكر أدوات التحليل كـ Google Analytics 4 وأرقام العوائد التي حققتها.',
@@ -154,7 +154,7 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
       rawQuestions.push(
         {
           q: `كيف تقوم بتوجيه وإدارة أعضاء الفريق وإدارة الخلافات التي قد تنشأ أثناء العمل؟`,
-          diff: 'صعب',
+          diff: '${isEn ? 'Hard' : 'صعب'}',
           why: 'لقياس مهاراتك القيادية والذكاء العاطفي في بناء فريق عمل متماثل وعالي الإنتاجية.',
           ans: `أعتمد أسلوب القيادة التمكينية من خلال تحديد أهداف واضحة وعقد جلسات متابعة فردية. عند نشوب خلاف، أستمع لكافة الأطراف بموضوعية ونركز على الحلول التي تخدم مصلحة العمل العليا.`,
           tip: 'أظهر قدرتك على الاستماع الفعال وتوجيه الفريق نحو الأهداف.',
@@ -189,7 +189,7 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
     'اقرأ عن تاريخ الشركة ورؤيتها وأحدث مشاريعها قبل دخول المقابلة.',
     'راجع الوصف الوظيفي جيداً وحضر مثالاً واقعياً لكل مهارة مطلوبة.',
     'تدرب على الإجابة عن سؤال "حدثني عن نفسك" بصوت عالٍ لضبط الوقت والأسلوب.',
-    'استخدم طريقة STAR عند سرد المواقف والتحديات في الأسئلة السلوكية.',
+    'استخدم طريقة STAR عند سرد المواقف والتحديات في الأسئلة ال${isEn ? 'Behavioral' : 'سلوكي'}ة.',
     'جهّز 2-3 أسئلة احترافية لطرحها على مسؤول التوظيف في نهاية المقابلة.'
   ];
 
@@ -198,6 +198,8 @@ window.CareerAI.generateInterviewQuestionsData = function(state) {
 
 window.CareerAI.pages.interviewQuestions = function() {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const state = window.CareerAI.interviewState;
 
   return `
@@ -206,7 +208,7 @@ window.CareerAI.pages.interviewQuestions = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
             <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
             <span>/</span>
@@ -267,7 +269,7 @@ window.CareerAI.pages.interviewQuestions = function() {
               <input type="text" class="form-input" placeholder="مثال: مطور وواجهات أمامية Frontend، أخصائي تسويق..." value="${state.jobTitle}" oninput="CareerAI.updateIQField('jobTitle', this.value)">
             </div>
             <div class="form-group">
-              <label class="form-label">اسم الشركة (اختياري)</label>
+              <label class="form-label">${isEn ? 'Company Name (Optional)' : 'اسم الشركة (اختياري)'}</label>
               <input type="text" class="form-input" placeholder="مثال: شركة الحلول المتقدمة" value="${state.companyName}" oninput="CareerAI.updateIQField('companyName', this.value)">
             </div>
           </div>
@@ -275,13 +277,13 @@ window.CareerAI.pages.interviewQuestions = function() {
           <div class="contact-form__row">
             <div class="form-group">
               <label class="form-label">مجال العمل / الصناعة</label>
-              <input type="text" class="form-input" placeholder="مثال: تقنية المعلومات، التسويق، المالية..." value="${state.industry}" oninput="CareerAI.updateIQField('industry', this.value)">
+              <input type="text" class="form-input" placeholder="مثال: ${isEn ? 'Technical' : 'تقني'}ة المعلومات، التسويق، المالية..." value="${state.industry}" oninput="CareerAI.updateIQField('industry', this.value)">
             </div>
             <div class="form-group">
               <label class="form-label">مستوى الخبرة *</label>
               <select class="form-input form-select" onchange="CareerAI.updateIQField('level', this.value)">
                 <option value="junior" ${state.level === 'junior' ? 'selected' : ''}>مبتدئ (Junior - أقل من سنتين)</option>
-                <option value="mid" ${state.level === 'mid' ? 'selected' : ''}>متوسط (Mid-Level - 2 إلى 5 سنوات)</option>
+                <option value="mid" ${state.level === 'mid' ? 'selected' : ''}>${isEn ? 'Medium' : 'متوسط'} (Mid-Level - 2 إلى 5 سنوات)</option>
                 <option value="senior" ${state.level === 'senior' ? 'selected' : ''}>محترف / خبير (Senior - أكثر من 5 سنوات)</option>
               </select>
             </div>
@@ -289,27 +291,27 @@ window.CareerAI.pages.interviewQuestions = function() {
 
           <div class="form-group">
             <label class="form-label">الوصف الوظيفي Job Description (اختياري لزيادة الدقة)</label>
-            <textarea class="form-textarea" style="min-height:100px" placeholder="الصق نص الإعلان الوظيفي هنا لتوليد أسئلة تقنية وسلوكية مطابقة لمتطلبات الشاغر..." oninput="CareerAI.updateIQField('jobDescription', this.value)">${state.jobDescription}</textarea>
+            <textarea class="form-textarea" style="min-height:100px" placeholder="الصق نص الإعلان الوظيفي هنا لتوليد أسئلة ${isEn ? 'Technical' : 'تقني'}ة و${isEn ? 'Behavioral' : 'سلوكي'}ة مطابقة لمتطلبات الشاغر..." oninput="CareerAI.updateIQField('jobDescription', this.value)">${state.jobDescription}</textarea>
           </div>
 
           <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-top:var(--space-8); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-            ⚙️ 2. نوع المقابلة وعدد الأسئلة واللغة
+            ⚙️ 2. ${isEn ? 'Interview Type' : 'نوع المقابلة'} و${isEn ? 'Number of Questions' : 'عدد الأسئلة'} واللغة
           </h3>
 
           <div class="contact-form__row">
             <div class="form-group">
-              <label class="form-label">نوع المقابلة المستهدف *</label>
+              <label class="form-label">${isEn ? 'Interview Type' : 'نوع المقابلة'} المستهدف *</label>
               <select class="form-input form-select" onchange="CareerAI.updateIQField('interviewType', this.value)">
-                <option value="general" ${state.interviewType === 'general' ? 'selected' : ''}>مقابلة عامة (General)</option>
-                <option value="technical" ${state.interviewType === 'technical' ? 'selected' : ''}>مقابلة تقنية (Technical Interview)</option>
+                <option value="general" ${state.interviewType === 'general' ? 'selected' : ''}>مقابلة ${isEn ? 'General' : 'عام'}ة (General)</option>
+                <option value="technical" ${state.interviewType === 'technical' ? 'selected' : ''}>مقابلة ${isEn ? 'Technical' : 'تقني'}ة (Technical Interview)</option>
                 <option value="hr" ${state.interviewType === 'hr' ? 'selected' : ''}>مقابلة الموارد البشرية (HR Interview)</option>
-                <option value="behavioral" ${state.interviewType === 'behavioral' ? 'selected' : ''}>مقابلة سلوكية (Behavioral Interview)</option>
+                <option value="behavioral" ${state.interviewType === 'behavioral' ? 'selected' : ''}>مقابلة ${isEn ? 'Behavioral' : 'سلوكي'}ة (Behavioral Interview)</option>
                 <option value="management" ${state.interviewType === 'management' ? 'selected' : ''}>مقابلة إدارية (Management Interview)</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="form-label">عدد الأسئلة المطلوب *</label>
+              <label class="form-label">${isEn ? 'Number of Questions' : 'عدد الأسئلة'} المطلوب *</label>
               <select class="form-input form-select" onchange="CareerAI.updateIQField('questionCount', parseInt(this.value))">
                 <option value="5" ${state.questionCount === 5 ? 'selected' : ''}>5 أسئلة</option>
                 <option value="10" ${state.questionCount === 10 ? 'selected' : ''}>10 أسئلة (الافتراضي)</option>
@@ -319,7 +321,7 @@ window.CareerAI.pages.interviewQuestions = function() {
             </div>
 
             <div class="form-group">
-              <label class="form-label">لغة الأسئلة والإجابات *</label>
+              <label class="form-label">${isEn ? 'Questions Language' : 'لغة الأسئلة'} والإجابات *</label>
               <select class="form-input form-select" onchange="CareerAI.updateIQField('language', this.value)">
                 <option value="ar" ${state.language === 'ar' ? 'selected' : ''}>العربية (Arabic)</option>
                 <option value="en" ${state.language === 'en' ? 'selected' : ''}>الإنجليزية (English)</option>
@@ -353,7 +355,7 @@ window.CareerAI.pages.interviewQuestions = function() {
               تم إنشاء <strong>${state.questions.length}</strong> أسئلة مخصصة
             </div>
             <div class="iq-controls-buttons">
-              <button class="btn btn--secondary btn--sm" onclick="CareerAI.filterIQType('technical')">💻 أسئلة تقنية فقط</button>
+              <button class="btn btn--secondary btn--sm" onclick="CareerAI.filterIQType('technical')">💻 أسئلة ${isEn ? 'Technical' : 'تقني'}ة فقط</button>
               <button class="btn btn--secondary btn--sm" onclick="CareerAI.filterIQType('hr')">👥 أسئلة HR فقط</button>
               <button class="btn btn--secondary btn--sm" onclick="CareerAI.increaseIQDifficulty()">⚡ زيادة الصعوبة</button>
               <button class="btn btn--accent btn--sm" onclick="CareerAI.copyAllIQText()">📋 نسخ الكل</button>
@@ -367,7 +369,7 @@ window.CareerAI.pages.interviewQuestions = function() {
               <div class="card iq-card">
                 <div class="iq-card__header">
                   <div class="iq-card__number">سؤال #${q.num}</div>
-                  <div class="iq-difficulty-badge ${q.diff === 'صعب' || q.diff === 'Hard' ? 'diff--hard' : (q.diff === 'متوسط' || q.diff === 'Medium' ? 'diff--medium' : 'diff--easy')}">
+                  <div class="iq-difficulty-badge ${q.diff === '${isEn ? 'Hard' : 'صعب'}' || q.diff === 'Hard' ? 'diff--hard' : (q.diff === '${isEn ? 'Medium' : 'متوسط'}' || q.diff === 'Medium' ? 'diff--medium' : 'diff--easy')}">
                     مستوى الصعوبة: ${q.diff}
                   </div>
                 </div>
@@ -395,7 +397,7 @@ window.CareerAI.pages.interviewQuestions = function() {
                 <!-- STAR Technique Box for Behavioral Questions -->
                 ${q.star ? `
                   <div class="iq-star-box">
-                    <div class="iq-star-box__title">⭐ تطبيق طريقة STAR لبناء الإجابة السلوكية:</div>
+                    <div class="iq-star-box__title">⭐ تطبيق طريقة STAR لبناء الإجابة ال${isEn ? 'Behavioral' : 'سلوكي'}ة:</div>
                     <div class="iq-star-grid">
                       <div class="iq-star-item"><strong>S (Situation):</strong> ${q.star.s}</div>
                       <div class="iq-star-item"><strong>T (Task):</strong> ${q.star.t}</div>
@@ -481,7 +483,7 @@ window.CareerAI.pages.interviewQuestions = function() {
             📘 دليل المقابلات
           </span>
           <h2 class="section__title">دليلك التكتيكي للتألق في <span class="text-gradient">مقابلات التوظيف</span></h2>
-          <p class="section__subtitle">استراتيجيات مجربة للاستعداد والتميز أمام لجنة التوظيف واجتياز أصعب الأسئلة</p>
+          <p class="section__subtitle">استراتيجيات مجربة للاستعداد والتميز أمام لجنة التوظيف واجتياز أ${isEn ? 'Hard' : 'صعب'} الأسئلة</p>
         </div>
 
         <div class="grid grid--2" style="gap:var(--space-8);margin-bottom:var(--space-12)">
@@ -502,7 +504,7 @@ window.CareerAI.pages.interviewQuestions = function() {
             </div>
             <h3 class="card__title">ما هي طريقة STAR وكيف تستخدمها؟</h3>
             <p class="card__text">
-              هي نموذج لإجابة الأسئلة السلوكية يتكون من: <strong>Situation (الموقف)</strong>، <strong>Task (المهمة)</strong>، <strong>Action (الإجراء)</strong>، و <strong>Result (النتيجة بالأرقام)</strong>.
+              هي نموذج لإجابة الأسئلة ال${isEn ? 'Behavioral' : 'سلوكي'}ة يتكون من: <strong>Situation (الموقف)</strong>، <strong>Task (المهمة)</strong>، <strong>Action (الإجراء)</strong>، و <strong>Result (النتيجة بالأرقام)</strong>.
             </p>
           </div>
 
@@ -512,7 +514,7 @@ window.CareerAI.pages.interviewQuestions = function() {
             </div>
             <h3 class="card__title">أهم أسئلة الموارد البشرية HR المتوقعة</h3>
             <p class="card__text">
-              تشمل أسئلة توقعات الراتب، أسباب ترك العمل السابق، نقاط القوة والضعف، وكيفية التعامل مع الخلافات داخل الفريق.
+              تشمل أسئلة توقعات الراتب، أسباب ترك العمل السابق، نقاط القوة والضعف، وكيفية الت${isEn ? 'General' : 'عام'}ل مع الخلافات داخل الفريق.
             </p>
           </div>
 
@@ -538,7 +540,7 @@ window.CareerAI.pages.interviewQuestions = function() {
             </button>
             <div class="accordion__body" style="max-height:200px">
               <div class="accordion__content">
-                نعم، تقوم الأداة بتوليد الأسئلة والإجابات النموذجية بناءً على المسمى الوظيفي، مستوى الخبرة، ونوع المقابلة والوصف الوظيفي المدخل.
+                نعم، تقوم الأداة بتوليد الأسئلة والإجابات النموذجية بناءً على المسمى الوظيفي، مستوى الخبرة، و${isEn ? 'Interview Type' : 'نوع المقابلة'} والوصف الوظيفي المدخل.
               </div>
             </div>
           </div>
@@ -652,5 +654,5 @@ CareerAI.resetIQForm = function() {
 window.CareerAI.pages.interviewQuestionsSEO = {
   title: 'مولد أسئلة مقابلات العمل بالذكاء الاصطناعي | Factor Career Interview Questions',
   description: 'تدرب على أسئلة مقابلات العمل المخصصة لوظيفتك مع إجابات نموذجية وسبب طرح السؤال وطريقة STAR وتصدير PDF مجاناً.',
-  keywords: 'أسئلة مقابلة عمل, تحضير المقابلات, طريقة STAR, أسئلة HR, أسئلة تقنية, AI Interview Questions'
+  keywords: 'أسئلة مقابلة عمل, تحضير المقابلات, طريقة STAR, أسئلة HR, أسئلة ${isEn ? 'Technical' : 'تقني'}ة, AI Interview Questions'
 };

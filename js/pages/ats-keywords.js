@@ -49,10 +49,10 @@ window.CareerAI.analyzeATSKeywordsData = function(jobTitle, jobDescription, hasC
     { word: techSkills[1] || 'التخطيط الاستراتيجي', priority: 'high', place: 'قسم المهارات + الخبرة المهنية' },
     { word: techSkills[2] || 'تحليل البيانات', priority: 'high', place: 'قسم المهارات + النبذة المهنية' },
     { word: tools[0] || 'Microsoft Excel', priority: 'medium', place: 'قسم المهارات التقنية' },
-    { word: tools[1] || 'Google Analytics', priority: 'medium', place: 'قسم الأدوات والبرامج' },
+    { word: tools[1] || 'Google Analytics', priority: 'medium', place: 'قسم ${isEn ? 'Tools & Software' : 'الأدوات والبرامج'}' },
     { word: softSkills[0], priority: 'medium', place: 'النبذة المهنية + الخبرة' },
-    { word: softSkills[1], priority: 'extra', place: 'قسم المهارات الشخصية' },
-    { word: certs[0] || 'شهادة تخصصية', priority: 'high', place: 'قسم الشهادات والتعليم' }
+    { word: softSkills[1], priority: 'extra', place: 'قسم ${isEn ? 'Soft Skills' : 'المهارات الشخصية'}' },
+    { word: certs[0] || 'شهادة تخصصية', priority: 'high', place: 'قسم ${isEn ? 'Certifications' : 'الشهادات'} والتعليم' }
   ];
 
   // Requirements extracted from description
@@ -78,7 +78,7 @@ window.CareerAI.analyzeATSKeywordsData = function(jobTitle, jobDescription, hasC
 
   const recommendations = [
     `إذا كانت لديك خبرة حقيقية في (${topKeywords[0].word})، تأكد من ذكرها بوضوح في قسم المهارات وقسم الخبرات السابقة.`,
-    `يذكر إعلان الوظيفة أداة (${topKeywords[3].word}) كمتطلب فرعي، أدرجها ضمن قائمة الأدوات والبرامج إن كنت تتقنها.`,
+    `يذكر إعلان الوظيفة أداة (${topKeywords[3].word}) كمتطلب فرعي، أدرجها ضمن قائمة ${isEn ? 'Tools & Software' : 'الأدوات والبرامج'} إن كنت تتقنها.`,
     `تأكد من عدم نسخ الكلمات بدون وجود خبرة فعلية لديك لتجنب الوقوع في فخ حشو الكلمات (Keyword Stuffing).`,
     `استخدم الكلمات المفتاحية في سياق إنجازاتك ومقاييس الأداء القابلة للقياس وليس كمجرد سرِد أصم.`
   ];
@@ -106,6 +106,8 @@ window.CareerAI.analyzeATSKeywordsData = function(jobTitle, jobDescription, hasC
 
 window.CareerAI.pages.atsKeywords = function() {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const state = window.CareerAI.atsKeywordsState;
 
   return `
@@ -114,7 +116,7 @@ window.CareerAI.pages.atsKeywords = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
             <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
             <span>/</span>
@@ -439,7 +441,7 @@ CareerAI.renderAKResults = function() {
 
           ${r.categories.tools.length > 0 ? `
             <div class="ak-category-box">
-              <h4 class="ak-category-box__title">💻 الأدوات والبرامج (Tools & Software):</h4>
+              <h4 class="ak-category-box__title">💻 ${isEn ? 'Tools & Software' : 'الأدوات والبرامج'} (Tools & Software):</h4>
               <div class="ak-tags-wrap">
                 ${r.categories.tools.map(s => `<span class="tag tag--primary" style="margin:0">${s}</span>`).join('')}
               </div>
@@ -448,7 +450,7 @@ CareerAI.renderAKResults = function() {
 
           ${r.categories.softSkills.length > 0 ? `
             <div class="ak-category-box">
-              <h4 class="ak-category-box__title">🤝 المهارات الشخصية (Soft Skills):</h4>
+              <h4 class="ak-category-box__title">🤝 ${isEn ? 'Soft Skills' : 'المهارات الشخصية'} (Soft Skills):</h4>
               <div class="ak-tags-wrap">
                 ${r.categories.softSkills.map(s => `<span class="tag tag--accent" style="margin:0">${s}</span>`).join('')}
               </div>
@@ -457,7 +459,7 @@ CareerAI.renderAKResults = function() {
 
           ${r.categories.certs.length > 0 ? `
             <div class="ak-category-box">
-              <h4 class="ak-category-box__title">🎓 الشهادات والمؤهلات المطلوبة (Certifications):</h4>
+              <h4 class="ak-category-box__title">🎓 ${isEn ? 'Certifications' : 'الشهادات'} والمؤهلات المطلوبة (Certifications):</h4>
               <div class="ak-tags-wrap">
                 ${r.categories.certs.map(s => `<span class="tag" style="background:#FEF3C7; color:#D97706; border-color:#FCD34D; margin:0">${s}</span>`).join('')}
               </div>
@@ -470,9 +472,9 @@ CareerAI.renderAKResults = function() {
       <div class="results-block">
         <h3 class="results-block__title">📋 متطلبات الوظيفة المستخرجة من الإعلان</h3>
         <div class="contact-form__row" style="font-size:var(--text-sm)">
-          <div>⏱️ <strong>سنوات الخبرة:</strong> ${r.requirements.expYears}</div>
-          <div>🎓 <strong>المؤهل العلمي:</strong> ${r.requirements.degree}</div>
-          <div>🌐 <strong>اللغات المطلوبة:</strong> ${r.requirements.languages}</div>
+          <div>⏱️ <strong>${isEn ? 'Years of Experience' : 'سنوات الخبرة'}:</strong> ${r.requirements.expYears}</div>
+          <div>🎓 <strong>${isEn ? 'Educational Qualification' : 'المؤهل العلمي'}:</strong> ${r.requirements.degree}</div>
+          <div>🌐 <strong>${isEn ? 'Required Languages' : 'اللغات المطلوبة'}:</strong> ${r.requirements.languages}</div>
         </div>
       </div>
 

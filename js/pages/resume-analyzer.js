@@ -46,13 +46,13 @@ window.CareerAI.mockAnalyze = function(jobTitle, jobDescription) {
     keywordMatchScore: keywordMatchScore,
     sections: [
       { name: 'المعلومات الشخصية', status: 'good', desc: 'معلومات الاتصال كاملة والبريد الإلكتروني يبدو احترافياً.' },
-      { name: 'النبذة المهنية', status: 'warning', desc: 'النبذة المهنية قصيرة جداً ولا تلخص نقاط القوة الكافية.' },
+      { name: 'النبذة المهنية', status: 'warning', desc: 'النبذة المهنية قصيرة جداً ولا تلخص ${isEn ? 'Strengths' : 'نقاط القوة'} الكافية.' },
       { name: 'الخبرات المهنية', status: 'warning', desc: 'افتقاد النتائج القابلة للقياس والنسب المئوية في صياغة إنجازاتك.' },
       { name: 'التعليم والمؤهلات', status: 'good', desc: 'تفاصيل المؤهلات الدراسية وسنوات التخرج مكتوبة بشكل واضح.' },
       { name: 'المهارات', status: 'good', desc: 'المهارات المهنية واضحة ومقروءة بشكل منظم.' },
       { name: 'الكلمات المفتاحية', status: 'warning', desc: 'تفتقد السيرة الذاتية لبعض الكلمات الدلالية الهامة المرتبطة بالتخصص.' },
       { name: 'التنسيق والهيكلية', status: 'good', desc: 'الهيكل العام بسيط وخالٍ من الجداول المعقدة والرسومات المانعة للـ ATS.' },
-      { name: 'طول السيرة الذاتية', status: 'good', desc: 'حجم السيرة الذاتية ممتاز ومناسب (صفحة واحدة).' },
+      { name: 'طول السيرة الذاتية', status: 'good', desc: 'حجم السيرة الذاتية ${isEn ? 'Excellent' : 'ممتاز'} ومناسب (صفحة واحدة).' },
       { name: 'وضوح المحتوى', status: 'good', desc: 'استخدام جيد للخطوط القياسية وعلامات الترقيم.' }
     ],
     strengths: [
@@ -82,6 +82,8 @@ window.CareerAI.mockAnalyze = function(jobTitle, jobDescription) {
 
 window.CareerAI.pages.resumeAnalyzer = function() {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const state = window.CareerAI.analyzerState;
 
   return `
@@ -90,11 +92,11 @@ window.CareerAI.pages.resumeAnalyzer = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
             <span>/</span>
-            <span>محلل وفاحص السيرة الذاتية ATS</span>
+            <span>${isEn ? 'ATS Resume Checker & Analyzer' : 'محلل وفاحص السيرة الذاتية ATS'}</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
             <span class="section__badge">
@@ -105,7 +107,7 @@ window.CareerAI.pages.resumeAnalyzer = function() {
             </span>
           </div>
           <h1 class="page-header__title">حلل سيرتك الذاتية مجاناً واعرف مدى توافقها مع ATS</h1>
-          <p class="page-header__subtitle">ارفع سيرتك الذاتية وقارنها بالوظيفة المستهدفة للحصول على تقرير مفصل بنقاط القوة والضعف ومطابقة الكلمات المفتاحية</p>
+          <p class="page-header__subtitle">ارفع سيرتك الذاتية وقارنها بالوظيفة المستهدفة للحصول على تقرير مفصل ب${isEn ? 'Strengths' : 'نقاط القوة'} والضعف و${isEn ? 'Keyword Match' : 'مطابقة الكلمات المفتاحية'}</p>
         </div>
       </div>
     </div>
@@ -308,12 +310,12 @@ window.CareerAI.pages.resumeAnalyzer = function() {
           
           <div class="accordion__item active">
             <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)">
-              <span>ما هي درجة الـ ATS المقبولة لتجاوز الفرز بنجاح؟</span>
+              <span>ما هي درجة الـ ATS ال${isEn ? 'Acceptable' : 'مقبول'}ة لتجاوز الفرز بنجاح؟</span>
               <span class="accordion__icon"><span style="width:16px;height:16px;display:inline-flex">${icons.chevronDown}</span></span>
             </button>
             <div class="accordion__body" style="max-height:200px">
               <div class="accordion__content">
-                تعتبر الدرجة 75% فأكثر (جيد جداً) كافية لتجاوز معظم فلاتر الـ ATS والوصول إلى أيدي مسؤولي التوظيف البشريين. الدرجات فوق 90% تعتبر ممتازة وتضمن أولوية عالية.
+                تعتبر الدرجة 75% فأكثر (جيد جداً) كافية لتجاوز معظم فلاتر الـ ATS والوصول إلى أيدي مسؤولي التوظيف البشريين. الدرجات فوق 90% تعتبر ${isEn ? 'Excellent' : 'ممتاز'}ة وتضمن أولوية عالية.
               </div>
             </div>
           </div>
@@ -359,7 +361,7 @@ CareerAI.renderAnalyzerResults = function() {
   
   if (!r) return '';
 
-  let scoreText = 'ممتاز';
+  let scoreText = '${isEn ? 'Excellent' : 'ممتاز'}';
   let scoreClass = 'score-level--excellent';
   if (r.score < 60) {
     scoreText = 'يحتاج إلى تحسين كبير';
@@ -417,7 +419,7 @@ CareerAI.renderAnalyzerResults = function() {
       <div class="grid grid--2" style="gap:var(--space-6); margin-top:var(--space-6)">
         
         <div class="results-block results-block--green">
-          <h3 class="results-block__title" style="color:var(--color-accent)">💪 نقاط القوة في سيرتك الذاتية</h3>
+          <h3 class="results-block__title" style="color:var(--color-accent)">💪 ${isEn ? 'Strengths' : 'نقاط القوة'} في سيرتك الذاتية</h3>
           <ul class="bullets-list">
             ${r.strengths.map(st => `<li>${st}</li>`).join('')}
           </ul>
@@ -436,7 +438,7 @@ CareerAI.renderAnalyzerResults = function() {
       ${state.jobDescription ? `
         <div class="results-block" style="margin-top:var(--space-6)">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-2)">
-            <h3 class="results-block__title" style="margin-bottom:0">🔍 تحليل ومطابقة الكلمات المفتاحية ATS</h3>
+            <h3 class="results-block__title" style="margin-bottom:0">🔍 تحليل و${isEn ? 'Keyword Match' : 'مطابقة الكلمات المفتاحية'} ATS</h3>
             <div class="keyword-match-badge">
               نسبة مطابقة الكلمات: <strong>${r.keywordMatchScore}%</strong>
             </div>
@@ -561,7 +563,7 @@ CareerAI.startResumeAnalysis = function() {
   const state = window.CareerAI.analyzerState;
   
   if (!state.file) {
-    alert('يرجى رفع ملف السيرة الذاتية أولاً لبدء التحليل!');
+    alert('يرجى ${isEn ? 'Upload Resume File' : 'رفع ملف السيرة الذاتية'} أولاً لبدء التحليل!');
     return;
   }
 
@@ -637,6 +639,6 @@ CareerAI.resetAnalyzer = function() {
 
 window.CareerAI.pages.resumeAnalyzerSEO = {
   title: 'تحليل السيرة الذاتية وفحص ATS مجاناً بالذكاء الاصطناعي | Factor Career',
-  description: 'قم بفحص وتدقيق سيرتك الذاتية ومعرفة نقاط القوة والضعف ومدى توافقها مع فلاتر وأنظمة ATS ومقارنتها بالوصف الوظيفي مجاناً.',
-  keywords: 'تحليل سيرة ذاتية, فحص ATS, مطابقة الكلمات المفتاحية, مراجع CV, ATS Checker, Resume Analyzer'
+  description: 'قم بفحص وتدقيق سيرتك الذاتية ومعرفة ${isEn ? 'Strengths' : 'نقاط القوة'} والضعف ومدى توافقها مع فلاتر وأنظمة ATS ومقارنتها بالوصف الوظيفي مجاناً.',
+  keywords: 'تحليل سيرة ذاتية, فحص ATS, ${isEn ? 'Keyword Match' : 'مطابقة الكلمات المفتاحية'}, مراجع CV, ATS Checker, Resume Analyzer'
 };

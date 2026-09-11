@@ -103,6 +103,8 @@ window.CareerAI.generateCoverLetterText = function(state, modifier = null) {
 
 window.CareerAI.pages.coverLetterGenerator = function() {
   const icons = window.CareerAI.icons;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const state = window.CareerAI.coverLetterState;
 
   return `
@@ -111,7 +113,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
             <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
             <span>/</span>
@@ -126,7 +128,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             </span>
           </div>
           <h1 class="page-header__title">مولد رسالة التقديم على الوظائف (AI Cover Letter Generator)</h1>
-          <p class="page-header__subtitle">أنشئ Cover Letter احترافية ومخصصة بالكامل تزيد من فرص قبولك وتلفت انتباه مسؤولي التوظيف في ثوانٍ</p>
+          <p class="page-header__subtitle">أنشئ Cover Letter ${isEn ? 'Professional' : 'احترافي'}ة ومخصصة بالكامل تزيد من فرص قبولك وتلفت انتباه مسؤولي التوظيف في ثوانٍ</p>
         </div>
       </div>
     </div>
@@ -165,12 +167,12 @@ window.CareerAI.pages.coverLetterGenerator = function() {
           <div class="contact-form" style="padding:var(--space-8); border:1px solid var(--color-border); border-radius:var(--radius-2xl); background:white; margin-bottom:var(--space-8)">
             
             <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-              👤 1. معلوماتك الشخصية والمهنية
+              👤 1. ${isEn ? 'Your Personal Information' : 'معلوماتك الشخصية'} والمهنية
             </h3>
 
             <div class="contact-form__row">
               <div class="form-group">
-                <label class="form-label">الاسم الكامل *</label>
+                <label class="form-label">${isEn ? 'Full Name *' : 'الاسم الكامل *'}</label>
                 <input type="text" class="form-input" placeholder="مثال: أحمد محمد علي" value="${state.userName}" oninput="CareerAI.updateCLField('userName', this.value)">
               </div>
               <div class="form-group">
@@ -205,7 +207,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
                 <input type="text" class="form-input" placeholder="مثال: Senior Digital Marketing Specialist" value="${state.jobTitle}" oninput="CareerAI.updateCLField('jobTitle', this.value)">
               </div>
               <div class="form-group">
-                <label class="form-label">اسم الشركة *</label>
+                <label class="form-label">${isEn ? 'Company Name *' : 'اسم الشركة *'}</label>
                 <input type="text" class="form-input" placeholder="مثال: شركة الحلول المتقدمة" value="${state.companyName}" oninput="CareerAI.updateCLField('companyName', this.value)">
               </div>
             </div>
@@ -216,7 +218,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
                 <input type="text" class="form-input" placeholder="مثال: أ. سارة المنصوري" value="${state.hiringManager}" oninput="CareerAI.updateCLField('hiringManager', this.value)">
               </div>
               <div class="form-group">
-                <label class="form-label">موقع الشركة / الدولة (اختياري)</label>
+                <label class="form-label">${isEn ? 'Company Location' : 'موقع الشركة'} / الدولة (اختياري)</label>
                 <input type="text" class="form-input" placeholder="مثال: الرياض، الإمارات..." value="${state.companyLocation}" oninput="CareerAI.updateCLField('companyLocation', this.value)">
               </div>
             </div>
@@ -228,25 +230,25 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             </div>
 
             <h3 style="font-size:var(--text-lg); font-weight:var(--font-bold); color:var(--color-primary); margin-top:var(--space-8); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-border-light); padding-bottom:var(--space-3)">
-              ⚙️ 3. الأسلوب، الطول، ولغة الرسالة
+              ⚙️ 3. الأسلوب، الطول، و${isEn ? 'Letter Language' : 'لغة الرسالة'}
             </h3>
 
             <div class="contact-form__row">
               <div class="form-group">
                 <label class="form-label">أسلوب الرسالة *</label>
                 <select class="form-input form-select" onchange="CareerAI.updateCLField('tone', this.value)">
-                  <option value="professional" ${state.tone === 'professional' ? 'selected' : ''}>احترافي (Professional)</option>
+                  <option value="professional" ${state.tone === 'professional' ? 'selected' : ''}>${isEn ? 'Professional' : 'احترافي'} (Professional)</option>
                   <option value="concise" ${state.tone === 'concise' ? 'selected' : ''}>مختصر ومباشر (Concise)</option>
-                  <option value="friendly" ${state.tone === 'friendly' ? 'selected' : ''}>ودود ومبتكر (Friendly)</option>
-                  <option value="formal" ${state.tone === 'formal' ? 'selected' : ''}>رسمي ومباشر (Formal)</option>
+                  <option value="friendly" ${state.tone === 'friendly' ? 'selected' : ''}>${isEn ? 'Friendly' : 'ودود'} ومبتكر (Friendly)</option>
+                  <option value="formal" ${state.tone === 'formal' ? 'selected' : ''}>${isEn ? 'Formal' : 'رسمي'} ومباشر (Formal)</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label class="form-label">طول الرسالة *</label>
+                <label class="form-label">${isEn ? 'Letter Length' : 'طول الرسالة'} *</label>
                 <select class="form-input form-select" onchange="CareerAI.updateCLField('length', this.value)">
-                  <option value="short" ${state.length === 'short' ? 'selected' : ''}>قصيرة (Short - 2 الفقرات)</option>
-                  <option value="medium" ${state.length === 'medium' ? 'selected' : ''}>متوسطة (Medium - 3 الفقرات)</option>
+                  <option value="short" ${state.length === 'short' ? 'selected' : ''}>${isEn ? 'Short' : 'قصيرة'} (Short - 2 الفقرات)</option>
+                  <option value="medium" ${state.length === 'medium' ? 'selected' : ''}>${isEn ? 'Medium' : 'متوسطة'} (Medium - 3 الفقرات)</option>
                   <option value="detailed" ${state.length === 'detailed' ? 'selected' : ''}>مفصلة (Detailed - 4 الفقرات)</option>
                 </select>
               </div>
@@ -287,8 +289,8 @@ window.CareerAI.pages.coverLetterGenerator = function() {
                 <h3 class="results-block__title" style="margin-bottom:0">✉️ رسالة التقديم الناتجة (قابل للتعديل المباشر)</h3>
                 <div style="display:flex; gap:var(--space-2); flex-wrap:wrap">
                   <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyCoverLetterText()">📋 نسخ الرسالة</button>
-                  <button class="btn btn--accent btn--sm" onclick="CareerAI.downloadCLPDF()">📄 تحميل PDF</button>
-                  <button class="btn btn--primary btn--sm" onclick="CareerAI.downloadCLDOCX()">📝 تحميل Word (DOCX)</button>
+                  <button class="btn btn--accent btn--sm" onclick="CareerAI.downloadCLPDF()">📄 ${isEn ? 'Download PDF' : 'تحميل PDF'}</button>
+                  <button class="btn btn--primary btn--sm" onclick="CareerAI.downloadCLDOCX()">📝 ${isEn ? 'Download Word' : 'تحميل Word'} (DOCX)</button>
                 </div>
               </div>
 
@@ -296,7 +298,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
               <div class="cl-refine-toolbar">
                 <span style="font-size:var(--text-xs); font-weight:var(--font-bold); color:var(--color-text-muted)">تحسينات سريعة:</span>
                 <button class="cl-refine-btn" onclick="CareerAI.refineCL('shorter')">✂️ اجعلها أقصر</button>
-                <button class="cl-refine-btn" onclick="CareerAI.refineCL('formal')">💼 أكثر احترافية ورسمية</button>
+                <button class="cl-refine-btn" onclick="CareerAI.refineCL('formal')">💼 أكثر ${isEn ? 'Professional' : 'احترافي'}ة و${isEn ? 'Formal' : 'رسمي'}ة</button>
                 <button class="cl-refine-btn" onclick="CareerAI.refineCL('persuasive')">🚀 أكثر إقناعاً وقوة</button>
                 <button class="cl-refine-btn" onclick="CareerAI.refineCL('regenerate')">🔄 إعادة الإنشاء</button>
               </div>
@@ -392,7 +394,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             📘 دليل إرشادي
           </span>
           <h2 class="section__title">كل ما تحتاج معرفته عن <span class="text-gradient">رسالة التقديم (Cover Letter)</span></h2>
-          <p class="section__subtitle">تعلم كيف تصيغ خطابات تقديم احترافية ترفع نسبة قبولك في الوظائف إلى الضعف</p>
+          <p class="section__subtitle">تعلم كيف تصيغ خطابات تقديم ${isEn ? 'Professional' : 'احترافي'}ة ترفع نسبة قبولك في الوظائف إلى الضعف</p>
         </div>
 
         <div class="grid grid--2" style="gap:var(--space-8);margin-bottom:var(--space-12)">
@@ -403,7 +405,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             </div>
             <h3 class="card__title">ما هي رسالة التقديم (Cover Letter)؟</h3>
             <p class="card__text">
-              هي خطاب رسمي موجه لمسؤول التوظيف يُرفق مع السيرة الذاتية. يهدف إلى توضيح أسباب اهتمامك بالوظيفة وكيف تتطابق خبراتك ومهاراتك المحددة مع احتياجات الشركة.
+              هي خطاب ${isEn ? 'Formal' : 'رسمي'} موجه لمسؤول التوظيف يُرفق مع السيرة الذاتية. يهدف إلى توضيح أسباب اهتمامك بالوظيفة وكيف تتطابق خبراتك ومهاراتك المحددة مع احتياجات الشركة.
             </p>
           </div>
 
@@ -451,7 +453,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
             </button>
             <div class="accordion__body" style="max-height:200px">
               <div class="accordion__content">
-                الطول المثالي هو صفحة واحدة بحد أقصى (ما بين 250 إلى 400 كلمة مقسمة على 3 إلى 4 فقرات موجزة ومباشرة).
+                الطول المثالي هو صفحة واحدة بحد أقصى (ما بين 250 إلى 400 كلمة مقسمة على 3 إلى 4 فقرات ${isEn ? 'Concise' : 'موجز'}ة ومباشرة).
               </div>
             </div>
           </div>
@@ -583,6 +585,6 @@ CareerAI.resetCoverLetterForm = function() {
 
 window.CareerAI.pages.coverLetterGeneratorSEO = {
   title: 'مولد رسائل التقديم بالذكاء الاصطناعي Cover Letter Generator | Factor Career',
-  description: 'أنشئ رسالة تقديم على الوظائف (Cover Letter) مخصصة واحترافية بالذكاء الاصطناعي مجاناً من Factor Career وبعدة لغات مع التعديل المباشر وتحميل PDF و Word.',
+  description: 'أنشئ رسالة تقديم على الوظائف (Cover Letter) مخصصة و${isEn ? 'Professional' : 'احترافي'}ة بالذكاء الاصطناعي مجاناً من Factor Career وبعدة لغات مع التعديل المباشر و${isEn ? 'Download PDF' : 'تحميل PDF'} و Word.',
   keywords: 'مولد Cover Letter, كاتب رسالة التغطية, رسالة تقديم على وظيفة, Cover Letter AI Generator, كتابة خطاب التوصية, Factor Career'
 };

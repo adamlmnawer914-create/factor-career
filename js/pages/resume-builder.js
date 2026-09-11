@@ -45,7 +45,7 @@ window.CareerAI.resumeState = {
     {
       id: 'lang-1',
       name: 'العربية',
-      level: 'اللغة الأم'
+      level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}'
     },
     {
       id: 'lang-2',
@@ -114,7 +114,7 @@ window.CareerAI.sampleResumeData = {
     {
       id: 'lang-1',
       name: 'العربية',
-      level: 'اللغة الأم'
+      level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}'
     },
     {
       id: 'lang-2',
@@ -127,6 +127,8 @@ window.CareerAI.sampleResumeData = {
 window.CareerAI.pages.resumeBuilder = function() {
   const icons = window.CareerAI.icons;
   const state = window.CareerAI.resumeState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
 
   return `
     <!-- Header -->
@@ -134,19 +136,19 @@ window.CareerAI.pages.resumeBuilder = function() {
       <div class="container">
         <div class="page-header__content">
           <div class="page-header__breadcrumb">
-            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">الرئيسية</a>
+            <a href="/" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
             <span>/</span>
-            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">الأدوات</a>
+            <a href="/tools" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
             <span>/</span>
-            <span>منشئ السيرة الذاتية بالذكاء الاصطناعي</span>
+            <span>${isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-2)">
             <span class="section__badge">
               <span style="width:16px;height:16px;display:inline-flex">${icons.sparkles || icons.rocket}</span>
-              مجاني 100% وبدون تسجيل
+              ${isEn ? 'Free 100% & No Signup' : 'مجاني 100% وبدون تسجيل'}
             </span>
             <span class="section__badge" style="background:rgba(16,185,129,0.15);color:var(--color-accent)">
-              ✓ متوافق مع أنظمة ATS
+              ✓ ${isEn ? 'ATS-Optimized Format' : 'متوافق مع أنظمة ATS'}
             </span>
           </div>
           <h1 class="page-header__title">أداة إنشاء السيرة الذاتية الاحترافية (AI Resume Builder)</h1>
@@ -185,18 +187,18 @@ window.CareerAI.pages.resumeBuilder = function() {
               📄 تعبئة نموذج تجريبي
             </button>
             <button class="btn btn--ghost btn--sm" style="color:#EF4444" onclick="CareerAI.resetResumeForm()">
-              🗑️ مسح البيانات والبدء من جديد
+              ${isEn ? '🗑️ Clear & Start Fresh' : '🗑️ مسح البيانات والبدء من جديد'}
             </button>
           </div>
           <div class="builder-actions-bar__group">
             <!-- Mobile Toggle Button -->
             <button class="btn btn--primary btn--sm builder-mobile-toggle" onclick="CareerAI.toggleMobilePreview()">
-              👁️ <span id="mobilePreviewToggleText">عرض المعاينة المباشرة</span>
+              👁️ <span id="mobilePreviewToggleText">${isEn ? 'Show Live Preview' : 'عرض المعاينة المباشرة'}</span>
             </button>
             <!-- PDF Download Button -->
             <button class="btn btn--accent btn--md" onclick="CareerAI.downloadResumePDF()">
               <span style="font-size:1.1rem">📥</span>
-              <strong>تحميل السيرة الذاتية PDF</strong>
+              <strong>${isEn ? 'Download Resume PDF' : 'تحميل السيرة الذاتية PDF'}</strong>
             </button>
           </div>
         </div>
@@ -211,27 +213,27 @@ window.CareerAI.pages.resumeBuilder = function() {
             <div class="builder-steps-nav">
               <button class="builder-step-btn ${state.currentStep === 1 ? 'active' : ''}" onclick="CareerAI.setResumeStep(1)">
                 <span class="builder-step-number">1</span>
-                <span class="builder-step-title">المعلومات الشخصية</span>
+                <span class="builder-step-title">${isEn ? 'Personal Info' : 'المعلومات الشخصية'}</span>
               </button>
               <button class="builder-step-btn ${state.currentStep === 2 ? 'active' : ''}" onclick="CareerAI.setResumeStep(2)">
                 <span class="builder-step-number">2</span>
-                <span class="builder-step-title">النبذة المهنية</span>
+                <span class="builder-step-title">${isEn ? 'Summary' : 'النبذة المهنية'}</span>
               </button>
               <button class="builder-step-btn ${state.currentStep === 3 ? 'active' : ''}" onclick="CareerAI.setResumeStep(3)">
                 <span class="builder-step-number">3</span>
-                <span class="builder-step-title">الخبرات</span>
+                <span class="builder-step-title">${isEn ? 'Experience' : 'الخبرات'}</span>
               </button>
               <button class="builder-step-btn ${state.currentStep === 4 ? 'active' : ''}" onclick="CareerAI.setResumeStep(4)">
                 <span class="builder-step-number">4</span>
-                <span class="builder-step-title">التعليم</span>
+                <span class="builder-step-title">${isEn ? 'Education' : 'التعليم'}</span>
               </button>
               <button class="builder-step-btn ${state.currentStep === 5 ? 'active' : ''}" onclick="CareerAI.setResumeStep(5)">
                 <span class="builder-step-number">5</span>
-                <span class="builder-step-title">المهارات</span>
+                <span class="builder-step-title">${isEn ? 'Skills' : 'المهارات'}</span>
               </button>
               <button class="builder-step-btn ${state.currentStep === 6 ? 'active' : ''}" onclick="CareerAI.setResumeStep(6)">
                 <span class="builder-step-number">6</span>
-                <span class="builder-step-title">اللغات</span>
+                <span class="builder-step-title">${isEn ? 'Languages' : 'اللغات'}</span>
               </button>
             </div>
 
@@ -246,7 +248,7 @@ window.CareerAI.pages.resumeBuilder = function() {
                 → الخطوة السابقة
               </button>
               <div class="builder-step-indicator">
-                الخطوة <strong>${state.currentStep}</strong> من <strong>6</strong>
+                ${isEn ? 'Step' : 'الخطوة'} <strong>${state.currentStep}</strong> ${isEn ? 'of' : 'من'} <strong>6</strong>
               </div>
               <button class="btn btn--primary" id="btnNextStep" onclick="CareerAI.nextResumeStep()">
                 ${state.currentStep === 6 ? 'معاينة وتحميل PDF ✓' : 'الخطوة التالية ←'}
@@ -260,10 +262,10 @@ window.CareerAI.pages.resumeBuilder = function() {
             <div class="builder-preview-header">
               <div class="builder-preview-badge">
                 <span class="status-indicator-dot"></span>
-                معاينة حية ومباشرة (A4 Format)
+                ${isEn ? 'Live Preview (A4 Format)' : 'معاينة حية ومباشرة (A4 Format)'}
               </div>
               <button class="btn btn--accent btn--sm" onclick="CareerAI.downloadResumePDF()">
-                تحميل PDF 📄
+                ${isEn ? 'Download PDF 📄' : 'تحميل PDF 📄'}
               </button>
             </div>
 
@@ -320,7 +322,7 @@ window.CareerAI.pages.resumeBuilder = function() {
             <span style="width:16px;height:16px;display:inline-flex">${icons.skills}</span>
             دليل إرشادي شامل
           </span>
-          <h2 class="section__title">كل ما تحتاج معرفته عن <span class="text-gradient">السيرة الذاتية الاحترافية</span></h2>
+          <h2 class="section__title">${isEn ? 'Everything You Need to Know About <span class="text-gradient">Professional Resumes</span>' : 'كل ما تحتاج معرفته عن <span class="text-gradient">السيرة الذاتية الاحترافية</span>'}</h2>
           <p class="section__subtitle">دليل إرشادي من الخبراء لكتابة سيرة ذاتية مميزة تفتح لك أبواب أفضل الوظائف</p>
         </div>
 
@@ -437,50 +439,51 @@ window.CareerAI.pages.resumeBuilder = function() {
 
 CareerAI.renderBuilderStep = function(stepNumber) {
   const state = window.CareerAI.resumeState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   switch (stepNumber) {
     // Step 1: Personal Information
     case 1:
       return `
         <div class="builder-step-header">
-          <h3 class="builder-step-head-title">👤 المعلومات الشخصية وبيانات التواصل</h3>
+          <h3 class="builder-step-head-title">👤 ${isEn ? 'Personal Information & Contact' : 'المعلومات الشخصية وبيانات التواصل'}</h3>
           <p class="builder-step-head-desc">أدخل بياناتك الأساسية التي سيتواصل معك مسؤولو التوظيف من خلالها.</p>
         </div>
 
         <div class="contact-form__row">
           <div class="form-group">
-            <label class="form-label">الاسم الكامل *</label>
+            <label class="form-label">${isEn ? 'Full Name *' : 'الاسم الكامل *'}</label>
             <input type="text" class="form-input" placeholder="مثال: أحمد محمد علي" value="${state.personal.fullName}" oninput="CareerAI.updatePersonalField('fullName', this.value)">
           </div>
           <div class="form-group">
-            <label class="form-label">المسمى الوظيفي المستهدف *</label>
+            <label class="form-label">${isEn ? 'Target Job Title *' : 'المسمى الوظيفي المستهدف *'}</label>
             <input type="text" class="form-input" placeholder="مثال: مطور برمجيات واجهات أمامية Frontend" value="${state.personal.jobTitle}" oninput="CareerAI.updatePersonalField('jobTitle', this.value)">
           </div>
         </div>
 
         <div class="contact-form__row">
           <div class="form-group">
-            <label class="form-label">البريد الإلكتروني *</label>
+            <label class="form-label">${isEn ? 'Email Address *' : 'البريد الإلكتروني *'}</label>
             <input type="email" class="form-input" placeholder="name@example.com" value="${state.personal.email}" oninput="CareerAI.updatePersonalField('email', this.value)">
           </div>
           <div class="form-group">
-            <label class="form-label">رقم الهاتف *</label>
+            <label class="form-label">${isEn ? 'Phone Number *' : 'رقم الهاتف *'}</label>
             <input type="tel" class="form-input" placeholder="+966 5x xxx xxxx" value="${state.personal.phone}" oninput="CareerAI.updatePersonalField('phone', this.value)">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">المدينة والدولة *</label>
+          <label class="form-label">${isEn ? 'City & Country *' : 'المدينة والدولة *'}</label>
           <input type="text" class="form-input" placeholder="مثال: الرياض، المملكة العربية السعودية" value="${state.personal.location}" oninput="CareerAI.updatePersonalField('location', this.value)">
         </div>
 
         <div class="contact-form__row">
           <div class="form-group">
-            <label class="form-label">رابط حساب LinkedIn (اختياري)</label>
+            <label class="form-label">${isEn ? 'LinkedIn Profile URL (Optional)' : 'رابط حساب LinkedIn (اختياري)'}</label>
             <input type="text" class="form-input" placeholder="linkedin.com/in/username" value="${state.personal.linkedin}" oninput="CareerAI.updatePersonalField('linkedin', this.value)">
           </div>
           <div class="form-group">
-            <label class="form-label">رابط الموقع الشخصي أو المعرض (اختياري)</label>
+            <label class="form-label">${isEn ? 'Portfolio / Website URL (Optional)' : 'رابط الموقع الشخصي أو المعرض (اختياري)'}</label>
             <input type="text" class="form-input" placeholder="portfolio.com" value="${state.personal.website}" oninput="CareerAI.updatePersonalField('website', this.value)">
           </div>
         </div>
@@ -493,7 +496,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
           <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-2)">
             <div>
               <h3 class="builder-step-head-title">✍️ النبذة المهنية (Professional Summary)</h3>
-              <p class="builder-step-head-desc">فقرة موجزة (2-4 أسطر) تلخص سنوات خبرتك، أبرز مهاراتك وقيمتك المضافة.</p>
+              <p class="builder-step-head-desc">${isEn ? 'A concise 2-4 line paragraph summarizing your experience, key skills, and value proposition.' : 'فقرة موجزة (2-4 أسطر) تلخص سنوات خبرتك، أبرز مهاراتك وقيمتك المضافة.'}</p>
             </div>
             <button class="btn btn--primary btn--sm btn-ai-enhance" onclick="CareerAI.enhanceSummaryWithAI()">
               ✨ تحسين بالذكاء الاصطناعي
@@ -502,7 +505,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
         </div>
 
         <div class="form-group">
-          <label class="form-label">نص النبذة المهنية</label>
+          <label class="form-label">${isEn ? 'Professional Summary Text' : 'نص النبذة المهنية'}</label>
           <textarea class="form-textarea" style="min-height:160px" placeholder="اكتب نبذة موجزة عن خبراتك ومؤهلاتك أو اضغط على زر التحسين بالذكاء الاصطناعي للمساعدة..." oninput="CareerAI.updateSummary(this.value)">${state.summary}</textarea>
         </div>
 
@@ -513,7 +516,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
               نموذج تقني وبرمجة
             </button>
             <button class="ai-suggestion-chip" onclick="CareerAI.applySummaryTemplate('marketing')">
-              نموذج تسويق وإدارة أعمال
+              ${isEn ? 'Marketing & Business Management' : 'نموذج تسويق وإدارة أعمال'}
             </button>
             <button class="ai-suggestion-chip" onclick="CareerAI.applySummaryTemplate('fresh')">
               نموذج خريج جديد
@@ -543,13 +546,13 @@ CareerAI.renderBuilderStep = function(stepNumber) {
               <div class="repeater-card__header">
                 <span class="repeater-card__badge">خبرة عمل #${index + 1}</span>
                 ${state.experiences.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeExperience('${exp.id}')">✕ حذف</button>
+                  <button class="repeater-card__delete" onclick="CareerAI.removeExperience('${exp.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
                 ` : ''}
               </div>
 
               <div class="contact-form__row">
                 <div class="form-group">
-                  <label class="form-label">المسمى الوظيفي *</label>
+                  <label class="form-label">${isEn ? 'Job Title *' : 'المسمى الوظيفي *'}</label>
                   <input type="text" class="form-input" placeholder="مثال: مهندس برمجيات" value="${exp.jobTitle}" oninput="CareerAI.updateExperienceField('${exp.id}', 'jobTitle', this.value)">
                 </div>
                 <div class="form-group">
@@ -571,7 +574,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
 
               <div class="contact-form__row">
                 <div class="form-group">
-                  <label class="form-label">تاريخ الانتهاء</label>
+                  <label class="form-label">${isEn ? 'End Date' : 'تاريخ الانتهاء'}</label>
                   <input type="text" class="form-input" placeholder="مثال: 2024-05" value="${exp.endDate}" ${exp.current ? 'disabled' : ''} id="exp_end_${exp.id}" oninput="CareerAI.updateExperienceField('${exp.id}', 'endDate', this.value)">
                 </div>
                 <div class="form-group" style="display:flex;align-items:center;padding-top:var(--space-6)">
@@ -612,7 +615,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
               <div class="repeater-card__header">
                 <span class="repeater-card__badge">مؤهل دراسي #${index + 1}</span>
                 ${state.education.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeEducation('${edu.id}')">✕ حذف</button>
+                  <button class="repeater-card__delete" onclick="CareerAI.removeEducation('${edu.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
                 ` : ''}
               </div>
 
@@ -622,7 +625,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
                   <input type="text" class="form-input" placeholder="مثال: جامعة الملك فهد للبترول والمعادن" value="${edu.school}" oninput="CareerAI.updateEducationField('${edu.id}', 'school', this.value)">
                 </div>
                 <div class="form-group">
-                  <label class="form-label">الدرجة العلمية والتخصص *</label>
+                  <label class="form-label">${isEn ? 'Degree & Major *' : 'الدرجة العلمية والتخصص *'}</label>
                   <input type="text" class="form-input" placeholder="مثال: بكالوريوس في علوم الحاسب" value="${edu.degree}" oninput="CareerAI.updateEducationField('${edu.id}', 'degree', this.value)">
                 </div>
               </div>
@@ -717,7 +720,7 @@ CareerAI.renderBuilderStep = function(stepNumber) {
               <div class="repeater-card__header">
                 <span class="repeater-card__badge">اللغة #${index + 1}</span>
                 ${state.languages.length > 1 ? `
-                  <button class="repeater-card__delete" onclick="CareerAI.removeLanguage('${lang.id}')">✕ حذف</button>
+                  <button class="repeater-card__delete" onclick="CareerAI.removeLanguage('${lang.id}')">✕ ${isEn ? 'Remove' : 'حذف'}</button>
                 ` : ''}
               </div>
 
@@ -727,14 +730,14 @@ CareerAI.renderBuilderStep = function(stepNumber) {
                   <input type="text" class="form-input" placeholder="مثال: العربية، الإنجليزية، الفرنسية..." value="${lang.name}" oninput="CareerAI.updateLanguageField('${lang.id}', 'name', this.value)">
                 </div>
                 <div class="form-group">
-                  <label class="form-label">مستوى الإتقان *</label>
+                  <label class="form-label">${isEn ? 'Proficiency Level *' : 'مستوى الإتقان *'}</label>
                   <select class="form-input form-select" onchange="CareerAI.updateLanguageField('${lang.id}', 'level', this.value)">
-                    <option value="اللغة الأم" ${lang.level === 'اللغة الأم' ? 'selected' : ''}>اللغة الأم</option>
+                    <option value="${isEn ? 'Native Speaker' : 'اللغة الأم'}" ${lang.level === '${isEn ? 'Native Speaker' : 'اللغة الأم'}' ? 'selected' : ''}>${isEn ? 'Native Speaker' : 'اللغة الأم'}</option>
                     <option value="طليق / ممتاز (C2)" ${lang.level === 'طليق / ممتاز (C2)' ? 'selected' : ''}>طليق / ممتاز (C2)</option>
                     <option value="متقدم (C1)" ${lang.level === 'متقدم (C1)' || lang.level === 'متقدم' ? 'selected' : ''}>متقدم (C1)</option>
-                    <option value="فوق المتوسط (B2)" ${lang.level === 'فوق المتوسط (B2)' ? 'selected' : ''}>فوق المتوسط (B2)</option>
-                    <option value="متوسط (B1)" ${lang.level === 'متوسط (B1)' || lang.level === 'متوسط' ? 'selected' : ''}>متوسط (B1)</option>
-                    <option value="مبتدئ (A1-A2)" ${lang.level === 'مبتدئ (A1-A2)' ? 'selected' : ''}>مبتدئ (A1-A2)</option>
+                    <option value="فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)" ${lang.level === 'فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)' ? 'selected' : ''}>فوق ال${isEn ? 'Intermediate' : 'متوسط'} (B2)</option>
+                    <option value="${isEn ? 'Intermediate' : 'متوسط'} (B1)" ${lang.level === '${isEn ? 'Intermediate' : 'متوسط'} (B1)' || lang.level === '${isEn ? 'Intermediate' : 'متوسط'}' ? 'selected' : ''}>${isEn ? 'Intermediate' : 'متوسط'} (B1)</option>
+                    <option value="${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)" ${lang.level === '${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)' ? 'selected' : ''}>${isEn ? 'Beginner' : 'مبتدئ'} (A1-A2)</option>
                   </select>
                 </div>
               </div>
@@ -1084,7 +1087,7 @@ CareerAI.addLanguage = function() {
   CareerAI.resumeState.languages.push({
     id: 'lang-' + Date.now(),
     name: '',
-    level: 'متوسط'
+    level: '${isEn ? 'Intermediate' : 'متوسط'}'
   });
   CareerAI.setResumeStep(6);
   CareerAI.updateLivePreview();
@@ -1120,7 +1123,7 @@ CareerAI.resetResumeForm = function() {
       experiences: [{ id: 'exp-1', jobTitle: '', company: '', city: '', startDate: '', endDate: '', current: false, description: '' }],
       education: [{ id: 'edu-1', school: '', degree: '', startDate: '', endDate: '', location: '' }],
       skills: [],
-      languages: [{ id: 'lang-1', name: 'العربية', level: 'اللغة الأم' }]
+      languages: [{ id: 'lang-1', name: 'العربية', level: '${isEn ? 'Native Speaker' : 'اللغة الأم'}' }]
     };
     CareerAI.setResumeStep(1);
     CareerAI.updateLivePreview();
