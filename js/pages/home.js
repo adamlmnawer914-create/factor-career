@@ -87,10 +87,10 @@ window.CareerAI.pages.home = function() {
             </div>
 
             <!-- Hero Title -->
-            <h1 class="hero__title animate-on-scroll delay-1" style="font-size:clamp(1.8rem, 4vw, 2.7rem);font-weight:800;color:#ffffff;line-height:1.25;margin-bottom:1.25rem">
+            <h1 class="hero__title animate-on-scroll delay-1" style="font-size:clamp(1.6rem, 3.5vw, 2.4rem);font-weight:800;color:#ffffff;line-height:1.35;margin-bottom:1.25rem">
               ${isEn
-                ? 'Free AI Resume Builder<br>&amp; Curated Career<br><span class="text-gradient">Opportunities</span><br>Land Your Dream Job Faster'
-                : 'منشئ السيرة الذاتية المجاني<br>بالذكاء الاصطناعي<br><span class="text-gradient">وفرص مهنية مختارة</span><br>احصل على وظيفة أحلامك أسرع'
+                ? `Free AI Resume Builder<br><span style="color:#22d3ee;font-weight:800">&amp; Curated Career<br>Opportunities</span><br>Land Your Dream Job Faster`
+                : `منشئ السيرة الذاتية المجاني<br><span style="color:#22d3ee;font-weight:800">وفرص مهنية مختارة<br>بعناية</span><br>احصل على وظيفة أحلامك أسرع`
               }
             </h1>
 
@@ -102,57 +102,39 @@ window.CareerAI.pages.home = function() {
               }
             </p>
 
-            <!-- Hero Action Buttons -->
-            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2.5rem">
-              <a href="/tools/resume-builder" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.4);border-radius:50px;padding:0.75rem 1.75rem" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-                ${t('hero.btnBuild', 'Build Your Resume Now')}
+            <!-- Hero Action Buttons — stacked vertically like screenshot -->
+            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;flex-direction:column;gap:0.85rem;align-items:flex-start">
+              <a href="/tools/resume-builder" class="btn" style="background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:50px;padding:0.75rem 1.75rem;font-size:0.95rem;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(16,185,129,0.4);text-decoration:none" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+                ${t('hero.btnBuild', 'Build Your Resume Now')} <span style="font-size:1rem">→</span>
               </a>
-              <a href="/tools" class="btn btn--secondary btn--lg" style="border-radius:50px;padding:0.75rem 1.75rem;border:1.5px solid rgba(255,255,255,0.4);color:#fff" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
+              <a href="/tools" class="btn" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;padding:0.65rem 1.5rem;font-size:0.9rem;font-weight:600;color:#e2e8f0;display:inline-flex;align-items:center;gap:6px;text-decoration:none" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
                 ${t('hero.btnExplore', 'Explore All Jobs & Tools')}
               </a>
             </div>
 
-            <!-- Stats / Highlights Row -->
-            <div class="hero__stats animate-on-scroll delay-4" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
-              <div class="hero__stat" style="text-align:center">
-                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#ffffff;line-height:1.2">100%</div>
-                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'Completely Free' : 'مجاني بالكامل'}</div>
-              </div>
-              <div style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
-              <div class="hero__stat" style="text-align:center">
-                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#38bdf8;line-height:1.2">5+</div>
-                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'AI Career Tools' : 'أدوات مهنية'}</div>
-              </div>
-              <div style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
-              <div class="hero__stat" style="text-align:center">
-                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#34d399;line-height:1.2">ATS</div>
-                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'Optimized for Screening' : 'متوافق مع الفرز الآلي'}</div>
-              </div>
-            </div>
-
           </div>
 
-          <!-- Right: Hero Image + Ad -->
-          <div class="animate-on-scroll delay-2" style="display:flex;flex-direction:column;gap:1.25rem;align-items:center">
+          <!-- Right: Hero Image + Ad SIDE BY SIDE like screenshot -->
+          <div class="animate-on-scroll delay-2" style="display:flex;gap:0.75rem;align-items:flex-start;justify-content:center">
             
             <!-- Hero Image -->
-            <div style="border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:320px">
+            <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,0.45);flex:1;min-width:0">
               <img src="/img/hero-career-ai.jpg"
                    alt="${isEn ? 'AI Resume Builder - Factor Career' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}"
-                   style="width:100%;height:auto;display:block;border-radius:16px"
+                   style="width:100%;height:auto;display:block"
                    loading="eager"
                    onerror="this.style.display='none'">
             </div>
 
-            <!-- Sponsored Ad Card -->
-            <div class="hero-square-ad__card" style="margin:0 auto">
-              <div class="hero-square-ad__label">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-${isEn?'right':'left'}:3px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            <!-- Sponsored Ad Card — side by side with image -->
+            <div class="hero-square-ad__card" style="flex-shrink:0">
+              <div class="hero-square-ad__label" style="font-size:0.65rem;padding:3px 8px">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:2px"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
                 SPONSORED AD
               </div>
               <div class="hero-square-ad__box">
                 <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
+                     style="display:inline-block;width:140px;height:250px;max-width:100%"
                      data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="1122334455"
                      data-ad-format="rectangle"></ins>
@@ -162,6 +144,23 @@ window.CareerAI.pages.home = function() {
           </div>
 
         </div>
+
+        <!-- Stats Row — BELOW the full 2-col grid, matches screenshot -->
+        <div class="animate-on-scroll delay-4" style="display:flex;align-items:center;gap:3rem;margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap">
+          <div>
+            <div style="font-size:1.6rem;font-weight:800;color:#ffffff">100%</div>
+            <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;margin-top:2px">${isEn ? 'Completely Free' : 'مجاني بالكامل'}</div>
+          </div>
+          <div>
+            <div style="font-size:1.6rem;font-weight:800;color:#38bdf8">5+</div>
+            <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;margin-top:2px">${isEn ? 'AI Career Tools' : 'أدوات مهنية'}</div>
+          </div>
+          <div>
+            <div style="font-size:1.6rem;font-weight:800;color:#34d399">ATS</div>
+            <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;margin-top:2px">${isEn ? 'Optimized for Screening' : 'متوافق مع الفرز الآلي'}</div>
+          </div>
+        </div>
+
       </div>
     </section>
 

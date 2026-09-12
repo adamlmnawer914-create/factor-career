@@ -100,6 +100,9 @@ window.CareerAI.pages.jobs = function() {
     return true;
   });
 
+  // Limit to max 15 jobs displayed (fewer than 20 as requested)
+  const displayedJobs = filteredJobs.slice(0, 15);
+
   return `
     <!-- Jobs Hero Section -->
     <section class="section" style="padding-top:2.5rem;padding-bottom:1.5rem">
@@ -203,7 +206,7 @@ window.CareerAI.pages.jobs = function() {
                 <h2 style="font-size:1.25rem;font-weight:800;color:var(--color-text);margin:0;display:flex;align-items:center;gap:8px">
                   <span>${isEn ? 'Available Verified Opportunities' : 'الوظائف المتاحة والموثقة'}</span>
                   <span style="font-size:0.85rem;font-weight:600;background:rgba(99,102,241,0.15);color:var(--color-primary-light);padding:2px 10px;border-radius:20px">
-                    ${filteredJobs.length} ${isEn ? 'jobs' : 'فرصة'}
+                    ${displayedJobs.length} ${isEn ? 'jobs' : 'فرصة'}
                   </span>
                 </h2>
               </div>
@@ -224,7 +227,7 @@ window.CareerAI.pages.jobs = function() {
               </div>
             ` : `
               <div class="jobs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;">
-                ${filteredJobs.map((job, i) => {
+                ${displayedJobs.map((job, i) => {
                   const compInitial = (job.company ? job.company.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
                   const logoUrl = job.logo || job.companyLogo || '';
                   const skills = Array.isArray(job.skills) ? job.skills.slice(0, 3) : [];
