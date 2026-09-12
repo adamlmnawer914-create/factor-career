@@ -123,11 +123,11 @@ window.CareerAI.pages.home = function() {
 
           </div>
 
-          <!-- Right: Hero Image + Ad Card SAME HEIGHT -->
-          <div class="animate-on-scroll delay-2" style="display:flex;gap:0.75rem;align-items:stretch;justify-content:center">
+          <!-- Right: Hero Image (square) + Ad Card (square) -->
+          <div class="animate-on-scroll delay-2" style="display:flex;gap:0.85rem;align-items:flex-start;justify-content:center">
             
-            <!-- Hero Image -->
-            <div id="hero-img-wrap" style="border-radius:14px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,0.45);flex:1;min-width:0">
+            <!-- Hero Image — fixed square -->
+            <div style="width:260px;height:260px;min-width:260px;border-radius:14px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08)">
               <img src="/img/hero-career-ai.jpg"
                    alt="${isEn ? 'AI Resume Builder - Factor Career' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}"
                    style="width:100%;height:100%;object-fit:cover;display:block"
@@ -135,19 +135,22 @@ window.CareerAI.pages.home = function() {
                    onerror="this.style.display='none'">
             </div>
 
-            <!-- Sponsored Ad Card — same height as image -->
-            <div class="hero-square-ad__card" style="align-self:stretch;height:auto;display:flex;flex-direction:column">
-              <div class="hero-square-ad__label">
+            <!-- Sponsored Ad Card — same square size as image -->
+            <div style="width:260px;height:260px;min-width:260px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,41,59,0.98));border:1px solid rgba(99,102,241,0.3);box-shadow:0 16px 50px rgba(0,0,0,0.5),0 0 30px rgba(99,102,241,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden">
+              <!-- Top glow line -->
+              <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.8),rgba(139,92,246,0.8),transparent)"></div>
+              <!-- Label -->
+              <div style="font-size:0.65rem;font-weight:700;color:#a5b4fc;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:4px">
                 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
                 SPONSORED AD
               </div>
-              <div class="hero-square-ad__box" style="flex:1;height:auto;min-height:200px">
+              <!-- Ad unit 250x250 -->
+              <div style="width:250px;height:250px;display:flex;align-items:center;justify-content:center;overflow:hidden">
                 <ins class="adsbygoogle"
-                     style="display:block;width:160px;height:100%"
+                     style="display:inline-block;width:250px;height:250px"
                      data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="1122334455"
-                     data-ad-format="auto"
-                     data-full-width-responsive="false"></ins>
+                     data-ad-format="rectangle"></ins>
               </div>
             </div>
 
