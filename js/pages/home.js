@@ -123,41 +123,42 @@ window.CareerAI.pages.home = function() {
 
           </div>
 
-          <!-- Right: Hero Image (square) + Ad Card (square) -->
-          <div class="animate-on-scroll delay-2" style="display:flex;gap:1rem;align-items:flex-start;justify-content:center">
+          <!-- Right: Hero Image (square) + Ad Card (square) — LOCKED SIZE -->
+          <div class="animate-on-scroll delay-2" style="display:flex;gap:1rem;align-items:flex-start;justify-content:center;flex-shrink:0">
             
-            <!-- Hero Image — bigger square -->
-            <div style="width:340px;height:340px;min-width:340px;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.1),0 0 40px rgba(99,102,241,0.15)">
+            <!-- Hero Image — fixed 300x300 square, locked -->
+            <div style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.1),0 0 40px rgba(99,102,241,0.15);flex-shrink:0">
               <img src="/img/hero-career-ai.jpg"
                    alt="${isEn ? 'AI Resume Builder - Factor Career' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}"
-                   style="width:100%;height:100%;object-fit:cover;display:block"
+                   style="width:300px;height:300px;object-fit:cover;display:block"
                    loading="eager"
                    onerror="this.style.display='none'">
             </div>
 
-            <!-- Sponsored Ad Card — premium glassmorphism frame, same size -->
-            <div style="width:340px;height:340px;min-width:340px;border-radius:20px;background:linear-gradient(145deg,rgba(15,23,42,0.97) 0%,rgba(20,30,55,0.98) 50%,rgba(30,41,70,0.97) 100%);border:1px solid rgba(99,102,241,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 35px rgba(99,102,241,0.2),inset 0 1px 0 rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden">
+            <!-- Sponsored Ad Card — fixed 300x300 square, AdSense CANNOT resize it -->
+            <div style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;background:linear-gradient(145deg,rgba(15,23,42,0.97) 0%,rgba(20,30,55,0.98) 50%,rgba(30,41,70,0.97) 100%);border:1px solid rgba(99,102,241,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 35px rgba(99,102,241,0.2),inset 0 1px 0 rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0">
               
-              <!-- Animated top gradient border -->
-              <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,#6366f1 25%,#8b5cf6 50%,#a78bfa 75%,transparent 100%)"></div>
-              <!-- Bottom subtle glow -->
-              <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80%;height:80px;background:radial-gradient(ellipse,rgba(99,102,241,0.12) 0%,transparent 70%);pointer-events:none"></div>
+              <!-- Top gradient glow line -->
+              <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#6366f1,#8b5cf6,#a78bfa,transparent);pointer-events:none"></div>
+              <!-- Bottom radial glow -->
+              <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:radial-gradient(ellipse at center bottom,rgba(99,102,241,0.1),transparent 70%);pointer-events:none"></div>
               
-              <!-- Premium SPONSORED label -->
-              <div style="position:absolute;top:12px;left:0;right:0;display:flex;justify-content:center">
-                <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);border-radius:20px;padding:3px 10px">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-                  <span style="font-size:0.6rem;font-weight:800;color:#a5b4fc;letter-spacing:1.5px;text-transform:uppercase">SPONSORED AD</span>
+              <!-- SPONSORED label -->
+              <div style="position:absolute;top:10px;left:0;right:0;display:flex;justify-content:center;z-index:2">
+                <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:20px;padding:2px 9px">
+                  <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                  <span style="font-size:0.58rem;font-weight:800;color:#a5b4fc;letter-spacing:1.5px;text-transform:uppercase">SPONSORED AD</span>
                 </div>
               </div>
 
-              <!-- Ad unit 300x250 centered -->
-              <div style="width:300px;height:250px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:8px">
+              <!-- 250x250 SQUARE ad unit — locked in fixed wrapper -->
+              <div style="width:250px;height:250px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:16px;flex-shrink:0">
                 <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
+                     style="display:inline-block;width:250px;height:250px;max-width:250px;max-height:250px"
                      data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="1122334455"
-                     data-ad-format="rectangle"></ins>
+                     data-ad-format="rectangle"
+                     data-full-width-responsive="false"></ins>
               </div>
             </div>
 
