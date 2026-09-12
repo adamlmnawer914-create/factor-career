@@ -8,7 +8,7 @@
 .adsbygoogle {
   display: block;
 }
-ins.adsbygoogle[data-ad-status="unfilled"] {
+ins.adsbygoogle:not(.hero-ad-ins)[data-ad-status="unfilled"] {
   display: none !important;
 }
 /* Reserve min height for ad containers so page doesn't jump */
@@ -19,6 +19,44 @@ ins.adsbygoogle[data-ad-status="unfilled"] {
 .ad-frame-leaderboard { min-height: 100px; }
 .ad-frame-skyscraper  { min-height: 300px; }
 .ad-frame-banner      { min-height: 100px; }
+
+/* Strictly lock Hero Square Ad dimensions — prevents any resize or rectangle morphing */
+.hero-square-ad-wrapper {
+  width: 300px !important;
+  height: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  min-height: 300px !important;
+  max-height: 300px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.hero-ad-ins {
+  display: inline-block !important;
+  width: 250px !important;
+  height: 250px !important;
+  min-width: 250px !important;
+  max-width: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
+  margin: 0 auto !important;
+}
+
+ins.hero-ad-ins[data-ad-status="unfilled"] {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+.hero-ad-ins iframe,
+.hero-square-ad-wrapper iframe {
+  max-width: 250px !important;
+  max-height: 250px !important;
+  border-radius: 12px !important;
+}
 
 
 

@@ -136,7 +136,7 @@ window.CareerAI.pages.home = function() {
             </div>
 
             <!-- Sponsored Ad Card — fixed 300x300 square, AdSense CANNOT resize it -->
-            <div style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;background:linear-gradient(145deg,rgba(15,23,42,0.97) 0%,rgba(20,30,55,0.98) 50%,rgba(30,41,70,0.97) 100%);border:1px solid rgba(99,102,241,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 35px rgba(99,102,241,0.2),inset 0 1px 0 rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0">
+            <div class="hero-square-ad-wrapper" style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;background:linear-gradient(145deg,rgba(15,23,42,0.97) 0%,rgba(20,30,55,0.98) 50%,rgba(30,41,70,0.97) 100%);border:1px solid rgba(99,102,241,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 35px rgba(99,102,241,0.2),inset 0 1px 0 rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0">
               
               <!-- Top gradient glow line -->
               <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#6366f1,#8b5cf6,#a78bfa,transparent);pointer-events:none"></div>
@@ -151,14 +151,16 @@ window.CareerAI.pages.home = function() {
                 </div>
               </div>
 
-              <!-- 250x250 SQUARE ad unit — locked in fixed wrapper -->
-              <div style="width:250px;height:250px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:16px;flex-shrink:0">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:250px;height:250px;max-width:250px;max-height:250px"
+              <!-- 250x250 FIXED SQUARE ad unit — locked in fixed wrapper, NO rectangle format -->
+              <div style="width:250px;height:250px;min-width:250px;max-width:250px;min-height:250px;max-height:250px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:16px;flex-shrink:0;position:relative">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0.3;pointer-events:none;z-index:1">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="4"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                  <span style="font-size:0.65rem;color:#a5b4fc;font-weight:700;margin-top:6px;letter-spacing:1px">250 × 250</span>
+                </div>
+                <ins class="adsbygoogle hero-ad-ins"
+                     style="display:inline-block;width:250px;height:250px;position:relative;z-index:2"
                      data-ad-client="ca-pub-7520213352755959"
-                     data-ad-slot="1122334455"
-                     data-ad-format="rectangle"
-                     data-full-width-responsive="false"></ins>
+                     data-ad-slot="1122334455"></ins>
               </div>
             </div>
 
