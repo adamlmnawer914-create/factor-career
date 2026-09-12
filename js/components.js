@@ -57,8 +57,16 @@ window.CareerAI.components.renderHeader = function () {
         
         <!-- Brand Logo -->
         <a href="/" class="header__logo" onclick="event.preventDefault();CareerAI.router.navigate('/')" aria-label="Factor Career Home">
-          <span class="logo__text">Factor<span class="logo__highlight">Career</span></span>
-          <span class="logo__badge">FC</span>
+          <div class="header__logo-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 4H19C19.55 4 20 4.45 20 5V7.5C20 8.05 19.55 8.5 19 8.5H8.5V11H15.5C16.05 11 16.5 11.45 16.5 12V14C16.5 14.55 16.05 15 15.5 15H8.5V20H4.5V4Z" fill="white"/>
+              <path d="M20 1L20.8 3.2L23 4L20.8 4.8L20 7L19.2 4.8L17 4L19.2 3.2L20 1Z" fill="#38bdf8"/>
+            </svg>
+          </div>
+          <div class="header__logo-text">
+            <span class="logo__brand">Factor</span><span class="logo__highlight">Career</span>
+          </div>
+          <span class="logo__badge">AI</span>
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -128,9 +136,17 @@ window.CareerAI.components.renderFooter = function () {
           
           <!-- Column 1: Brand Info -->
           <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
-              <span style="font-size:1.4rem;font-weight:800;color:white">Factor<span style="color:var(--color-primary-light)">Career</span></span>
-              <span class="logo__badge" style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:var(--color-primary);color:white">FC</span>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+              <div class="header__logo-icon" style="width:34px;height:34px;min-width:34px;border-radius:10px">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 4H19C19.55 4 20 4.45 20 5V7.5C20 8.05 19.55 8.5 19 8.5H8.5V11H15.5C16.05 11 16.5 11.45 16.5 12V14C16.5 14.55 16.05 15 15.5 15H8.5V20H4.5V4Z" fill="white"/>
+                  <path d="M20 1L20.8 3.2L23 4L20.8 4.8L20 7L19.2 4.8L17 4L19.2 3.2L20 1Z" fill="#38bdf8"/>
+                </svg>
+              </div>
+              <div class="header__logo-text" style="font-size:1.3rem">
+                <span style="color:white;font-weight:800">Factor</span><span style="color:#38bdf8;font-weight:800">Career</span>
+              </div>
+              <span class="logo__badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;border-color:rgba(56,189,248,0.3)">AI</span>
             </div>
             <p style="font-size:0.9rem;color:var(--color-text-muted);line-height:1.6;margin-bottom:1.25rem">
               ${isEn ? 'Empowering job seekers worldwide with AI tools, ATS resume building, and verified career opportunities.' : 'منصة رائدة تمكّن الباحثين عن عمل بالذكاء الاصطناعي لإنشاء سير ذاتية متوافقة مع ATS واستكشاف أحدث الوظائف الموثقة.'}

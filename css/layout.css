@@ -36,35 +36,73 @@
 .header__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 10px;
   text-decoration: none;
   z-index: var(--z-header);
+  transition: transform 0.2s ease;
+}
+
+.header__logo:hover {
+  transform: translateY(-1px);
 }
 
 .header__logo-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-lg);
-  background: var(--gradient-primary);
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 45%, #4f46e5 80%, #7c3aed 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: var(--font-extrabold);
-  font-size: var(--text-xl);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.header__logo:hover .header__logo-icon {
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transform: scale(1.04);
 }
 
 .header__logo-text {
-  font-size: var(--text-xl);
-  font-weight: var(--font-extrabold);
-  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
-.header__logo-text span {
-  background: var(--gradient-text);
+.header__logo-text .logo__brand {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.header__logo-text .logo__highlight {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 60%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 800;
+}
+
+.logo__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #2563eb;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(99, 102, 241, 0.12) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  padding: 2.5px 6.5px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-inline-start: 3px;
 }
 
 /* Navigation */
