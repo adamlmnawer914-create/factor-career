@@ -3,6 +3,26 @@
    ============================================ */
 
 /* ==========================================
+   ANTI-CLS: Pre-reserve ad space to prevent layout shift
+   ========================================== */
+.adsbygoogle {
+  display: block;
+}
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+/* Reserve min height for ad containers so page doesn't jump */
+.ad-frame-wrapper {
+  min-height: 100px;
+  contain: layout style;
+}
+.ad-frame-leaderboard { min-height: 100px; }
+.ad-frame-skyscraper  { min-height: 300px; }
+.ad-frame-banner      { min-height: 100px; }
+
+
+
+/* ==========================================
    HOME PAGE
    ========================================== */
 

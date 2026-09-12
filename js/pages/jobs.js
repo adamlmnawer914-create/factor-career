@@ -14,7 +14,7 @@ window.CareerAI.jobsFilterState = {
   type: 'all'
 };
 
-// Fetch live jobs in background to ensure always updated
+// Fetch live jobs in background to ensure always updated (no re-render to prevent CLS)
 (function initLiveJobsSync() {
   if (typeof window === 'undefined') return;
   fetch('/data/jobs.json?t=' + Date.now())
@@ -25,12 +25,7 @@ window.CareerAI.jobsFilterState = {
         try {
           localStorage.setItem(window.CareerAI.db.KEYS.JOBS, JSON.stringify(data));
         } catch(e) {}
-        if (window.location.pathname === '/jobs' || window.location.hash.includes('jobs')) {
-          const main = document.getElementById('main-content');
-          if (main && window.CareerAI.pages.jobs) {
-            main.innerHTML = '<div class="page-transition">' + window.CareerAI.pages.jobs() + '</div>';
-          }
-        }
+        // Do NOT re-render the page — avoids sudden layout shift
       }
     })
     .catch(() => {});
