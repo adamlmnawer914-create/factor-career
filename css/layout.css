@@ -95,22 +95,48 @@
 }
 
 .nav__link.active {
-  color: #1d4ed8 !important;
+  color: #312e81 !important;
   font-weight: 700 !important;
-  background: rgba(37, 99, 235, 0.08) !important;
-  border-color: rgba(37, 99, 235, 0.18) !important;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(6, 182, 212, 0.08) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.28) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 3px 12px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+.nav__link.active::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  margin-inline-end: 7px;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.85);
+  display: inline-block;
+  animation: pulseDot 2.5s infinite ease-in-out;
 }
 
 .nav__link.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 12px;
-  right: 12px;
+  bottom: -3px;
+  left: 14px;
+  right: 14px;
   height: 3px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45);
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.65), 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.95);
+  }
 }
 
 .nav__cta {
@@ -232,11 +258,13 @@
 }
 
 .mobile-nav__link.active {
-  color: #1d4ed8 !important;
-  background: rgba(37, 99, 235, 0.09) !important;
+  color: #312e81 !important;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.14) 0%, rgba(59, 130, 246, 0.09) 100%) !important;
   font-weight: 700 !important;
-  border-inline-start: 4px solid #2563eb !important;
+  border-inline-start: 4px solid #6366f1 !important;
   padding-inline-start: 1rem !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.12) !important;
 }
 
 .mobile-nav__cta {

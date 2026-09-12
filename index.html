@@ -44,6 +44,12 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-FACTORCAREER', { 'send_page_view': true });
+
+    // Prevent browser from auto-scrolling down on initial page visit or reload
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
   </script>
 
   <!-- Google Fonts: Cairo (Arabic) & Inter (English) -->

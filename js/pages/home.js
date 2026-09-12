@@ -72,7 +72,7 @@ window.CareerAI.pages.home = function() {
 
   return `
     <!-- Hero Section -->
-    <section class="hero" style="position:relative;overflow:hidden;padding:4rem 0 3rem;background:var(--gradient-hero)">
+    <section class="hero" style="position:relative;overflow:hidden;padding:3.5rem 0 2.5rem;background:var(--gradient-hero);min-height:auto">
       <div class="hero__bg-glow"></div>
       <div class="container" style="position:relative;z-index:2">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
