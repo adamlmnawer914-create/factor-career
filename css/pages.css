@@ -221,18 +221,19 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(99, 102, 241, 0.35) !important;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.2) !important;
-  border-radius: 20px !important;
-  padding: 14px 16px 16px !important;
+  border-radius: 16px !important;
+  padding: 10px 12px 12px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 324px;
+  width: auto !important;
   max-width: 100%;
   box-sizing: border-box;
   text-align: center;
   margin: 0 !important;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .hero-square-ad__card::before {
@@ -257,11 +258,11 @@
 
 .hero-square-ad__box {
   position: relative;
-  width: 300px;
+  width: 160px;
   height: 250px;
   max-width: 100%;
   background: rgba(10, 15, 30, 0.65) !important;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px dashed rgba(99, 102, 241, 0.25);
   display: flex;
   align-items: center;
@@ -274,7 +275,7 @@
   position: relative;
   z-index: 2;
   display: inline-block !important;
-  width: 300px !important;
+  width: 160px !important;
   height: 250px !important;
   max-width: 100% !important;
   background: transparent !important;

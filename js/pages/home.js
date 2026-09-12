@@ -103,11 +103,20 @@ window.CareerAI.pages.home = function() {
             </p>
 
             <!-- Hero Action Buttons — stacked vertically like screenshot -->
-            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;flex-direction:column;gap:0.85rem;align-items:flex-start">
-              <a href="/tools/resume-builder" class="btn" style="background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:50px;padding:0.75rem 1.75rem;font-size:0.95rem;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(16,185,129,0.4);text-decoration:none" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-                ${t('hero.btnBuild', 'Build Your Resume Now')} <span style="font-size:1rem">→</span>
+            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;flex-direction:column;gap:0.85rem;align-items:flex-start;margin-bottom:0">
+              <a href="/tools/resume-builder"
+                 style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#10b981 0%,#059669 100%);color:#fff !important;font-weight:700;font-size:0.95rem;border:none;border-radius:50px;padding:0.8rem 2rem;box-shadow:0 6px 25px rgba(16,185,129,0.45);text-decoration:none;transition:all 0.25s ease;letter-spacing:0.01em"
+                 onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(16,185,129,0.55)'"
+                 onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 25px rgba(16,185,129,0.45)'"
+                 onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+                ${t('hero.btnBuild', 'Build Your Resume Now')}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
-              <a href="/tools" class="btn" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;padding:0.65rem 1.5rem;font-size:0.9rem;font-weight:600;color:#e2e8f0;display:inline-flex;align-items:center;gap:6px;text-decoration:none" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
+              <a href="/tools"
+                 style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.22);border-radius:50px;padding:0.7rem 1.75rem;font-size:0.9rem;font-weight:600;color:#e2e8f0;text-decoration:none;transition:all 0.25s ease"
+                 onmouseover="this.style.background='rgba(255,255,255,0.12)'"
+                 onmouseout="this.style.background='rgba(255,255,255,0.07)'"
+                 onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
                 ${t('hero.btnExplore', 'Explore All Jobs & Tools')}
               </a>
             </div>
@@ -126,15 +135,14 @@ window.CareerAI.pages.home = function() {
                    onerror="this.style.display='none'">
             </div>
 
-            <!-- Sponsored Ad Card — side by side with image -->
-            <div class="hero-square-ad__card" style="flex-shrink:0">
-              <div class="hero-square-ad__label" style="font-size:0.65rem;padding:3px 8px">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:2px"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            <!-- Sponsored Ad Card — to the right of image, smaller size -->
+            <div class="hero-square-ad__card">
+              <div class="hero-square-ad__label">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
                 SPONSORED AD
               </div>
               <div class="hero-square-ad__box">
                 <ins class="adsbygoogle"
-                     style="display:inline-block;width:140px;height:250px;max-width:100%"
                      data-ad-client="ca-pub-7520213352755959"
                      data-ad-slot="1122334455"
                      data-ad-format="rectangle"></ins>
