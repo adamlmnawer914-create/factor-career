@@ -72,43 +72,83 @@ window.CareerAI.pages.home = function() {
 
   return `
     <!-- Hero Section -->
-    <section class="hero" style="position:relative;overflow:hidden;padding:3rem 0 2rem;background:var(--gradient-hero)">
+    <section class="hero" style="position:relative;overflow:hidden;padding:4rem 0 3rem;background:var(--gradient-hero)">
       <div class="hero__bg-glow"></div>
       <div class="container" style="position:relative;z-index:2">
-        <div class="hero__content" style="max-width:860px;margin:0 auto;text-align:center">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
           
-          <!-- Hero Badge (Safe SVG Icon) -->
-          <div class="hero__badge animate-on-scroll" style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:30px;padding:6px 16px;margin-bottom:1.5rem">
-            <span style="width:16px;height:16px;display:inline-flex;color:#818cf8">${icons.sparkles || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>'}</span>
-            <span style="font-size:0.85rem;font-weight:700;color:#c7d2fe">${t('hero.badge', 'منصة السيرة الذاتية والبحث عن وظائف بالذكاء الاصطناعي')}</span>
+          <!-- Left: Text Content -->
+          <div class="hero__content" style="text-align:${isEn ? 'left' : 'right'}">
+            
+            <!-- Hero Badge -->
+            <div class="hero__badge animate-on-scroll" style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:30px;padding:6px 16px;margin-bottom:1.5rem">
+              <span style="width:14px;height:14px;display:inline-flex;color:#818cf8">${icons.sparkles || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>'}</span>
+              <span style="font-size:0.8rem;font-weight:700;color:#c7d2fe">${t('hero.badge', 'AI Resume Builder & Job Search Platform')}</span>
+            </div>
+
+            <!-- Hero Title -->
+            <h1 class="hero__title animate-on-scroll delay-1" style="font-size:clamp(1.8rem, 4vw, 2.7rem);font-weight:800;color:#ffffff;line-height:1.25;margin-bottom:1.25rem">
+              ${isEn
+                ? 'Free AI Resume Builder<br>&amp; Curated Career<br><span class="text-gradient">Opportunities</span><br>Land Your Dream Job Faster'
+                : 'منشئ السيرة الذاتية المجاني<br>بالذكاء الاصطناعي<br><span class="text-gradient">وفرص مهنية مختارة</span><br>احصل على وظيفة أحلامك أسرع'
+              }
+            </h1>
+
+            <!-- Hero Subtitle -->
+            <p class="hero__subtitle animate-on-scroll delay-2" style="font-size:1rem;color:#cbd5e1;line-height:1.7;margin-bottom:2rem">
+              ${isEn
+                ? 'Build an ATS-optimized professional resume for free with AI and discover active job openings easily with Factor Career.'
+                : 'أنشئ سيرة ذاتية احترافية متوافقة مع ATS مجاناً بالذكاء الاصطناعي واكتشف فرص العمل الحالية بسهولة مع Factor Career.'
+              }
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2.5rem">
+              <a href="/tools/resume-builder" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.4);border-radius:50px;padding:0.75rem 1.75rem" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
+                ${t('hero.btnBuild', 'Build Your Resume Now')}
+              </a>
+              <a href="/tools" class="btn btn--secondary btn--lg" style="border-radius:50px;padding:0.75rem 1.75rem;border:1.5px solid rgba(255,255,255,0.4);color:#fff" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
+                ${t('hero.btnExplore', 'Explore All Jobs & Tools')}
+              </a>
+            </div>
+
+            <!-- Stats / Highlights Row -->
+            <div class="hero__stats animate-on-scroll delay-4" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+              <div class="hero__stat" style="text-align:center">
+                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#ffffff;line-height:1.2">100%</div>
+                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'Completely Free' : 'مجاني بالكامل'}</div>
+              </div>
+              <div style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
+              <div class="hero__stat" style="text-align:center">
+                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#38bdf8;line-height:1.2">5+</div>
+                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'AI Career Tools' : 'أدوات مهنية'}</div>
+              </div>
+              <div style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
+              <div class="hero__stat" style="text-align:center">
+                <div class="hero__stat-number" style="font-size:1.8rem;font-weight:800;color:#34d399;line-height:1.2">ATS</div>
+                <div class="hero__stat-label" style="font-size:0.78rem;font-weight:600;color:#94a3b8;margin-top:2px">${isEn ? 'Optimized for Screening' : 'متوافق مع الفرز الآلي'}</div>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Hero Title -->
-          <h1 class="hero__title animate-on-scroll delay-1" style="font-size:clamp(2rem, 5vw, 3rem);font-weight:800;color:#ffffff;line-height:1.25;margin-bottom:1.25rem">
-            ${isEn ? 'Craft Winning Resumes & Land Your <span class="text-gradient">Dream Career</span>' : 'اصنع <span class="text-gradient">السيرة الذاتية</span> الاحترافية وابدأ مسيرتك المهنية بثقة'}
-          </h1>
+          <!-- Right: Hero Image + Ad -->
+          <div class="animate-on-scroll delay-2" style="display:flex;flex-direction:column;gap:1.25rem;align-items:center">
+            
+            <!-- Hero Image -->
+            <div style="border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);width:100%;max-width:320px">
+              <img src="/img/hero-career-ai.jpg"
+                   alt="${isEn ? 'AI Resume Builder - Factor Career' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}"
+                   style="width:100%;height:auto;display:block;border-radius:16px"
+                   loading="eager"
+                   onerror="this.style.display='none'">
+            </div>
 
-          <!-- Hero Subtitle -->
-          <p class="hero__subtitle animate-on-scroll delay-2" style="font-size:1.1rem;color:#cbd5e1;line-height:1.6;max-width:720px;margin:0 auto 2rem">
-            ${isEn ? 'Build ATS-optimized resumes, practice job interviews with AI STAR models, generate persuasive cover letters, and discover verified career opportunities.' : 'صمم سيرة ذاتية احترافية متوافقة مع أنظمة ATS، تدرّب على أسئلة المقابلات، واستخرج الكلمات المفتاحية بنقرة واحدة مجاناً.'}
-          </p>
-
-          <!-- Hero Action Buttons -->
-          <div class="hero__actions animate-on-scroll delay-3" style="display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:2rem">
-            <a href="/tools/resume-builder" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.4)" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-              ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
-            </a>
-            <a href="/tools" class="btn btn--secondary btn--lg" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">
-              ${t('hero.btnExplore', 'استكشف جميع الوظائف والأدوات')}
-            </a>
-          </div>
-
-          <!-- Hero Centered Google Ad Placement (300x250) -->
-          <div class="hero-ad-container animate-on-scroll delay-3" style="display:flex;justify-content:center;align-items:center;margin:2rem auto 1.5rem;width:100%">
+            <!-- Sponsored Ad Card -->
             <div class="hero-square-ad__card" style="margin:0 auto">
               <div class="hero-square-ad__label">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:3px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-                ${t('common.sponsored', 'إعلان ممول / SPONSORED')}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-${isEn?'right':'left'}:3px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+                SPONSORED AD
               </div>
               <div class="hero-square-ad__box">
                 <ins class="adsbygoogle"
@@ -118,29 +158,7 @@ window.CareerAI.pages.home = function() {
                      data-ad-format="rectangle"></ins>
               </div>
             </div>
-          </div>
 
-          <!-- Stats / Highlights Row -->
-          <div class="hero__stats animate-on-scroll delay-4" style="display:flex;justify-content:center;align-items:center;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.12);flex-wrap:wrap">
-            <div class="hero__stat" style="text-align:center;min-width:100px">
-              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#ffffff;line-height:1.2;text-shadow:0 0 20px rgba(99,102,241,0.5)">100%</div>
-              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'Free Forever' : 'مجاني بالكامل'}</div>
-            </div>
-            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
-            <div class="hero__stat" style="text-align:center;min-width:100px">
-              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#38bdf8;line-height:1.2;text-shadow:0 0 20px rgba(56,189,248,0.5)">5+</div>
-              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'AI Smart Tools' : 'أدوات ذكاء اصطناعي'}</div>
-            </div>
-            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
-            <div class="hero__stat" style="text-align:center;min-width:100px">
-              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#34d399;line-height:1.2;text-shadow:0 0 20px rgba(52,211,153,0.5)">ATS</div>
-              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'ATS Friendly' : 'متوافق مع الفرز الآلي'}</div>
-            </div>
-            <div class="hero__stat-divider" style="width:1px;height:36px;background:rgba(255,255,255,0.15)"></div>
-            <div class="hero__stat" style="text-align:center;min-width:100px">
-              <div class="hero__stat-number" style="font-size:2rem;font-weight:800;color:#a78bfa;line-height:1.2;text-shadow:0 0 20px rgba(167,139,250,0.5)">فوري</div>
-              <div class="hero__stat-label" style="font-size:0.85rem;font-weight:600;color:#cbd5e1;margin-top:4px">${isEn ? 'Instant PDF Export' : 'تحميل فوري'}</div>
-            </div>
           </div>
 
         </div>

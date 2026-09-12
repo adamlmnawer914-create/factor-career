@@ -37,7 +37,7 @@ window.CareerAI.icons = {
 };
 
 /* --- Header Component --- */
-window.CareerAI.components.renderHeader = function() {
+window.CareerAI.components.renderHeader = function () {
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const icons = window.CareerAI.icons;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
@@ -75,7 +75,7 @@ window.CareerAI.components.renderHeader = function() {
 
           <!-- Primary CTA Button -->
           <a href="/tools/resume-builder" class="btn btn--primary btn--sm header__cta" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder')">
-            <span>${t('hero.btnBuild', 'ابدأ الآن')}</span>
+            <span>Start Free</span>
           </a>
 
           <!-- Mobile Hamburger Toggle -->
@@ -110,7 +110,7 @@ window.CareerAI.components.renderHeader = function() {
 };
 
 /* --- Footer Component --- */
-window.CareerAI.components.renderFooter = function() {
+window.CareerAI.components.renderFooter = function () {
   const t = (k, f) => window.CareerAI.i18n ? window.CareerAI.i18n.t(k, f) : (f || k);
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
