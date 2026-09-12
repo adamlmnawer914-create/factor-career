@@ -315,6 +315,11 @@ window.CareerAI.i18n = {
     if (app && window.CareerAI.components) {
       try { app.insertAdjacentHTML('afterbegin', window.CareerAI.components.renderHeader()); } catch(e){ console.error(e); }
       try { app.insertAdjacentHTML('beforeend', window.CareerAI.components.renderFooter()); } catch(e){ console.error(e); }
+      try {
+        if (window.CareerAI.router && window.CareerAI.router.updateActiveNav) {
+          window.CareerAI.router.updateActiveNav();
+        }
+      } catch(e){}
     }
 
     // Re-render current page route

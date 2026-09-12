@@ -4,6 +4,15 @@
 
 window.CareerAI = window.CareerAI || {};
 
+// Prevent browser from auto-scrolling down on page load or refresh
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+try { window.scrollTo(0, 0); } catch (e) {}
+window.addEventListener('load', function() {
+  try { window.scrollTo(0, 0); } catch (e) {}
+});
+
 /* --- Router --- */
 window.CareerAI.router = {
   routes: {
@@ -193,13 +202,26 @@ window.CareerAI.router = {
   },
 
   updateActiveNav: function(path) {
+    if (!path) path = (typeof window !== 'undefined' && window.location.pathname) ? window.location.pathname : '/';
+    try { path = decodeURIComponent(path); } catch(e) {}
+    if (path.length > 1 && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
     const navLinks = document.querySelectorAll('.nav__link, .mobile-nav__link');
     navLinks.forEach(link => {
-      const page = link.getAttribute('data-page');
-      if (page === path || (path.startsWith('/blog') && page === '/blog')) {
+      const href = link.getAttribute('data-nav') || link.getAttribute('href') || '';
+      let isActive = false;
+      if (href === '/') {
+        isActive = (path === '/' || path === '');
+      } else if (href !== '') {
+        isActive = (path === href || path.startsWith(href + '/'));
+      }
+      if (isActive) {
         link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
       } else {
         link.classList.remove('active');
+        link.removeAttribute('aria-current');
       }
     });
   }
