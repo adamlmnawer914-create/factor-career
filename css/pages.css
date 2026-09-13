@@ -3507,3 +3507,208 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     padding-bottom: 70px !important;
   }
 }
+
+/* ==========================================================================
+   AI Career Suite - Luxury Tools Mobile Responsiveness & Layout System
+   Ensures 100% visible buttons, no clipping, fluid grids, and touch targets
+   ========================================================================== */
+
+/* Action Bars & Quick Actions */
+.builder-actions-bar {
+  background: rgba(30, 41, 59, 0.75) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.builder-actions-bar .btn {
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+/* Workspace Layouts */
+.builder-layout,
+.analyzer-workspace-grid,
+.cover-letter-grid,
+.ats-keywords-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.builder-layout {
+  grid-template-columns: 1.15fr 1fr;
+}
+
+.analyzer-workspace-grid,
+.cover-letter-grid,
+.ats-keywords-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.iq-setup-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.analyzer-keywords-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Luxury SVG Circular Progress Dial */
+.luxury-score-dial {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.luxury-score-dial svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.luxury-score-dial circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.luxury-score-dial .dial-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.luxury-score-dial .dial-fg {
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.luxury-score-dial .dial-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* STAR Framework Accordions */
+.star-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.star-tag--s { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.4); }
+.star-tag--t { background: rgba(234, 179, 8, 0.2); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.4); }
+.star-tag--a { background: rgba(99, 102, 241, 0.2); color: #c7d2fe; border: 1px solid rgba(99, 102, 241, 0.4); }
+.star-tag--r { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+/* Interactive Badges with Hover Effect */
+.kw-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.kw-pill:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+.kw-pill:active {
+  transform: scale(0.97);
+}
+
+/* Mobile Responsiveness Overrides for All Tools */
+@media (max-width: 991px) {
+  .builder-layout,
+  .analyzer-workspace-grid,
+  .cover-letter-grid,
+  .ats-keywords-grid,
+  .analyzer-keywords-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .iq-setup-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .builder-actions-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .builder-actions-bar > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  .builder-actions-bar .btn {
+    width: 100% !important;
+  }
+
+  /* Result cards spacing on mobile */
+  .analyzer-results-card,
+  .builder-card {
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header--compact .page-header__title {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .page-header--compact .page-header__subtitle {
+    font-size: 0.85rem !important;
+  }
+
+  .tools-hero-stats {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .tool-card {
+    padding: 1.25rem !important;
+  }
+
+  .kw-pill {
+    padding: 5px 10px !important;
+    font-size: 0.78rem !important;
+  }
+}
+

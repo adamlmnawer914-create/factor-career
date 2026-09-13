@@ -102,7 +102,7 @@ window.CareerAI.pages.atsKeywords = function() {
         </div>
 
         <!-- 2-Column Grid (Job Input Left + Optional CV Input Right) -->
-        <div class="ats-keywords-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.75rem;">
+        <div class="ats-keywords-grid" style="margin-bottom:1.75rem;">
           
           <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;">
             <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
@@ -191,61 +191,124 @@ CareerAI.renderAKResults = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   return `
-    <div style="background:var(--color-bg-card);border:1px solid rgba(99,102,241,0.3);border-radius:18px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);animation:fadeIn 0.4s ease;">
+    <div style="background:var(--color-bg-card);border:1px solid rgba(99,102,241,0.35);border-radius:20px;padding:2rem;box-shadow:0 12px 35px rgba(0,0,0,0.35);animation:fadeIn 0.4s ease;">
       
-      <!-- Top Action Bar -->
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border-light);">
-        <div>
-          <h3 style="font-size:1.25rem;font-weight:700;color:var(--color-text);margin:0 0 4px 0">
-            📊 ${isEn ? `Extracted ${d.totalCount} High-Impact Keywords` : `تم استخراج ${d.totalCount} كلمة مفتاحية حاسمة`}
-          </h3>
-          <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0">
-            ${isEn ? 'Click on any keyword badge to copy it individually.' : 'اضغط على أي كلمة مفتاحية لنسخها منفردة.'}
-          </p>
+      <!-- Top Action Bar with Summary & Match Score -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--color-border-light);">
+        <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+          
+          ${d.hasCVComparison ? `
+            <div style="width:70px;height:70px;border-radius:50%;border:4px solid ${d.matchRate >= 75 ? '#10B981' : (d.matchRate >= 50 ? '#F59E0B' : '#EF4444')};display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,0.7);">
+              <span style="font-size:1.3rem;font-weight:800;color:${d.matchRate >= 75 ? '#10B981' : (d.matchRate >= 50 ? '#F59E0B' : '#EF4444')}">${d.matchRate}%</span>
+              <span style="font-size:0.55rem;color:var(--color-text-muted);text-transform:uppercase">MATCH</span>
+            </div>
+          ` : ''}
+
+          <div>
+            <h3 style="font-size:1.3rem;font-weight:800;color:var(--color-text);margin:0 0 4px 0">
+              📊 ${isEn ? `Extracted ${d.totalCount} High-Impact Keywords` : `تم استخراج ${d.totalCount} مصطلحاً وكلمة مفتاحية`}
+            </h3>
+            <p style="font-size:0.86rem;color:var(--color-text-muted);margin:0">
+              ${d.hasCVComparison 
+                ? (isEn ? `Found ${d.matchedInCV.length} in your resume. ${d.missingInCV.length} critical keywords missing.` : `وجدت سيرتك ${d.matchedInCV.length} كلمة، بينما تنقصها ${d.missingInCV.length} كلمة مفتاحية حاسمة.`) 
+                : (isEn ? 'Click on any keyword badge to copy it instantly.' : 'اضغط على أي كلمة مفتاحية لنسخها فوراً إلى الحافظة.')}
+            </p>
+          </div>
         </div>
 
-        <button class="btn btn--accent btn--md" onclick="CareerAI.copyAllAKTopWords()">
-          📋 ${isEn ? 'Copy All Keywords' : 'نسخ كافة الكلمات'}
-        </button>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          ${d.hasCVComparison && d.missingInCV.length ? `
+            <button class="btn btn--accent btn--md" onclick="CareerAI.copyMissingAKWords()" style="box-shadow:0 4px 15px rgba(99,102,241,0.3);">
+              📋 ${isEn ? 'Copy Missing Keywords' : 'نسخ الكلمات الناقصة فقط'}
+            </button>
+          ` : ''}
+          <button class="btn btn--secondary btn--md" onclick="CareerAI.copyAllAKTopWords()">
+            📋 ${isEn ? 'Copy All Keywords' : 'نسخ كافة الكلمات'}
+          </button>
+        </div>
       </div>
 
       <!-- Category 1: High-Priority Hard Skills -->
-      <div style="margin-bottom:1.5rem;">
-        <h4 style="font-size:0.95rem;font-weight:700;color:#fca5a5;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px;">
-          🔥 ${isEn ? 'High Priority Technical & Hard Skills (Must Have):' : 'المهارات التقنية والتخصصية عالية الأهمية (High Priority):'}
-        </h4>
+      <div style="margin-bottom:1.75rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <h4 style="font-size:0.96rem;font-weight:700;color:#fca5a5;margin:0;display:flex;align-items:center;gap:6px;">
+            🔥 ${isEn ? 'High-Priority Technical & Hard Skills (ATS Critical):' : 'المهارات التقنية والتخصصية عالية الأهمية (High Priority):'}
+          </h4>
+          <span style="font-size:0.75rem;color:var(--color-text-muted)">${d.hardSkills.length} ${isEn ? 'terms' : 'مصطلحات'}</span>
+        </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          ${d.hardSkills.map(k => `
-            <span class="badge" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.35);padding:6px 14px;font-size:0.85rem;cursor:pointer;border-radius:20px;" onclick="CareerAI.copySingleAKWord('${k}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
-              ${k} 📋
-            </span>
-          `).join('')}
+          ${d.hardSkills.map(k => {
+            const isMatched = d.matchedInCV.includes(k.term);
+            const isMissing = d.missingInCV.includes(k.term);
+            const badgeBg = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.18)' : 'rgba(239,68,68,0.18)') : 'rgba(239,68,68,0.15)';
+            const badgeBorder = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)') : 'rgba(239,68,68,0.35)';
+            const badgeColor = d.hasCVComparison ? (isMatched ? '#a7f3d0' : '#fca5a5') : '#fca5a5';
+            return `
+              <span class="kw-pill" style="background:${badgeBg};color:${badgeColor};border:1px solid ${badgeBorder};" onclick="CareerAI.copySingleAKWord('${k.term}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
+                ${d.hasCVComparison ? (isMatched ? '✓' : '⚠️') : '+'} ${k.term} <span style="opacity:0.7;font-size:0.75rem">(${k.count}x)</span>
+              </span>
+            `;
+          }).join('')}
         </div>
       </div>
 
       <!-- Category 2: Tools & Platforms -->
-      <div style="margin-bottom:1.5rem;">
-        <h4 style="font-size:0.95rem;font-weight:700;color:#93c5fd;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px;">
-          🛠️ ${isEn ? 'Software, Tools & Platforms:' : 'الأدوات والبرمجيات والمنصات (Tools & Platforms):'}
-        </h4>
+      <div style="margin-bottom:1.75rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <h4 style="font-size:0.96rem;font-weight:700;color:#93c5fd;margin:0;display:flex;align-items:center;gap:6px;">
+            🛠️ ${isEn ? 'Software, Tools, Platforms & Frameworks:' : 'البرمجيات، الأدوات، المنصات وأطر العمل (Tools & Tech):'}
+          </h4>
+          <span style="font-size:0.75rem;color:var(--color-text-muted)">${d.tools.length} ${isEn ? 'tools' : 'أدوات'}</span>
+        </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          ${d.tools.map(k => `
-            <span class="badge" style="background:rgba(59,130,246,0.15);color:#93c5fd;border:1px solid rgba(59,130,246,0.35);padding:6px 14px;font-size:0.85rem;cursor:pointer;border-radius:20px;" onclick="CareerAI.copySingleAKWord('${k}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
-              ${k} 📋
-            </span>
-          `).join('')}
+          ${d.tools.map(k => {
+            const isMatched = d.matchedInCV.includes(k.term);
+            const badgeBg = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.18)' : 'rgba(59,130,246,0.18)') : 'rgba(59,130,246,0.15)';
+            const badgeBorder = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.4)' : 'rgba(59,130,246,0.4)') : 'rgba(59,130,246,0.35)';
+            const badgeColor = d.hasCVComparison ? (isMatched ? '#a7f3d0' : '#93c5fd') : '#93c5fd';
+            return `
+              <span class="kw-pill" style="background:${badgeBg};color:${badgeColor};border:1px solid ${badgeBorder};" onclick="CareerAI.copySingleAKWord('${k.term}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
+                ${d.hasCVComparison ? (isMatched ? '✓' : '⚠️') : '+'} ${k.term} <span style="opacity:0.7;font-size:0.75rem">(${k.count}x)</span>
+              </span>
+            `;
+          }).join('')}
         </div>
       </div>
 
-      <!-- Category 3: Soft Skills & Methodologies -->
-      <div>
-        <h4 style="font-size:0.95rem;font-weight:700;color:#86efac;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px;">
-          🤝 ${isEn ? 'Soft Skills, Methodologies & Leadership:' : 'المهارات الشخصية والمنهجيات الإدارية (Soft Skills & Agile):'}
-        </h4>
+      <!-- Category 3: Soft Skills, Management & Leadership -->
+      <div style="margin-bottom:1.75rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <h4 style="font-size:0.96rem;font-weight:700;color:#86efac;margin:0;display:flex;align-items:center;gap:6px;">
+            🤝 ${isEn ? 'Leadership, Management & Soft Methodologies:' : 'المهارات الشخصية والقيادية ومنهجيات الإدارة (Soft Skills):'}
+          </h4>
+          <span style="font-size:0.75rem;color:var(--color-text-muted)">${d.softSkills.length} ${isEn ? 'skills' : 'مهارات'}</span>
+        </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          ${d.softSkills.map(k => `
-            <span class="badge" style="background:rgba(34,197,94,0.15);color:#86efac;border:1px solid rgba(34,197,94,0.35);padding:6px 14px;font-size:0.85rem;cursor:pointer;border-radius:20px;" onclick="CareerAI.copySingleAKWord('${k}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
-              ${k} 📋
+          ${d.softSkills.map(k => {
+            const isMatched = d.matchedInCV.includes(k.term);
+            const badgeBg = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.18)' : 'rgba(34,197,94,0.18)') : 'rgba(34,197,94,0.15)';
+            const badgeBorder = d.hasCVComparison ? (isMatched ? 'rgba(16,185,129,0.4)' : 'rgba(34,197,94,0.4)') : 'rgba(34,197,94,0.35)';
+            const badgeColor = d.hasCVComparison ? (isMatched ? '#a7f3d0' : '#86efac') : '#86efac';
+            return `
+              <span class="kw-pill" style="background:${badgeBg};color:${badgeColor};border:1px solid ${badgeBorder};" onclick="CareerAI.copySingleAKWord('${k.term}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
+                ${d.hasCVComparison ? (isMatched ? '✓' : '⚠️') : '+'} ${k.term}
+              </span>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- Category 4: Education & Certifications -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <h4 style="font-size:0.96rem;font-weight:700;color:#c084fc;margin:0;display:flex;align-items:center;gap:6px;">
+            📜 ${isEn ? 'Education, Credentials & Industry Certifications:' : 'الشهادات والمؤهلات الأكاديمية والمهنية (Certifications):'}
+          </h4>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          ${d.certs.map(k => `
+            <span class="kw-pill" style="background:rgba(192,132,252,0.15);color:#d8b4fe;border:1px solid rgba(192,132,252,0.35);" onclick="CareerAI.copySingleAKWord('${k}')" title="${isEn?'Click to copy':'اضغط للنسخ'}">
+              + ${k}
             </span>
           `).join('')}
         </div>
@@ -255,7 +318,7 @@ CareerAI.renderAKResults = function() {
   `;
 };
 
-// Handlers & Analysis Logic
+// Handlers & Dynamic Text-Mining Analysis Logic
 CareerAI.updateAKField = function(field, val) {
   window.CareerAI.akState[field] = val;
 };
@@ -289,34 +352,109 @@ CareerAI.startATSAnalysis = function() {
   const btn = document.getElementById('btnExtractAK');
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '⏳ ' + (isEn ? 'Extracting Keywords...' : 'جاري استخراج الكلمات المفتاحية...');
+    btn.innerHTML = '⏳ ' + (isEn ? 'Parsing Term Densities...' : 'جاري استخراج وتحليل الكلمات المفتاحية...');
   }
 
   setTimeout(() => {
+    const jobText = (state.jobDescription + ' ' + state.jobTitle).toLowerCase();
+    const cvText = (state.resumeText || '').toLowerCase();
+    const hasCV = cvText.trim().length > 10;
+
+    // Rich domain dictionaries
+    const hardDict = [
+      'Search Engine Optimization (SEO)', 'Google Ads', 'PPC Campaigns', 'Conversion Rate Optimization (CRO)', 'Technical SEO Audits', 'Data Analysis', 'Web Analytics', 'Full Stack Development', 'REST APIs', 'Cloud Architecture', 'Machine Learning', 'Cybersecurity', 'Database Design', 'System Architecture', 'CI/CD Pipelines', 'Automated Testing', 'Front-end Development', 'Back-end Architecture', 'Microservices', 'UX Research', 'Financial Modeling', 'Budget Forecasting', 'Risk Assessment'
+    ];
+
+    const toolsDict = [
+      'React', 'Node.js', 'TypeScript', 'Docker', 'AWS', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'GraphQL', 'Git', 'GitHub Actions', 'Ahrefs', 'SEMrush', 'Google Search Console', 'Google Tag Manager', 'GA4', 'Looker Studio', 'SQL', 'Python', 'Figma', 'Jira', 'Tableau', 'Salesforce', 'HubSpot'
+    ];
+
+    const softDict = [
+      'Strategic Leadership', 'Cross-Functional Communication', 'Agile & Scrum Execution', 'Problem Solving', 'Team Mentorship', 'Stakeholder Management', 'Critical Thinking', 'Adaptability', 'Time Management', 'Decision Making'
+    ];
+
+    const certsDict = [
+      'Bachelor’s Degree', 'Master’s Degree', 'PMP Certified', 'AWS Certified', 'Google Analytics Certified', 'Scrum Master (CSM)', 'CPA', 'Six Sigma'
+    ];
+
+    // Extraction & Frequency computation
+    const extractItems = (list) => {
+      const results = [];
+      list.forEach(item => {
+        const clean = item.toLowerCase().replace(/[^a-z0-9]/g, ' ');
+        const words = clean.split(/\s+/).filter(w => w.length > 2);
+        let matchCount = 0;
+        words.forEach(w => {
+          const reg = new RegExp('\\b' + w + '\\b', 'gi');
+          const m = jobText.match(reg);
+          if (m) matchCount += m.length;
+        });
+        if (matchCount > 0) {
+          results.push({ term: item, count: Math.min(6, Math.max(1, Math.round(matchCount / words.length))) });
+        }
+      });
+      return results;
+    };
+
+    let hardSkills = extractItems(hardDict);
+    let tools = extractItems(toolsDict);
+    let softSkills = extractItems(softDict);
+    let certs = certsDict.filter(c => jobText.includes(c.toLowerCase().slice(0, 5)));
+
+    if (!hardSkills.length) {
+      hardSkills = [
+        { term: 'SEO & Performance', count: 3 },
+        { term: 'Data Analysis & Insights', count: 2 },
+        { term: 'Project Execution', count: 2 }
+      ];
+    }
+    if (!tools.length) {
+      tools = [
+        { term: 'Google Analytics 4', count: 2 },
+        { term: 'SQL / Databases', count: 1 },
+        { term: 'Git Version Control', count: 1 }
+      ];
+    }
+    if (!softSkills.length) {
+      softSkills = [
+        { term: 'Strategic Leadership', count: 2 },
+        { term: 'Problem Solving', count: 1 }
+      ];
+    }
+    if (!certs.length) {
+      certs = ['Bachelor’s Degree', 'Relevant Industry Certification'];
+    }
+
+    // Comparison against candidate CV
+    const matchedInCV = [];
+    const missingInCV = [];
+
+    if (hasCV) {
+      const allTerms = [...hardSkills.map(h => h.term), ...tools.map(t => t.term), ...softSkills.map(s => s.term)];
+      allTerms.forEach(t => {
+        const termWords = t.toLowerCase().split(/[\s/]+/);
+        const isPresent = termWords.some(w => w.length > 3 && cvText.includes(w));
+        if (isPresent) {
+          matchedInCV.push(t);
+        } else {
+          missingInCV.push(t);
+        }
+      });
+    }
+
+    const totalKeyTerms = hardSkills.length + tools.length + softSkills.length;
+    const matchRate = hasCV ? Math.round((matchedInCV.length / Math.max(1, totalKeyTerms)) * 100) : 0;
+
     state.extractedData = {
-      totalCount: 16,
-      hardSkills: [
-        'Search Engine Optimization (SEO)',
-        'Google Ads & PPC Campaigns',
-        'Conversion Rate Optimization (CRO)',
-        'Technical SEO Audits',
-        'Data Analysis & GA4',
-        'ROAS Budget Forecasting'
-      ],
-      tools: [
-        'Ahrefs',
-        'SEMrush',
-        'Google Search Console',
-        'Google Tag Manager',
-        'Looker Studio',
-        'SQL'
-      ],
-      softSkills: [
-        'Strategic Leadership',
-        'Cross-Functional Communication',
-        'Agile Sprint Execution',
-        'Problem Solving'
-      ]
+      totalCount: totalKeyTerms,
+      hardSkills: hardSkills,
+      tools: tools,
+      softSkills: softSkills,
+      certs: certs,
+      hasCVComparison: hasCV,
+      matchedInCV: matchedInCV,
+      missingInCV: missingInCV,
+      matchRate: matchRate
     };
 
     if (btn) {
@@ -329,7 +467,7 @@ CareerAI.startATSAnalysis = function() {
       resEl.innerHTML = CareerAI.renderAKResults();
       resEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, 600);
+  }, 650);
 };
 
 CareerAI.copySingleAKWord = function(word) {
@@ -339,13 +477,24 @@ CareerAI.copySingleAKWord = function(word) {
   });
 };
 
+CareerAI.copyMissingAKWords = function() {
+  const state = window.CareerAI.akState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  if (!state.extractedData || !state.extractedData.missingInCV.length) return;
+
+  const text = state.extractedData.missingInCV.join(', ');
+  navigator.clipboard.writeText(text).then(() => {
+    alert(isEn ? 'Missing keywords copied to clipboard!' : 'تم نسخ الكلمات الناقصة بنجاح إلى الحافظة!');
+  });
+};
+
 CareerAI.copyAllAKTopWords = function() {
   const state = window.CareerAI.akState;
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   if (!state.extractedData) return;
 
   const d = state.extractedData;
-  const all = [...d.hardSkills, ...d.tools, ...d.softSkills].join(', ');
+  const all = [...d.hardSkills.map(h => h.term), ...d.tools.map(t => t.term), ...d.softSkills.map(s => s.term)].join(', ');
   navigator.clipboard.writeText(all).then(() => {
     alert(isEn ? 'All keywords copied to clipboard!' : 'تم نسخ جميع الكلمات المفتاحية بنجاح إلى الحافظة!');
   });

@@ -94,28 +94,32 @@ window.CareerAI.pages.interviewQuestions = function() {
         </div>
 
         <!-- Role Setup Box -->
-        <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;margin-bottom:2rem;">
-          <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
-            ${isEn ? 'Specify Target Role & Interview Criteria' : 'حدد بيانات الوظيفة والمستوى المطلوب'}
-          </h3>
+        <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:18px;padding:1.5rem;margin-bottom:2rem;box-shadow:0 8px 25px rgba(0,0,0,0.25);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+            <span style="font-size:1.3rem;">🎯</span>
+            <h3 style="font-size:1.15rem;font-weight:700;margin:0;color:var(--color-text)">
+              ${isEn ? 'Specify Target Role & Interview Parameters' : 'حدد بيانات الوظيفة والمستوى المطلوب'}
+            </h3>
+          </div>
 
-          <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;align-items:end;">
+          <div class="iq-setup-grid">
             <div class="form-group" style="margin:0">
               <label class="form-label">${isEn ? 'Target Job Title *' : 'المسمى الوظيفي المستهدف *'}</label>
               <input type="text" id="iqJobTitle" class="form-input" value="${state.jobTitle || ''}" placeholder="${isEn ? 'e.g. Senior Data Analyst or DevOps Engineer' : 'مثال: مدير مشاريع، مهندس برمجيات، محاسب'}" oninput="CareerAI.updateIQField('jobTitle', this.value)">
             </div>
 
             <div class="form-group" style="margin:0">
-              <label class="form-label">${isEn ? 'Experience Level' : 'المستوى المهني'}</label>
+              <label class="form-label">${isEn ? 'Seniority / Level' : 'المستوى المهني'}</label>
               <select id="iqExpLevel" class="form-input" onchange="CareerAI.updateIQField('experienceLevel', this.value)">
                 <option value="junior" ${state.experienceLevel==='junior'?'selected':''}>${isEn ? 'Junior / Entry Level' : 'مبتدئ / خريج جديد'}</option>
                 <option value="mid" ${state.experienceLevel==='mid'?'selected':''}>${isEn ? 'Mid-Level (2-5 yrs)' : 'متوسط (2-5 سنوات)'}</option>
                 <option value="senior" ${state.experienceLevel==='senior'?'selected':''}>${isEn ? 'Senior / Lead (5+ yrs)' : 'خبير / قائد فريق'}</option>
+                <option value="executive" ${state.experienceLevel==='executive'?'selected':''}>${isEn ? 'Executive / Director' : 'مدير تنفيذي / إداري'}</option>
               </select>
             </div>
 
             <div>
-              <button class="btn btn--primary btn--full" id="btnGenerateIQ" onclick="CareerAI.startGenerateInterviewQuestions()" style="box-shadow:0 4px 15px rgba(99,102,241,0.35);">
+              <button class="btn btn--primary btn--full btn--lg" id="btnGenerateIQ" onclick="CareerAI.startGenerateInterviewQuestions()" style="box-shadow:0 4px 15px rgba(99,102,241,0.35);">
                 🎯 ${isEn ? 'Generate Questions' : 'توليد الأسئلة والإجابات'}
               </button>
             </div>
@@ -176,47 +180,86 @@ CareerAI.renderIQQuestions = function() {
     : state.questions.filter(q => q.category === state.filterCategory);
 
   return `
-    <div style="background:var(--color-bg-card);border:1px solid rgba(99,102,241,0.3);border-radius:18px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);animation:fadeIn 0.4s ease;">
+    <div style="background:var(--color-bg-card);border:1px solid rgba(99,102,241,0.35);border-radius:20px;padding:2rem;box-shadow:0 12px 35px rgba(0,0,0,0.35);animation:fadeIn 0.4s ease;">
       
-      <!-- Top Action Bar -->
+      <!-- Top Action Bar with Filter Tabs -->
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border-light);">
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <button class="btn btn--sm ${state.filterCategory==='all'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('all')">${isEn ? 'All (10)' : 'جميع الأسئلة (10)'}</button>
-          <button class="btn btn--sm ${state.filterCategory==='behavioral'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('behavioral')">${isEn ? 'Behavioral' : 'سلوكية (Behavioral)'}</button>
-          <button class="btn btn--sm ${state.filterCategory==='technical'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('technical')">${isEn ? 'Technical' : 'تقنية وفنية'}</button>
-          <button class="btn btn--sm ${state.filterCategory==='hr'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('hr')">${isEn ? 'HR & Situational' : 'شخصية وموقفية'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='all'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('all')">${isEn ? `All (${state.questions.length})` : `جميع الأسئلة (${state.questions.length})`}</button>
+          <button class="btn btn--sm ${state.filterCategory==='behavioral'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('behavioral')">${isEn ? 'Behavioral (STAR)' : 'سلوكية (STAR)'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='technical'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('technical')">${isEn ? 'Technical & Domain' : 'تقنية وتخصصية'}</button>
+          <button class="btn btn--sm ${state.filterCategory==='hr'?'btn--primary':'btn--secondary'}" onclick="CareerAI.filterIQType('hr')">${isEn ? 'HR & Cultural' : 'شخصية وموقفية'}</button>
         </div>
 
-        <div style="display:flex;gap:0.5rem;">
-          <button class="btn btn--accent btn--sm" onclick="CareerAI.copyAllIQText()">📋 ${isEn ? 'Copy All' : 'نسخ الكل'}</button>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn btn--accent btn--sm" onclick="CareerAI.copyAllIQText()">📋 ${isEn ? 'Copy All Questions' : 'نسخ جميع الأسئلة'}</button>
           <button class="btn btn--secondary btn--sm" onclick="CareerAI.downloadIQPDF()">📥 PDF</button>
         </div>
       </div>
 
       <!-- Questions List Accordion -->
-      <div class="accordion" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="accordion" style="display:flex;flex-direction:column;gap:1.2rem;">
         ${filtered.map((item, idx) => `
-          <div class="accordion__item" style="border:1px solid var(--color-border-light);border-radius:12px;overflow:hidden;background:rgba(15,23,42,0.4)">
-            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)" style="padding:1.25rem;font-size:1rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:inherit;color:var(--color-text);background:transparent;border:none;cursor:pointer;">
-              <span style="display:flex;align-items:center;gap:0.75rem;">
-                <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.8rem">Q${idx + 1}</span>
-                <span>${item.question}</span>
+          <div class="accordion__item" style="border:1px solid rgba(99,102,241,0.25);border-radius:14px;overflow:hidden;background:rgba(15,23,42,0.45);box-shadow:0 4px 15px rgba(0,0,0,0.15)">
+            <button class="accordion__header" onclick="CareerAI.toggleAccordion(this)" style="padding:1.25rem 1.5rem;font-size:1.02rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:inherit;color:var(--color-text);background:transparent;border:none;cursor:pointer;gap:0.75rem;flex-wrap:wrap;">
+              <span style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:240px;">
+                <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.35);border-radius:8px;padding:3px 10px;font-size:0.82rem;font-weight:800">Q${idx + 1}</span>
+                <span style="line-height:1.4">${item.question}</span>
               </span>
-              <span style="font-size:0.8rem;color:var(--color-text-muted);border:1px solid var(--color-border);border-radius:4px;padding:2px 8px">${item.categoryName}</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="font-size:0.75rem;color:#cbd5e1;background:rgba(255,255,255,0.06);border:1px solid var(--color-border);border-radius:20px;padding:3px 10px">${item.categoryName}</span>
+                <span style="font-size:0.9rem;color:var(--color-text-muted);">▼</span>
+              </div>
             </button>
-            <div class="accordion__body" style="padding:0 1.25rem 1.25rem 1.25rem;">
-              <div style="background:rgba(99,102,241,0.06);border-left:3px solid #6366F1;padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;font-size:0.86rem;color:#cbd5e1">
-                <strong>🎯 ${isEn ? 'Why interviewers ask this:' : 'لماذا يسأل المقابل هذا السؤال:'}</strong> ${item.intent}
+
+            <div class="accordion__body" style="padding:0 1.5rem 1.5rem 1.5rem;">
+              
+              <!-- Recruiter Intent Box -->
+              <div style="background:rgba(99,102,241,0.08);border-left:4px solid #6366F1;padding:0.85rem 1.25rem;border-radius:0 10px 10px 0;margin-bottom:1rem;font-size:0.87rem;color:#cbd5e1;line-height:1.5;">
+                <strong style="color:#a5b4fc">🎯 ${isEn ? 'Recruiter Intent / Why this is asked:' : 'الهدف من السؤال ومعايير التقييم:'}</strong> 
+                <span style="display:block;margin-top:2px;">${item.intent}</span>
               </div>
 
-              <div style="background:rgba(16,185,129,0.06);border-left:3px solid #10B981;padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:0.75rem;">
-                <strong style="color:#34d399;font-size:0.88rem">🌟 ${isEn ? 'STAR Model Sample Answer:' : 'نموذج الإجابة بطريقة STAR:'}</strong>
-                <p style="font-size:0.85rem;color:#e2e8f0;margin:0.5rem 0 0 0;line-height:1.6;white-space:pre-line;">${item.answer}</p>
+              <!-- STAR Model Breakdown Box -->
+              <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.3);padding:1.25rem;border-radius:12px;margin-bottom:1rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+                  <strong style="color:#34d399;font-size:0.92rem;display:flex;align-items:center;gap:6px">
+                    🌟 ${isEn ? 'Structured STAR Method Model Answer:' : 'نموذج الإجابة الاحترافية وفق أسلوب STAR:'}
+                  </strong>
+                  <div style="display:flex;gap:4px;">
+                    <span class="star-tag star-tag--s">S</span>
+                    <span class="star-tag star-tag--t">T</span>
+                    <span class="star-tag star-tag--a">A</span>
+                    <span class="star-tag star-tag--r">R</span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.88rem;color:#e2e8f0;line-height:1.7;white-space:pre-line;">
+                  ${item.answer}
+                </div>
               </div>
 
-              <div style="font-size:0.82rem;color:var(--color-text-muted);display:flex;gap:1rem;margin-top:0.5rem">
-                <span>💡 <strong>${isEn ? 'Pro Tip:' : 'نصيحة ذهبية:'}</strong> ${item.tip}</span>
+              <!-- Pro Tip & Interactive Practice Timer -->
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:0.75rem 1rem;border-radius:10px;">
+                <div style="font-size:0.84rem;color:var(--color-text-muted);display:flex;align-items:center;gap:6px">
+                  <span>💡</span>
+                  <span><strong>${isEn ? 'Pro Tip:' : 'نصيحة ذهبية:'}</strong> ${item.tip}</span>
+                </div>
+
+                <button class="btn btn--ghost btn--sm" style="border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;padding:4px 12px;font-size:0.8rem;" onclick="CareerAI.togglePracticeTimer('timer_${idx}')">
+                  ⏱️ ${isEn ? 'Practice Answering (2-Min Timer)' : 'تدريب صوتي (مؤقت دقيقتين)'}
+                </button>
               </div>
+
+              <!-- Collapsible 2-Minute Practice Timer Box -->
+              <div id="timer_${idx}" style="display:none;margin-top:0.75rem;background:rgba(15,23,42,0.8);border:1px solid rgba(99,102,241,0.4);border-radius:10px;padding:1rem;text-align:center;">
+                <div style="font-size:1.35rem;font-weight:800;color:#60A5FA;margin-bottom:0.4rem;" id="timer_display_${idx}">02:00</div>
+                <div style="display:flex;justify-content:center;gap:0.5rem;">
+                  <button class="btn btn--primary btn--sm" onclick="CareerAI.startTimerCountdown('timer_${idx}', 'timer_display_${idx}')">▶ ${isEn ? 'Start' : 'بدء'}</button>
+                  <button class="btn btn--secondary btn--sm" onclick="CareerAI.resetTimerCountdown('timer_${idx}', 'timer_display_${idx}')">⏹ ${isEn ? 'Reset' : 'إعادة'}</button>
+                </div>
+              </div>
+
             </div>
           </div>
         `).join('')}
@@ -224,6 +267,54 @@ CareerAI.renderIQQuestions = function() {
 
     </div>
   `;
+};
+
+// Interactive Practice Timer Logic
+CareerAI.timerIntervals = {};
+CareerAI.togglePracticeTimer = function(timerId) {
+  const el = document.getElementById(timerId);
+  if (el) {
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+};
+
+CareerAI.startTimerCountdown = function(timerBoxId, displayId) {
+  if (CareerAI.timerIntervals[displayId]) {
+    clearInterval(CareerAI.timerIntervals[displayId]);
+  }
+  let timeLeft = 120; // 2 minutes
+  const disp = document.getElementById(displayId);
+  
+  CareerAI.timerIntervals[displayId] = setInterval(() => {
+    timeLeft--;
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    if (disp) {
+      disp.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+    if (timeLeft <= 0) {
+      clearInterval(CareerAI.timerIntervals[displayId]);
+      if (disp) disp.textContent = '🎉 Time Up! Well Done!';
+    }
+  }, 1000);
+};
+
+CareerAI.resetTimerCountdown = function(timerBoxId, displayId) {
+  if (CareerAI.timerIntervals[displayId]) {
+    clearInterval(CareerAI.timerIntervals[displayId]);
+  }
+  const disp = document.getElementById(displayId);
+  if (disp) disp.textContent = '02:00';
+};
+
+CareerAI.toggleAccordion = function(btn) {
+  const body = btn.nextElementSibling;
+  const arrow = btn.querySelector('span:last-child');
+  if (body) {
+    const isHidden = body.style.display === 'none';
+    body.style.display = isHidden ? 'block' : 'none';
+    if (arrow) arrow.textContent = isHidden ? '▲' : '▼';
+  }
 };
 
 // Handlers & Question Generation Logic
@@ -257,7 +348,7 @@ CareerAI.startGenerateInterviewQuestions = function() {
   const btn = document.getElementById('btnGenerateIQ');
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '⏳ ' + (isEn ? 'Generating with AI...' : 'جاري إعداد الأسئلة والإجابات...');
+    btn.innerHTML = '⏳ ' + (isEn ? 'Assembling STAR Interview Masterclass...' : 'جاري إعداد الأسئلة ونماذج STAR...');
   }
 
   setTimeout(() => {
@@ -267,54 +358,54 @@ CareerAI.startGenerateInterviewQuestions = function() {
       state.questions = [
         {
           category: 'behavioral',
-          categoryName: 'Behavioral',
-          question: `Tell me about a time you managed a high-stakes conflict or challenging milestone as ${role}.`,
-          intent: 'Evaluates your conflict resolution, leadership under pressure, and emotional intelligence.',
-          answer: '• Situation: During a major product release with tight deadlines, key stakeholders disagreed on core scope priorities.\n• Task: As lead, I had to align engineering, design, and executive leadership to ensure on-time delivery without burning out the team.\n• Action: I organized an emergency alignment workshop, established data-backed decision frameworks, and reprioritized deliverables into phased sprints.\n• Result: We delivered the MVP 2 days ahead of schedule with 99.8% uptime and zero regressions.',
-          tip: 'Focus heavily on the "Action" and quantifiable "Result" steps.'
+          categoryName: 'Behavioral & Leadership',
+          question: `Can you describe a high-stakes project or conflict you managed as ${role} where things didn't go as planned?`,
+          intent: 'Evaluates emotional intelligence, problem-solving agility under pressure, and accountability when handling setbacks.',
+          answer: '• Situation: Ahead of a critical product launch, our cross-functional team discovered an unexpected 35% latency regression 10 days before go-live.\n• Task: As lead for this delivery, I needed to triage the bottleneck, realign engineering and client-facing stakeholders, and deliver without slipping our committed deadline.\n• Action: I spearheaded an immediate root-cause war room, established an automated benchmark suite, and deferred non-critical background jobs to sprint 2.\n• Result: We launched on schedule with 99.9% uptime, reduced query latency by 45%, and received executive commendation for transparency.',
+          tip: 'Spend 70% of your time emphasizing the strategic "Action" you personally took and quantify the final "Result".'
         },
         {
           category: 'technical',
-          categoryName: 'Technical & Strategy',
-          question: `How do you prioritize competing technical demands and feature requests for ${role}?`,
-          intent: 'Tests your strategic decision-making, metric-driven mindset, and ROI prioritization.',
-          answer: '• Situation: We received over 50 client requests while our team had capacity for only 15.\n• Task: Develop an objective prioritization methodology.\n• Action: I implemented the RICE scoring model (Reach, Impact, Confidence, Effort) and conducted customer impact interviews.\n• Result: We increased user retention by 28% and reduced sprint churn by 40%.',
-          tip: 'Always name-drop structured frameworks like RICE, Agile, or OKRs.'
+          categoryName: 'Technical Strategy',
+          question: `How do you prioritize technical debt, architecture scalability, and customer feature requests for ${role}?`,
+          intent: 'Tests your decision-making frameworks, balance between speed and quality, and business acumen.',
+          answer: '• Situation: Our roadmap was overwhelmed by 40+ competing client requests while infrastructure stability needed urgent refactoring.\n• Task: Formulate an objective, transparent prioritization rubric aligned with company ROI.\n• Action: I implemented the RICE scoring model (Reach, Impact, Confidence, Effort) combined with a dedicated 20% engineering budget for tech debt.\n• Result: Decreased sprint churn by 35%, eliminated critical production incidents by 50%, and boosted quarterly release velocity.',
+          tip: 'Always refer to established industry frameworks (e.g. RICE, Agile Epics, SLA thresholds).'
         },
         {
           category: 'hr',
-          categoryName: 'HR & Motivation',
-          question: 'Why are you the best fit for this role and our organization?',
-          intent: 'Checks culture fit, company research, and personal value proposition.',
-          answer: '• Combined Expertise: I bring hands-on domain experience matched with a relentless focus on business outcomes.\n• Cultural Alignment: Your culture of autonomy and high standards mirrors my personal work ethos.\n• Proven Track Record: Consistently delivered 30%+ efficiency gains in previous roles.',
-          tip: 'Show genuine passion and reference specific company goals.'
+          categoryName: 'HR & Cultural Alignment',
+          question: 'Why this specific role at our organization, and where do you envision your highest impact in the first 90 days?',
+          intent: 'Measures your company research, internal motivation, clarity of purpose, and fast ramp-up capabilities.',
+          answer: '• Days 1-30: Comprehensive listening tour, auditing current workflows, and understanding stakeholder pain points.\n• Days 31-60: Delivering quick wins by addressing low-hanging operational inefficiencies.\n• Days 61-90: Presenting a scalable strategic roadmap to compound team performance by at least 20%.\n• Value Match: Your culture of high ownership and continuous iteration directly reflects how I operate best.',
+          tip: 'Structure your response into 30-60-90 day milestones to show leadership maturity.'
         }
       ];
     } else {
       state.questions = [
         {
           category: 'behavioral',
-          categoryName: 'سلوكي (Behavioral)',
-          question: `حدثني عن موقف واجهت فيه تحدياً معقداً أو ضغطاً شديداً في عملك كـ ${role} وكيف تصرفت؟`,
-          intent: 'قياس قدرتك على حل المشكلات تحت الضغط والعمل بروح الفريق والمرونة المهنية.',
-          answer: '• الموقف (Situation): خلال تسليم مشروع استراتيجي، طرأت تعديلات مفاجئة قبل الموعد النهائي بأسبوع.\n• المهمة (Task): كان عليّ إعادة جدولة المهام وتوزيع المسؤوليات دون المساس بجودة التسليم.\n• الإجراء (Action): قمت بعقد جلسة عصف ذهني سريعة، تقسيم العمل لمراحل مركزة، والتواصل المستمر مع الإدارة والعميل.\n• النتيجة (Result): تم تسليم المشروع في موعده المحدد مع إشادة من العميل وتوفير 15% من التكلفة المتوقعة.',
-          tip: 'ركز على الإجراءات العملية التي اتخذتها أنت شخصياً بالأرقام والنتائج.'
+          categoryName: 'سلوكي وقيادي (STAR)',
+          question: `حدثني عن موقف معقد أو ضغط غير متوقع واجهته في عملك كـ ${role} وكيف تصرفت بنجاح؟`,
+          intent: 'قياس الذكاء العاطفي، التصرف تحت وطأة الضغوط، والقدرة على ابتكار حلول سريعة دون المساس بالجودة.',
+          answer: '• الموقف (Situation): قبل إطلاق مشروع حيوي بأسبوع، واجه الفريق تحدياً تقنياً غير متوقع هدد موعد التسليم النهائي.\n• المهمة (Task): كان عليّ كمسؤول عن المشروع احتواء الموقف، إعادة توزيع الأولويات، وضمان الالتزام بالجدول الزمني دون إرهاق الفريق.\n• الإجراء (Action): قمت بتنظيم جلسة استجابة سريعة، تقسيم المهام لمسارات متوازية، والتواصل الشفاف مع الإدارة والعملاء لترتيب الأولويات الحرجة أولاً.\n• النتيجة (Result): تم تسليم المشروع في موعده المحدد بنسبة نجاح 100%، وخفض تكاليف الطوارئ بنسبة 20% مع إشادة القيادة بالمرونة العالية.',
+          tip: 'كرس معظم وقت إجابتك للتركيز على (الإجراء الشخصي) الذي بادرت به والنتيجة الرقمية الملموسة.'
         },
         {
           category: 'technical',
-          categoryName: 'تقني وتخصصي',
-          question: `ما هي الاستراتيجيات والأدوات التي تعتمد عليها لضمان نجاح مهامك كـ ${role}؟`,
-          intent: 'فحص إلمامك بأحدث الأدوات والمنهجيات الحديثة في تخصصك.',
-          answer: '• أعتمد على منهجيات العمل الرشيقة (Agile/Scrum) لضمان سرعة الإنجاز ومرونة التعديل.\n• أستخدم أدوات قياس الأداء (KPIs) وتحليل البيانات لاتخاذ قرارات مدروسة ومبنية على أرقام واقعية.\n• تطبيق أفضل ممارسات الجودة والتحسين المستمر (Continuous Improvement).',
-          tip: 'اذكر أدوات حقيقية تستخدمها يومياً في مجالك المهني.'
+          categoryName: 'فني واستراتيجي',
+          question: `كيف تدير الموازنة بين سرعة الإنجاز وضمان أعلى معايير الجودة والأداء لمهام ${role}؟`,
+          intent: 'فحص إلمامك بالمنهجيات الحديثة، وإدارة المخاطر، وحوكمة الأعمال.',
+          answer: '• أعتمد على منهجيات العمل الرشيقة (Agile/Scrum) لتقسيم المشاريع المعقدة إلى دورات عمل سريعة وقابلة للقياس المستمر.\n• تطبيق مقاييس الأداء الدقيقة (KPIs) ونظام RICE لتحديد أولويات المهام الأكثر تأثيراً على أهداف المؤسسة.\n• أتمتة الإجراءات الروتينية لتقليل الأخطاء البشرية وتسريع دورة العمل بنسبة تفوق 30%.',
+          tip: 'استشهد بأدوات ومنهجيات موثوقة تستخدمها يومياً مثل مؤشرات الأداء وجداول الأولويات.'
         },
         {
           category: 'hr',
           categoryName: 'شخصي وموقفي',
-          question: 'لماذا ترى نفسك المرشح الأنسب للانضمام إلى شركتنا في هذه الوظيفة؟',
-          intent: 'تقييم مدى معرفتك بالشركة وتوافقك مع ثقافتها المؤسسية ورؤيتها.',
-          answer: '• لأن خبراتي المهنية السابقة تتقاطع مباشرة مع المتطلبات والتحديات التي تسعى شركتكم لحلها.\n• شغفي بالتطوير المستمر وقدرتي المثبتة على تحقيق عوائد ملموسة للشركة وفريق العمل.\n• إيماني برؤية الشركة ورغبتي في بناء مسيرة طويلة الأمد تسهم في نموها.',
-          tip: 'اربط بين نقاط قوتك وأهداف الشركة المستقبلية بذكاء وثقة.'
+          question: 'ما الذي يجعلك المرشح الأفضل لشغل هذا المنصب في شركتنا تحديداً، وما هي خطتك لأول 90 يوماً؟',
+          intent: 'تقييم مدى فهمك لثقافة الشركة ورؤيتها، واستعدادك لتحقيق قيمة مضافة منذ اليوم الأول.',
+          answer: '• أول 30 يوماً: الاندماج الكامل في الفريق وفهم منظومة العمل الحالية ونقاط القوة وفرص التحسين.\n• من 30 إلى 60 يوماً: تحقيق إنجازات مبكرة (Quick Wins) من خلال معالجة التحديات التشغيلية البسيطة.\n• من 60 إلى 90 يوماً: طرح مبادرات تطويرية ترفع كفاءة الأداء التشغيلي بنسبة 25% على الأقل.\n• التوافق القيمي: ثقافة شركتكم القائمة على الابتكار وتحمل المسؤولية تلتقي تماماً مع قيمي المهنية الشخصية.',
+          tip: 'تقسيم إجابتك لخطة (30-60-90 يوماً) يعطي انطباعاً فورياً باحترافيتك وجاهزيتك العالية.'
         }
       ];
     }
@@ -329,7 +420,7 @@ CareerAI.startGenerateInterviewQuestions = function() {
       resEl.innerHTML = CareerAI.renderIQQuestions();
       resEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, 600);
+  }, 650);
 };
 
 CareerAI.filterIQType = function(type) {
@@ -343,7 +434,7 @@ CareerAI.copyAllIQText = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   if (!state.questions) return;
 
-  const fullText = state.questions.map((q, i) => `Q${i+1}: ${q.question}\nIntent: ${q.intent}\nAnswer: ${q.answer}\nTip: ${q.tip}\n-------------------`).join('\n\n');
+  const fullText = state.questions.map((q, i) => `Q${i+1}: ${q.question}\nIntent: ${q.intent}\nSTAR Answer:\n${q.answer}\nTip: ${q.tip}\n-------------------`).join('\n\n');
   navigator.clipboard.writeText(fullText).then(() => {
     alert(isEn ? 'All interview questions copied to clipboard!' : 'تم نسخ جميع الأسئلة والإجابات إلى الحافظة بنجاح!');
   });
@@ -351,7 +442,7 @@ CareerAI.copyAllIQText = function() {
 
 CareerAI.downloadIQPDF = function() {
   const originalTitle = document.title;
-  document.title = (window.CareerAI.iqState.jobTitle || 'Interview') + ' - Interview Prep';
+  document.title = (window.CareerAI.iqState.jobTitle || 'Interview_Coach') + ' - Interview Prep Guide';
   window.print();
   setTimeout(() => { document.title = originalTitle; }, 1000);
 };
