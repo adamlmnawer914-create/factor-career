@@ -2926,15 +2926,12 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 }
 
 /* ==========================================
-   STICKY BOTTOM BANNER WITH FOLDABLE TAB
+/* ==========================================
+   PERMANENT FOLDABLE STICKY BOTTOM AD BANNER
    (728x90 Desktop / 320x50 Mobile)
+   Permanently visible across all pages and scrolls
    ========================================== */
 .sticky-bottom-ad-wrapper {
-  display: none !important;
-}
-
-.sticky-bottom-ad-wrapper:has(ins[data-ad-status="filled"]),
-.sticky-bottom-ad-wrapper.filled {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
@@ -2948,7 +2945,7 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   pointer-events: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .sticky-bottom-ad__tab {
@@ -2957,20 +2954,20 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   justify-content: center !important;
   margin-bottom: 0 !important;
   position: relative !important;
-  z-index: 2 !important;
+  z-index: 3 !important;
 }
 
 .sticky-bottom-ad__btn {
-  background: rgba(15, 23, 42, 0.95) !important;
-  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  border: 1px solid rgba(99, 102, 241, 0.5) !important;
   border-bottom: none !important;
   border-radius: 12px 12px 0 0 !important;
-  padding: 5px 22px !important;
+  padding: 6px 24px !important;
   font-size: 11.5px !important;
   font-weight: 700 !important;
-  color: #a5b4fc !important;
+  color: #c7d2fe !important;
   cursor: pointer !important;
-  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.6) !important;
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -2983,7 +2980,7 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 .sticky-bottom-ad__btn:hover {
   background: rgba(30, 41, 59, 0.98) !important;
   color: #ffffff !important;
-  border-color: rgba(139, 92, 246, 0.6) !important;
+  border-color: rgba(139, 92, 246, 0.8) !important;
 }
 
 .sticky-bottom-ad__arrow {
@@ -3007,21 +3004,20 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   position: relative !important;
   width: 100% !important;
   max-width: 760px !important;
-  min-height: 90px !important;
-  max-height: 110px !important;
-  background: rgba(10, 15, 30, 0.96) !important;
-  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  min-height: 126px !important;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.98) 0%, rgba(10, 15, 30, 0.99) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.5) !important;
   border-bottom: none !important;
-  border-radius: 14px 14px 0 0 !important;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px 18px 0 0 !important;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(99, 102, 241, 0.25) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 4px 12px 6px !important;
+  padding: 8px 16px 12px !important;
   box-sizing: border-box !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   overflow: hidden !important;
 }
 
@@ -3031,17 +3027,122 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 2px !important;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8), transparent) !important;
+  height: 2.5px !important;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.9), rgba(56, 189, 248, 0.9), transparent) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.7) !important;
 }
 
-.sticky-bottom-ad__frame ins.adsbygoogle {
+.sticky-bottom-ad__slot {
   position: relative !important;
+  width: 100% !important;
+  max-width: 728px !important;
+  height: 90px !important;
+  min-height: 90px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.sticky-bottom-ad__slot ins.adsbygoogle {
+  position: absolute !important;
+  inset: 0 !important;
   z-index: 2 !important;
-  display: inline-block !important;
+  display: block !important;
   width: 728px !important;
   height: 90px !important;
   max-width: 100% !important;
+  background: transparent !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.sticky-bottom-ad__slot ins.adsbygoogle:not([data-ad-status="filled"]) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Fallback Branded Luxury Placeholder (visible whenever AdSense is pending/unfilled) */
+.sticky-bottom-ad__slot .ad-frame-placeholder {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 24px !important;
+  background: linear-gradient(135deg, rgba(20, 29, 47, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+  box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.1) !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-logo {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4) !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-title {
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-sub {
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  background: rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #34d399 !important;
+  box-shadow: 0 0 10px #34d399 !important;
+}
+
+.sticky-bottom-ad__slot .ad-placeholder-format {
+  font-size: 11px !important;
+  color: #38bdf8 !important;
+  font-weight: 800 !important;
+}
+
+/* Hide fallback only when Google AdSense serves a verified live creative */
+.sticky-bottom-ad-wrapper.filled .ad-frame-placeholder {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Collapsed state */
@@ -3055,23 +3156,353 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 .sticky-bottom-ad-wrapper.collapsed .sticky-bottom-ad__btn {
   border-bottom: 1px solid rgba(99, 102, 241, 0.4) !important;
   border-radius: 10px 10px 0 0 !important;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6) !important;
 }
 
 .sticky-bottom-ad-wrapper.collapsed .sticky-bottom-ad__arrow {
   transform: rotate(180deg) !important;
 }
 
-/* Hide entire sticky ad wrapper when unfilled or marked unfilled */
-.sticky-bottom-ad-wrapper:has(ins[data-ad-status="unfilled"]),
-.sticky-bottom-ad-wrapper.unfilled {
-  display: none !important;
+.footer {
+  padding-bottom: 135px !important;
 }
 
+/* Floating Back Button Positioning relative to Sticky Ad */
+.floating-back-btn {
+  position: fixed !important;
+  bottom: 125px !important;
+  right: var(--space-6) !important;
+  z-index: 99995 !important;
+}
 
+.sticky-bottom-ad-wrapper.collapsed ~ * .floating-back-btn,
+body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
+  bottom: 35px !important;
+}
 
-.footer {
-  padding-bottom: 125px !important;
+/* ==========================================================================
+   ULTRA-LUXURY EXECUTIVE AI SUITE - DESIGN SYSTEM
+   Dark Obsidian Glassmorphism, 3D Glowing Squircle Icons, Neon Beacons,
+   Iridescent Checklists, and Radiant Radiant CTA Buttons
+   ========================================================================== */
+
+.luxury-tools-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
+  gap: 2.25rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 3.5rem !important;
+}
+
+.luxury-tool-card {
+  position: relative !important;
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.94) 0%, rgba(10, 15, 30, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 24px !important;
+  padding: 2.25rem 2rem !important;
+  box-shadow: 0 16px 45px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.luxury-tool-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  border-color: var(--card-glow-color, rgba(99, 102, 241, 0.55)) !important;
+  box-shadow: 0 28px 65px -15px var(--card-glow-shadow, rgba(99, 102, 241, 0.45)), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Glowing Top Laser Bar */
+.luxury-tool-card__laser {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3.5px !important;
+  background: var(--card-laser-bg, linear-gradient(90deg, #6366f1, #38bdf8)) !important;
+  box-shadow: 0 0 18px var(--card-glow-color, rgba(99, 102, 241, 0.8)) !important;
+}
+
+/* Ambient Radial Glow Orb */
+.luxury-tool-card__glow-orb {
+  position: absolute !important;
+  top: -50px !important;
+  right: -50px !important;
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 50% !important;
+  filter: blur(60px) !important;
+  opacity: 0.28 !important;
+  pointer-events: none !important;
+  background: var(--card-glow-color, #6366f1) !important;
+}
+
+/* Header with Badge & Metric */
+.luxury-tool-card__header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 1.5rem !important;
+  gap: 0.75rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.luxury-tool-card__badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  border-radius: 30px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.luxury-tool-card__beacon {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  animation: beaconPulse 2s infinite ease-in-out !important;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+.luxury-tool-card__metric {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #cbd5e1 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  padding: 5px 12px !important;
+  border-radius: 18px !important;
+}
+
+/* Tool Identity: Squircle + Title */
+.luxury-tool-card__identity {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.luxury-tool-card__icon-squircle {
+  width: 62px !important;
+  height: 62px !important;
+  min-width: 62px !important;
+  border-radius: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 10px 25px var(--card-glow-shadow, rgba(99, 102, 241, 0.4)), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.luxury-tool-card:hover .luxury-tool-card__icon-squircle {
+  transform: scale(1.08) rotate(-3deg) !important;
+}
+
+.luxury-tool-card__icon-squircle svg {
+  width: 32px !important;
+  height: 32px !important;
+  color: #ffffff !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)) !important;
+}
+
+.luxury-tool-card__title-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.luxury-tool-card__title {
+  font-size: 1.32rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.luxury-tool-card__subtag {
+  font-size: 0.8rem !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+
+/* Description */
+.luxury-tool-card__desc {
+  font-size: 0.94rem !important;
+  color: #cbd5e1 !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1.5rem !important;
+  flex: 1 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Inset Frosted Glass Feature Checklist Box */
+.luxury-tool-card__features-box {
+  background: rgba(0, 0, 0, 0.36) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 1.1rem 1.25rem !important;
+  margin-bottom: 1.75rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.65rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.luxury-tool-card__features-title {
+  font-size: 0.74rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  color: #818cf8 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 2px !important;
+}
+
+.luxury-tool-card__feature-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 0.86rem !important;
+  color: #e2e8f0 !important;
+  line-height: 1.45 !important;
+}
+
+.luxury-tool-card__check-disc {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.75rem !important;
+  font-weight: 900 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Radiant High-End CTA Button */
+.luxury-tool-card__action {
+  margin-top: auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.luxury-tool-card__btn {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 0.95rem 1.75rem !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+}
+
+.luxury-tool-card__btn::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent) !important;
+  transition: left 0.65s ease !important;
+}
+
+.luxury-tool-card:hover .luxury-tool-card__btn::before {
+  left: 200% !important;
+}
+
+.luxury-tool-card:hover .luxury-tool-card__btn {
+  transform: translateY(-2px) !important;
+  filter: brightness(1.08) !important;
+}
+
+.luxury-tool-card__btn-arrow {
+  font-size: 1.15rem !important;
+  transition: transform 0.25s ease !important;
+  display: inline-block !important;
+}
+
+.luxury-tool-card:hover .luxury-tool-card__btn-arrow {
+  transform: translateX(-5px) !important;
+}
+
+/* ==========================================================================
+   EXECUTIVE DARK WORKSPACE FOR SUB-TOOLS (.builder-card & .preview-card)
+   ========================================================================== */
+.builder-card,
+.preview-card {
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 15, 30, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 45px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  color: #f1f5f9 !important;
+}
+
+.builder-card h2, .builder-card h3, .builder-card h4,
+.preview-card h2, .preview-card h3, .preview-card h4 {
+  color: #ffffff !important;
+}
+
+.builder-card label {
+  color: #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+
+.builder-card input[type="text"],
+.builder-card input[type="email"],
+.builder-card input[type="tel"],
+.builder-card input[type="url"],
+.builder-card textarea,
+.builder-card select {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #f8fafc !important;
+  border-radius: 12px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.builder-card input:focus,
+.builder-card textarea:focus,
+.builder-card select:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+  background: rgba(15, 23, 42, 0.95) !important;
 }
 
 /* ==========================================
@@ -3427,7 +3858,7 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     right: 0 !important;
     width: 100vw !important;
     max-width: 100% !important;
-    max-height: 70px !important;
+    max-height: 80px !important;
     height: auto !important;
     overflow: visible !important;
     margin: 0 !important;
@@ -3444,22 +3875,22 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     font-size: 10px !important;
     font-weight: 700 !important;
     line-height: 1.2 !important;
-    height: 18px !important;
+    height: 20px !important;
     border-radius: 6px 6px 0 0 !important;
     gap: 4px !important;
   }
   .sticky-bottom-ad__content {
     width: 100% !important;
     max-width: 100% !important;
-    height: 50px !important;
-    max-height: 50px !important;
-    min-height: 50px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    min-height: 52px !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important;
     background: rgba(10, 15, 30, 0.98) !important;
     border-top: 1px solid rgba(99, 102, 241, 0.4) !important;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.7) !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -3468,9 +3899,9 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 100% !important;
-    height: 50px !important;
-    min-height: 50px !important;
-    max-height: 50px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
@@ -3485,9 +3916,19 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   .sticky-bottom-ad__frame::before {
     display: none !important;
   }
-  .sticky-bottom-ad__frame ins.adsbygoogle,
-  .sticky-bottom-ad__frame ins.adsbygoogle iframe,
-  .sticky-bottom-ad__frame iframe {
+  .sticky-bottom-ad__frame .ad-frame-label {
+    display: none !important;
+  }
+  .sticky-bottom-ad__slot {
+    width: 320px !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    margin: 0 auto !important;
+  }
+  .sticky-bottom-ad__slot ins.adsbygoogle,
+  .sticky-bottom-ad__slot ins.adsbygoogle iframe,
+  .sticky-bottom-ad__slot iframe {
     width: 320px !important;
     max-width: 100% !important;
     height: 50px !important;
@@ -3496,15 +3937,40 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     margin: 0 auto !important;
     overflow: hidden !important;
   }
-  .sticky-bottom-ad__frame .ad-frame-placeholder {
-    font-size: 9px !important;
-    gap: 2px !important;
+  .sticky-bottom-ad__slot .ad-frame-placeholder {
+    padding: 0 12px !important;
+    height: 50px !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    border-radius: 8px !important;
   }
-  .sticky-bottom-ad__frame .ad-frame-placeholder svg {
+  .sticky-bottom-ad__slot .ad-placeholder-logo {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    font-size: 11px !important;
+    border-radius: 7px !important;
+  }
+  .sticky-bottom-ad__slot .ad-placeholder-title {
+    font-size: 11px !important;
+  }
+  .sticky-bottom-ad__slot .ad-placeholder-info .ad-placeholder-sub {
     display: none !important;
   }
+  .sticky-bottom-ad__slot .ad-placeholder-badge {
+    padding: 3px 8px !important;
+  }
+  .sticky-bottom-ad__slot .ad-placeholder-format {
+    font-size: 9px !important;
+  }
+  .floating-back-btn {
+    bottom: 78px !important;
+    right: var(--space-4) !important;
+    padding: 8px 14px !important;
+    font-size: var(--text-xs) !important;
+  }
   .footer {
-    padding-bottom: 70px !important;
+    padding-bottom: 85px !important;
   }
 }
 

@@ -265,11 +265,8 @@ window.CareerAI.initAdSense = function() {
       if (stickyIns) {
         var checkStatus = function() {
           var status = stickyIns.getAttribute('data-ad-status');
-          if (status === 'unfilled') {
-            sticky.classList.add('unfilled');
-            sticky.classList.remove('filled');
-          } else if (status === 'filled') {
-            sticky.classList.remove('unfilled');
+          var iframe = stickyIns.querySelector('iframe');
+          if (status === 'filled' && iframe && iframe.offsetHeight > 30) {
             sticky.classList.add('filled');
           }
         };

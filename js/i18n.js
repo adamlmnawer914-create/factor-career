@@ -306,6 +306,11 @@ window.CareerAI.i18n = {
         : (isAr ? 'طي الإعلان' : 'Hide Ad');
     }
 
+    const stickyLabel = document.getElementById('stickyAdLabelText');
+    if (stickyLabel) {
+      stickyLabel.textContent = isAr ? 'إعلان ممول / Sponsored Partner' : 'Sponsored Partner / إعلان ممول';
+    }
+
     // Re-render Header & Footer with new language texts
     const app = document.getElementById('app');
     
