@@ -306,7 +306,8 @@ window.CareerAI.toggleBottomAd = function() {
 };
 
 /* --- Mobile Menu Handlers --- */
-window.CareerAI.toggleMobileMenu = function() {
+window.CareerAI.toggleMobileMenu = function(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
   const toggle = document.getElementById('menuToggle') || document.getElementById('mobile-toggle');
   const nav = document.getElementById('mobileNav') || document.getElementById('mobile-nav');
   const overlay = document.getElementById('mobileOverlay');
@@ -324,7 +325,8 @@ window.CareerAI.toggleMobileMenu = function() {
   }
 };
 
-window.CareerAI.closeMobileMenu = function() {
+window.CareerAI.closeMobileMenu = function(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
   const toggle = document.getElementById('menuToggle') || document.getElementById('mobile-toggle');
   const nav = document.getElementById('mobileNav') || document.getElementById('mobile-nav');
   const overlay = document.getElementById('mobileOverlay');
@@ -382,12 +384,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error during i18n.init:', err);
   }
 
-  // Setup Mobile Menu Events (delegated)
+  // Setup Mobile Menu Events: only close on backdrop click
   document.body.addEventListener('click', (e) => {
-    if (e.target.closest('#menuToggle')) {
-      window.CareerAI.toggleMobileMenu();
-    } else if (e.target.closest('#mobileOverlay')) {
-      window.CareerAI.closeMobileMenu();
+    if (e.target.closest('#mobileOverlay')) {
+      window.CareerAI.closeMobileMenu(e);
     }
   });
 

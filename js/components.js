@@ -94,7 +94,7 @@ window.CareerAI.components.renderHeader = function () {
           </a>
 
           <!-- Mobile Hamburger Toggle -->
-          <button class="menu-toggle mobile-toggle" id="menuToggle" onclick="CareerAI.toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+          <button class="menu-toggle mobile-toggle" id="menuToggle" onclick="event.stopPropagation(); CareerAI.toggleMobileMenu(event)" aria-label="Toggle mobile menu" aria-expanded="false">
             <span class="menu-toggle__line mobile-toggle__bar"></span>
             <span class="menu-toggle__line mobile-toggle__bar"></span>
             <span class="menu-toggle__line mobile-toggle__bar"></span>
@@ -120,7 +120,7 @@ window.CareerAI.components.renderHeader = function () {
             </div>
             <span style="font-weight:800;color:var(--color-text);font-size:1.05rem">Factor<span style="color:#2563eb">Career</span></span>
           </div>
-          <button type="button" onclick="CareerAI.closeMobileMenu()" aria-label="Close menu" style="background:rgba(99,102,241,0.1);border:none;width:32px;height:32px;border-radius:8px;font-size:1.1rem;cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center;font-weight:700">✕</button>
+          <button type="button" onclick="event.stopPropagation(); CareerAI.closeMobileMenu(event)" aria-label="Close menu" style="background:rgba(99,102,241,0.1);border:none;width:32px;height:32px;border-radius:8px;font-size:1.1rem;cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center;font-weight:700">✕</button>
         </div>
 
         <a href="/" data-nav="/" class="mobile-nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
