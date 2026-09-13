@@ -30,6 +30,7 @@ window.CareerAI.router = {
     '/privacy': { render: window.CareerAI.pages.privacy, seo: window.CareerAI.pages.privacySEO },
     '/terms': { render: window.CareerAI.pages.terms, seo: window.CareerAI.pages.termsSEO },
     '/admin/login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'تسجيل دخول المدير | Factor Career', description: 'صفحة تسجيل دخول المدير' } },
+    '/admin-login': { render: window.CareerAI.pages.adminLogin, seo: { title: 'تسجيل دخول المدير | Factor Career', description: 'صفحة تسجيل دخول المدير' } },
     '/admin': { render: window.CareerAI.pages.adminDashboard, seo: { title: 'لوحة تحكم المدير | Factor Career', description: 'لوحة تحكم إدارة المحتوى' } }
   },
 
@@ -263,10 +264,13 @@ window.CareerAI.initAdSense = function() {
       var stickyIns = sticky.querySelector('ins.adsbygoogle');
       if (stickyIns) {
         var checkStatus = function() {
-          if (stickyIns.getAttribute('data-ad-status') === 'unfilled') {
+          var status = stickyIns.getAttribute('data-ad-status');
+          if (status === 'unfilled') {
             sticky.classList.add('unfilled');
-          } else if (stickyIns.getAttribute('data-ad-status') === 'filled' || stickyIns.querySelector('iframe')) {
+            sticky.classList.remove('filled');
+          } else if (status === 'filled') {
             sticky.classList.remove('unfilled');
+            sticky.classList.add('filled');
           }
         };
         checkStatus();

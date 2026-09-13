@@ -219,3 +219,93 @@ window.CareerAI.components.renderFooter = function () {
     </footer>
   `;
 };
+
+/* --- Explore Other AI Career Tools Component (Shared across all 5 tool pages) --- */
+window.CareerAI.components.renderOtherTools = function (currentSlug) {
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const icons = window.CareerAI.icons || {};
+
+  const allTools = [
+    {
+      slug: 'resume-builder',
+      title: isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي',
+      desc: isEn ? 'Create professional ATS-compliant resumes in minutes with live preview and instant PDF export.' : 'أنشئ سيرة ذاتية احترافية متوافقة مع ATS مع معاينة مباشرة وتصدير PDF مجاناً.',
+      link: '/tools/resume-builder',
+      tag: isEn ? '100% Free' : 'مجاني 100%',
+      icon: icons.fileText || icons.resume,
+      color: 'primary'
+    },
+    {
+      slug: 'resume-analyzer',
+      title: isEn ? 'ATS Resume Checker' : 'فاحص ومحلل السيرة الذاتية',
+      desc: isEn ? 'Compare your CV against job descriptions. Get ATS score and missing keyword fixes.' : 'قارن سيرتك الذاتية مع أي وصف وظيفي واحصل على تقييم فوري والكلمات الناقصة.',
+      link: '/tools/resume-analyzer',
+      tag: isEn ? 'Score 90+' : 'فحص ATS',
+      icon: icons.check,
+      color: 'secondary'
+    },
+    {
+      slug: 'cover-letter-generator',
+      title: isEn ? 'AI Cover Letter Generator' : 'مولد رسائل التقديم الذكية',
+      desc: isEn ? 'Craft tailored, high-impact cover letters matching target job descriptions in seconds.' : 'أنشئ خطابات تغطية احترافية ومقنعة مخصصة لكل وظيفة بضغطة زر.',
+      link: '/tools/cover-letter-generator',
+      tag: isEn ? 'High Conversion' : 'زيادة القبول',
+      icon: icons.mail,
+      color: 'accent'
+    },
+    {
+      slug: 'interview-questions',
+      title: isEn ? 'Interview Questions Coach' : 'مدرب أسئلة المقابلات',
+      desc: isEn ? 'Prepare with curated interview questions, expert model answers, and smart prep tips.' : 'تدرّب على أكثر أسئلة المقابلات شيوعاً مع إجابات نموذجية مقنعة لكل مجال.',
+      link: '/tools/interview-questions',
+      tag: isEn ? 'Model Answers' : 'إجابات نموذجية',
+      icon: icons.interview || icons.users,
+      color: 'warning'
+    },
+    {
+      slug: 'ats-keywords',
+      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج الكلمات المفتاحية',
+      desc: isEn ? 'Extract top high-demand industry keywords to pass applicant tracking filters easily.' : 'استخرج أقوى الكلمات المفتاحية في مجالك لضمان تجاوز الفرز الآلي بنجاح.',
+      link: '/tools/ats-keywords',
+      tag: isEn ? 'Keyword Booster' : 'تعزيز الكلمات',
+      icon: icons.target || icons.skills,
+      color: 'info'
+    }
+  ];
+
+  const otherTools = allTools.filter(t => t.slug !== currentSlug);
+
+  return `
+    <div class="other-tools-section" style="margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--color-border-light)">
+      <div style="text-align:center;margin-bottom:2rem">
+        <span class="section__badge" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:0.75rem">
+          <span style="width:14px;height:14px;display:inline-flex">${icons.sparkles || ''}</span>
+          ${isEn ? 'More AI Career Tools' : 'المزيد من أدوات الذكاء الاصطناعي'}
+        </span>
+        <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-text);margin-bottom:0.5rem">
+          ${isEn ? 'Explore Other AI Tools to Accelerate Your Career' : 'استكشف باقي الأدوات لتسريع نجاحك المهني'}
+        </h2>
+        <p style="color:var(--color-text-muted);font-size:0.95rem;max-width:550px;margin:0 auto">
+          ${isEn ? 'All our AI tools are 100% free and work seamlessly together to land your next job.' : 'جميع أدواتنا مجانية بالكامل ومصممة للتكامل معاً لتحقيق أفضل نتيجة في رحلتك المهنية.'}
+        </p>
+      </div>
+
+      <div class="tools-section__grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1.5rem">
+        ${otherTools.map(tool => `
+          <div class="card tool-card" style="cursor:pointer;position:relative" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+            <span class="tag tag--accent" style="position:absolute;top:var(--space-4);${isEn ? 'right' : 'left'}:var(--space-4)">${tool.tag}</span>
+            <div class="card__icon card__icon--${tool.color}">
+              <span style="width:30px;height:30px;display:inline-flex">${tool.icon}</span>
+            </div>
+            <h3 class="card__title" style="font-size:1.1rem;margin-bottom:0.5rem">${tool.title}</h3>
+            <p class="card__text" style="font-size:0.88rem;line-height:1.6;margin-bottom:1.25rem">${tool.desc}</p>
+            <a href="${tool.link}" class="card__link" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+              ${isEn ? 'Open Tool Free' : 'فتح الأداة مجاناً'}
+              <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
+            </a>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+};

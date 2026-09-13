@@ -2934,7 +2934,6 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 }
 
 .sticky-bottom-ad-wrapper:has(ins[data-ad-status="filled"]),
-.sticky-bottom-ad-wrapper:has(iframe),
 .sticky-bottom-ad-wrapper.filled {
   position: fixed !important;
   bottom: 0 !important;
