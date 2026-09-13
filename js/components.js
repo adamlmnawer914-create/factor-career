@@ -103,24 +103,39 @@ window.CareerAI.components.renderHeader = function () {
         </div>
 
       </div>
+    </header>
 
-      <!-- Mobile Dropdown Navigation -->
-      <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
-        <div class="container mobile-nav__inner">
-          <a href="/" data-nav="/" class="mobile-nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
-          <a href="/tools" data-nav="/tools" class="mobile-nav__link ${isAct('/tools') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/tools');CareerAI.closeMobileMenu()">${t('nav.tools', 'الأدوات الذكية')}</a>
-          <a href="/jobs" data-nav="/jobs" class="mobile-nav__link ${isAct('/jobs') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/jobs');CareerAI.closeMobileMenu()">${t('nav.jobs', 'الوظائف والفرص')}</a>
-          <a href="/blog" data-nav="/blog" class="mobile-nav__link ${isAct('/blog') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/blog');CareerAI.closeMobileMenu()">${t('nav.blog', 'المدونة والمقالات')}</a>
-          <a href="/about" data-nav="/about" class="mobile-nav__link ${isAct('/about') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/about');CareerAI.closeMobileMenu()">${t('nav.about', 'من نحن')}</a>
-          <a href="/contact" data-nav="/contact" class="mobile-nav__link ${isAct('/contact') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/contact');CareerAI.closeMobileMenu()">${t('nav.contact', 'تواصل معنا')}</a>
-          <div class="mobile-nav__actions" style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem">
-            <a href="/tools/resume-builder" class="btn btn--primary btn--block" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder');CareerAI.closeMobileMenu()">
-              ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
-            </a>
+    <!-- Mobile Dropdown Navigation (Outside of header to avoid backdrop-filter stacking constraint) -->
+    <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
+      <div class="container mobile-nav__inner">
+        
+        <!-- Drawer Header with Logo & Close Button -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border-light)">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="header__logo-icon" style="width:30px;height:30px;min-width:30px;border-radius:8px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 4H19C19.55 4 20 4.45 20 5V7.5C20 8.05 19.55 8.5 19 8.5H8.5V11H15.5C16.05 11 16.5 11.45 16.5 12V14C16.5 14.55 16.05 15 15.5 15H8.5V20H4.5V4Z" fill="white"/>
+                <path d="M20 1L20.8 3.2L23 4L20.8 4.8L20 7L19.2 4.8L17 4L19.2 3.2L20 1Z" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <span style="font-weight:800;color:var(--color-text);font-size:1.05rem">Factor<span style="color:#2563eb">Career</span></span>
           </div>
+          <button type="button" onclick="CareerAI.closeMobileMenu()" aria-label="Close menu" style="background:rgba(99,102,241,0.1);border:none;width:32px;height:32px;border-radius:8px;font-size:1.1rem;cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center;font-weight:700">✕</button>
+        </div>
+
+        <a href="/" data-nav="/" class="mobile-nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
+        <a href="/tools" data-nav="/tools" class="mobile-nav__link ${isAct('/tools') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/tools');CareerAI.closeMobileMenu()">${t('nav.tools', 'الأدوات الذكية')}</a>
+        <a href="/jobs" data-nav="/jobs" class="mobile-nav__link ${isAct('/jobs') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/jobs');CareerAI.closeMobileMenu()">${t('nav.jobs', 'الوظائف والفرص')}</a>
+        <a href="/blog" data-nav="/blog" class="mobile-nav__link ${isAct('/blog') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/blog');CareerAI.closeMobileMenu()">${t('nav.blog', 'المدونة والمقالات')}</a>
+        <a href="/about" data-nav="/about" class="mobile-nav__link ${isAct('/about') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/about');CareerAI.closeMobileMenu()">${t('nav.about', 'من نحن')}</a>
+        <a href="/contact" data-nav="/contact" class="mobile-nav__link ${isAct('/contact') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/contact');CareerAI.closeMobileMenu()">${t('nav.contact', 'تواصل معنا')}</a>
+        <div class="mobile-nav__actions" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem">
+          <a href="/tools/resume-builder" class="btn btn--primary btn--block" onclick="event.preventDefault();CareerAI.router.navigate('/tools/resume-builder');CareerAI.closeMobileMenu()">
+            ${t('hero.btnBuild', 'أنشئ سيرتك الذاتية الآن')}
+          </a>
         </div>
       </div>
-    </header>
+    </div>
     <div class="mobile-overlay" id="mobileOverlay" onclick="CareerAI.closeMobileMenu()"></div>
   `;
 };
