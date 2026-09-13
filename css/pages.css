@@ -3057,6 +3057,12 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   transform: rotate(180deg) !important;
 }
 
+/* Hide entire sticky ad wrapper when unfilled or marked unfilled */
+.sticky-bottom-ad-wrapper:has(ins[data-ad-status="unfilled"]),
+.sticky-bottom-ad-wrapper.unfilled {
+  display: none !important;
+}
+
 
 
 .footer {
@@ -3278,6 +3284,137 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 }
 
 
+/* Responsive Builder & Tool Workspaces on Mobile & Tablet */
+@media (max-width: 991px) {
+  .tool-content-with-sidebar,
+  .analyzer-workspace-grid,
+  .cover-letter-grid,
+  .ats-keywords-grid,
+  .builder-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .jobs-grid,
+  .tools-section__grid {
+    grid-template-columns: 1fr !important;
+  }
+  .job-card {
+    max-width: 100% !important;
+  }
+}
+
+/* Hero Section Mobile & Tablet Responsive Layout */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-media-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-image-card {
+  width: 300px;
+  height: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 300px;
+  max-height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 40px rgba(99, 102, 241, 0.15);
+  flex-shrink: 0;
+}
+
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .hero__grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+    text-align: center !important;
+  }
+  .hero__content {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero__badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero__title {
+    text-align: center !important;
+    font-size: clamp(1.45rem, 5vw, 2.1rem) !important;
+  }
+  .hero__subtitle {
+    text-align: center !important;
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 0.85rem !important;
+  }
+  .hero__actions a {
+    width: 100% !important;
+    max-width: 300px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .hero-media-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-image-card {
+    width: 300px !important;
+    height: 300px !important;
+    max-width: min(300px, calc(100vw - 32px)) !important;
+    max-height: min(300px, calc(100vw - 32px)) !important;
+  }
+  .hero-image-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .hero-square-ad-wrapper {
+    max-width: min(300px, calc(100vw - 32px)) !important;
+  }
+  .hero-stats-row {
+    justify-content: center !important;
+    gap: 1.75rem !important;
+    text-align: center !important;
+  }
+}
+
 /* Strict Mobile Sticky Bottom Ad Clamp - Ultra-slim & Full Width */
 @media (max-width: 768px) {
   .sticky-bottom-ad-wrapper {
@@ -3346,7 +3483,7 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   .sticky-bottom-ad__frame ins.adsbygoogle,
   .sticky-bottom-ad__frame ins.adsbygoogle iframe,
   .sticky-bottom-ad__frame iframe {
-    width: 100% !important;
+    width: 320px !important;
     max-width: 100% !important;
     height: 50px !important;
     max-height: 50px !important;
@@ -3362,9 +3499,6 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
     display: none !important;
   }
   .footer {
-    padding-bottom: 80px !important;
-  }
-  body {
     padding-bottom: 70px !important;
   }
 }

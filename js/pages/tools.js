@@ -99,7 +99,7 @@ window.CareerAI.pages.tools = function() {
     <!-- Tools Grid Section -->
     <section class="section" style="padding-top:var(--space-6);padding-bottom:var(--space-12)">
       <div class="container">
-        <div class="tools-section__grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:var(--space-6);">
+        <div class="tools-section__grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:var(--space-6);">
           ${tools.map((tool, index) => `
             <div class="card tool-card animate-on-scroll delay-${(index % 3) + 1}" style="cursor:pointer;position:relative" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
               <span class="tag tag--accent" style="position:absolute;top:var(--space-4);${isEn ? 'right' : 'left'}:var(--space-4)">${tool.tag}</span>

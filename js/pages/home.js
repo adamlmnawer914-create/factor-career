@@ -75,7 +75,7 @@ window.CareerAI.pages.home = function() {
     <section class="hero" style="position:relative;overflow:hidden;padding:3.5rem 0 2.5rem;background:var(--gradient-hero);min-height:auto">
       <div class="hero__bg-glow"></div>
       <div class="container" style="position:relative;z-index:2">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+        <div class="hero__grid">
           
           <!-- Left: Text Content -->
           <div class="hero__content" style="text-align:${isEn ? 'left' : 'right'}">
@@ -103,7 +103,7 @@ window.CareerAI.pages.home = function() {
             </p>
 
             <!-- Hero Action Buttons -->
-            <div class="hero__actions animate-on-scroll delay-3" style="display:flex;flex-direction:column;gap:0.85rem;align-items:flex-start;margin-bottom:0">
+            <div class="hero__actions animate-on-scroll delay-3">
               <a href="/tools/resume-builder"
                  style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#2563eb 0%,#4f46e5 50%,#6366f1 100%);color:#fff;font-weight:700;font-size:0.95rem;border:none;border-radius:50px;padding:0.8rem 2rem;box-shadow:0 6px 25px rgba(99,102,241,0.5);text-decoration:none;transition:all 0.25s ease;letter-spacing:0.01em"
                  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(99,102,241,0.65)'"
@@ -124,10 +124,10 @@ window.CareerAI.pages.home = function() {
           </div>
 
           <!-- Right: Hero Image (square) + Ad Card (square) — LOCKED SIZE -->
-          <div class="animate-on-scroll delay-2" style="display:flex;gap:1rem;align-items:flex-start;justify-content:center;flex-shrink:0">
+          <div class="hero-media-row animate-on-scroll delay-2">
             
             <!-- Hero Image — fixed 300x300 square, locked -->
-            <div style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.1),0 0 40px rgba(99,102,241,0.15);flex-shrink:0">
+            <div class="hero-image-card" style="width:300px;height:300px;min-width:300px;max-width:300px;min-height:300px;max-height:300px;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.1),0 0 40px rgba(99,102,241,0.15);flex-shrink:0">
               <img src="/img/hero-career-ai.jpg"
                    alt="${isEn ? 'AI Resume Builder - Factor Career' : 'منشئ السيرة الذاتية بالذكاء الاصطناعي'}"
                    style="width:300px;height:300px;object-fit:cover;display:block"
@@ -169,7 +169,7 @@ window.CareerAI.pages.home = function() {
         </div>
 
         <!-- Stats Row — BELOW the full 2-col grid, matches screenshot -->
-        <div class="animate-on-scroll delay-4" style="display:flex;align-items:center;gap:3rem;margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap">
+        <div class="hero-stats-row animate-on-scroll delay-4">
           <div>
             <div style="font-size:1.6rem;font-weight:800;color:#ffffff">100%</div>
             <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;margin-top:2px">${isEn ? 'Completely Free' : 'مجاني بالكامل'}</div>

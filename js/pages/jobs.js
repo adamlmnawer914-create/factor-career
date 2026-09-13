@@ -221,7 +221,7 @@ window.CareerAI.pages.jobs = function() {
                 <button class="btn btn--secondary btn--sm" onclick="CareerAI.resetJobsFilter()">${isEn ? 'Reset All Filters' : 'إعادة ضبط الفلاتر'}</button>
               </div>
             ` : `
-              <div class="jobs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;">
+              <div class="jobs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;">
                 ${displayedJobs.map((job, i) => {
                   const compInitial = (job.company ? job.company.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
                   const logoUrl = job.logo || job.companyLogo || '';

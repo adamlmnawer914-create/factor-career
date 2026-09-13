@@ -105,7 +105,7 @@ window.CareerAI.pages.resumeAnalyzer = function() {
         </div>
 
         <!-- 2-Column Inputs Grid (CV Input Left + Job Input Right) -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch;margin-bottom:2rem;">
+        <div class="analyzer-workspace-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch;margin-bottom:2rem;">
           
           <!-- Column 1: CV Input -->
           <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;">

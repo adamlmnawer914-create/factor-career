@@ -257,9 +257,25 @@ window.CareerAI.initAdSense = function() {
         try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
       }
     });
-    // Re-show sticky bottom if it was hidden from prev page close
-    var sticky = document.getElementById('adsense-sticky-bottom');
-    if (sticky) sticky.style.display = '';
+    // Check sticky bottom ad unit
+    var sticky = document.getElementById('stickyBottomAd') || document.getElementById('adsense-sticky-bottom');
+    if (sticky) {
+      var stickyIns = sticky.querySelector('ins.adsbygoogle');
+      if (stickyIns) {
+        var checkStatus = function() {
+          if (stickyIns.getAttribute('data-ad-status') === 'unfilled') {
+            sticky.classList.add('unfilled');
+          } else if (stickyIns.getAttribute('data-ad-status') === 'filled' || stickyIns.querySelector('iframe')) {
+            sticky.classList.remove('unfilled');
+          }
+        };
+        checkStatus();
+        try {
+          var observer = new MutationObserver(checkStatus);
+          observer.observe(stickyIns, { attributes: true, attributeFilter: ['data-ad-status'] });
+        } catch(e) {}
+      }
+    }
   }, 500);
 };
 
@@ -291,8 +307,8 @@ window.CareerAI.toggleBottomAd = function() {
 
 /* --- Mobile Menu Handlers --- */
 window.CareerAI.toggleMobileMenu = function() {
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('mobileNav');
+  const toggle = document.getElementById('menuToggle') || document.getElementById('mobile-toggle');
+  const nav = document.getElementById('mobileNav') || document.getElementById('mobile-nav');
   const overlay = document.getElementById('mobileOverlay');
 
   const isActive = toggle?.classList.contains('active');
@@ -309,12 +325,14 @@ window.CareerAI.toggleMobileMenu = function() {
 };
 
 window.CareerAI.closeMobileMenu = function() {
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('mobileNav');
+  const toggle = document.getElementById('menuToggle') || document.getElementById('mobile-toggle');
+  const nav = document.getElementById('mobileNav') || document.getElementById('mobile-nav');
   const overlay = document.getElementById('mobileOverlay');
 
-  if (toggle) toggle.classList.remove('active');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  if (toggle) {
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
   if (nav) nav.classList.remove('active');
   if (overlay) overlay.classList.remove('active');
   document.body.style.overflow = '';

@@ -101,7 +101,7 @@ window.CareerAI.pages.coverLetterGenerator = function() {
         </div>
 
         <!-- 2-Column Grid (Inputs Form Left + Output Letter Right) -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+        <div class="cover-letter-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
           
           <!-- Column 1: Input Details Form -->
           <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;">

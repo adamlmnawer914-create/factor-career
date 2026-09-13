@@ -94,10 +94,10 @@ window.CareerAI.components.renderHeader = function () {
           </a>
 
           <!-- Mobile Hamburger Toggle -->
-          <button class="mobile-toggle" id="mobile-toggle" onclick="CareerAI.toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
-            <span class="mobile-toggle__bar"></span>
-            <span class="mobile-toggle__bar"></span>
-            <span class="mobile-toggle__bar"></span>
+          <button class="menu-toggle mobile-toggle" id="menuToggle" onclick="CareerAI.toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="menu-toggle__line mobile-toggle__bar"></span>
+            <span class="menu-toggle__line mobile-toggle__bar"></span>
+            <span class="menu-toggle__line mobile-toggle__bar"></span>
           </button>
 
         </div>
@@ -105,7 +105,7 @@ window.CareerAI.components.renderHeader = function () {
       </div>
 
       <!-- Mobile Dropdown Navigation -->
-      <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
+      <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
         <div class="container mobile-nav__inner">
           <a href="/" data-nav="/" class="mobile-nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
           <a href="/tools" data-nav="/tools" class="mobile-nav__link ${isAct('/tools') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/tools');CareerAI.closeMobileMenu()">${t('nav.tools', 'الأدوات الذكية')}</a>
@@ -121,6 +121,7 @@ window.CareerAI.components.renderHeader = function () {
         </div>
       </div>
     </header>
+    <div class="mobile-overlay" id="mobileOverlay" onclick="CareerAI.closeMobileMenu()"></div>
   `;
 };
 

@@ -102,7 +102,7 @@ window.CareerAI.pages.atsKeywords = function() {
         </div>
 
         <!-- 2-Column Grid (Job Input Left + Optional CV Input Right) -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.75rem;">
+        <div class="ats-keywords-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.75rem;">
           
           <div class="builder-card" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;">
             <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">
