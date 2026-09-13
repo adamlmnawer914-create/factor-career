@@ -220,7 +220,7 @@ window.CareerAI.pages.home = function() {
         <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin: 3rem auto 0; max-width: 760px;">
           <div class="ad-frame-label">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
-            ${t('common.sponsored', 'إعلان ممول / Sponsored')}
+            ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / Sponsored Partner'}
           </div>
           <div class="ad-frame-inner">
             <ins class="adsbygoogle"
@@ -228,7 +228,21 @@ window.CareerAI.pages.home = function() {
                  data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="3316284985"
                  data-ad-format="horizontal"
-                 data-full-width-responsive="true"></ins>
+                 data-full-width-responsive="false"></ins>
+            <!-- Luxury Fallback Slot (Guarantees permanent non-collapsing ad bar) -->
+            <div class="ad-frame-placeholder">
+              <div class="ad-placeholder-brand">
+                <div class="ad-placeholder-logo">FC</div>
+                <div class="ad-placeholder-info">
+                  <span class="ad-placeholder-title">Factor Career Sponsor Network</span>
+                  <span class="ad-placeholder-sub">${isEn ? 'Google AdSense Certified Partner' : 'شريك إعلاني معتمد • Google AdSense Certified'}</span>
+                </div>
+              </div>
+              <div class="ad-placeholder-badge">
+                <span class="ad-placeholder-dot"></span>
+                <span class="ad-placeholder-format">728×90 Leaderboard</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

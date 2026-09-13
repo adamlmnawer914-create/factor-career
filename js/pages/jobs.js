@@ -130,8 +130,22 @@ window.CareerAI.pages.jobs = function() {
                  style="display:inline-block;width:728px;height:90px;max-width:100%;"
                  data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="false"></ins>
+            <!-- Luxury Fallback Slot -->
+            <div class="ad-frame-placeholder">
+              <div class="ad-placeholder-brand">
+                <div class="ad-placeholder-logo">FC</div>
+                <div class="ad-placeholder-info">
+                  <span class="ad-placeholder-title">Factor Career Sponsor Network</span>
+                  <span class="ad-placeholder-sub">${isEn ? 'Google AdSense Certified Partner' : 'شريك إعلاني معتمد • Google AdSense Certified'}</span>
+                </div>
+              </div>
+              <div class="ad-placeholder-badge">
+                <span class="ad-placeholder-dot"></span>
+                <span class="ad-placeholder-format">728×90 Leaderboard</span>
+              </div>
+            </div>
           </div>
         </div>
 

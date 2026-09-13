@@ -3060,8 +3060,8 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   pointer-events: none !important;
 }
 
-/* Fallback Branded Luxury Placeholder (visible whenever AdSense is pending/unfilled) */
-.sticky-bottom-ad__slot .ad-frame-placeholder {
+/* Universal Luxury Fallback Placeholder (visible whenever AdSense is pending/unfilled) */
+.ad-frame-placeholder {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
@@ -3076,13 +3076,13 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.1) !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-brand {
+.ad-placeholder-brand {
   display: flex !important;
   align-items: center !important;
   gap: 12px !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-logo {
+.ad-placeholder-logo {
   width: 42px !important;
   height: 42px !important;
   border-radius: 12px !important;
@@ -3094,28 +3094,30 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   font-weight: 900 !important;
   font-size: 16px !important;
   box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4) !important;
+  flex-shrink: 0 !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-info {
+.ad-placeholder-info {
   display: flex !important;
   flex-direction: column !important;
   gap: 2px !important;
+  text-align: start !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-title {
+.ad-placeholder-title {
   font-size: 13.5px !important;
   font-weight: 800 !important;
   color: #ffffff !important;
   letter-spacing: -0.01em !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-sub {
+.ad-placeholder-sub {
   font-size: 11px !important;
   color: #94a3b8 !important;
   font-weight: 500 !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-badge {
+.ad-placeholder-badge {
   display: flex !important;
   align-items: center !important;
   gap: 7px !important;
@@ -3123,9 +3125,10 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   border: 1px solid rgba(56, 189, 248, 0.35) !important;
   padding: 5px 14px !important;
   border-radius: 20px !important;
+  flex-shrink: 0 !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-dot {
+.ad-placeholder-dot {
   width: 8px !important;
   height: 8px !important;
   border-radius: 50% !important;
@@ -3133,14 +3136,48 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   box-shadow: 0 0 10px #34d399 !important;
 }
 
-.sticky-bottom-ad__slot .ad-placeholder-format {
+.ad-placeholder-format {
   font-size: 11px !important;
   color: #38bdf8 !important;
   font-weight: 800 !important;
 }
 
+/* Strictly Lock Leaderboard Ad Container Dimensions */
+.ad-frame-leaderboard .ad-frame-inner {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 728px !important;
+  height: 90px !important;
+  min-height: 90px !important;
+  max-height: 90px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  border: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 728px !important;
+  height: 90px !important;
+  max-width: 100% !important;
+  z-index: 2 !important;
+  display: block !important;
+}
+
+.ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle:not([data-ad-status="filled"]) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Hide fallback only when Google AdSense serves a verified live creative */
-.sticky-bottom-ad-wrapper.filled .ad-frame-placeholder {
+.sticky-bottom-ad-wrapper.filled .ad-frame-placeholder,
+.ad-frame-wrapper.filled .ad-frame-placeholder {
   opacity: 0 !important;
   pointer-events: none !important;
 }
@@ -3957,11 +3994,42 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
   .sticky-bottom-ad__slot .ad-placeholder-info .ad-placeholder-sub {
     display: none !important;
   }
-  .sticky-bottom-ad__slot .ad-placeholder-badge {
-    padding: 3px 8px !important;
+  /* Mobile Leaderboard In-Page Ad Lock */
+  .ad-frame-leaderboard {
+    max-width: 340px !important;
+    padding: 6px !important;
   }
-  .sticky-bottom-ad__slot .ad-placeholder-format {
-    font-size: 9px !important;
+  .ad-frame-leaderboard .ad-frame-inner {
+    width: 320px !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+  }
+  .ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle {
+    width: 320px !important;
+    height: 50px !important;
+    max-height: 50px !important;
+  }
+  .ad-frame-leaderboard .ad-frame-placeholder {
+    padding: 0 10px !important;
+    height: 50px !important;
+  }
+  .ad-frame-leaderboard .ad-placeholder-logo {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    font-size: 10px !important;
+    border-radius: 7px !important;
+  }
+  .ad-frame-leaderboard .ad-placeholder-title {
+    font-size: 11px !important;
+  }
+  .ad-frame-leaderboard .ad-placeholder-sub {
+    display: none !important;
+  }
+  .ad-placeholder-badge {
+    display: none !important;
   }
   .floating-back-btn {
     bottom: 78px !important;
