@@ -946,7 +946,7 @@ ins.adsbygoogle {
   border-radius: 16px;
   padding: 0.75rem 1rem 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -979,29 +979,23 @@ ins.adsbygoogle {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100px;
-  background: rgba(15,23,42,0.4);
+  min-height: 90px;
+  background: transparent;
   border-radius: 10px;
-  border: 1px dashed rgba(99,102,241,0.25);
-  overflow: hidden;
+  border: none;
+  overflow: visible;
 }
 .ad-frame-inner::before {
-  content: "Google AdSense (300 × 250)";
-  position: absolute;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(148, 163, 184, 0.45);
-  letter-spacing: 0.5px;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 .ad-frame-leaderboard .ad-frame-inner::before,
 .ad-frame-footer .ad-frame-inner::before {
-  content: "Google AdSense (728 × 90 Responsive Banner)";
+  display: none;
 }
 .ad-frame-inner ins.adsbygoogle {
   position: relative;
   z-index: 2;
+  overflow: visible;
 }
 
 /* Rectangle 300x250 frame */
@@ -1011,6 +1005,7 @@ ins.adsbygoogle {
 }
 .ad-frame-rectangle .ad-frame-inner {
   min-height: 250px;
+  overflow: visible;
 }
 
 /* Leaderboard 728x90 frame (below header) */
@@ -1026,9 +1021,11 @@ ins.adsbygoogle {
   margin: 0 auto;
   border-radius: 12px;
   padding: 0.5rem 0.75rem 0.75rem;
+  overflow: visible;
 }
 .ad-frame-leaderboard .ad-frame-inner {
   min-height: 90px;
+  overflow: visible;
 }
 
 /* Footer ad frame */

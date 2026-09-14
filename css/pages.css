@@ -3004,21 +3004,22 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   position: relative !important;
   width: 100% !important;
   max-width: 760px !important;
-  min-height: 126px !important;
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.98) 0%, rgba(10, 15, 30, 0.99) 100%) !important;
-  border: 1px solid rgba(99, 102, 241, 0.5) !important;
+  min-height: 90px !important;
+  height: auto !important;
+  background: rgba(15, 23, 42, 0.97) !important;
+  border: 1px solid rgba(99, 102, 241, 0.45) !important;
   border-bottom: none !important;
-  border-radius: 18px 18px 0 0 !important;
-  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(99, 102, 241, 0.25) !important;
+  border-radius: 14px 14px 0 0 !important;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 8px 16px 12px !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .sticky-bottom-ad__frame::before {
@@ -3027,37 +3028,28 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 2.5px !important;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.9), rgba(56, 189, 248, 0.9), transparent) !important;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.7) !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), rgba(56, 189, 248, 0.8), transparent) !important;
 }
 
 .sticky-bottom-ad__slot {
   position: relative !important;
   width: 100% !important;
   max-width: 728px !important;
-  height: 90px !important;
+  height: auto !important;
   min-height: 90px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  overflow: visible !important;
 }
 
 .sticky-bottom-ad__slot ins.adsbygoogle {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 2 !important;
-  display: block !important;
+  display: inline-block !important;
   width: 728px !important;
   height: 90px !important;
   max-width: 100% !important;
   background: transparent !important;
-  transition: opacity 0.3s ease !important;
-}
-
-.sticky-bottom-ad__slot ins.adsbygoogle:not([data-ad-status="filled"]) {
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 
 /* Universal Luxury Fallback Placeholder (visible whenever AdSense is pending/unfilled) */
@@ -3142,16 +3134,16 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   font-weight: 800 !important;
 }
 
-/* Strictly Lock Leaderboard Ad Container Dimensions */
+/* Leaderboard Ad Container - Full Visibility, No Truncation */
 .ad-frame-leaderboard .ad-frame-inner {
   position: relative !important;
   width: 100% !important;
   max-width: 728px !important;
-  height: 90px !important;
+  height: auto !important;
   min-height: 90px !important;
-  max-height: 90px !important;
+  max-height: none !important;
   margin: 0 auto !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   border-radius: 12px !important;
   border: none !important;
   background: transparent !important;
@@ -3161,18 +3153,15 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
 }
 
 .ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 728px !important;
-  height: 90px !important;
-  max-width: 100% !important;
-  z-index: 2 !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 728px !important;
+  min-height: 90px !important;
+  height: auto !important;
+  max-height: none !important;
   display: block !important;
-}
-
-.ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle:not([data-ad-status="filled"]) {
-  opacity: 0 !important;
-  pointer-events: none !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
 }
 
 /* Hide fallback only when Google AdSense serves a verified live creative */
@@ -3888,14 +3877,14 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
   }
 }
 
-/* Strict Mobile Sticky Bottom Ad Clamp - Ultra-slim & Full Width */
+/* Mobile Sticky Bottom Ad & In-Page Banners - Full Visibility & Clean */
 @media (max-width: 768px) {
   .sticky-bottom-ad-wrapper {
     left: 0 !important;
     right: 0 !important;
     width: 100vw !important;
     max-width: 100% !important;
-    max-height: 80px !important;
+    max-height: none !important;
     height: auto !important;
     overflow: visible !important;
     margin: 0 !important;
@@ -3919,12 +3908,12 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
   .sticky-bottom-ad__content {
     width: 100% !important;
     max-width: 100% !important;
-    height: 52px !important;
-    max-height: 52px !important;
-    min-height: 52px !important;
+    height: auto !important;
+    min-height: 50px !important;
+    max-height: 120px !important;
     padding: 0 !important;
     margin: 0 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     background: rgba(10, 15, 30, 0.98) !important;
     border-top: 1px solid rgba(99, 102, 241, 0.4) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.7) !important;
@@ -3936,9 +3925,9 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 100% !important;
-    height: 52px !important;
-    min-height: 52px !important;
-    max-height: 52px !important;
+    height: auto !important;
+    min-height: 50px !important;
+    max-height: 120px !important;
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
@@ -3949,6 +3938,7 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
     align-items: center !important;
     justify-content: center !important;
     box-sizing: border-box !important;
+    overflow: visible !important;
   }
   .sticky-bottom-ad__frame::before {
     display: none !important;
@@ -3957,79 +3947,46 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
     display: none !important;
   }
   .sticky-bottom-ad__slot {
-    width: 320px !important;
-    max-width: 100% !important;
-    height: 50px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
     min-height: 50px !important;
     margin: 0 auto !important;
+    overflow: visible !important;
   }
   .sticky-bottom-ad__slot ins.adsbygoogle,
   .sticky-bottom-ad__slot ins.adsbygoogle iframe,
   .sticky-bottom-ad__slot iframe {
-    width: 320px !important;
-    max-width: 100% !important;
-    height: 50px !important;
-    max-height: 50px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
     min-height: 50px !important;
+    max-height: 120px !important;
     margin: 0 auto !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
-  .sticky-bottom-ad__slot .ad-frame-placeholder {
-    padding: 0 12px !important;
-    height: 50px !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-    border-radius: 8px !important;
-  }
-  .sticky-bottom-ad__slot .ad-placeholder-logo {
-    width: 30px !important;
-    height: 30px !important;
-    min-width: 30px !important;
-    font-size: 11px !important;
-    border-radius: 7px !important;
-  }
-  .sticky-bottom-ad__slot .ad-placeholder-title {
-    font-size: 11px !important;
-  }
-  .sticky-bottom-ad__slot .ad-placeholder-info .ad-placeholder-sub {
-    display: none !important;
-  }
-  /* Mobile Leaderboard In-Page Ad Lock */
+  /* Mobile Leaderboard In-Page Ad - Full Visibility */
   .ad-frame-leaderboard {
-    max-width: 340px !important;
-    padding: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 6px 4px !important;
+    overflow: visible !important;
   }
   .ad-frame-leaderboard .ad-frame-inner {
-    width: 320px !important;
+    width: 100% !important;
     max-width: 100% !important;
-    height: 50px !important;
+    height: auto !important;
     min-height: 50px !important;
-    max-height: 50px !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
   .ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle {
-    width: 320px !important;
-    height: 50px !important;
-    max-height: 50px !important;
-  }
-  .ad-frame-leaderboard .ad-frame-placeholder {
-    padding: 0 10px !important;
-    height: 50px !important;
-  }
-  .ad-frame-leaderboard .ad-placeholder-logo {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    font-size: 10px !important;
-    border-radius: 7px !important;
-  }
-  .ad-frame-leaderboard .ad-placeholder-title {
-    font-size: 11px !important;
-  }
-  .ad-frame-leaderboard .ad-placeholder-sub {
-    display: none !important;
-  }
-  .ad-placeholder-badge {
-    display: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 50px !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
   .floating-back-btn {
     bottom: 78px !important;

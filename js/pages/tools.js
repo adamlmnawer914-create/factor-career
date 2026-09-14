@@ -19,167 +19,52 @@ window.CareerAI.pages.tools = function() {
     {
       id: 'resume-builder',
       category: 'cv',
-      badge: isEn ? 'Flagship AI Builder' : 'الأداة الرئيسية المعتمدة',
-      badgeBg: 'rgba(59, 130, 246, 0.15)',
-      badgeTextColor: '#93c5fd',
-      beaconColor: '#38bdf8',
-      glowColor: '#3b82f6',
-      glowShadow: 'rgba(59, 130, 246, 0.45)',
-      laserBg: 'linear-gradient(90deg, #3b82f6, #60a5fa, #38bdf8)',
-      iconGradient: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
-      checkColor: '#60a5fa',
-      checkBg: 'rgba(59, 130, 246, 0.2)',
-      btnGradient: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%)',
-      title: isEn ? 'AI Resume Builder & Styler' : 'منشئ السيرة الذاتية الذكي المطور',
-      subtag: isEn ? 'ATS-Compliant Structure & 4 Pro Layouts' : 'متوافق 100% مع أنظمة الفرز الآلي وتصدير فوري',
-      desc: isEn 
-        ? 'Engineered to bypass applicant tracking systems (ATS). Features dynamic live styling, high-impact action verbs, score gauge, and instant PDF download.'
-        : 'أنشئ سيرة ذاتية تنفيذية متوافقة 100% مع خوارزميات الفرز ATS مع 4 قوالب فخمة ومعاينة فورية ومقياس جودة حي وتصدير PDF مباشر مجاناً.',
-      icon: icons.fileText || icons.resume || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-      link: '/tools/resume-builder',
-      features: isEn ? [
-        '4 Executive Templates (Modern, Slate, Tech, Clean)',
-        'Real-Time Live ATS Completeness Score & Gauge',
-        'AI High-Impact Summary & Achievement Bullet Suggester'
-      ] : [
-        '4 قوالب تنفيذية عصرية متوافقة تماماً مع بوابات التوظيف العالمية',
-        'مقياس فوري مباشر يحلل قوة واكتمال كل قسم بالسيرة',
-        'صياغة الملخص المهني والإنجازات الملموسة بالذكاء الاصطناعي'
-      ],
-      metric: isEn ? 'Pass Rate: 99.2%' : 'نسبة اجتياز ATS: 99.2%',
-      cta: isEn ? 'Launch Resume Builder 🚀' : 'ابدأ بناء سيرتك الذاتية 🚀'
+      title: isEn ? 'AI Resume Builder' : 'منشئ السيرة الذاتية الذكي',
+      desc: isEn ? 'Create professional, ATS-optimized resumes in minutes with intelligent suggestions.' : 'أنشئ سيرة ذاتية احترافية ومتوافقة مع أنظمة الفرز الآلي ATS مع اقتراحات ذكية وتصدير PDF فوري.',
+      icon: icons.fileText || icons.resume,
+      tag: isEn ? 'Most Popular' : 'الأكثر استخداماً',
+      color: 'primary',
+      link: '/tools/resume-builder'
     },
     {
       id: 'resume-analyzer',
       category: 'cv',
-      badge: isEn ? '4D Deep Scanner' : 'فحص عميق رباعي الأبعاد',
-      badgeBg: 'rgba(16, 185, 129, 0.15)',
-      badgeTextColor: '#6ee7b7',
-      beaconColor: '#34d399',
-      glowColor: '#10b981',
-      glowShadow: 'rgba(16, 185, 129, 0.45)',
-      laserBg: 'linear-gradient(90deg, #10b981, #34d399, #059669)',
-      iconGradient: 'linear-gradient(135deg, #047857 0%, #10b981 100%)',
-      checkColor: '#34d399',
-      checkBg: 'rgba(16, 185, 129, 0.2)',
-      btnGradient: 'linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%)',
-      title: isEn ? 'AI ATS Resume Checker & Scanner' : 'محلل وفاحص السيرة الذاتية الذكي',
-      subtag: isEn ? 'Job Benchmark & Critical Keyword Gap Fix' : 'مقارنة دقيقة مع الوصف الوظيفي والكلمات المفقودة',
-      desc: isEn
-        ? 'Deep scan your resume against job postings to calculate a 4-dimensional score dial, identify keyword gaps, and receive actionable fixes before applying.'
-        : 'افحص مدى تطابق سيرتك الذاتية مع متطلبات الوظيفة الشاغرة واحصل على مؤشر تقييم دائري حي وقائمة الكلمات المفتاحية الناقصة لتصحيحها فوراً.',
-      icon: icons.check || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
-      link: '/tools/resume-analyzer',
-      features: isEn ? [
-        '4-Dimension Match Score (Keywords, Experience, Formatting)',
-        'Side-by-Side Matched vs Missing Keywords Matrix with 1-Click Copy',
-        'Hiring Manager Priority Checklist Before Submitting'
-      ] : [
-        'تقييم توافق رباعي الأبعاد (الكلمات، الخبرات، التنسيق، المهارات التقنية)',
-        'جدول مقارنة الكلمات المتوفرة والمفقودة مع زر نسخ فوري للنواقص',
-        'توصيات تصحيحية ذات أولوية تضمن ترشيحك لمسؤول التوظيف'
-      ],
-      metric: isEn ? 'Score 90+ Target' : 'مستهدف توافق 90%+',
-      cta: isEn ? 'Scan Resume with AI 🔍' : 'افحص سيرتك الذاتية الآن 🔍'
+      title: isEn ? 'ATS Resume Checker' : 'محلل وفاحص السيرة ATS',
+      desc: isEn ? 'Check your resume ATS compatibility score and get actionable optimization tips.' : 'افحص نسبة توافق سيرتك الذاتية مع الوظائف واكتشف الكلمات المفتاحية الناقصة لتجاوز الفرز الآلي.',
+      icon: icons.check,
+      tag: isEn ? 'Smart ATS Scan' : 'فحص ذكي',
+      color: 'accent',
+      link: '/tools/resume-analyzer'
     },
     {
       id: 'cover-letter-generator',
       category: 'cv',
-      badge: isEn ? 'Executive Pitch AI' : 'كاتب خطابات التقديم المرموقة',
-      badgeBg: 'rgba(139, 92, 246, 0.15)',
-      badgeTextColor: '#d8b4fe',
-      beaconColor: '#c084fc',
-      glowColor: '#8b5cf6',
-      glowShadow: 'rgba(139, 92, 246, 0.45)',
-      laserBg: 'linear-gradient(90deg, #8b5cf6, #c084fc, #ec4899)',
-      iconGradient: 'linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%)',
-      checkColor: '#c084fc',
-      checkBg: 'rgba(139, 92, 246, 0.2)',
-      btnGradient: 'linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #8b5cf6 100%)',
-      title: isEn ? 'AI Tailored Cover Letter Generator' : 'مولد خطابات التقديم الاحترافية',
-      subtag: isEn ? 'Personalized Value Proposition in 5 Tones' : 'صياغة مقنعة مخصصة لكل شركة تضاعف فرص مقابلتك',
-      desc: isEn
-        ? 'Generate personalized, highly persuasive cover letters tailored to your target company and seniority in seconds. Choose from 5 tones with 1-click PDF download.'
-        : 'ولّد خطابات تقديم استثنائية ومخصصة لكل شركة ووظيفة تبرز نقاط قوتك بثقة. يدعم 5 نبرات صياغة وتوليد ثنائي اللغة (عربي/إنجليزي) وتصدير فوري.',
-      icon: icons.mail || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
-      link: '/tools/cover-letter-generator',
-      features: isEn ? [
-        '5 Distinct Writing Tones (Executive, Confident, Modern, Creative)',
-        '3 Length Modes (Concise, Balanced, Comprehensive)',
-        'Bilingual Output (Arabic & English) with Instant PDF/TXT'
-      ] : [
-        '5 نبرات كتابة مختلفة (تنفيذي رفيع، واثق، إبداعي، تقني، مختصر)',
-        '3 أنماط للطول مع تحكم كامل بالتركيز على الإنجازات',
-        'دعم كامل للغتين العربية والإنجليزية وتصدير فوري PDF/TXT'
-      ],
-      metric: isEn ? '3x Interview Call Rate' : 'مضاعفة استدعاء المقابلات',
-      cta: isEn ? 'Generate Cover Letter ✍️' : 'ولّد خطاب التقديم الآن ✍️'
+      title: isEn ? 'Cover Letter Generator' : 'مولد رسائل التقديم',
+      desc: isEn ? 'Generate tailored, persuasive cover letters matching specific job descriptions.' : 'ولّد خطابات تقديم احترافية ومخصصة لكل وظيفة لزيادة فرص قبولك والحصول على مقابلات.',
+      icon: icons.mail,
+      tag: isEn ? 'AI Writer' : 'توليد فوري',
+      color: 'secondary',
+      link: '/tools/cover-letter-generator'
     },
     {
       id: 'interview-questions',
       category: 'prep',
-      badge: isEn ? 'STAR Method Coach' : 'مدرب المقابلات بنموذج STAR',
-      badgeBg: 'rgba(245, 158, 11, 0.15)',
-      badgeTextColor: '#fde68a',
-      beaconColor: '#fbbf24',
-      glowColor: '#f59e0b',
-      glowShadow: 'rgba(245, 158, 11, 0.45)',
-      laserBg: 'linear-gradient(90deg, #f59e0b, #fbbf24, #f97316)',
-      iconGradient: 'linear-gradient(135deg, #b45309 0%, #f59e0b 100%)',
-      checkColor: '#fbbf24',
-      checkBg: 'rgba(245, 158, 11, 0.2)',
-      btnGradient: 'linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%)',
-      title: isEn ? 'AI Interview Questions & STAR Coach' : 'مدرب المقابلات الوظيفية بنموذج STAR',
-      subtag: isEn ? 'Role-Specific Sim & Behavioral Model Answers' : 'إجابات نموذجية تفصيلية ومؤقت تدريب عملي',
-      desc: isEn
-        ? 'Ace technical and behavioral interviews with tailored questions for 50+ career roles. Includes STAR framework model answers, pro tips, and interactive practice timer.'
-        : 'استعد لمقابلاتك بأقوى الأسئلة السلوكية والتقنية المتوقعة لمجالك ومستواك. يتضمن إجابات نموذجية بهيكل STAR ونصائح حصرية ومؤقت تفاعلي للتدريب.',
-      icon: icons.interview || icons.users || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
-      link: '/tools/interview-questions',
-      features: isEn ? [
-        '50+ Career Tracks Adaptive Questions (Entry to Executive)',
-        'Full STAR Framework Breakdown (Situation, Task, Action, Result)',
-        'Built-in 2-Minute Practice Timer & Hiring Manager Insider Secrets'
-      ] : [
-        'أسئلة مخصصة لأكثر من 50 تخصصاً وظيفياً بمستويات متعددة',
-        'تفكيك تفصيلي للإجابة النموذجية (الموقف، المهمة، الإجراء، النتيجة)',
-        'مؤقت تدريب صوتي/ذهني لدقيقتين مع نصائح سرية خلف نية كل سؤال'
-      ],
-      metric: isEn ? '50+ Verified Roles' : 'أكثر من 50 مجال وظيفي',
-      cta: isEn ? 'Practice Interview Coach 🎯' : 'تدرّب على المقابلات الآن 🎯'
+      title: isEn ? 'Interview Coach' : 'مدرب أسئلة المقابلات',
+      desc: isEn ? 'Practice real-world interview questions tailored to your field with STAR method answers.' : 'تدرّب على أسئلة المقابلات الوظيفية الواقعية وإجابات نموذجية وفق نموذج STAR الاحترافي.',
+      icon: icons.interview,
+      tag: isEn ? 'STAR Method' : 'نموذج STAR',
+      color: 'primary',
+      link: '/tools/interview-questions'
     },
     {
       id: 'ats-keywords',
       category: 'prep',
-      badge: isEn ? 'NLP Keyword Matcher' : 'مستخرج الكلمات المفتاحية بالذكاء الاصطناعي',
-      badgeBg: 'rgba(6, 182, 212, 0.15)',
-      badgeTextColor: '#a5f3fc',
-      beaconColor: '#22d3ee',
-      glowColor: '#06b6d4',
-      glowShadow: 'rgba(6, 182, 212, 0.45)',
-      laserBg: 'linear-gradient(90deg, #06b6d4, #38bdf8, #3b82f6)',
-      iconGradient: 'linear-gradient(135deg, #0e7490 0%, #06b6d4 100%)',
-      checkColor: '#22d3ee',
-      checkBg: 'rgba(6, 182, 212, 0.2)',
-      btnGradient: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #38bdf8 100%)',
-      title: isEn ? 'AI ATS Keywords Matcher & Extractor' : 'مستخرج ومطابق الكلمات المفتاحية ATS',
-      subtag: isEn ? 'Live Match Percentage & Skill Gap Discovery' : 'تحليل فوري لكثافة المهارات ونقاط القوة لسيرتك',
-      desc: isEn
-        ? 'Extract hard skills, technical requirements, and industry keywords from job postings. Compare them instantly against your resume with 1-click missing keywords export.'
-        : 'استخرج المهارات التقنية والشهادات والكلمات الأكثر أهمية وتكراراً من أي إعلان وظيفي وقارنها فورياً مع سيرتك مع إمكانية نسخ الكلمات الناقصة بنقرة واحدة.',
-      icon: icons.target || icons.skills || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
-      link: '/tools/ats-keywords',
-      features: isEn ? [
-        '4-Tier Categorization (Technical Skills, Soft Skills, Tools, Certs)',
-        'Live Match Rate Meter against Pasted Resume Text',
-        '1-Click Copy of Missing Priority Keywords for Instant Bullet Integration'
-      ] : [
-        'تصنيف رباعي متقدم (مهارات تقنية، كفاءات قيادية، أدوات، شهادات مهنية)',
-        'مقياس نسبة التطابق الفوري بمقارنة نص السيرة مع الوصف الوظيفي',
-        'نسخ فوري بنقرة واحدة لجميع الكلمات الناقصة لدمجها في نقاط سيرتك'
-      ],
-      metric: isEn ? 'Density Optimizer' : 'تعزيز الكثافة المفتاحية',
-      cta: isEn ? 'Extract Keywords Now ⚡' : 'استخرج الكلمات المفتاحية ⚡'
+      title: isEn ? 'ATS Keywords Matcher' : 'مستخرج الكلمات المفتاحية',
+      desc: isEn ? 'Extract essential job keywords and match them against your resume skills in seconds.' : 'استخرج الكلمات المفتاحية والمهارات الأساسية من وصف الوظيفة لرفع فرص اجتياز الفرز الآلي.',
+      icon: icons.skills,
+      tag: isEn ? 'Keyword Optimizer' : 'مطابقة ذكية',
+      color: 'accent',
+      link: '/tools/ats-keywords'
     }
   ];
 
@@ -200,50 +85,32 @@ window.CareerAI.pages.tools = function() {
             <span style="color:#818cf8;font-weight:700">${t('nav.tools', 'الأدوات الذكية')}</span>
           </div>
 
-          <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap">
-            <span class="section__badge" style="background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.4);color:#c7d2fe;padding:7px 18px;border-radius:30px;display:inline-flex;align-items:center;gap:8px;font-weight:700;box-shadow:0 4px 14px rgba(99,102,241,0.25)">
-              <span style="width:16px;height:16px;display:inline-flex">${icons.sparkles || '✨'}</span>
-              ${isEn ? 'Executive AI Career Architecture' : 'منظومة الذكاء الاصطناعي المهنية التنفيذية'}
-            </span>
-            <span class="section__badge" style="background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.4);color:#34d399;padding:7px 18px;border-radius:30px;font-weight:700;display:inline-flex;align-items:center;gap:6px">
-              ✓ ${isEn ? '100% Free VIP Access' : 'مجانية بالكامل بدون اشتراكات أو قيود'}
-            </span>
-          </div>
-
-          <h1 class="page-header__title" style="font-size:clamp(1.9rem, 4vw, 2.9rem);font-weight:900;color:#ffffff;line-height:1.25;margin-bottom:1rem;letter-spacing:-0.02em;">
-            ${isEn 
-              ? 'Accelerate Your Job Search with <span style="background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Precision AI Tools</span>' 
-              : 'ارتقِ بمسارك المهني مع أدوات <span style="background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent">الذكاء الاصطناعي التنفيذية</span>'
-            }
+          <h1 class="page-header__title" style="font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:900;color:#ffffff;line-height:1.3;margin-bottom:1rem">
+            ${isEn ? 'AI-Powered Career & Resume Tools' : 'منظومة أدوات الذكاء الاصطناعي المهنية'}
           </h1>
-
-          <p class="page-header__subtitle" style="font-size:1.1rem;color:#cbd5e1;max-width:720px;margin:0 auto 2.25rem;line-height:1.75">
-            ${isEn 
-              ? '5 integrated high-performance AI engines engineered to build ATS-beating resumes, craft compelling letters, match high-density keywords, and secure interview offers.'
-              : 'خمس أدوات ذكية متكاملة ومجانية مصممة لتجهيز ملف وظيفي متكامل: تجاوز أنظمة الفرز الآلي ATS، صياغة خطابات مبهرة، اقتناص المقابلات والحصول على العرض الوظيفي.'
+          
+          <p class="page-header__subtitle" style="font-size:1.05rem;color:#cbd5e1;max-width:620px;margin:0 auto 1.75rem;line-height:1.7">
+            ${isEn
+              ? 'Comprehensive AI tools engineered to build ATS-compliant resumes, optimize keyword density, generate cover letters, and master job interviews.'
+              : 'أدوات مجانية بالكامل مصممة لتمكينك من اجتياز أنظمة الفرز الآلي وتوليد خطابات مقنعة والتدرب على المقابلات لاقتناص أفضل الوظائف.'
             }
           </p>
 
-          <!-- Executive Stats Ribbon -->
-          <div style="display:flex;justify-content:center;align-items:center;gap:2rem;flex-wrap:wrap;background:rgba(15,23,42,0.7);border:1px solid rgba(255,255,255,0.12);padding:1.1rem 2rem;border-radius:20px;max-width:820px;margin:0 auto;box-shadow:0 12px 35px rgba(0,0,0,0.45);backdrop-filter:blur(16px)">
+          <!-- Suite Stats Row -->
+          <div style="display:inline-flex;align-items:center;gap:1.5rem;background:rgba(15,23,42,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:50px;padding:0.6rem 1.8rem;backdrop-filter:blur(10px)">
             <div style="text-align:center">
-              <div style="font-size:1.5rem;font-weight:900;color:#38bdf8">5</div>
-              <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'Specialized AI Engines' : 'أدوات ذكية متخصصة'}</div>
+              <div style="font-size:1.5rem;font-weight:900;color:#ffffff">100%</div>
+              <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'Free Forever' : 'مجاني بالكامل'}</div>
             </div>
             <div style="width:1px;height:32px;background:rgba(255,255,255,0.12)"></div>
             <div style="text-align:center">
-              <div style="font-size:1.5rem;font-weight:900;color:#34d399">100%</div>
-              <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'Free VIP Access' : 'مجانية وبلا حدود'}</div>
+              <div style="font-size:1.5rem;font-weight:900;color:#38bdf8">5</div>
+              <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'AI Tools' : 'أدوات ذكية'}</div>
             </div>
             <div style="width:1px;height:32px;background:rgba(255,255,255,0.12)"></div>
             <div style="text-align:center">
               <div style="font-size:1.5rem;font-weight:900;color:#a78bfa">99.4%</div>
               <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'ATS Pass Rate' : 'معدل اجتياز الفرز'}</div>
-            </div>
-            <div style="width:1px;height:32px;background:rgba(255,255,255,0.12)"></div>
-            <div style="text-align:center">
-              <div style="font-size:1.5rem;font-weight:900;color:#f59e0b">PDF</div>
-              <div style="font-size:0.78rem;color:#94a3b8;font-weight:700">${isEn ? 'Direct Instant Export' : 'تصدير فوري ومباشر'}</div>
             </div>
           </div>
 
@@ -251,7 +118,7 @@ window.CareerAI.pages.tools = function() {
       </div>
     </div>
 
-    <!-- Google AdSense - Top Leaderboard Banner -->
+    <!-- Google AdSense - Top Leaderboard Banner (Clean, No Mock Content) -->
     <div class="container" style="margin-top:2.25rem;margin-bottom:1rem">
       <div class="ad-frame-wrapper ad-frame-leaderboard animate-on-scroll" style="margin:0 auto;max-width:760px;">
         <div class="ad-frame-label">
@@ -260,25 +127,11 @@ window.CareerAI.pages.tools = function() {
         </div>
         <div class="ad-frame-inner">
           <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px;max-width:100%;"
+               style="display:block;width:100%;min-height:90px;"
                data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="3316284985"
-               data-ad-format="horizontal"
-               data-full-width-responsive="false"></ins>
-          <!-- Luxury Fallback Slot (Guarantees permanent non-collapsing ad bar) -->
-          <div class="ad-frame-placeholder">
-            <div class="ad-placeholder-brand">
-              <div class="ad-placeholder-logo">FC</div>
-              <div class="ad-placeholder-info">
-                <span class="ad-placeholder-title">Factor Career Sponsor Network</span>
-                <span class="ad-placeholder-sub">${isEn ? 'Google AdSense Certified Partner' : 'شريك إعلاني معتمد • Google AdSense Certified'}</span>
-              </div>
-            </div>
-            <div class="ad-placeholder-badge">
-              <span class="ad-placeholder-dot"></span>
-              <span class="ad-placeholder-format">728×90 Leaderboard</span>
-            </div>
-          </div>
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
         </div>
       </div>
     </div>
@@ -298,72 +151,23 @@ window.CareerAI.pages.tools = function() {
       </div>
     </div>
 
-    <!-- Main Tools Grid Section: Ultra-Luxury Obsidian Cards -->
+    <!-- Main Tools Grid Section: Identical Design to Homepage -->
     <section class="section" style="padding-top:0;padding-bottom:3.5rem">
       <div class="container">
         
-        <div class="luxury-tools-grid">
+        <div class="tools-section__grid">
           ${filteredTools.map((tool, index) => `
-            <div class="luxury-tool-card luxury-tool-card--${tool.id} animate-on-scroll delay-${(index % 3) + 1}"
-                 style="--card-glow-color:${tool.glowColor}; --card-glow-shadow:${tool.glowShadow}; --card-laser-bg:${tool.laserBg};"
-                 onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
-              
-              <!-- Radiant Top Laser Light Bar -->
-              <div class="luxury-tool-card__laser"></div>
-
-              <!-- Ambient Glow Orb -->
-              <div class="luxury-tool-card__glow-orb"></div>
-
-              <!-- Top Header: Badge & Live Metric -->
-              <div class="luxury-tool-card__header">
-                <div class="luxury-tool-card__badge" style="background:${tool.badgeBg}; color:${tool.badgeTextColor};">
-                  <span class="luxury-tool-card__beacon" style="background:${tool.beaconColor};"></span>
-                  <span>${tool.badge}</span>
-                </div>
-                <div class="luxury-tool-card__metric">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                  <span>${tool.metric}</span>
-                </div>
+            <div class="card tool-card animate-on-scroll delay-${(index % 3) + 1}" style="cursor:pointer" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+              <span class="tag tag--accent" style="position:absolute;top:var(--space-4);${isEn ? 'right' : 'left'}:var(--space-4)">${tool.tag}</span>
+              <div class="card__icon card__icon--${tool.color}">
+                <span style="width:32px;height:32px;display:inline-flex">${tool.icon}</span>
               </div>
-
-              <!-- Tool Identity Block: 3D Squircle Icon + Title -->
-              <div class="luxury-tool-card__identity">
-                <div class="luxury-tool-card__icon-squircle" style="background:${tool.iconGradient};">
-                  ${tool.icon}
-                </div>
-                <div class="luxury-tool-card__title-group">
-                  <h2 class="luxury-tool-card__title">${tool.title}</h2>
-                  <span class="luxury-tool-card__subtag">${tool.subtag}</span>
-                </div>
-              </div>
-
-              <!-- Description -->
-              <p class="luxury-tool-card__desc">
-                ${tool.desc}
-              </p>
-
-              <!-- Inset Glass Feature Checklist Box -->
-              <div class="luxury-tool-card__features-box">
-                <div class="luxury-tool-card__features-title">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
-                  <span>${isEn ? 'Core AI Capabilities' : 'أبرز مميزات الأداة الذكية'}</span>
-                </div>
-                ${tool.features.map(f => `
-                  <div class="luxury-tool-card__feature-row">
-                    <span class="luxury-tool-card__check-disc" style="color:${tool.checkColor}; background:${tool.checkBg};">✓</span>
-                    <span>${f}</span>
-                  </div>
-                `).join('')}
-              </div>
-
-              <!-- Radiant Executive CTA Button -->
-              <div class="luxury-tool-card__action">
-                <a href="${tool.link}" class="luxury-tool-card__btn" style="background:${tool.btnGradient}; box-shadow: 0 6px 25px ${tool.glowShadow};" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
-                  <span class="luxury-tool-card__btn-text">${tool.cta}</span>
-                  <span class="luxury-tool-card__btn-arrow">${isEn ? '→' : '←'}</span>
-                </a>
-              </div>
-
+              <h3 class="card__title">${tool.title}</h3>
+              <p class="card__text">${tool.desc}</p>
+              <a href="${tool.link}" class="card__link" onclick="event.preventDefault();CareerAI.router.navigate('${tool.link}')">
+                ${isEn ? 'Use Tool Free' : 'جرّب الأداة الآن'}
+                <span style="width:14px;height:14px;display:inline-flex;transform:${isEn ? 'rotate(0deg)' : 'rotate(180deg)'}">${icons.arrowLeft}</span>
+              </a>
             </div>
           `).join('')}
         </div>
