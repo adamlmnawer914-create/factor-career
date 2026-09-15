@@ -935,119 +935,170 @@ ins.adsbygoogle {
    Google AdSense - Beautiful Ad Frames
    ============================================ */
 
-/* Base ad frame wrapper */
+/* Base ad frame wrapper - Ultra-Luxury Deep Obsidian Black */
 .ad-frame-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,41,59,0.9) 100%);
-  border: 1px solid rgba(99,102,241,0.25);
-  border-radius: 16px;
-  padding: 0.75rem 1rem 1rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  background: linear-gradient(150deg, rgba(7, 11, 22, 0.98) 0%, rgba(3, 6, 14, 0.99) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.38) !important;
+  border-radius: 16px !important;
+  padding: 0.75rem 1rem 1rem !important;
+  box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   overflow: visible;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* Glowing top accent line */
+/* Glowing top laser accent line */
 .ad-frame-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), rgba(139,92,246,0.6), transparent);
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.95), rgba(56, 189, 248, 0.95), rgba(168, 85, 247, 0.95), transparent) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6) !important;
+  pointer-events: none !important;
 }
 
-/* "Advertisement" label */
+/* "Advertisement" luxury badge label - Centered with glowing style */
 .ad-frame-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(148,163,184,0.7);
-  margin-bottom: 0.5rem;
-  align-self: flex-start;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #c7d2fe !important;
+  margin: 0 auto 0.65rem !important;
+  align-self: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background: rgba(99, 102, 241, 0.15) !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  padding: 3.5px 14px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  text-align: center !important;
 }
 
-/* Inner area holding the <ins> tag */
+/* Inner area holding the <ins> tag with Centered Luxury Name Badge */
 .ad-frame-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 90px;
-  background: transparent;
-  border-radius: 10px;
-  border: none;
-  overflow: visible;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 90px !important;
+  background: rgba(4, 7, 15, 0.82) !important;
+  border-radius: 12px !important;
+  border: 1px dashed rgba(99, 102, 241, 0.32) !important;
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.75) !important;
+  overflow: visible !important;
 }
+
+/* Centered Luxury Name / Placeholder Badge in the Middle of Frame */
 .ad-frame-inner::before {
-  display: none;
+  content: "✨ FACTOR CAREER • SPONSORED ADVERTISEMENT • إعلان ممول" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  color: #c7d2fe !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 11, 22, 0.98) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.45) !important;
+  padding: 8px 20px !important;
+  border-radius: 22px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  white-space: nowrap !important;
 }
-.ad-frame-leaderboard .ad-frame-inner::before,
+
+.ad-frame-leaderboard .ad-frame-inner::before {
+  content: "📺 FACTOR CAREER • LEADERBOARD BANNER (728×90)" !important;
+  display: flex !important;
+}
+
+.ad-frame-rectangle .ad-frame-inner::before {
+  content: "💎 FACTOR CAREER • SPONSORED RECTANGLE (300×250)" !important;
+  display: flex !important;
+}
+
 .ad-frame-footer .ad-frame-inner::before {
-  display: none;
+  content: "🌟 FACTOR CAREER • FOOTER BANNER • إعلان ممول" !important;
+  display: flex !important;
 }
+
 .ad-frame-inner ins.adsbygoogle {
-  position: relative;
-  z-index: 2;
-  overflow: visible;
+  position: relative !important;
+  z-index: 2 !important;
+  overflow: visible !important;
 }
 
 /* Rectangle 300x250 frame */
 .ad-frame-rectangle {
-  max-width: 340px;
-  margin: 2.5rem auto;
+  max-width: 340px !important;
+  margin: 2.5rem auto !important;
 }
 .ad-frame-rectangle .ad-frame-inner {
-  min-height: 250px;
-  overflow: visible;
+  min-height: 250px !important;
+  overflow: visible !important;
 }
 
 /* Leaderboard 728x90 frame (below header) */
 .adsense-below-header {
-  width: 100%;
-  background: rgba(15,23,42,0.95);
-  border-bottom: 1px solid rgba(99,102,241,0.15);
-  padding: 0.5rem 1rem;
-  box-sizing: border-box;
+  width: 100% !important;
+  background: rgba(7, 11, 22, 0.98) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.25) !important;
+  padding: 0.75rem 1rem !important;
+  box-sizing: border-box !important;
 }
 .ad-frame-leaderboard {
-  max-width: 760px;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 0.5rem 0.75rem 0.75rem;
-  overflow: visible;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  border-radius: 14px !important;
+  padding: 0.6rem 0.85rem 0.85rem !important;
+  overflow: visible !important;
 }
 .ad-frame-leaderboard .ad-frame-inner {
-  min-height: 90px;
-  overflow: visible;
+  min-height: 90px !important;
+  overflow: visible !important;
 }
 
 /* Footer ad frame */
 .adsense-footer-wrapper {
-  width: 100%;
-  max-width: 100%;
-  padding: 2.5rem 1rem 1.5rem;
-  background: rgba(10, 15, 30, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 2.5rem 1rem 1.5rem !important;
+  background: rgba(5, 8, 16, 0.6) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
 }
 .ad-frame-footer {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  border-radius: 12px;
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  border-radius: 14px !important;
 }
 .ad-frame-footer .ad-frame-inner {
-  min-height: 90px;
+  min-height: 90px !important;
 }
 
 /* ============================================
@@ -1138,48 +1189,67 @@ body { padding-bottom: 110px; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,41,59,0.95) 100%);
-  border: 1px solid rgba(99,102,241,0.35);
-  border-radius: 20px;
-  padding: 0.85rem 1rem 1rem;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 25px rgba(99,102,241,0.15);
+  background: linear-gradient(150deg, rgba(7, 11, 22, 0.98) 0%, rgba(3, 6, 14, 0.99) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.38) !important;
+  border-radius: 20px !important;
+  padding: 0.85rem 1rem 1rem !important;
+  box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .ad-frame-skyscraper::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.8), rgba(139,92,246,0.8), transparent);
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.95), rgba(56, 189, 248, 0.95), rgba(168, 85, 247, 0.95), transparent) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6) !important;
+  pointer-events: none !important;
 }
 
 .ad-frame-skyscraper .ad-frame-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  min-height: 600px;
-  height: 600px;
-  max-width: 100%;
-  background: rgba(10,15,30,0.65);
-  border-radius: 12px;
-  border: 1px dashed rgba(99,102,241,0.25);
-  box-shadow: inset 0 2px 14px rgba(0,0,0,0.6);
-  overflow: hidden;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 300px !important;
+  min-height: 600px !important;
+  height: 600px !important;
+  max-width: 100% !important;
+  background: rgba(4, 7, 15, 0.75) !important;
+  border-radius: 14px !important;
+  border: 1px dashed rgba(99, 102, 241, 0.28) !important;
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.7) !important;
+  overflow: hidden !important;
 }
 
 .ad-frame-skyscraper .ad-frame-inner::before {
-  content: "Google AdSense (300 × 600 Half-Page)";
-  position: absolute;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: rgba(148, 163, 184, 0.45);
-  letter-spacing: 0.5px;
-  pointer-events: none;
-  z-index: 1;
+  content: "🏢 FACTOR CAREER • SKYSCRAPER (300×600)" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  color: #c7d2fe !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 11, 22, 0.98) 100%) !important;
+  border: 1px solid rgba(99, 102, 241, 0.45) !important;
+  padding: 8px 20px !important;
+  border-radius: 22px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  white-space: nowrap !important;
 }
 
 .ad-frame-skyscraper ins.adsbygoogle {
