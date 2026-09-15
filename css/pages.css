@@ -3174,18 +3174,36 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
 
 .luxury-tools-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
-  gap: 2.25rem !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.25rem !important;
   margin-top: 1.5rem !important;
   margin-bottom: 3.5rem !important;
+}
+
+@media (max-width: 1200px) {
+  .luxury-tools-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .luxury-tools-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .luxury-tools-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .luxury-tool-card {
   position: relative !important;
   background: linear-gradient(150deg, rgba(15, 23, 42, 0.94) 0%, rgba(10, 15, 30, 0.98) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.09) !important;
-  border-radius: 24px !important;
-  padding: 2.25rem 2rem !important;
+  border-radius: 16px !important;
+  padding: 1.4rem 1.25rem !important;
   box-shadow: 0 16px 45px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
