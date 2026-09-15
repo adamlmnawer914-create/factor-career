@@ -1004,7 +1004,7 @@ ins.adsbygoogle {
 
 /* Centered Luxury Name / Placeholder Badge in the Middle of Frame */
 .ad-frame-inner::before {
-  content: "✨ FACTOR CAREER • SPONSORED ADVERTISEMENT • إعلان ممول" !important;
+  content: "✨ FACTOR CAREER • SPONSORED AD" !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -1012,33 +1012,37 @@ ins.adsbygoogle {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  font-size: 11.5px !important;
+  gap: 6px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.06em !important;
   color: #a5b4fc !important;
   background: rgba(20, 30, 60, 0.9) !important;
   border: 1px solid rgba(99, 102, 241, 0.4) !important;
-  padding: 8px 20px !important;
-  border-radius: 22px !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   pointer-events: none !important;
   z-index: 0 !important;
+  max-width: 90% !important;
+  box-sizing: border-box !important;
   white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .ad-frame-leaderboard .ad-frame-inner::before {
-  content: "📺 FACTOR CAREER • LEADERBOARD BANNER (728×90)" !important;
+  content: "📺 FACTOR CAREER • 728×90" !important;
   display: flex !important;
 }
 
 .ad-frame-rectangle .ad-frame-inner::before {
-  content: "💎 FACTOR CAREER • SPONSORED RECTANGLE (300×250)" !important;
+  content: "💎 FACTOR CAREER • 300×250" !important;
   display: flex !important;
 }
 
 .ad-frame-footer .ad-frame-inner::before {
-  content: "🌟 FACTOR CAREER • FOOTER BANNER • إعلان ممول" !important;
+  content: "🌟 FACTOR CAREER • FOOTER AD" !important;
   display: flex !important;
 }
 
@@ -1227,7 +1231,7 @@ body { padding-bottom: 110px; }
 }
 
 .ad-frame-skyscraper .ad-frame-inner::before {
-  content: "🏢 FACTOR CAREER • SKYSCRAPER (300×600)" !important;
+  content: "🏢 FACTOR CAREER • 300×600" !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -1235,19 +1239,23 @@ body { padding-bottom: 110px; }
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  font-size: 11.5px !important;
+  gap: 6px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.06em !important;
   color: #a5b4fc !important;
   background: rgba(20, 30, 60, 0.9) !important;
   border: 1px solid rgba(99, 102, 241, 0.4) !important;
-  padding: 8px 20px !important;
-  border-radius: 22px !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   pointer-events: none !important;
   z-index: 0 !important;
+  max-width: 90% !important;
+  box-sizing: border-box !important;
   white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .ad-frame-skyscraper ins.adsbygoogle {

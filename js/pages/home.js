@@ -271,6 +271,12 @@ window.CareerAI.pages.home = function() {
 
               <!-- 300x250 Medium Rectangle ad unit -->
               <div style="width:300px;max-width:100%;min-height:250px;overflow:visible;display:flex;align-items:center;justify-content:center;position:relative">
+                <!-- Centered Luxury Placeholder Badge shown until AdSense loads -->
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0;">
+                  <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:0.06em;color:#a5b4fc;background:rgba(20,30,60,0.9);border:1px solid rgba(99,102,241,0.4);padding:6px 14px;border-radius:20px;box-shadow:0 4px 16px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);max-width:90%;box-sizing:border-box;">
+                    <span>✨ FACTOR CAREER • 300×250</span>
+                  </div>
+                </div>
                 <ins class="adsbygoogle hero-ad-ins"
                      style="display:inline-block;width:300px;height:250px;max-width:100%;position:relative;z-index:2"
                      data-ad-client="ca-pub-7520213352755959"
