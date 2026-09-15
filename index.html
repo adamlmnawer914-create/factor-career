@@ -143,10 +143,19 @@
       height: 90px !important;
       max-width: 100% !important;
     }
-    /* Collapsed state - fold the ad */
+    /* Collapsed state - wrapper completely invisible, only toggle button shows */
     #stickyBottomAd.collapsed {
       min-height: 0 !important;
+      height: 0 !important;
       padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    #stickyBottomAd.collapsed::before {
+      display: none !important;
     }
     #stickyBottomAd.collapsed .sticky-bottom-ad__slot {
       display: none !important;
