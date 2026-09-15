@@ -119,19 +119,19 @@ window.CareerAI.pages.jobs = function() {
           </p>
         </div>
 
-        <!-- Horizontal Top Ad Banner (728x90) -->
-        <div class="ad-frame-wrapper ad-frame-banner" style="margin-bottom:2rem;">
+        <!-- Horizontal Top Ad Banner (728x90 Leaderboard) -->
+        <div class="ad-frame-wrapper ad-frame-leaderboard" style="margin:0 auto 2.5rem;max-width:760px;">
           <div class="ad-frame-label">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
             ${isEn ? 'Sponsored Advertisement' : 'إعلان ممول / SPONSORED'}
           </div>
           <div class="ad-frame-inner">
             <ins class="adsbygoogle"
-                 style="display:block;width:100%;min-height:90px;"
+                 style="display:inline-block;width:100%;max-width:728px;height:90px;"
                  data-ad-client="ca-pub-7520213352755959"
                  data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="false"></ins>
           </div>
         </div>
 
@@ -449,16 +449,16 @@ CareerAI.openJobModal = function(jobId) {
         </div>
       ` : ''}
 
-      <!-- In-Modal Advertisement Placement -->
-      <div class="ad-frame-wrapper" style="margin-top:2rem;background:rgba(15,23,42,0.8)">
+      <!-- In-Modal Advertisement Placement (Leaderboard) -->
+      <div class="ad-frame-wrapper ad-frame-leaderboard" style="margin-top:2rem;max-width:728px;">
         <div class="ad-frame-label">${isEn ? 'Sponsored Ad' : 'إعلان ممول'}</div>
-        <div class="ad-frame-inner" style="min-height:90px;display:flex;align-items:center;justify-content:center">
+        <div class="ad-frame-inner">
           <ins class="adsbygoogle"
-               style="display:inline-block;width:100%;height:90px"
+               style="display:inline-block;width:100%;max-width:728px;height:90px;"
                data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="horizontal"
+               data-full-width-responsive="false"></ins>
         </div>
       </div>
 

@@ -1054,12 +1054,27 @@ ins.adsbygoogle {
 
 /* Rectangle 300x250 frame */
 .ad-frame-rectangle {
-  max-width: 340px !important;
+  width: 320px !important;
+  max-width: 100% !important;
   margin: 2.5rem auto !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 .ad-frame-rectangle .ad-frame-inner {
+  width: 300px !important;
+  max-width: 100% !important;
+  height: 250px !important;
   min-height: 250px !important;
-  overflow: visible !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
+}
+.ad-frame-rectangle .ad-frame-inner ins.adsbygoogle {
+  display: inline-block !important;
+  width: 300px !important;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
 }
 
 /* Leaderboard 728x90 frame (below header) */
@@ -1075,11 +1090,25 @@ ins.adsbygoogle {
   margin: 0 auto !important;
   border-radius: 14px !important;
   padding: 0.6rem 0.85rem 0.85rem !important;
-  overflow: visible !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 .ad-frame-leaderboard .ad-frame-inner {
+  width: 100% !important;
+  max-width: 728px !important;
+  height: 90px !important;
   min-height: 90px !important;
-  overflow: visible !important;
+  max-height: 90px !important;
+  overflow: hidden !important;
+}
+.ad-frame-leaderboard .ad-frame-inner ins.adsbygoogle {
+  display: inline-block !important;
+  width: 100% !important;
+  max-width: 728px !important;
+  height: 90px !important;
+  min-height: 90px !important;
+  max-height: 90px !important;
+  overflow: hidden !important;
 }
 
 /* Footer ad frame */

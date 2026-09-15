@@ -260,11 +260,11 @@ window.CareerAI.pages.tools = function() {
         </div>
         <div class="ad-frame-inner">
           <ins class="adsbygoogle"
-               style="display:block;width:100%;min-height:90px;"
+               style="display:inline-block;width:100%;max-width:728px;height:90px;"
                data-ad-client="ca-pub-7520213352755959"
                data-ad-slot="3316284985"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-format="horizontal"
+               data-full-width-responsive="false"></ins>
         </div>
       </div>
     </div>
