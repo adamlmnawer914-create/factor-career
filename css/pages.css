@@ -2941,24 +2941,39 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  background: transparent !important;
-  pointer-events: none !important;
+  background: rgba(10, 15, 30, 0.98) !important;
+  border-top: 1px solid rgba(99, 102, 241, 0.45) !important;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  pointer-events: auto !important;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 4px 12px !important;
+  box-sizing: border-box !important;
+  min-height: 94px !important;
+}
+
+.sticky-bottom-ad-wrapper::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), rgba(56, 189, 248, 0.8), transparent) !important;
 }
 
 .sticky-bottom-ad__slot {
   position: relative !important;
   width: 100% !important;
   max-width: 728px !important;
-  height: auto !important;
+  height: 90px !important;
   min-height: 90px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   overflow: visible !important;
   background: transparent !important;
-  pointer-events: auto !important;
 }
 
 .sticky-bottom-ad__slot ins.adsbygoogle {
@@ -2967,6 +2982,34 @@ ins.hero-ad-ins[data-ad-status="unfilled"] {
   height: 90px !important;
   max-width: 100% !important;
   background: transparent !important;
+}
+
+.sticky-bottom-ad__close {
+  position: absolute !important;
+  top: 50% !important;
+  right: 14px !important;
+  transform: translateY(-50%) !important;
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  background: rgba(99, 102, 241, 0.2) !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  color: #c7d2fe !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  transition: all 0.2s ease !important;
+  z-index: 10 !important;
+}
+
+.sticky-bottom-ad__close:hover {
+  background: rgba(239, 68, 68, 0.3) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  color: #ffffff !important;
 }
 
 /* Universal Luxury Fallback Placeholder (visible whenever AdSense is pending/unfilled) */
@@ -3801,17 +3844,19 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
     right: 0 !important;
     width: 100vw !important;
     max-width: 100% !important;
-    max-height: none !important;
     height: auto !important;
-    overflow: visible !important;
+    min-height: 56px !important;
     margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
+    padding: 3px 36px 3px 8px !important;
+    background: rgba(10, 15, 30, 0.98) !important;
+    border-top: 1px solid rgba(99, 102, 241, 0.4) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.7) !important;
+    box-sizing: border-box !important;
   }
   .sticky-bottom-ad__slot {
     width: 100% !important;
     max-width: 320px !important;
-    height: auto !important;
+    height: 50px !important;
     min-height: 50px !important;
     margin: 0 auto !important;
     overflow: visible !important;
@@ -3820,13 +3865,18 @@ body:has(.sticky-bottom-ad-wrapper.collapsed) .floating-back-btn {
   .sticky-bottom-ad__slot ins.adsbygoogle,
   .sticky-bottom-ad__slot ins.adsbygoogle iframe,
   .sticky-bottom-ad__slot iframe {
-    width: 100% !important;
-    max-width: 320px !important;
-    height: auto !important;
+    width: 320px !important;
+    max-width: 100% !important;
+    height: 50px !important;
     min-height: 50px !important;
-    max-height: 120px !important;
     margin: 0 auto !important;
     overflow: visible !important;
+  }
+  .sticky-bottom-ad__close {
+    right: 6px !important;
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
   }
   /* Mobile Leaderboard In-Page Ad - Full Visibility */
   .ad-frame-leaderboard {
