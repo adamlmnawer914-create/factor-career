@@ -58,11 +58,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/variables.css?v=20260915_v8">
-  <link rel="stylesheet" href="/css/base.css?v=20260915_v8">
-  <link rel="stylesheet" href="/css/components.css?v=20260915_v8">
-  <link rel="stylesheet" href="/css/layout.css?v=20260915_v8">
-  <link rel="stylesheet" href="/css/pages.css?v=20260915_v8">
+  <link rel="stylesheet" href="/css/variables.css?v=20260915_v9">
+  <link rel="stylesheet" href="/css/base.css?v=20260915_v9">
+  <link rel="stylesheet" href="/css/components.css?v=20260915_v9">
+  <link rel="stylesheet" href="/css/layout.css?v=20260915_v9">
+  <link rel="stylesheet" href="/css/pages.css?v=20260915_v9">
 
   <!-- Sticky Bottom Ad - Critical Inline CSS (guaranteed display regardless of cached CSS) -->
   <style id="sticky-ad-critical">
@@ -77,12 +77,12 @@
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      background: linear-gradient(150deg, rgba(7, 11, 22, 0.98) 0%, rgba(3, 6, 14, 0.99) 100%) !important;
-      border: 1px solid rgba(99, 102, 241, 0.38) !important;
+      background: rgba(10, 15, 35, 0.97) !important;
+      border: 1px solid rgba(99, 102, 241, 0.35) !important;
       border-radius: 14px !important;
-      box-shadow: 0 -8px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(99, 102, 241, 0.15) !important;
-      backdrop-filter: blur(24px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+      box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.7), 0 8px 40px rgba(0, 0, 0, 0.5) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
       padding: 8px 12px !important;
       box-sizing: border-box !important;
       min-height: 100px !important;
@@ -95,9 +95,8 @@
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
-      height: 3px !important;
-      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.95), rgba(56, 189, 248, 0.95), rgba(168, 85, 247, 0.95), transparent) !important;
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.6) !important;
+      height: 2px !important;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.9), rgba(56, 189, 248, 0.9), rgba(139, 92, 246, 0.9), transparent) !important;
       pointer-events: none !important;
     }
     /* Toggle button - shown above the bar */
@@ -285,7 +284,7 @@
     <!-- Toggle Button: Hide / Show -->
     <button type="button" class="sticky-bottom-ad__btn" id="stickyAdToggle"
       onclick="window.CareerAI && window.CareerAI.toggleStickyAd ? window.CareerAI.toggleStickyAd() : (function(){var w=document.getElementById('stickyBottomAd'),a=document.getElementById('stickyAdArrow'),t=document.getElementById('stickyAdText');if(w){var c=w.classList.toggle('collapsed');if(a)a.textContent=c?'▲':'▼';if(t)t.textContent=c?'إظهار الإعلان':'طي الإعلان';}})();"
-      aria-label="Toggle Ad" style="display:flex;align-items:center;gap:6px;background:linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(7,11,22,0.99) 100%);border:1px solid rgba(99,102,241,0.4);border-bottom:none;color:#c7d2fe;font-size:12px;font-weight:700;cursor:pointer;padding:6px 18px;border-radius:10px 10px 0 0;position:absolute;top:-32px;left:50%;transform:translateX(-50%);white-space:nowrap;letter-spacing:0.05em;z-index:5;box-shadow:0 -4px 15px rgba(0,0,0,0.5);">
+      aria-label="Toggle Ad" style="display:flex;align-items:center;gap:6px;background:rgba(30,40,70,0.95);border:none;border-bottom:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:12px;font-weight:600;cursor:pointer;padding:6px 18px;border-radius:10px 10px 0 0;position:absolute;top:-32px;left:50%;transform:translateX(-50%);white-space:nowrap;letter-spacing:0.05em;z-index:5;box-shadow:0 -4px 15px rgba(0,0,0,0.4);">
       <span id="stickyAdArrow" style="font-size:10px;">▼</span>
       <span id="stickyAdText">طي الإعلان</span>
     </button>
@@ -294,7 +293,7 @@
     <div class="sticky-bottom-ad__slot" style="position:relative;display:flex;align-items:center;justify-content:center;">
       <!-- Centered Luxury Name Badge shown until AdSense loads -->
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0;">
-        <div style="display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:0.08em;color:#c7d2fe;background:linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,11,22,0.98) 100%);border:1px solid rgba(99,102,241,0.45);padding:7px 18px;border-radius:22px;box-shadow:0 4px 20px rgba(0,0,0,0.7), 0 0 15px rgba(99,102,241,0.2), inset 0 1px 0 rgba(255,255,255,0.15);white-space:nowrap;">
+        <div style="display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:0.08em;color:#a5b4fc;background:rgba(20,30,60,0.9);border:1px solid rgba(99,102,241,0.4);padding:7px 18px;border-radius:22px;box-shadow:0 4px 16px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);white-space:nowrap;">
           <span>✨ FACTOR CAREER • SPONSORED BANNER • إعلان ممول</span>
         </div>
       </div>
