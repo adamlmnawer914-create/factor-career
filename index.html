@@ -78,13 +78,14 @@
       align-items: center !important;
       background: rgba(10, 15, 30, 0.97) !important;
       border-top: 2px solid rgba(99, 102, 241, 0.5) !important;
-      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.8), 0 -2px 0 rgba(99,102,241,0.3) !important;
+      box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.8) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
-      padding: 8px 48px 8px 12px !important;
+      padding: 6px 12px !important;
       box-sizing: border-box !important;
-      min-height: 98px !important;
+      min-height: 100px !important;
       overflow: visible !important;
+      transition: min-height 0.3s ease !important;
     }
     #stickyBottomAd::before {
       content: "" !important;
@@ -96,6 +97,34 @@
       background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.9), rgba(56, 189, 248, 0.9), rgba(139, 92, 246, 0.9), transparent) !important;
       pointer-events: none !important;
     }
+    /* Toggle button - shown above the bar */
+    #stickyBottomAd .sticky-bottom-ad__btn {
+      position: absolute !important;
+      top: -32px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      background: rgba(30, 40, 70, 0.95) !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.3) !important;
+      color: #a5b4fc !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      padding: 6px 18px !important;
+      border-radius: 10px 10px 0 0 !important;
+      white-space: nowrap !important;
+      letter-spacing: 0.05em !important;
+      z-index: 5 !important;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.4) !important;
+    }
+    #stickyBottomAd .sticky-bottom-ad__btn:hover {
+      background: rgba(50, 60, 100, 0.98) !important;
+      color: #c7d2fe !important;
+    }
+    /* Ad slot */
     #stickyBottomAd .sticky-bottom-ad__slot {
       display: flex !important;
       align-items: center !important;
@@ -104,6 +133,7 @@
       max-width: 728px !important;
       min-height: 90px !important;
       overflow: visible !important;
+      transition: all 0.3s ease !important;
     }
     #stickyBottomAd .sticky-bottom-ad__slot ins.adsbygoogle {
       display: inline-block !important;
@@ -111,36 +141,20 @@
       height: 90px !important;
       max-width: 100% !important;
     }
-    #stickyAdClose {
-      position: absolute !important;
-      top: 50% !important;
-      right: 14px !important;
-      transform: translateY(-50%) !important;
-      width: 28px !important;
-      height: 28px !important;
-      border-radius: 50% !important;
-      background: rgba(99, 102, 241, 0.15) !important;
-      border: 1px solid rgba(99, 102, 241, 0.4) !important;
-      color: #c7d2fe !important;
-      font-size: 14px !important;
-      cursor: pointer !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      z-index: 10 !important;
-      transition: all 0.2s ease !important;
+    /* Collapsed state - fold the ad */
+    #stickyBottomAd.collapsed {
+      min-height: 0 !important;
       padding: 0 !important;
-      line-height: 1 !important;
     }
-    #stickyAdClose:hover {
-      background: rgba(239, 68, 68, 0.3) !important;
-      border-color: rgba(239, 68, 68, 0.6) !important;
-      color: #fff !important;
+    #stickyBottomAd.collapsed .sticky-bottom-ad__slot {
+      display: none !important;
+      height: 0 !important;
+      min-height: 0 !important;
     }
     @media (max-width: 768px) {
       #stickyBottomAd {
-        min-height: 60px !important;
-        padding: 6px 44px 6px 8px !important;
+        min-height: 64px !important;
+        padding: 5px 8px !important;
       }
       #stickyBottomAd .sticky-bottom-ad__slot {
         min-height: 50px !important;
@@ -151,12 +165,13 @@
       }
     }
     .footer {
-      padding-bottom: 110px !important;
+      padding-bottom: 115px !important;
     }
     .floating-back-btn {
-      bottom: 115px !important;
+      bottom: 120px !important;
     }
   </style>
+
 
   <!-- JSON-LD Structured Data for SEO -->
   <script type="application/ld+json">
@@ -253,9 +268,17 @@
     });
   </script>
 
-  <!-- Permanent Sticky Bottom Ad Banner -->
+  <!-- Permanent Sticky Bottom Ad Banner - Foldable with Hide/Show Toggle -->
   <div class="sticky-bottom-ad-wrapper" id="stickyBottomAd">
-    <button type="button" id="stickyAdClose" onclick="document.getElementById('stickyBottomAd').style.display='none'" aria-label="Close Ad" title="إغلاق الإعلان" style="position:absolute;top:50%;right:14px;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.4);color:#c7d2fe;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;padding:0;line-height:1;">✕</button>
+    <!-- Toggle Button: Hide / Show -->
+    <button type="button" class="sticky-bottom-ad__btn" id="stickyAdToggle"
+      onclick="window.CareerAI && window.CareerAI.toggleStickyAd ? window.CareerAI.toggleStickyAd() : (function(){var w=document.getElementById('stickyBottomAd'),a=document.getElementById('stickyAdArrow'),t=document.getElementById('stickyAdText');if(w){var c=w.classList.toggle('collapsed');if(a)a.textContent=c?'▲':'▼';if(t)t.textContent=c?'إظهار الإعلان':'طي الإعلان';}})();"
+      aria-label="Toggle Ad" style="display:flex;align-items:center;gap:6px;background:rgba(30,40,70,0.95);border:none;border-bottom:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:12px;font-weight:600;cursor:pointer;padding:6px 18px;border-radius:10px 10px 0 0;position:absolute;top:-32px;left:50%;transform:translateX(-50%);white-space:nowrap;letter-spacing:0.05em;z-index:5;box-shadow:0 -4px 15px rgba(0,0,0,0.4);">
+      <span id="stickyAdArrow" style="font-size:10px;">▼</span>
+      <span id="stickyAdText">طي الإعلان</span>
+    </button>
+
+    <!-- Ad Content Area -->
     <div class="sticky-bottom-ad__slot">
       <ins class="adsbygoogle sticky-bottom-ins"
            style="display:inline-block;width:728px;height:90px;max-width:100%;"
