@@ -342,7 +342,13 @@ window.CareerAI.pages.jobs = function() {
 // Open Detailed Job Modal
 CareerAI.openJobModal = function(jobId) {
   const db = window.CareerAI.db;
-  const allJobs = db.getJobs ? db.getJobs(true) : [];
+  let allJobs = [];
+  if (db && typeof db.getJobs === 'function') {
+    try { allJobs = db.getJobs(true); } catch(e) {}
+  }
+  if (!allJobs.length && db && Array.isArray(db.defaultJobs)) {
+    allJobs = db.defaultJobs;
+  }
   const job = allJobs.find(j => String(j.id) === String(jobId));
   if (!job) return;
 

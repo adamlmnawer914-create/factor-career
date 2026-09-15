@@ -2339,7 +2339,9 @@ window.CareerAI.db = {
 
   /* --- Jobs API --- */
   getJobs: function(includeInactive = false) {
-    this.init();
+    if (typeof this.init === 'function') {
+      try { this.init(); } catch(e) {}
+    }
     const isAr = (window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'ar');
     let jobs = [];
     try {
