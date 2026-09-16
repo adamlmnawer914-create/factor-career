@@ -2346,14 +2346,14 @@ window.CareerAI.db = {
       try { this.init(); } catch(e) {}
     }
     const isAr = (window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'ar');
-    let jobs = [];
-    try {
-      jobs = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
-    } catch(e) {
-      jobs = [];
-    }
-    if (!jobs.length || (this.defaultJobs && jobs.length < this.defaultJobs.length)) {
-      jobs = this.defaultJobs || [];
+    if (this.defaultJobs && this.defaultJobs.length) {
+      jobs = this.defaultJobs;
+    } else {
+      try {
+        jobs = JSON.parse(localStorage.getItem(this.KEYS.JOBS) || '[]');
+      } catch(e) {
+        jobs = [];
+      }
     }
     const filtered = includeInactive ? jobs : jobs.filter(j => j.status !== 'inactive');
     return filtered.map(j => ({

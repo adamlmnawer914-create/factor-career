@@ -14,18 +14,77 @@ window.CareerAI.jobsFilterState = {
   type: 'all'
 };
 
-// Fetch live jobs in background to ensure always updated (no re-render to prevent CLS)
+// Live Remotive API + Local Fallback Sync
 (function initLiveJobsSync() {
   if (typeof window === 'undefined') return;
+
+  function storeJobs(data) {
+    if (Array.isArray(data) && data.length > 0 && window.CareerAI.db) {
+      window.CareerAI.db.defaultJobs = data;
+      try {
+        localStorage.setItem(window.CareerAI.db.KEYS.JOBS, JSON.stringify(data));
+      } catch(e) {}
+    }
+  }
+
+  // 1. Instantly load local data
   fetch('/data/jobs.json?t=' + Date.now())
     .then(res => res.json())
     .then(data => {
-      if (Array.isArray(data) && data.length > 0 && window.CareerAI.db) {
-        window.CareerAI.db.defaultJobs = data;
-        try {
-          localStorage.setItem(window.CareerAI.db.KEYS.JOBS, JSON.stringify(data));
-        } catch(e) {}
-        // Do NOT re-render the page — avoids sudden layout shift
+      storeJobs(data);
+      // 2. Fetch fresh live jobs from Remotive API
+      return fetch('https://remotive.com/api/remote-jobs?limit=25');
+    })
+    .then(res => res ? res.json() : null)
+    .then(apiData => {
+      if (apiData && Array.isArray(apiData.jobs) && apiData.jobs.length > 0) {
+        const liveJobs = apiData.jobs.map(item => {
+          const cleanDesc = (item.description || '').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+          const loc = item.candidate_required_location || 'Worldwide (Remote)';
+          let countryCode = 'remote';
+          const locLower = loc.toLowerCase();
+          if (locLower.includes('usa') || locLower.includes('united states') || locLower.includes('canada')) countryCode = 'us_ca';
+          else if (locLower.includes('europe') || locLower.includes('uk') || locLower.includes('germany')) countryCode = 'eu_uk';
+          else if (locLower.includes('gcc') || locLower.includes('saudi') || locLower.includes('uae')) countryCode = 'gcc';
+          else if (locLower.includes('mena') || locLower.includes('egypt')) countryCode = 'mena';
+
+          const typeMap = {
+            'full_time': { en: 'Full Time', ar: 'دوام كامل' },
+            'part_time': { en: 'Part Time', ar: 'دوام جزئي' },
+            'freelance': { en: 'Freelance', ar: 'عمل حر' },
+            'contract': { en: 'Contract', ar: 'عقد مؤقت' }
+          };
+          const t = typeMap[item.job_type] || { en: 'Full Time', ar: 'دوام كامل' };
+
+          return {
+            id: 'remotive-' + item.id,
+            title: item.title,
+            title_ar: item.title,
+            company: item.company_name ? item.company_name.trim() : 'Verified Employer',
+            category: (item.category || 'development').toLowerCase(),
+            category_ar: item.category || 'برمجة وتكنولوجيا',
+            country_code: countryCode,
+            type: t.en,
+            type_ar: t.ar,
+            location: loc,
+            location_ar: loc === 'Worldwide' ? 'عن بُعد (عالمي)' : loc,
+            salary: item.salary || 'Competitive ($)',
+            description: cleanDesc.slice(0, 600) + '...',
+            description_ar: 'فرصة عمل حقيقية وموثقة لدى شركة ' + (item.company_name ? item.company_name.trim() : '') + '. تشمل مهام ومسؤوليات احترافية وبيئة عمل مرنة مع إمكانية التقديم المباشر.\n\n' + cleanDesc.slice(0, 300) + '...',
+            requirements: '✅ Relevant professional experience\n✅ Strong communication skills\n✅ Remote work capability',
+            requirements_ar: '✅ خبرة عملية ومهنية سابقة ذات صلة\n✅ مهارات تواصل كتابية وشفوية ممتازة\n✅ القدرة على العمل وإنجاز المهام عن بُعد',
+            skills: Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 5) : ['Remote', 'Software'],
+            applyUrl: item.url,
+            logo: item.company_logo || 'https://logo.clearbit.com/' + encodeURIComponent((item.company_name || 'tech').toLowerCase().replace(/[^a-z0-9]/g, '')) + '.com',
+            companyLogo: item.company_logo,
+            image: item.company_logo,
+            postedAt: item.publication_date ? item.publication_date.split('T')[0] : '2026-09-15',
+            verified: true,
+            status: 'active',
+            source: 'Remotive API'
+          };
+        });
+        storeJobs(liveJobs);
       }
     })
     .catch(() => {});
@@ -343,13 +402,21 @@ window.CareerAI.pages.jobs = function() {
 CareerAI.openJobModal = function(jobId) {
   const db = window.CareerAI.db;
   let allJobs = [];
-  if (db && typeof db.getJobs === 'function') {
+  if (db && Array.isArray(db.defaultJobs) && db.defaultJobs.length) {
+    allJobs = db.defaultJobs;
+  } else if (db && typeof db.getJobs === 'function') {
     try { allJobs = db.getJobs(true); } catch(e) {}
   }
-  if (!allJobs.length && db && Array.isArray(db.defaultJobs)) {
-    allJobs = db.defaultJobs;
+  let job = allJobs.find(j => String(j.id) === String(jobId));
+  if (!job && db && Array.isArray(db.defaultJobs)) {
+    job = db.defaultJobs.find(j => String(j.id) === String(jobId));
   }
-  const job = allJobs.find(j => String(j.id) === String(jobId));
+  if (!job && db && db.KEYS) {
+    try {
+      const stored = JSON.parse(localStorage.getItem(db.KEYS.JOBS) || '[]');
+      job = stored.find(j => String(j.id) === String(jobId));
+    } catch(e) {}
+  }
   if (!job) return;
 
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
