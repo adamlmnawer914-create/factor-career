@@ -110,6 +110,11 @@ window.CareerAI.router = {
           window.CareerAI.initAnimations();
         }
 
+        // Enforce rigid ad dimensions immediately on page render
+        if (window.CareerAI.enforceAdDimensions) {
+          window.CareerAI.enforceAdDimensions();
+        }
+
         // Re-push AdSense units on new page
         if (window.CareerAI.initAdSense) {
           window.CareerAI.initAdSense();
@@ -248,8 +253,161 @@ window.CareerAI.toggleAccordion = function(headerBtn) {
 };
 
 
+/* --- Anti-Morphing & Anti-CLS Ad Enforcer ---
+ * Permanently locks ad containers across all pages to their exact design dimensions,
+ * neutralizing any dynamic height expansion or inline style hijacking by Google AdSense scripts.
+ */
+window.CareerAI.enforceAdDimensions = function() {
+  if (window.CareerAI._isEnforcingAds) return;
+  window.CareerAI._isEnforcingAds = true;
+  try {
+    var isMobile = window.innerWidth <= 768;
+
+    // 1. Leaderboards & Banners (728x90 desktop / 60px mobile)
+    var leaderboards = document.querySelectorAll('.ad-frame-leaderboard, .ad-frame-banner');
+    for (var i = 0; i < leaderboards.length; i++) {
+      var lb = leaderboards[i];
+      var wrapH = isMobile ? '100px' : '135px';
+      lb.style.setProperty('height', wrapH, 'important');
+      lb.style.setProperty('max-height', wrapH, 'important');
+      lb.style.setProperty('min-height', wrapH, 'important');
+      lb.style.setProperty('overflow', 'hidden', 'important');
+      lb.style.setProperty('box-sizing', 'border-box', 'important');
+      lb.style.setProperty('contain', 'size layout paint', 'important');
+
+      var inner = lb.querySelector('.ad-frame-inner');
+      if (inner) {
+        var innerH = isMobile ? '60px' : '90px';
+        inner.style.setProperty('height', innerH, 'important');
+        inner.style.setProperty('max-height', innerH, 'important');
+        inner.style.setProperty('min-height', innerH, 'important');
+        inner.style.setProperty('overflow', 'hidden', 'important');
+        inner.style.setProperty('box-sizing', 'border-box', 'important');
+        inner.style.setProperty('contain', 'size layout paint', 'important');
+      }
+
+      var innerChildren = lb.querySelectorAll('ins.adsbygoogle, iframe, div[id^="aswift_"]');
+      for (var j = 0; j < innerChildren.length; j++) {
+        var ch = innerChildren[j];
+        var chH = isMobile ? '60px' : '90px';
+        ch.style.setProperty('max-height', chH, 'important');
+        ch.style.setProperty('overflow', 'hidden', 'important');
+        if (ch.tagName === 'IFRAME') {
+          ch.style.setProperty('height', chH, 'important');
+        }
+      }
+    }
+
+    // 2. Rectangles (300x250)
+    var rectangles = document.querySelectorAll('.ad-frame-rectangle');
+    for (var k = 0; k < rectangles.length; k++) {
+      var rect = rectangles[k];
+      rect.style.setProperty('height', '315px', 'important');
+      rect.style.setProperty('max-height', '315px', 'important');
+      rect.style.setProperty('min-height', '315px', 'important');
+      rect.style.setProperty('overflow', 'hidden', 'important');
+      rect.style.setProperty('box-sizing', 'border-box', 'important');
+      rect.style.setProperty('contain', 'layout paint', 'important');
+
+      var rInner = rect.querySelector('.ad-frame-inner');
+      if (rInner) {
+        rInner.style.setProperty('height', '250px', 'important');
+        rInner.style.setProperty('max-height', '250px', 'important');
+        rInner.style.setProperty('min-height', '250px', 'important');
+        rInner.style.setProperty('overflow', 'hidden', 'important');
+        rInner.style.setProperty('box-sizing', 'border-box', 'important');
+        rInner.style.setProperty('contain', 'size layout paint', 'important');
+      }
+
+      var rChildren = rect.querySelectorAll('ins.adsbygoogle, iframe, div[id^="aswift_"]');
+      for (var l = 0; l < rChildren.length; l++) {
+        var rCh = rChildren[l];
+        rCh.style.setProperty('max-height', '250px', 'important');
+        rCh.style.setProperty('overflow', 'hidden', 'important');
+        if (rCh.tagName === 'IFRAME') {
+          rCh.style.setProperty('height', '250px', 'important');
+        }
+      }
+    }
+
+    // 3. Skyscrapers (300x600)
+    var skyscrapers = document.querySelectorAll('.ad-frame-skyscraper');
+    for (var m = 0; m < skyscrapers.length; m++) {
+      var sky = skyscrapers[m];
+      sky.style.setProperty('height', '665px', 'important');
+      sky.style.setProperty('max-height', '665px', 'important');
+      sky.style.setProperty('min-height', '665px', 'important');
+      sky.style.setProperty('overflow', 'hidden', 'important');
+      sky.style.setProperty('box-sizing', 'border-box', 'important');
+      sky.style.setProperty('contain', 'layout paint', 'important');
+
+      var sInner = sky.querySelector('.ad-frame-inner');
+      if (sInner) {
+        sInner.style.setProperty('height', '600px', 'important');
+        sInner.style.setProperty('max-height', '600px', 'important');
+        sInner.style.setProperty('min-height', '600px', 'important');
+        sInner.style.setProperty('overflow', 'hidden', 'important');
+        sInner.style.setProperty('box-sizing', 'border-box', 'important');
+        sInner.style.setProperty('contain', 'size layout paint', 'important');
+      }
+
+      var sChildren = sky.querySelectorAll('ins.adsbygoogle, iframe, div[id^="aswift_"]');
+      for (var n = 0; n < sChildren.length; n++) {
+        var sCh = sChildren[n];
+        sCh.style.setProperty('max-height', '600px', 'important');
+        sCh.style.setProperty('overflow', 'hidden', 'important');
+        if (sCh.tagName === 'IFRAME') {
+          sCh.style.setProperty('height', '600px', 'important');
+        }
+      }
+    }
+  } finally {
+    window.CareerAI._isEnforcingAds = false;
+  }
+};
+
+// Global MutationObserver to intercept any runtime style modifications
+if (typeof window !== 'undefined' && window.MutationObserver && !window.CareerAI._adObserver) {
+  window.CareerAI._adObserver = new MutationObserver(function(mutations) {
+    if (window.CareerAI._isEnforcingAds) return;
+    for (var i = 0; i < mutations.length; i++) {
+      var target = mutations[i].target;
+      if (target && target.nodeType === 1) {
+        if (target.classList && (
+          target.classList.contains('ad-frame-wrapper') ||
+          target.classList.contains('ad-frame-inner') ||
+          target.classList.contains('adsbygoogle') ||
+          target.tagName === 'IFRAME'
+        )) {
+          window.CareerAI.enforceAdDimensions();
+          break;
+        }
+      }
+    }
+  });
+
+  var initAdObs = function() {
+    if (document.body && window.CareerAI._adObserver) {
+      window.CareerAI._adObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['style', 'data-ad-status', 'data-adsbygoogle-status'],
+        subtree: true,
+        childList: true
+      });
+      window.CareerAI.enforceAdDimensions();
+    }
+  };
+  if (document.body) {
+    initAdObs();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAdObs);
+  }
+  window.addEventListener('resize', window.CareerAI.enforceAdDimensions);
+}
+
 /* --- Google AdSense SPA Re-initializer --- */
 window.CareerAI.initAdSense = function() {
+  window.CareerAI.enforceAdDimensions();
   setTimeout(function() {
     // Push all new (un-initialized) adsbygoogle units
     var ads = document.querySelectorAll('.adsbygoogle');
@@ -258,6 +416,7 @@ window.CareerAI.initAdSense = function() {
         try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
       }
     });
+    window.CareerAI.enforceAdDimensions();
     // Check sticky bottom ad unit
     var sticky = document.getElementById('stickyBottomAd') || document.getElementById('adsense-sticky-bottom');
     if (sticky) {
@@ -277,7 +436,7 @@ window.CareerAI.initAdSense = function() {
         } catch(e) {}
       }
     }
-  }, 500);
+  }, 300);
 };
 
 /* --- Foldable Sticky Bottom Banner Handler --- */

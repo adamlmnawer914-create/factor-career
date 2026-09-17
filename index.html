@@ -58,11 +58,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/variables.css?v=20260915_v12">
-  <link rel="stylesheet" href="/css/base.css?v=20260915_v12">
-  <link rel="stylesheet" href="/css/components.css?v=20260915_v12">
-  <link rel="stylesheet" href="/css/layout.css?v=20260915_v12">
-  <link rel="stylesheet" href="/css/pages.css?v=20260915_v12">
+  <link rel="stylesheet" href="/css/variables.css?v=20260917_v1">
+  <link rel="stylesheet" href="/css/base.css?v=20260917_v1">
+  <link rel="stylesheet" href="/css/components.css?v=20260917_v1">
+  <link rel="stylesheet" href="/css/layout.css?v=20260917_v1">
+  <link rel="stylesheet" href="/css/pages.css?v=20260917_v1">
 
   <!-- Sticky Bottom Ad - Critical Inline CSS (guaranteed display regardless of cached CSS) -->
   <style id="sticky-ad-critical">
@@ -85,8 +85,11 @@
       -webkit-backdrop-filter: blur(20px) !important;
       padding: 8px 12px !important;
       box-sizing: border-box !important;
-      min-height: 100px !important;
-      overflow: visible !important;
+      height: 106px !important;
+      min-height: 106px !important;
+      max-height: 106px !important;
+      overflow: hidden !important;
+      contain: layout paint !important;
       transition: min-height 0.3s ease !important;
     }
     #stickyBottomAd::before {
@@ -133,20 +136,28 @@
       justify-content: center !important;
       width: 100% !important;
       max-width: 728px !important;
+      height: 90px !important;
       min-height: 90px !important;
-      overflow: visible !important;
+      max-height: 90px !important;
+      overflow: hidden !important;
+      contain: size layout paint !important;
       transition: all 0.3s ease !important;
     }
     #stickyBottomAd .sticky-bottom-ad__slot ins.adsbygoogle {
       display: inline-block !important;
       width: 728px !important;
       height: 90px !important;
+      min-height: 90px !important;
+      max-height: 90px !important;
       max-width: 100% !important;
+      overflow: hidden !important;
+      contain: size layout paint !important;
     }
     /* Collapsed state - wrapper completely invisible, only toggle button shows */
     #stickyBottomAd.collapsed {
       min-height: 0 !important;
       height: 0 !important;
+      max-height: 0 !important;
       padding: 0 !important;
       background: transparent !important;
       border: none !important;
@@ -161,18 +172,25 @@
       display: none !important;
       height: 0 !important;
       min-height: 0 !important;
+      max-height: 0 !important;
     }
     @media (max-width: 768px) {
       #stickyBottomAd {
+        height: 64px !important;
         min-height: 64px !important;
+        max-height: 64px !important;
         padding: 5px 8px !important;
       }
       #stickyBottomAd .sticky-bottom-ad__slot {
+        height: 50px !important;
         min-height: 50px !important;
+        max-height: 50px !important;
       }
       #stickyBottomAd .sticky-bottom-ad__slot ins.adsbygoogle {
         width: 320px !important;
         height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
       }
     }
     .footer {
@@ -252,7 +270,7 @@
   <script src="/js/pages/terms.js?v=20260915_v5"></script>
   <script src="/js/pages/admin-login.js?v=20260915_v5"></script>
   <script src="/js/pages/admin-dashboard.js?v=20260915_v5"></script>
-  <script src="/js/app.js?v=20260915_v5"></script>
+  <script src="/js/app.js?v=20260917_v1"></script>
 
 
   <!-- Failsafe Recovery Script against White Screen -->
