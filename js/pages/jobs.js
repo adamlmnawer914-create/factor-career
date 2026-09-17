@@ -1,7 +1,7 @@
 /* ============================================
-   Factor Career - Advanced AI Jobs Page v3.0
-   Multi-Source Real Jobs, In-Page Detailed Modal,
-   Direct Official Apply Links, Country & Role Filters
+   Factor Career - Verified Real Jobs Portal v4.0
+   Remotive API Integration + 1-Hour Serverless Caching (revalidate: 3600)
+   Local Fallback data/jobs.json + Direct Official Apply Links
    ============================================ */
 
 window.CareerAI = window.CareerAI || {};
@@ -14,148 +14,358 @@ window.CareerAI.jobsFilterState = {
   type: 'all'
 };
 
-// Live Remotive API + Local Fallback Sync
-(function initLiveJobsSync() {
-  if (typeof window === 'undefined') return;
+window.CareerAI.jobsState = {
+  jobs: [],
+  loading: false,
+  loaded: false,
+  source: '',
+  lastFetched: 0
+};
 
-  function storeJobs(data) {
-    if (Array.isArray(data) && data.length > 0 && window.CareerAI.db) {
-      window.CareerAI.db.defaultJobs = data;
-      try {
-        localStorage.setItem(window.CareerAI.db.KEYS.JOBS, JSON.stringify(data));
-      } catch(e) {}
+// 1-Hour Cache Duration (3600 seconds)
+const JOBS_CACHE_KEY = 'factor_jobs_cache_v4';
+const JOBS_CACHE_TIME_KEY = 'factor_jobs_cache_time_v4';
+const CACHE_TTL_MS = 3600 * 1000; // 1 hour
+
+// Immediate synchronous cache pre-load so page renders with zero wait
+(function preLoadJobsCache() {
+  if (typeof window === 'undefined') return;
+  try {
+    const cachedTime = parseInt(localStorage.getItem(JOBS_CACHE_TIME_KEY) || '0', 10);
+    const cachedData = localStorage.getItem(JOBS_CACHE_KEY);
+    if (cachedData && (Date.now() - cachedTime < CACHE_TTL_MS)) {
+      const parsed = JSON.parse(cachedData);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        window.CareerAI.jobsState.jobs = parsed;
+        window.CareerAI.jobsState.loaded = true;
+        window.CareerAI.jobsState.source = 'Cache (1h)';
+      }
+    }
+  } catch (e) {}
+})();
+
+// Fetch Real Jobs from Remotive API (via /api/jobs or direct with local fallback)
+window.CareerAI.fetchJobsFeed = async function(forceRefresh = false) {
+  const state = window.CareerAI.jobsState;
+  
+  // Check if cache is still fresh and not forcing refresh
+  if (!forceRefresh && state.loaded && state.jobs.length > 0) {
+    const cachedTime = parseInt(localStorage.getItem(JOBS_CACHE_TIME_KEY) || '0', 10);
+    if (Date.now() - cachedTime < CACHE_TTL_MS) {
+      return state.jobs;
     }
   }
 
-  // 1. Instantly load local data
-  fetch('/data/jobs.json?t=' + Date.now())
-    .then(res => res.json())
-    .then(data => {
-      storeJobs(data);
-      // 2. Fetch fresh live jobs from Remotive API
-      return fetch('https://remotive.com/api/remote-jobs?limit=25');
-    })
-    .then(res => res ? res.json() : null)
-    .then(apiData => {
-      if (apiData && Array.isArray(apiData.jobs) && apiData.jobs.length > 0) {
-        const liveJobs = apiData.jobs.map(item => {
-          const cleanDesc = (item.description || '').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
-          const loc = item.candidate_required_location || 'Worldwide (Remote)';
-          let countryCode = 'remote';
-          const locLower = loc.toLowerCase();
-          if (locLower.includes('usa') || locLower.includes('united states') || locLower.includes('canada')) countryCode = 'us_ca';
-          else if (locLower.includes('europe') || locLower.includes('uk') || locLower.includes('germany')) countryCode = 'eu_uk';
-          else if (locLower.includes('gcc') || locLower.includes('saudi') || locLower.includes('uae')) countryCode = 'gcc';
-          else if (locLower.includes('mena') || locLower.includes('egypt')) countryCode = 'mena';
+  if (state.loading) return state.jobs;
+  state.loading = true;
 
-          const typeMap = {
-            'full_time': { en: 'Full Time', ar: 'دوام كامل' },
-            'part_time': { en: 'Part Time', ar: 'دوام جزئي' },
-            'freelance': { en: 'Freelance', ar: 'عمل حر' },
-            'contract': { en: 'Contract', ar: 'عقد مؤقت' }
-          };
-          const t = typeMap[item.job_type] || { en: 'Full Time', ar: 'دوام كامل' };
+  let rawJobs = null;
+  let sourceLabel = '';
 
-          return {
-            id: 'remotive-' + item.id,
-            title: item.title,
-            title_ar: item.title,
-            company: item.company_name ? item.company_name.trim() : 'Verified Employer',
-            category: (item.category || 'development').toLowerCase(),
-            category_ar: item.category || 'برمجة وتكنولوجيا',
-            country_code: countryCode,
-            type: t.en,
-            type_ar: t.ar,
-            location: loc,
-            location_ar: loc === 'Worldwide' ? 'عن بُعد (عالمي)' : loc,
-            salary: item.salary || 'Competitive ($)',
-            description: cleanDesc.slice(0, 600) + '...',
-            description_ar: 'فرصة عمل حقيقية وموثقة لدى شركة ' + (item.company_name ? item.company_name.trim() : '') + '. تشمل مهام ومسؤوليات احترافية وبيئة عمل مرنة مع إمكانية التقديم المباشر.\n\n' + cleanDesc.slice(0, 300) + '...',
-            requirements: '✅ Relevant professional experience\n✅ Strong communication skills\n✅ Remote work capability',
-            requirements_ar: '✅ خبرة عملية ومهنية سابقة ذات صلة\n✅ مهارات تواصل كتابية وشفوية ممتازة\n✅ القدرة على العمل وإنجاز المهام عن بُعد',
-            skills: Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 5) : ['Remote', 'Software'],
-            applyUrl: item.url,
-            logo: item.company_logo || 'https://logo.clearbit.com/' + encodeURIComponent((item.company_name || 'tech').toLowerCase().replace(/[^a-z0-9]/g, '')) + '.com',
-            companyLogo: item.company_logo,
-            image: item.company_logo,
-            postedAt: item.publication_date ? item.publication_date.split('T')[0] : '2026-09-15',
-            verified: true,
-            status: 'active',
-            source: 'Remotive API'
-          };
-        });
-        storeJobs(liveJobs);
+  // Priority 1: Fetch from serverless edge endpoint /api/jobs (revalidate: 3600)
+  try {
+    const apiRes = await fetch('/api/jobs');
+    if (apiRes.ok) {
+      const data = await apiRes.json();
+      if (data && Array.isArray(data.jobs) && data.jobs.length > 0) {
+        rawJobs = data.jobs;
+        sourceLabel = data.fallback ? 'Local Fallback' : 'Remotive API (Edge Cached)';
       }
-    })
-    .catch(() => {});
-})();
+    }
+  } catch (err) {
+    // Continue to next priority
+  }
 
-window.CareerAI.pages.jobs = function() {
-  const icons = window.CareerAI.icons || {};
-  const db = window.CareerAI.db;
-  const allJobs = db.getJobs ? db.getJobs(false) : (db.data ? db.data.jobs : []);
-  const state = window.CareerAI.jobsFilterState;
+  // Priority 2: Direct client fetch from Remotive API (free public API with CORS enabled)
+  if (!rawJobs) {
+    try {
+      const remotiveRes = await fetch('https://remotive.com/api/remote-jobs?limit=25');
+      if (remotiveRes.ok) {
+        const data = await remotiveRes.json();
+        if (data && Array.isArray(data.jobs) && data.jobs.length > 0) {
+          rawJobs = data.jobs;
+          sourceLabel = 'Remotive API (Direct)';
+        }
+      }
+    } catch (err) {
+      // Continue to local fallback
+    }
+  }
+
+  // Priority 3: Local data/jobs.json fallback (10 verified curated jobs)
+  if (!rawJobs) {
+    try {
+      const localRes = await fetch('/data/jobs.json?v=' + Date.now());
+      if (localRes.ok) {
+        const data = await localRes.json();
+        if (Array.isArray(data) && data.length > 0) {
+          rawJobs = data;
+          sourceLabel = 'Verified Fallback Data';
+        }
+      }
+    } catch (err) {
+      console.error('All job sources failed:', err);
+    }
+  }
+
+  if (rawJobs && Array.isArray(rawJobs)) {
+    const normalized = rawJobs.map((item, idx) => {
+      const rawType = (item.job_type || item.type || 'full_time').toLowerCase();
+      let jobType = 'Full-time';
+      let jobTypeAr = 'دوام كامل';
+      if (rawType.includes('contract') || rawType.includes('freelance')) {
+        jobType = 'Contract';
+        jobTypeAr = 'عقد مؤقت / عمل حر';
+      } else if (rawType.includes('part')) {
+        jobType = 'Part-time';
+        jobTypeAr = 'دوام جزئي';
+      }
+
+      const cleanDesc = (item.description || '')
+        .replace(/<[^>]*>?/gm, ' ')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const location = item.candidate_required_location || item.location || 'Worldwide (Remote)';
+      const pubDate = item.publication_date ? item.publication_date.split('T')[0] : (item.postedAt || new Date().toISOString().split('T')[0]);
+      const applyUrl = item.url || item.applyUrl || 'https://remotive.com';
+      const compName = (item.company_name || item.company || 'Verified Company').trim();
+      const compLogo = item.company_logo || item.company_logo_url || item.logo || '';
+      const tags = Array.isArray(item.tags) && item.tags.length ? item.tags.slice(0, 4) : ['Remote', 'Technology'];
+
+      return {
+        id: String(item.id || ('job-' + idx)),
+        job_title: item.title || item.job_title || 'Professional Specialist',
+        title: item.title || item.job_title || 'Professional Specialist',
+        title_ar: item.title_ar || item.title || 'فرصة عمل مهنية',
+        company_name: compName,
+        company: compName,
+        company_logo: compLogo,
+        candidate_required_location: location,
+        location: location,
+        location_ar: location === 'Worldwide' || location.includes('Worldwide') ? 'عن بُعد (عالمي)' : location,
+        publication_date: pubDate,
+        postedAt: pubDate,
+        job_type: jobType,
+        type: jobType,
+        type_ar: jobTypeAr,
+        url: applyUrl,
+        applyUrl: applyUrl,
+        category: item.category || 'Technology',
+        salary: item.salary || 'Competitive ($)',
+        description: cleanDesc.slice(0, 320) + (cleanDesc.length > 320 ? '...' : ''),
+        description_ar: item.description_ar || cleanDesc.slice(0, 320) + '...',
+        full_description: item.description || '',
+        skills: tags,
+        source: sourceLabel,
+        verified: true
+      };
+    });
+
+    state.jobs = normalized;
+    state.loaded = true;
+    state.loading = false;
+    state.source = sourceLabel;
+    state.lastFetched = Date.now();
+
+    try {
+      localStorage.setItem(JOBS_CACHE_KEY, JSON.stringify(normalized));
+      localStorage.setItem(JOBS_CACHE_TIME_KEY, String(Date.now()));
+    } catch (e) {}
+
+    // Update UI if user is on jobs page
+    const container = document.getElementById('jobsGridContainer');
+    if (container && window.CareerAI.renderJobsGrid) {
+      container.innerHTML = window.CareerAI.renderJobsGrid();
+    }
+  } else {
+    state.loading = false;
+  }
+
+  return state.jobs;
+};
+
+// Start background fetch if cache missing or expired
+setTimeout(() => {
+  if (window.CareerAI.fetchJobsFeed) {
+    window.CareerAI.fetchJobsFeed(false);
+  }
+}, 100);
+
+// Render Job Cards Grid
+window.CareerAI.renderJobsGrid = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
+  const state = window.CareerAI.jobsFilterState;
+  const allJobs = window.CareerAI.jobsState.jobs;
 
-  // Apply filters
+  if (!allJobs || allJobs.length === 0) {
+    // Show skeleton placeholder while fetching
+    return `
+      <div style="grid-column:1/-1;text-align:center;padding:3rem 1.5rem;background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:18px">
+        <div style="font-size:2rem;margin-bottom:0.75rem;animation:pulse 1.5s infinite">⏳</div>
+        <h3 style="font-size:1.2rem;font-weight:700;color:var(--color-text);margin-bottom:0.5rem">
+          ${isEn ? 'Loading Verified Opportunities...' : 'جاري تحميل أحدث الوظائف الموثقة...'}
+        </h3>
+        <p style="color:var(--color-text-muted);font-size:0.9rem">
+          ${isEn ? 'Connecting to Remotive live feed with 1-hour caching.' : 'الاتصال بمصدر Remotive API الموثق مع التخزين المؤقت.'}
+        </p>
+      </div>
+    `;
+  }
+
+  // Filter jobs based on user controls
   const filteredJobs = allJobs.filter(job => {
     // 1. Search Query
     if (state.searchQuery) {
       const q = state.searchQuery.toLowerCase().trim();
-      const matchTitle = (job.title && job.title.toLowerCase().includes(q)) || (job.title_ar && job.title_ar.toLowerCase().includes(q));
-      const matchComp = job.company && job.company.toLowerCase().includes(q);
-      const matchLoc = (job.location && job.location.toLowerCase().includes(q)) || (job.location_ar && job.location_ar.toLowerCase().includes(q));
-      const matchDesc = (job.description && job.description.toLowerCase().includes(q)) || (job.description_ar && job.description_ar.toLowerCase().includes(q));
+      const matchTitle = (job.job_title && job.job_title.toLowerCase().includes(q)) || (job.title_ar && job.title_ar.toLowerCase().includes(q));
+      const matchComp = job.company_name && job.company_name.toLowerCase().includes(q);
+      const matchLoc = (job.candidate_required_location && job.candidate_required_location.toLowerCase().includes(q)) || (job.location_ar && job.location_ar.toLowerCase().includes(q));
+      const matchDesc = job.description && job.description.toLowerCase().includes(q);
       const matchSkills = job.skills && Array.isArray(job.skills) && job.skills.some(s => s.toLowerCase().includes(q));
       if (!matchTitle && !matchComp && !matchLoc && !matchDesc && !matchSkills) return false;
     }
 
-    // 2. Country / Location Filter
+    // 2. Location / Country Filter
     if (state.country !== 'all') {
-      const c = (job.country_code || '').toLowerCase();
-      const loc = (job.location || '').toLowerCase();
-      const locAr = (job.location_ar || '').toLowerCase();
-
-      if (state.country === 'gcc') {
-        if (c !== 'gcc' && !loc.includes('saudi') && !loc.includes('uae') && !loc.includes('dubai') && !loc.includes('gulf') && !locAr.includes('سعودية') && !locAr.includes('خليج')) return false;
-      } else if (state.country === 'mena') {
-        if (c !== 'mena' && !loc.includes('egypt') && !loc.includes('mena') && !loc.includes('morocco') && !locAr.includes('مصر') && !locAr.includes('أوسط')) return false;
-      } else if (state.country === 'us_ca') {
-        if (c !== 'us_ca' && !loc.includes('united states') && !loc.includes('usa') && !loc.includes('canada') && !locAr.includes('أمريك') && !locAr.includes('كندا')) return false;
-      } else if (state.country === 'eu_uk') {
-        if (c !== 'eu_uk' && !loc.includes('uk') && !loc.includes('germany') && !loc.includes('europe') && !locAr.includes('أوروب') && !locAr.includes('بريطاني')) return false;
-      } else if (state.country === 'remote') {
-        if (c !== 'remote' && !loc.includes('remote') && !loc.includes('worldwide') && !locAr.includes('عن بعد') && !locAr.includes('عالمي')) return false;
-      }
+      const loc = (job.candidate_required_location || '').toLowerCase();
+      if (state.country === 'remote' && !loc.includes('remote') && !loc.includes('worldwide')) return false;
+      if (state.country === 'us_ca' && !loc.includes('usa') && !loc.includes('united states') && !loc.includes('canada') && !loc.includes('worldwide')) return false;
+      if (state.country === 'eu_uk' && !loc.includes('europe') && !loc.includes('uk') && !loc.includes('germany') && !loc.includes('emea') && !loc.includes('worldwide')) return false;
+      if (state.country === 'gcc' && !loc.includes('saudi') && !loc.includes('uae') && !loc.includes('dubai') && !loc.includes('worldwide')) return false;
     }
 
     // 3. Category Filter
     if (state.category !== 'all') {
       const cat = (job.category || '').toLowerCase();
-      if (state.category === 'dev' && !cat.includes('dev') && !cat.includes('soft') && !cat.includes('eng') && !cat.includes('tech') && !cat.includes('data') && !cat.includes('ai')) return false;
-      if (state.category === 'marketing' && !cat.includes('market') && !cat.includes('sales') && !cat.includes('growth') && !cat.includes('seo')) return false;
-      if (state.category === 'design' && !cat.includes('design') && !cat.includes('ui') && !cat.includes('ux') && !cat.includes('art')) return false;
-      if (state.category === 'sales' && !cat.includes('sales') && !cat.includes('growth') && !cat.includes('account')) return false;
-      if (state.category === 'hr' && !cat.includes('hr') && !cat.includes('human') && !cat.includes('talent') && !cat.includes('recruit') && !cat.includes('manage')) return false;
-      if (state.category === 'finance' && !cat.includes('finan') && !cat.includes('account') && !cat.includes('crypto')) return false;
-      if (state.category === 'support' && !cat.includes('support') && !cat.includes('custom') && !cat.includes('service')) return false;
+      if (state.category === 'dev' && !cat.includes('dev') && !cat.includes('soft') && !cat.includes('eng') && !cat.includes('tech')) return false;
+      if (state.category === 'design' && !cat.includes('design') && !cat.includes('ui') && !cat.includes('ux')) return false;
+      if (state.category === 'marketing' && !cat.includes('market') && !cat.includes('content') && !cat.includes('writer')) return false;
+      if (state.category === 'support' && !cat.includes('support') && !cat.includes('custom')) return false;
+      if (state.category === 'data' && !cat.includes('data') && !cat.includes('analyst') && !cat.includes('bi')) return false;
     }
 
-    // 4. Type Filter
+    // 4. Work Type Filter
     if (state.type !== 'all') {
-      const type = (job.type || '').toLowerCase();
-      const typeAr = (job.type_ar || '').toLowerCase();
-      if (state.type === 'remote' && !type.includes('remote') && !typeAr.includes('عن بعد') && !typeAr.includes('عن بُعد')) return false;
-      if (state.type === 'full-time' && !type.includes('full') && !typeAr.includes('كامل')) return false;
-      if (state.type === 'part-time' && !type.includes('part') && !typeAr.includes('جزئي')) return false;
-      if (state.type === 'contract' && !type.includes('contract') && !type.includes('freelance') && !typeAr.includes('حر') && !typeAr.includes('عقد')) return false;
+      const t = (job.job_type || '').toLowerCase();
+      if (state.type === 'full-time' && !t.includes('full')) return false;
+      if (state.type === 'part-time' && !t.includes('part')) return false;
+      if (state.type === 'contract' && !t.includes('contract') && !t.includes('freelance')) return false;
     }
 
     return true;
   });
 
-  // Limit to max 15 jobs displayed (fewer than 20 as requested)
-  const displayedJobs = filteredJobs.slice(0, 15);
+  if (filteredJobs.length === 0) {
+    return `
+      <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--color-bg-card);border-radius:18px;border:1px solid var(--color-border)">
+        <div style="font-size:3rem;margin-bottom:0.75rem">🔍</div>
+        <h3 style="font-size:1.25rem;font-weight:700;color:var(--color-text);margin-bottom:0.5rem">
+          ${isEn ? 'No matching opportunities found' : 'لم يتم العثور على وظائف مطابقة للبحث'}
+        </h3>
+        <p style="color:var(--color-text-muted);max-width:420px;margin:0 auto 1.25rem;font-size:0.9rem">
+          ${isEn ? 'Try adjusting your search query, clearing category filters, or selecting All Locations.' : 'جرّب تعديل كلمات البحث أو اختيار جميع المواقع والتخصصات.'}
+        </p>
+        <button class="btn btn--secondary btn--sm" onclick="CareerAI.resetJobsFilter()">
+          ${isEn ? 'Reset All Filters' : 'إعادة ضبط الفلاتر'}
+        </button>
+      </div>
+    `;
+  }
+
+  // Render cards
+  return filteredJobs.map(job => {
+    const compInitial = (job.company_name ? job.company_name.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
+    const logoUrl = job.company_logo || '';
+    const skills = Array.isArray(job.skills) ? job.skills.slice(0, 3) : [];
+
+    return `
+      <article class="job-card" id="job-card-${job.id}" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.25s, box-shadow 0.25s;box-shadow:0 4px 18px rgba(0,0,0,0.15)">
+        <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
+          
+          <!-- Card Header: Company Logo + Name + Verification Badges -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;gap:0.85rem">
+            
+            <!-- Company Logo & Info -->
+            <div style="display:flex;align-items:center;gap:0.85rem">
+              <div style="width:52px;height:52px;min-width:52px;border-radius:14px;background:#ffffff;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 12px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px">
+                ${logoUrl ? `
+                  <img src="${logoUrl}" alt="${job.company_name}" style="width:100%;height:100%;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                  <div style="display:none;width:100%;height:100%;border-radius:10px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.3rem;font-weight:800;align-items:center;justify-content:center">${compInitial}</div>
+                ` : `
+                  <div style="width:100%;height:100%;border-radius:10px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center">${compInitial}</div>
+                `}
+              </div>
+              <div>
+                <div style="font-size:0.98rem;font-weight:800;color:var(--color-primary-light);line-height:1.2;margin-bottom:3px">${job.company_name}</div>
+                <div style="font-size:0.75rem;font-weight:600;color:var(--color-text-muted)">${job.category || 'Tech'}</div>
+              </div>
+            </div>
+
+            <!-- Job Type Badge + Verified Badge -->
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+              <span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:2px 8px;font-size:0.68rem;font-weight:700;display:inline-flex;align-items:center;gap:3px;white-space:nowrap">
+                ✓ ${isEn ? 'Verified' : 'موثقة'}
+              </span>
+              <span style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.68rem;white-space:nowrap;font-weight:600">
+                ${isEn ? job.job_type : (job.type_ar || job.job_type)}
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Job Title (Clickable to open modal) -->
+          <h3 style="font-size:1.15rem;font-weight:800;color:var(--color-text);margin:0 0 0.75rem 0;line-height:1.4;cursor:pointer;transition:color 0.2s" onclick="CareerAI.openJobModal('${job.id}')">
+            ${isEn ? job.job_title : (job.title_ar || job.job_title)}
+          </h3>
+
+          <!-- Metadata Row: Location + Date + Salary -->
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.6rem;font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.85rem">
+            <span style="display:inline-flex;align-items:center;gap:4px">📍 ${isEn ? job.candidate_required_location : (job.location_ar || job.candidate_required_location)}</span>
+            <span>•</span>
+            <span style="display:inline-flex;align-items:center;gap:4px">📅 ${job.publication_date}</span>
+            <span>•</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;color:#34d399;font-weight:600">💰 ${job.salary || (isEn ? 'Competitive' : 'تنافسي')}</span>
+          </div>
+
+          <!-- Description Excerpt -->
+          <p style="font-size:0.84rem;color:var(--color-text-muted);margin:0 0 1rem 0;line-height:1.55;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">
+            ${isEn ? job.description : (job.description_ar || job.description)}
+          </p>
+
+          <!-- Skills Tags -->
+          ${skills.length > 0 ? `
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.25rem">
+              ${skills.map(s => `<span style="background:rgba(255,255,255,0.06);border:1px solid var(--color-border-light);border-radius:6px;padding:2px 8px;font-size:0.72rem;color:#cbd5e1">${s}</span>`).join('')}
+            </div>
+          ` : ''}
+
+          <!-- Action Buttons: Apply Now (Direct URL) + View Details -->
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.85rem;border-top:1px solid var(--color-border-light);gap:0.5rem;flex-wrap:wrap">
+            
+            <!-- View Details Button -->
+            <button class="btn btn--secondary btn--sm" style="flex:1;min-width:105px;padding:0.5rem 0.75rem;font-size:0.82rem;font-weight:700" onclick="CareerAI.openJobModal('${job.id}')">
+              ℹ️ ${isEn ? 'View Details' : 'التفاصيل'}
+            </button>
+
+            <!-- Direct Official Apply Now Button -->
+            <a href="${job.url}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm" style="flex:1;min-width:120px;padding:0.5rem 0.75rem;font-size:0.82rem;font-weight:800;box-shadow:0 3px 12px rgba(99,102,241,0.35);text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:4px">
+              ${isEn ? 'Apply Now ↗' : 'التقديم الآن ↗'}
+            </a>
+
+          </div>
+
+        </div>
+      </article>
+    `;
+  }).join('');
+};
+
+// Main Page Template
+window.CareerAI.pages.jobs = function() {
+  const state = window.CareerAI.jobsFilterState;
+  const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
 
   return `
     <!-- Jobs Hero Section -->
@@ -166,7 +376,7 @@ window.CareerAI.pages.jobs = function() {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);border-radius:30px;padding:6px 16px;margin-bottom:1.25rem">
             <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;animation:pulse 2s infinite"></span>
             <span style="font-size:0.85rem;font-weight:700;color:var(--color-primary-light)">
-              ${isEn ? 'AI-Verified Live Feed • Direct Official Applications' : 'فرص عمل حقيقية موثقة بالذكاء الاصطناعي • تقديم رسمي مباشر'}
+              ${isEn ? 'Remotive API Feed • 1-Hour Serverless Cache • Direct Applications' : 'تغذية Remotive API الحقيقية • تخزين مؤقت كل ساعة • تقديم رسمي مباشر'}
             </span>
           </div>
 
@@ -178,7 +388,7 @@ window.CareerAI.pages.jobs = function() {
           </p>
         </div>
 
-        <!-- Horizontal Top Ad Banner (728x90 Leaderboard) -->
+        <!-- Horizontal Top Ad Banner (728x90 Leaderboard - Anti-Morphing Protected) -->
         <div class="ad-frame-wrapper ad-frame-leaderboard" style="margin:0 auto 2.5rem;max-width:760px;">
           <div class="ad-frame-label">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-left:4px;"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
@@ -194,7 +404,7 @@ window.CareerAI.pages.jobs = function() {
           </div>
         </div>
 
-        <!-- Advanced 4-Column Filter & Search Bar -->
+        <!-- 4-Column Filter & Search Bar -->
         <div style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:18px;padding:1.5rem;margin-bottom:2.5rem;box-shadow:0 4px 25px rgba(0,0,0,0.1)">
           <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1rem;align-items:flex-end">
             
@@ -202,36 +412,33 @@ window.CareerAI.pages.jobs = function() {
             <div class="form-group" style="margin:0;grid-column:span 2;">
               <label class="form-label" style="font-weight:700;font-size:0.85rem">${isEn ? '🔍 Search by Title, Company, Skills or Keyword' : '🔍 البحث بالمسمى، الشركة، المهارات أو الكلمات المفتاحية'}</label>
               <input type="text" id="jobsSearchInput" class="form-input" 
-                     placeholder="${isEn ? 'e.g. Frontend, Python, Stripe, React, Remote...' : 'مثال: مهندس برمجيات، بايثون، تسويق، عن بعد، Stripe...'}" 
+                     placeholder="${isEn ? 'e.g. Full Stack, Python, React, Remote, Designer...' : 'مثال: مهندس برمجيات، بايثون، تسويق، عن بعد، مصمم...'}" 
                      value="${state.searchQuery}" 
                      oninput="CareerAI.onJobsSearch(this.value)">
             </div>
 
             <!-- Country & Region Filter -->
             <div class="form-group" style="margin:0">
-              <label class="form-label" style="font-weight:700;font-size:0.85rem">${isEn ? '🌍 Country / Location' : '🌍 الدولة والموقع الجغرافي'}</label>
+              <label class="form-label" style="font-weight:700;font-size:0.85rem">${isEn ? '🌍 Country / Location' : '🌍 الدولة والموقع'}</label>
               <select id="jobsCountryFilter" class="form-input" onchange="CareerAI.onJobsFilterChange('country', this.value)">
                 <option value="all" ${state.country==='all'?'selected':''}>${isEn ? 'All Locations' : 'جميع الدول والمواقع'}</option>
                 <option value="remote" ${state.country==='remote'?'selected':''}>${isEn ? '🌐 Remote / Worldwide' : '🌐 العمل عن بُعد / عالمي'}</option>
-                <option value="gcc" ${state.country==='gcc'?'selected':''}>${isEn ? '🇸🇦 Saudi Arabia & GCC' : '🇸🇦 السعودية والخليج العربي'}</option>
-                <option value="mena" ${state.country==='mena'?'selected':''}>${isEn ? '🇪🇬 Egypt & Middle East' : '🇪🇬 مصر والشرق الأوسط'}</option>
                 <option value="us_ca" ${state.country==='us_ca'?'selected':''}>${isEn ? '🇺🇸 USA & Canada' : '🇺🇸 الولايات المتحدة وكندا'}</option>
                 <option value="eu_uk" ${state.country==='eu_uk'?'selected':''}>${isEn ? '🇪🇺 Europe & UK' : '🇪🇺 أوروبا والمملكة المتحدة'}</option>
+                <option value="gcc" ${state.country==='gcc'?'selected':''}>${isEn ? '🇸🇦 Saudi Arabia & GCC' : '🇸🇦 السعودية والخليج'}</option>
               </select>
             </div>
 
-            <!-- Category Filter -->
+            <!-- Field / Category Filter -->
             <div class="form-group" style="margin:0">
               <label class="form-label" style="font-weight:700;font-size:0.85rem">${isEn ? '💼 Field / Category' : '💼 التخصص والمجال'}</label>
               <select id="jobsCategoryFilter" class="form-input" onchange="CareerAI.onJobsFilterChange('category', this.value)">
                 <option value="all" ${state.category==='all'?'selected':''}>${isEn ? 'All Fields' : 'جميع التخصصات'}</option>
                 <option value="dev" ${state.category==='dev'?'selected':''}>${isEn ? '💻 Software & Tech' : '💻 برمجة وتكنولوجيا'}</option>
-                <option value="marketing" ${state.category==='marketing'?'selected':''}>${isEn ? '📊 Marketing & Content' : '📊 تسويق وصناعة محتوى'}</option>
                 <option value="design" ${state.category==='design'?'selected':''}>${isEn ? '🎨 UI/UX & Design' : '🎨 تصميم وتجربة مستخدم'}</option>
-                <option value="sales" ${state.category==='sales'?'selected':''}>${isEn ? '🚀 Sales & Business' : '🚀 مبيعات وتطوير أعمال'}</option>
-                <option value="hr" ${state.category==='hr'?'selected':''}>${isEn ? '👥 HR & Operations' : '👥 موارد بشرية وإدارة'}</option>
-                <option value="finance" ${state.category==='finance'?'selected':''}>${isEn ? '💰 Finance & Accounting' : '💰 مالية ومحاسبة'}</option>
-                <option value="support" ${state.category==='support'?'selected':''}>${isEn ? '🎧 Customer Support' : '🎧 دعم وخدمة عملاء'}</option>
+                <option value="marketing" ${state.category==='marketing'?'selected':''}>${isEn ? '📊 Marketing & Content' : '📊 تسويق ومحتوى'}</option>
+                <option value="data" ${state.category==='data'?'selected':''}>${isEn ? '📈 Data & Analytics' : '📈 تحليل بيانات'}</option>
+                <option value="support" ${state.category==='support'?'selected':''}>${isEn ? '🎧 Support & Solutions' : '🎧 دعم فني وحلول'}</option>
               </select>
             </div>
 
@@ -240,10 +447,9 @@ window.CareerAI.pages.jobs = function() {
               <label class="form-label" style="font-weight:700;font-size:0.85rem">${isEn ? '⏰ Work Type' : '⏰ نوع العمل'}</label>
               <select id="jobsTypeFilter" class="form-input" onchange="CareerAI.onJobsFilterChange('type', this.value)">
                 <option value="all" ${state.type==='all'?'selected':''}>${isEn ? 'All Types' : 'جميع الأنواع'}</option>
-                <option value="remote" ${state.type==='remote'?'selected':''}>${isEn ? 'Remote / Online' : 'عن بُعد / أونلاين'}</option>
                 <option value="full-time" ${state.type==='full-time'?'selected':''}>${isEn ? 'Full-time' : 'دوام كامل'}</option>
                 <option value="part-time" ${state.type==='part-time'?'selected':''}>${isEn ? 'Part-time' : 'دوام جزئي'}</option>
-                <option value="contract" ${state.type==='contract'?'selected':''}>${isEn ? 'Contract / Freelance' : 'عمل حر / عقد'}</option>
+                <option value="contract" ${state.type==='contract'?'selected':''}>${isEn ? 'Contract / Freelance' : 'عقد مؤقت / عمل حر'}</option>
               </select>
             </div>
 
@@ -258,9 +464,9 @@ window.CareerAI.pages.jobs = function() {
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem">
               <div>
                 <h2 style="font-size:1.25rem;font-weight:800;color:var(--color-text);margin:0;display:flex;align-items:center;gap:8px">
-                  <span>${isEn ? 'Available Verified Opportunities' : 'الوظائف المتاحة والموثقة'}</span>
-                  <span style="font-size:0.85rem;font-weight:600;background:rgba(99,102,241,0.15);color:var(--color-primary-light);padding:2px 10px;border-radius:20px">
-                    ${displayedJobs.length} ${isEn ? 'jobs' : 'فرصة'}
+                  <span>${isEn ? 'Verified Career Feed' : 'قائمة الوظائف الموثقة'}</span>
+                  <span style="font-size:0.75rem;font-weight:700;background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);padding:2px 10px;border-radius:20px">
+                    ${isEn ? 'Live API' : 'تحديث مباشر'}
                   </span>
                 </h2>
               </div>
@@ -272,102 +478,12 @@ window.CareerAI.pages.jobs = function() {
               ` : ''}
             </div>
 
-            ${filteredJobs.length === 0 ? `
-              <div class="text-center" style="padding:4rem 1.5rem;background:var(--color-bg-card);border-radius:18px;border:1px solid var(--color-border)">
-                <div style="font-size:3.5rem;margin-bottom:1rem">🔍</div>
-                <h3 style="font-size:1.3rem;font-weight:700;color:var(--color-text);margin-bottom:0.5rem">${isEn ? 'No matching jobs found' : 'لم يتم العثور على وظائف مطابقة للبحث'}</h3>
-                <p style="color:var(--color-text-muted);max-width:440px;margin:0 auto 1.5rem">${isEn ? 'Try adjusting your search terms, switching country filter, or clearing filters.' : 'جرّب تغيير كلمات البحث أو تغيير فلتر الدولة للاطلاع على كافة الفرص المتاحة.'}</p>
-                <button class="btn btn--secondary btn--sm" onclick="CareerAI.resetJobsFilter()">${isEn ? 'Reset All Filters' : 'إعادة ضبط الفلاتر'}</button>
-              </div>
-            ` : `
-              <div class="jobs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;">
-                ${displayedJobs.map((job, i) => {
-                  const compInitial = (job.company ? job.company.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
-                  const logoUrl = job.logo || job.companyLogo || '';
-                  const skills = Array.isArray(job.skills) ? job.skills.slice(0, 3) : [];
-                  
-                  return `
-                  <div class="job-card" id="job-card-${job.id}" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.25s, box-shadow 0.25s;box-shadow:0 4px 18px rgba(0,0,0,0.1)">
-                    <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
-                      
-                      <!-- Header: Company Logo Avatar + Verified Badge -->
-                      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;gap:1rem">
-                        
-                        <!-- Company Avatar & Title -->
-                        <div style="display:flex;align-items:center;gap:0.85rem">
-                          <div style="width:54px;height:54px;min-width:54px;border-radius:14px;background:#ffffff;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 12px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:5px">
-                            ${logoUrl ? `
-                              <img src="${logoUrl}" alt="${job.company}" style="width:100%;height:100%;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                              <div style="display:none;width:100%;height:100%;border-radius:10px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.4rem;font-weight:800;align-items:center;justify-content:center">${compInitial}</div>
-                            ` : `
-                              <div style="width:100%;height:100%;border-radius:10px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center">${compInitial}</div>
-                            `}
-                          </div>
-                          <div>
-                            <div style="font-size:1rem;font-weight:800;color:var(--color-primary-light);line-height:1.2;margin-bottom:4px">${job.company}</div>
-                            <div style="font-size:0.75rem;font-weight:600;color:var(--color-text-muted)">${isEn ? (job.category || 'Tech') : (job.category_ar || 'تكنولوجيا')}</div>
-                          </div>
-                        </div>
-
-                        <!-- Verified & Country Badges -->
-                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
-                          <span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:3px 9px;font-size:0.7rem;font-weight:700;display:inline-flex;align-items:center;gap:3px;white-space:nowrap">
-                            ✓ ${isEn ? 'AI Verified' : 'موثقة رسمياً'}
-                          </span>
-                          <span class="job-badge" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.7rem;white-space:nowrap;font-weight:600">
-                            ${isEn ? (job.type || 'Remote') : (job.type_ar || 'عن بُعد')}
-                          </span>
-                        </div>
-
-                      </div>
-
-                      <!-- Job Title (Clickable to open modal) -->
-                      <h3 style="font-size:1.15rem;font-weight:800;color:var(--color-text);margin:0 0 0.75rem 0;line-height:1.4;cursor:pointer" onclick="CareerAI.openJobModal('${job.id}')">
-                        ${isEn ? job.title : (job.title_ar || job.title)}
-                      </h3>
-
-                      <!-- Location & Salary Row -->
-                      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.6rem;font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.85rem">
-                        <span style="display:inline-flex;align-items:center;gap:4px">📍 ${isEn ? job.location : (job.location_ar || job.location)}</span>
-                        <span>•</span>
-                        <span style="display:inline-flex;align-items:center;gap:4px;color:#34d399;font-weight:600">💰 ${job.salary || (isEn ? 'Competitive' : 'رواتب تنافسية')}</span>
-                      </div>
-
-                      <!-- Description Excerpt -->
-                      <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0 0 1rem 0;line-height:1.6;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">
-                        ${isEn ? (job.description || '') : (job.description_ar || job.description || '')}
-                      </p>
-
-                      <!-- Skills Tags -->
-                      ${skills.length > 0 ? `
-                        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.25rem">
-                          ${skills.map(s => `<span style="background:rgba(255,255,255,0.06);border:1px solid var(--color-border-light);border-radius:6px;padding:2px 8px;font-size:0.75rem;color:#cbd5e1">${s}</span>`).join('')}
-                        </div>
-                      ` : ''}
-
-                      <!-- Card Action Buttons -->
-                      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.85rem;border-top:1px solid var(--color-border-light);gap:0.5rem;flex-wrap:wrap">
-                        
-                        <!-- View Full Details in Modal -->
-                        <button class="btn btn--secondary btn--sm" style="flex:1;min-width:110px;padding:0.45rem 0.75rem;font-size:0.8rem;font-weight:700" onclick="CareerAI.openJobModal('${job.id}')">
-                          ℹ️ ${isEn ? 'View Details' : 'التفاصيل الكاملة'}
-                        </button>
-
-                        <!-- Direct Official Apply -->
-                        <a href="${job.applyUrl || 'mailto:factorcareer@gmail.com'}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm" style="flex:1;min-width:120px;padding:0.45rem 0.75rem;font-size:0.8rem;font-weight:700;box-shadow:0 2px 10px rgba(99,102,241,0.35);text-align:center">
-                          ${isEn ? 'Apply Direct ↗' : 'التقديم الرسمي ↗'}
-                        </a>
-
-                      </div>
-
-                    </div>
-                  </div>
-                `}).join('')}
-              </div>
-            `}
+            <div class="jobs-grid" id="jobsGridContainer" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;">
+              ${window.CareerAI.renderJobsGrid()}
+            </div>
           </div>
 
-          <!-- Sticky Sidebar with Skyscraper 300x600 -->
+          <!-- Sticky Sidebar with Skyscraper 300x600 (Anti-Morphing Protected) -->
           <aside class="sticky-sidebar-ad">
             <div class="ad-frame-wrapper ad-frame-skyscraper">
               <div class="ad-frame-label">
@@ -378,8 +494,9 @@ window.CareerAI.pages.jobs = function() {
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:300px;height:600px;max-width:100%;"
                      data-ad-client="ca-pub-7520213352755959"
-                     data-ad-slot="4455667788"
-                     data-ad-format="vertical"></ins>
+                     data-ad-slot="3316284985"
+                     data-ad-format="vertical"
+                     data-full-width-responsive="false"></ins>
               </div>
             </div>
           </aside>
@@ -389,10 +506,10 @@ window.CareerAI.pages.jobs = function() {
       </div>
     </section>
 
-    <!-- In-Page Job Details Modal Container -->
-    <div id="jobDetailsModalBackdrop" style="display:none;position:fixed;inset:0;background:rgba(10,15,30,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:1rem;overflow-y:auto">
-      <div id="jobDetailsModalContent" style="background:#0f172a;border:1px solid rgba(99,102,241,0.3);border-radius:24px;width:100%;max-width:760px;max-height:90vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.6);position:relative;animation:fadeIn 0.25s ease">
-        <!-- Injected via CareerAI.openJobModal -->
+    <!-- In-Page Detailed Job Modal Backdrop -->
+    <div id="jobDetailsModalBackdrop" style="display:none;position:fixed;inset:0;background:rgba(3,7,18,0.85);backdrop-filter:blur(8px);z-index:99999;align-items:center;justify-content:center;padding:1.5rem">
+      <div id="jobDetailsModalContent" style="background:#0f172a;border:1px solid rgba(255,255,255,0.12);border-radius:24px;width:100%;max-width:820px;max-height:90vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.6);position:relative">
+        <!-- Injected dynamically by openJobModal -->
       </div>
     </div>
   `;
@@ -400,28 +517,13 @@ window.CareerAI.pages.jobs = function() {
 
 // Open Detailed Job Modal
 CareerAI.openJobModal = function(jobId) {
-  const db = window.CareerAI.db;
-  let allJobs = [];
-  if (db && Array.isArray(db.defaultJobs) && db.defaultJobs.length) {
-    allJobs = db.defaultJobs;
-  } else if (db && typeof db.getJobs === 'function') {
-    try { allJobs = db.getJobs(true); } catch(e) {}
-  }
-  let job = allJobs.find(j => String(j.id) === String(jobId));
-  if (!job && db && Array.isArray(db.defaultJobs)) {
-    job = db.defaultJobs.find(j => String(j.id) === String(jobId));
-  }
-  if (!job && db && db.KEYS) {
-    try {
-      const stored = JSON.parse(localStorage.getItem(db.KEYS.JOBS) || '[]');
-      job = stored.find(j => String(j.id) === String(jobId));
-    } catch(e) {}
-  }
+  const allJobs = window.CareerAI.jobsState.jobs;
+  const job = allJobs.find(j => String(j.id) === String(jobId));
   if (!job) return;
 
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
-  const compInitial = (job.company ? job.company.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
-  const logoUrl = job.logo || job.companyLogo || '';
+  const compInitial = (job.company_name ? job.company_name.replace(/[^a-zA-Z0-9]/g, '').charAt(0).toUpperCase() : '🏢') || '🏢';
+  const logoUrl = job.company_logo || '';
   const skills = Array.isArray(job.skills) ? job.skills : [];
 
   const backdrop = document.getElementById('jobDetailsModalBackdrop');
@@ -434,7 +536,7 @@ CareerAI.openJobModal = function(jobId) {
       <div style="display:flex;gap:1.25rem;align-items:center;flex:1">
         <div style="width:64px;height:64px;min-width:64px;border-radius:16px;background:#ffffff;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 15px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px">
           ${logoUrl ? `
-            <img src="${logoUrl}" alt="${job.company}" style="width:100%;height:100%;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <img src="${logoUrl}" alt="${job.company_name}" style="width:100%;height:100%;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:100%;height:100%;border-radius:12px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.6rem;font-weight:800;align-items:center;justify-content:center">${compInitial}</div>
           ` : `
             <div style="width:100%;height:100%;border-radius:12px;background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#ffffff;font-size:1.6rem;font-weight:800;display:flex;align-items:center;justify-content:center">${compInitial}</div>
@@ -442,11 +544,11 @@ CareerAI.openJobModal = function(jobId) {
         </div>
         <div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
-            <span style="font-size:1.1rem;font-weight:800;color:var(--color-primary-light)">${job.company}</span>
+            <span style="font-size:1.1rem;font-weight:800;color:var(--color-primary-light)">${job.company_name}</span>
             <span style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:2px 8px;font-size:0.7rem;font-weight:700">✓ ${isEn ? 'Verified Employer' : 'جهة عمل موثقة'}</span>
-            <span style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:600">${job.source || 'Verified Partner'}</span>
+            <span style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:600">${job.source || 'Remotive'}</span>
           </div>
-          <h2 style="font-size:1.35rem;font-weight:800;color:#ffffff;margin:0;line-height:1.3">${isEn ? job.title : (job.title_ar || job.title)}</h2>
+          <h2 style="font-size:1.35rem;font-weight:800;color:#ffffff;margin:0;line-height:1.3">${job.job_title}</h2>
         </div>
       </div>
       <button onclick="CareerAI.closeJobModal()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s" title="Close">✕</button>
@@ -459,56 +561,37 @@ CareerAI.openJobModal = function(jobId) {
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:1rem;margin-bottom:2rem">
         <div style="background:rgba(255,255,255,0.03);border:1px solid var(--color-border-light);border-radius:12px;padding:1rem;text-align:center">
           <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">📍 ${isEn ? 'Location' : 'الموقع'}</div>
-          <div style="font-size:0.9rem;font-weight:700;color:#ffffff">${isEn ? job.location : (job.location_ar || job.location)}</div>
+          <div style="font-size:0.9rem;font-weight:700;color:#ffffff">${isEn ? job.candidate_required_location : (job.location_ar || job.candidate_required_location)}</div>
         </div>
         <div style="background:rgba(255,255,255,0.03);border:1px solid var(--color-border-light);border-radius:12px;padding:1rem;text-align:center">
-          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">💰 ${isEn ? 'Salary Range' : 'الراتب'}</div>
+          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">💰 ${isEn ? 'Salary' : 'الراتب'}</div>
           <div style="font-size:0.9rem;font-weight:700;color:#34d399">${job.salary || (isEn ? 'Competitive' : 'تنافسي')}</div>
         </div>
         <div style="background:rgba(255,255,255,0.03);border:1px solid var(--color-border-light);border-radius:12px;padding:1rem;text-align:center">
-          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">⏰ ${isEn ? 'Work Type' : 'نوع العمل'}</div>
-          <div style="font-size:0.9rem;font-weight:700;color:#ffffff">${isEn ? (job.type || 'Remote') : (job.type_ar || 'عن بُعد')}</div>
+          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">⏰ ${isEn ? 'Job Type' : 'نوع العمل'}</div>
+          <div style="font-size:0.9rem;font-weight:700;color:#ffffff">${isEn ? job.job_type : (job.type_ar || job.job_type)}</div>
         </div>
         <div style="background:rgba(255,255,255,0.03);border:1px solid var(--color-border-light);border-radius:12px;padding:1rem;text-align:center">
-          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">📅 ${isEn ? 'Posted Date' : 'تاريخ النشر'}</div>
-          <div style="font-size:0.9rem;font-weight:700;color:#cbd5e1">${job.postedAt || 'Recently'}</div>
+          <div style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:4px">📅 ${isEn ? 'Published' : 'تاريخ النشر'}</div>
+          <div style="font-size:0.9rem;font-weight:700;color:#cbd5e1">${job.publication_date}</div>
         </div>
       </div>
 
-      <!-- Full Job Description Section -->
-      <div style="margin-bottom:2rem">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
-          <h3 style="font-size:1.1rem;font-weight:700;color:#ffffff;margin:0">
-            📄 ${isEn ? 'Role Overview & Description' : 'نظرة عامة وتفاصيل الوظيفة'}
-          </h3>
-          <button class="btn btn--text btn--sm" id="toggleDescLangBtn" onclick="CareerAI.toggleJobDescLang()" style="color:var(--color-primary-light);font-size:0.8rem">
-            🌐 ${isEn ? 'View Arabic Translation' : 'عرض النص الإنجليزي الأصلي'}
-          </button>
-        </div>
-        
-        <div id="jobModalDescAr" style="background:rgba(15,23,42,0.6);border:1px solid var(--color-border-light);border-radius:14px;padding:1.25rem;line-height:1.8;font-size:0.92rem;color:#cbd5e1;white-space:pre-line">
-          ${job.description_ar || job.description || ''}
-        </div>
-        <div id="jobModalDescEn" style="display:none;background:rgba(15,23,42,0.6);border:1px solid var(--color-border-light);border-radius:14px;padding:1.25rem;line-height:1.8;font-size:0.92rem;color:#cbd5e1;white-space:pre-line">
-          ${job.description || ''}
-        </div>
-      </div>
-
-      <!-- Requirements & Checklist -->
+      <!-- Job Description -->
       <div style="margin-bottom:2rem">
         <h3 style="font-size:1.1rem;font-weight:700;color:#ffffff;margin:0 0 0.75rem 0">
-          ✅ ${isEn ? 'Key Requirements & Qualifications' : 'المتطلبات والشروط الأساسية'}
+          📄 ${isEn ? 'Job Description & Role Overview' : 'تفاصيل ونظرة عامة عن الوظيفة'}
         </h3>
-        <div style="background:rgba(15,23,42,0.6);border:1px solid var(--color-border-light);border-radius:14px;padding:1.25rem;line-height:1.8;font-size:0.9rem;color:#cbd5e1">
-          ${(job.requirements_ar || job.requirements || '').split('\n').map(r => `<div style="margin-bottom:0.4rem">${r}</div>`).join('')}
+        <div style="background:rgba(15,23,42,0.6);border:1px solid var(--color-border-light);border-radius:14px;padding:1.25rem;line-height:1.8;font-size:0.92rem;color:#cbd5e1;white-space:pre-line">
+          ${job.full_description || job.description}
         </div>
       </div>
 
-      <!-- Required Skills & Keywords -->
+      <!-- Skills Tags -->
       ${skills.length > 0 ? `
         <div style="margin-bottom:2rem">
           <h3 style="font-size:1.1rem;font-weight:700;color:#ffffff;margin:0 0 0.75rem 0">
-            🎯 ${isEn ? 'Required Skills & Keywords' : 'المهارات والكلمات المفتاحية المطلوبة'}
+            🎯 ${isEn ? 'Skills & Tags' : 'المهارات والوسوم'}
           </h3>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             ${skills.map(s => `<span style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:4px 12px;font-size:0.85rem;color:#c7d2fe;font-weight:600">${s}</span>`).join('')}
@@ -516,7 +599,7 @@ CareerAI.openJobModal = function(jobId) {
         </div>
       ` : ''}
 
-      <!-- In-Modal Advertisement Placement (Leaderboard) -->
+      <!-- In-Modal Leaderboard Ad (Anti-Morphing Protected) -->
       <div class="ad-frame-wrapper ad-frame-leaderboard" style="margin-top:2rem;max-width:728px;">
         <div class="ad-frame-label">${isEn ? 'Sponsored Ad' : 'إعلان ممول'}</div>
         <div class="ad-frame-inner">
@@ -531,49 +614,33 @@ CareerAI.openJobModal = function(jobId) {
 
     </div>
 
-    <!-- Modal Sticky Action Footer -->
+    <!-- Modal Footer Actions -->
     <div style="padding:1.25rem 2rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;bottom:0;background:#0f172a;border-bottom-left-radius:24px;border-bottom-right-radius:24px">
       <div style="display:flex;gap:0.75rem;align-items:center">
-        <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyJobLink('${job.applyUrl}')">
-          📋 ${isEn ? 'Copy Job Link' : 'نسخ رابط الوظيفة'}
+        <button class="btn btn--secondary btn--sm" onclick="CareerAI.copyJobLink('${job.url}')">
+          📋 ${isEn ? 'Copy Job Link' : 'نسخ الرابط'}
         </button>
         <button class="btn btn--text btn--sm" onclick="CareerAI.closeJobModal()" style="color:#94a3b8">
           ${isEn ? 'Close' : 'إغلاق'}
         </button>
       </div>
 
-      <!-- Direct Official Employer Apply Button -->
-      <a href="${job.applyUrl || 'mailto:factorcareer@gmail.com'}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.5);font-weight:800;padding:0.75rem 2rem">
-        🚀 ${isEn ? 'Apply Direct on Official Site ↗' : 'التقديم المباشر على الموقع الرسمي ↗'}
+      <!-- Direct Official Apply Now Button -->
+      <a href="${job.url}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg" style="box-shadow:0 4px 20px rgba(99,102,241,0.5);font-weight:800;padding:0.75rem 2rem">
+        🚀 ${isEn ? 'Apply Now ↗' : 'التقديم الآن (Apply Now) ↗'}
       </a>
     </div>
   `;
 
   backdrop.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  if (window.CareerAI.enforceAdDimensions) window.CareerAI.enforceAdDimensions();
 };
 
 CareerAI.closeJobModal = function() {
   const backdrop = document.getElementById('jobDetailsModalBackdrop');
   if (backdrop) backdrop.style.display = 'none';
   document.body.style.overflow = '';
-};
-
-CareerAI.toggleJobDescLang = function() {
-  const ar = document.getElementById('jobModalDescAr');
-  const en = document.getElementById('jobModalDescEn');
-  const btn = document.getElementById('toggleDescLangBtn');
-  if (ar && en && btn) {
-    if (ar.style.display === 'none') {
-      ar.style.display = 'block';
-      en.style.display = 'none';
-      btn.innerHTML = '🌐 عرض النص الإنجليزي الأصلي';
-    } else {
-      ar.style.display = 'none';
-      en.style.display = 'block';
-      btn.innerHTML = '🌐 عرض الترجمة العربية';
-    }
-  }
 };
 
 CareerAI.copyJobLink = function(url) {
@@ -586,33 +653,37 @@ CareerAI.copyJobLink = function(url) {
   }
 };
 
-// Interactive Filter Handlers
+// Filter Handlers
 CareerAI.onJobsSearch = function(val) {
   window.CareerAI.jobsFilterState.searchQuery = val;
-  const main = document.getElementById('main-content');
-  if (main && window.CareerAI.pages.jobs) {
-    main.innerHTML = '<div class="page-transition">' + window.CareerAI.pages.jobs() + '</div>';
-    const input = document.getElementById('jobsSearchInput');
-    if (input) {
-      input.focus();
-      input.setSelectionRange(input.value.length, input.value.length);
-    }
+  const container = document.getElementById('jobsGridContainer');
+  if (container && window.CareerAI.renderJobsGrid) {
+    container.innerHTML = window.CareerAI.renderJobsGrid();
   }
 };
 
 CareerAI.onJobsFilterChange = function(field, val) {
   window.CareerAI.jobsFilterState[field] = val;
-  const main = document.getElementById('main-content');
-  if (main && window.CareerAI.pages.jobs) {
-    main.innerHTML = '<div class="page-transition">' + window.CareerAI.pages.jobs() + '</div>';
+  const container = document.getElementById('jobsGridContainer');
+  if (container && window.CareerAI.renderJobsGrid) {
+    container.innerHTML = window.CareerAI.renderJobsGrid();
   }
 };
 
 CareerAI.resetJobsFilter = function() {
   window.CareerAI.jobsFilterState = { searchQuery: '', country: 'all', category: 'all', type: 'all' };
-  const main = document.getElementById('main-content');
-  if (main && window.CareerAI.pages.jobs) {
-    main.innerHTML = '<div class="page-transition">' + window.CareerAI.pages.jobs() + '</div>';
+  const input = document.getElementById('jobsSearchInput');
+  if (input) input.value = '';
+  const cFilter = document.getElementById('jobsCountryFilter');
+  if (cFilter) cFilter.value = 'all';
+  const catFilter = document.getElementById('jobsCategoryFilter');
+  if (catFilter) catFilter.value = 'all';
+  const tFilter = document.getElementById('jobsTypeFilter');
+  if (tFilter) tFilter.value = 'all';
+
+  const container = document.getElementById('jobsGridContainer');
+  if (container && window.CareerAI.renderJobsGrid) {
+    container.innerHTML = window.CareerAI.renderJobsGrid();
   }
 };
 
@@ -620,14 +691,14 @@ window.CareerAI.pages.jobsSEO = function() {
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   if (isEn) {
     return {
-      title: 'Verified Job Opportunities & Remote Careers | Factor Career',
-      description: 'Explore daily verified job opportunities from top tech employers and remote companies. Filter by country, category, role, and location on Factor Career.',
+      title: 'Verified Career & Remote Job Opportunities | Factor Career',
+      description: 'Explore authentic job opportunities from verified employers worldwide powered by live feeds and direct application links.',
       keywords: 'Jobs, Remote Work, Tech Jobs, Career Opportunities, Hiring, Factor Career'
     };
   }
   return {
     title: 'أحدث الوظائف وفرص العمل الموثقة يومياً | فكتور كارير',
-    description: 'استكشف أحدث الوظائف وفرص العمل الموثقة والمحدثة يومياً بعد فحصها بالذكاء الاصطناعي مع تقديم مباشر وتفاصيل كاملة وفلترة حسب الدولة والمجال.',
+    description: 'تصفح أحدث الوظائف وفرص العمل الحقيقية والمحدثة يومياً مع تفاصيل كاملة وروابط تقديم رسمية ومباشرة بدون وسطاء.',
     keywords: 'وظائف, فرص عمل, وظائف عن بعد, وظائف تقنية, التوظيف, Factor Career'
   };
 };
