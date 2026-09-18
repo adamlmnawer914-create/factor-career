@@ -441,13 +441,14 @@ window.CareerAI.initAdSense = function() {
 
 /* --- Foldable Sticky Bottom Banner Handler --- */
 window.CareerAI.toggleStickyAd = function() {
-  const wrapper = document.getElementById('stickyBottomAd') || document.getElementById('adsense-sticky-bottom');
+  // Use the outer wrapper so the toggle button (sibling of the ad) is never clipped
+  const outer = document.getElementById('stickyBottomOuter');
   const arrow = document.getElementById('stickyAdArrow');
   const text = document.getElementById('stickyAdText');
   const isEn = window.CareerAI.i18n && window.CareerAI.i18n.getLang() === 'en';
   
-  if (wrapper) {
-    const isCollapsed = wrapper.classList.toggle('collapsed');
+  if (outer) {
+    const isCollapsed = outer.classList.toggle('collapsed');
     if (arrow) {
       arrow.textContent = isCollapsed ? '▲' : '▼';
     }
