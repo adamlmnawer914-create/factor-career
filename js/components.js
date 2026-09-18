@@ -73,7 +73,6 @@ window.CareerAI.components.renderHeader = function () {
         <nav class="nav header__nav" id="main-nav" role="navigation" aria-label="Main Navigation">
           <a href="/" data-nav="/" class="nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/')">${t('nav.home', 'الرئيسية')}</a>
           <a href="/tools" data-nav="/tools" class="nav__link ${isAct('/tools') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/tools')">${t('nav.tools', 'الأدوات')}</a>
-          <a href="/jobs" data-nav="/jobs" class="nav__link ${isAct('/jobs') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${t('nav.jobs', 'الوظائف والفرص')}</a>
           <a href="/blog" data-nav="/blog" class="nav__link ${isAct('/blog') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${t('nav.blog', 'المدونة')}</a>
           <a href="/about" data-nav="/about" class="nav__link ${isAct('/about') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${t('nav.about', 'من نحن')}</a>
           <a href="/contact" data-nav="/contact" class="nav__link ${isAct('/contact') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${t('nav.contact', 'تواصل معنا')}</a>
@@ -125,7 +124,6 @@ window.CareerAI.components.renderHeader = function () {
 
         <a href="/" data-nav="/" class="mobile-nav__link ${isAct('/') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/');CareerAI.closeMobileMenu()">${t('nav.home', 'الرئيسية')}</a>
         <a href="/tools" data-nav="/tools" class="mobile-nav__link ${isAct('/tools') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/tools');CareerAI.closeMobileMenu()">${t('nav.tools', 'الأدوات الذكية')}</a>
-        <a href="/jobs" data-nav="/jobs" class="mobile-nav__link ${isAct('/jobs') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/jobs');CareerAI.closeMobileMenu()">${t('nav.jobs', 'الوظائف والفرص')}</a>
         <a href="/blog" data-nav="/blog" class="mobile-nav__link ${isAct('/blog') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/blog');CareerAI.closeMobileMenu()">${t('nav.blog', 'المدونة والمقالات')}</a>
         <a href="/about" data-nav="/about" class="mobile-nav__link ${isAct('/about') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/about');CareerAI.closeMobileMenu()">${t('nav.about', 'من نحن')}</a>
         <a href="/contact" data-nav="/contact" class="mobile-nav__link ${isAct('/contact') ? 'active' : ''}" onclick="event.preventDefault();CareerAI.router.navigate('/contact');CareerAI.closeMobileMenu()">${t('nav.contact', 'تواصل معنا')}</a>
@@ -189,7 +187,6 @@ window.CareerAI.components.renderFooter = function () {
           <div>
             <h4 style="font-size:1rem;font-weight:700;color:white;margin-bottom:1rem">${isEn ? 'Quick Links' : 'روابط سريعة'}</h4>
             <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem">
-              <li><a href="/jobs" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/jobs')">${isEn ? 'Verified Jobs' : 'الوظائف والفرص'}</a></li>
               <li><a href="/blog" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/blog')">${isEn ? 'Career Blog' : 'المدونة والمقالات'}</a></li>
               <li><a href="/about" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/about')">${isEn ? 'About Us' : 'من نحن'}</a></li>
               <li><a href="/contact" style="color:var(--color-text-muted)" onclick="event.preventDefault();CareerAI.router.navigate('/contact')">${isEn ? 'Contact Us' : 'تواصل معنا'}</a></li>
