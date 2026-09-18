@@ -55,13 +55,7 @@
     <priority>0.90</priority>
   </url>
 
-  <!-- Jobs & Careers Directory -->
-  <url>
-    <loc>https://factor-career.com/jobs</loc>
-    <lastmod>2026-08-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-  </url>
+
 
   <!-- Blog & Career Hub Index -->
   <url>

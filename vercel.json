@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/jobs",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!api/|data/).*)",
